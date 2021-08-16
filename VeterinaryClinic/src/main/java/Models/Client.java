@@ -98,9 +98,5 @@ public class Client {
             throw new Exception("Invalid email '" + email + "'. It must not have any of the '\"(),:;<>@[\\]' characters in its local part");
         this.email = email;
     }
-
-    public static void main(String[] args) {
-        
-    }
     
 }

@@ -1,1 +1,4 @@
+Main.class
+Models\Animal.class
 Models\Client.class
+Models\Gender.class
