@@ -1,19 +1,30 @@
 package Models;
 
+import Exceptions.BlankNameException;
+import Exceptions.NotPositiveAgeException;
+import Exceptions.NotPositiveIdException;
+
 /**
  *
  * @author mateu
  */
 public class Animal {
     
-    private int id;
+    private Integer id = null;
     private String name;
     private int age;
     private Gender gender;
     private Client owner;
 
-    public Animal(int id, String name, int age, Gender gender, Client owner) throws Exception {
+    public Animal(int id, String name, int age, Gender gender, Client owner) throws NotPositiveIdException, BlankNameException, NotPositiveAgeException {
         this.setId(id);
+        this.setName(name);
+        this.setAge(age);
+        this.gender = gender;
+        this.owner = owner;
+    }
+    
+    public Animal(String name, int age, Gender gender, Client owner) throws BlankNameException, NotPositiveAgeException {
         this.setName(name);
         this.setAge(age);
         this.gender = gender;
@@ -24,9 +35,9 @@ public class Animal {
         return id;
     }
 
-    public void setId(int id) throws Exception {
+    private void setId(int id) throws NotPositiveIdException {
         if(id < 0)
-            throw new Exception("Invalid id '" + id + "'. It must be a positive number");
+            throw new NotPositiveIdException(id);
         this.id = id;
     }
     
@@ -34,9 +45,9 @@ public class Animal {
         return name;
     }
 
-    public void setName(String name) throws Exception {
+    public void setName(String name) throws BlankNameException {
         if(name.isBlank())
-            throw new Exception("Invalid name '" + name + "'. It must not be blank.");
+            throw new BlankNameException(name);
         this.name = name;
     }
 
@@ -44,9 +55,9 @@ public class Animal {
         return age;
     }
 
-    public void setAge(int age) throws Exception {
+    public void setAge(int age) throws NotPositiveAgeException {
         if(age < 0)
-            throw new Exception("Invalid age '" + age + "'. Is must be a positive number.");
+            throw new NotPositiveAgeException(age);
         this.age = age;
     }
 

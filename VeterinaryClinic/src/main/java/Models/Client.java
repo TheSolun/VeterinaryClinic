@@ -1,5 +1,13 @@
 package Models;
 
+import Exceptions.BlankAddressException;
+import Exceptions.BlankNameException;
+import Exceptions.EmailWithInvalidCharInItsLocalPartException;
+import Exceptions.InvalidPhoneLengthException;
+import Exceptions.InvalidZipCodeLengthException;
+import Exceptions.NotPositiveIdException;
+import Exceptions.PhoneNotOnlyWithNumbersException;
+import Exceptions.ZipCodeNotOnlyWithNumbersException;
 import java.util.Arrays;
 
 /**
@@ -8,18 +16,26 @@ import java.util.Arrays;
  */
 public class Client {
     
-    private int id;
+    private Integer id = null;
     private String name;
     private String address;
-    private String telephone;
+    private String phone;
     private String zipCode;
     private String email;
 
-    public Client(int id, String name, String address, String telephone, String zipCode, String email) throws Exception {
+    public Client(int id, String name, String address, String telephone, String zipCode, String email) throws NotPositiveIdException, BlankNameException, BlankAddressException, InvalidPhoneLengthException, PhoneNotOnlyWithNumbersException, InvalidZipCodeLengthException, ZipCodeNotOnlyWithNumbersException, EmailWithInvalidCharInItsLocalPartException, EmailWithInvalidCharInItsLocalPartException {
         this.setId(id);
         this.setName(name);
         this.setAddress(address);
-        this.setTelephone(telephone);
+        this.setPhone(telephone);
+        this.setZipCode(zipCode);
+        this.setEmail(email);
+    }
+    
+    public Client(String name, String address, String telephone, String zipCode, String email) throws BlankNameException, BlankAddressException, InvalidPhoneLengthException, PhoneNotOnlyWithNumbersException, InvalidZipCodeLengthException, ZipCodeNotOnlyWithNumbersException, EmailWithInvalidCharInItsLocalPartException, EmailWithInvalidCharInItsLocalPartException {
+        this.setName(name);
+        this.setAddress(address);
+        this.setPhone(telephone);
         this.setZipCode(zipCode);
         this.setEmail(email);
     }
@@ -28,9 +44,9 @@ public class Client {
         return id;
     }
 
-    public void setId(int id) throws Exception {
+    private void setId(int id) throws NotPositiveIdException {
         if(id < 0)
-            throw new Exception("Invalid id '" + id + "'. It must be a positive number");
+            throw new NotPositiveIdException(id);
         this.id = id;
     }
     
@@ -38,9 +54,9 @@ public class Client {
         return name;
     }
 
-    public void setName(String name) throws Exception {
+    public void setName(String name) throws BlankNameException {
         if(name.isBlank())
-            throw new Exception("Invalid name '" + name + "'. It must not be blank.");
+            throw new BlankNameException(name);
         this.name = name;
     }
 
@@ -48,42 +64,44 @@ public class Client {
         return address;
     }
 
-    public void setAddress(String address) throws Exception {
+    public void setAddress(String address) throws BlankAddressException {
         if(address.isBlank())
-            throw new Exception("Invalid address '" + address + "'. It must not be blank.");
+            throw new BlankAddressException(address);
         this.address = address;
     }
 
-    public String getTelephone() {
-        return telephone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelephone(String telephone) throws Exception {
-        if (telephone.length() != 11)
-            throw new Exception("Invalid telephone '" + telephone + "'. It must have 11 chars, but it has " + telephone.length() + " chars.");
+    public void setPhone(String phone) throws InvalidPhoneLengthException, PhoneNotOnlyWithNumbersException {
+        int expectedLength = 11;
+        if (phone.length() != expectedLength)
+            throw new InvalidPhoneLengthException(expectedLength, phone);
         try {
-            Long.parseLong(telephone);
-            if(telephone.contains("-"))
+            Long.parseLong(phone);
+            if(phone.contains("-"))
                 throw new Exception();
         } catch (Exception ex) {
-            throw new Exception("Invalid telephone '" + telephone + "'. It must have only numbers");
+            throw new PhoneNotOnlyWithNumbersException(phone);
         }
-        this.telephone = telephone;
+        this.phone = phone;
     }
 
     public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(String zipCode) throws Exception {
-        if(zipCode.length() != 8)
-            throw new Exception("Invalid zip code '" + zipCode + "'. It must have 8 chars.");
+    public void setZipCode(String zipCode) throws InvalidZipCodeLengthException, ZipCodeNotOnlyWithNumbersException {
+        int expectedLength = 8;
+        if(zipCode.length() != expectedLength)
+            throw new InvalidZipCodeLengthException(expectedLength, zipCode);
         try {
             Long.parseLong(zipCode);
             if(zipCode.contains("-"))
                 throw new Exception();
         } catch (Exception ex) {
-            throw new Exception("Invalid zip code '" + zipCode + "'. It must have only numbers");
+            throw new ZipCodeNotOnlyWithNumbersException(zipCode);
         }
         this.zipCode = zipCode;
     }
@@ -92,10 +110,13 @@ public class Client {
         return email;
     }
 
-    public void setEmail(String email) throws Exception {
+    public void setEmail(String email) throws EmailWithInvalidCharInItsLocalPartException {
         String emailLocalPart = email.substring(0, email.lastIndexOf("@"));
-        if(Arrays.stream(new String[]{"\"","(",")",",",":",";","<",">","@","[","\\","]"}).parallel().anyMatch(emailLocalPart::contains))
-            throw new Exception("Invalid email '" + email + "'. It must not have any of the '\"(),:;<>@[\\]' characters in its local part");
+        String[] invalidChars = new String[] {"\"","(",")",",",":",";","<",">","@","[","\\","]"};
+        if(Arrays.stream(invalidChars).parallel().anyMatch(emailLocalPart::contains)){
+            String invalidCharsText = invalidChars.toString();
+            throw new EmailWithInvalidCharInItsLocalPartException(email, invalidCharsText.substring(1, invalidCharsText.length()-2));
+        }
         this.email = email;
     }
     
