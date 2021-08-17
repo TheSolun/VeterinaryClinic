@@ -15,13 +15,15 @@ public class Animal {
     private int age;
     private Gender gender;
     private Client owner;
+    private Species species;
 
-    public Animal(int id, String name, int age, Gender gender, Client owner) throws NotPositiveIdException, BlankNameException, NotPositiveAgeException {
+    public Animal(int id, String name, int age, Gender gender, Client owner, Species species) throws NotPositiveIdException, BlankNameException, NotPositiveAgeException {
         this.setId(id);
         this.setName(name);
         this.setAge(age);
         this.gender = gender;
         this.owner = owner;
+        this.species = species;
     }
     
     public Animal(String name, int age, Gender gender, Client owner) throws BlankNameException, NotPositiveAgeException {

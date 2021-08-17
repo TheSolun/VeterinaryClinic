@@ -8,7 +8,9 @@ import Exceptions.InvalidZipCodeLengthException;
 import Exceptions.NotPositiveIdException;
 import Exceptions.PhoneNotOnlyWithNumbersException;
 import Exceptions.ZipCodeNotOnlyWithNumbersException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -114,7 +116,7 @@ public class Client {
         String emailLocalPart = email.substring(0, email.lastIndexOf("@"));
         String[] invalidChars = new String[] {"\"","(",")",",",":",";","<",">","@","[","\\","]"};
         if(Arrays.stream(invalidChars).parallel().anyMatch(emailLocalPart::contains)){
-            String invalidCharsText = invalidChars.toString();
+            String invalidCharsText = (new ArrayList<String>(List.of(invalidChars))).toString();
             throw new EmailWithInvalidCharInItsLocalPartException(email, invalidCharsText.substring(1, invalidCharsText.length()-2));
         }
         this.email = email;
