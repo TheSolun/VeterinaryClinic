@@ -1,9 +1,12 @@
 Exceptions\EmailWithInvalidCharInItsLocalPartException.class
 Exceptions\InvalidZipCodeLengthException.class
+Exceptions\BlankDescriptionException.class
 Models\Client.class
 Models\Gender.class
 Exceptions\BlankAddressException.class
 Exceptions\NotPositiveIdException.class
+Models\DAO\DAO.class
+Models\Vet.class
 Exceptions\PhoneNotOnlyWithNumbersException.class
 Exceptions\ZipCodeNotOnlyWithNumbersException.class
 Exceptions\NotPositiveAgeException.class
@@ -12,5 +15,7 @@ Exceptions\InvalidPhoneLengthException.class
 Exceptions\StartAndEndDatesNotInChronologicalOrderException.class
 Main.class
 Models\Animal.class
+Models\Consultation.class
 Models\Treatment.class
+Models\Exam.class
 Models\Species.class
