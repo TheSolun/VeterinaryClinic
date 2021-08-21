@@ -31,6 +31,7 @@ public class Animal {
         this.setAge(age);
         this.gender = gender;
         this.owner = owner;
+        this.species = species;
     }
 
     public int getId() {
@@ -77,6 +78,14 @@ public class Animal {
 
     public void setOwner(Client owner) {
         this.owner = owner;
+    }
+
+    public Species getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(Species species) {
+        this.species = species;
     }
     
 }

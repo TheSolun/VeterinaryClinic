@@ -3,6 +3,7 @@ Exceptions\InvalidZipCodeLengthException.class
 Exceptions\BlankDescriptionException.class
 Models\Client.class
 Models\Gender.class
+Models\DAO\ClientDAO.class
 Exceptions\BlankAddressException.class
 Exceptions\NotPositiveIdException.class
 Models\DAO\DAO.class

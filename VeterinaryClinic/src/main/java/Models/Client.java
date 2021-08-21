@@ -11,6 +11,7 @@ import Exceptions.ZipCodeNotOnlyWithNumbersException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -25,19 +26,19 @@ public class Client {
     private String zipCode;
     private String email;
 
-    public Client(int id, String name, String address, String telephone, String zipCode, String email) throws NotPositiveIdException, BlankNameException, BlankAddressException, InvalidPhoneLengthException, PhoneNotOnlyWithNumbersException, InvalidZipCodeLengthException, ZipCodeNotOnlyWithNumbersException, EmailWithInvalidCharInItsLocalPartException, EmailWithInvalidCharInItsLocalPartException {
+    public Client(int id, String name, String address, String phone, String zipCode, String email) throws NotPositiveIdException, BlankNameException, BlankAddressException, InvalidPhoneLengthException, PhoneNotOnlyWithNumbersException, InvalidZipCodeLengthException, ZipCodeNotOnlyWithNumbersException, EmailWithInvalidCharInItsLocalPartException, EmailWithInvalidCharInItsLocalPartException {
         this.setId(id);
         this.setName(name);
         this.setAddress(address);
-        this.setPhone(telephone);
+        this.setPhone(phone);
         this.setZipCode(zipCode);
         this.setEmail(email);
     }
     
-    public Client(String name, String address, String telephone, String zipCode, String email) throws BlankNameException, BlankAddressException, InvalidPhoneLengthException, PhoneNotOnlyWithNumbersException, InvalidZipCodeLengthException, ZipCodeNotOnlyWithNumbersException, EmailWithInvalidCharInItsLocalPartException, EmailWithInvalidCharInItsLocalPartException {
+    public Client(String name, String address, String phone, String zipCode, String email) throws BlankNameException, BlankAddressException, InvalidPhoneLengthException, PhoneNotOnlyWithNumbersException, InvalidZipCodeLengthException, ZipCodeNotOnlyWithNumbersException, EmailWithInvalidCharInItsLocalPartException, EmailWithInvalidCharInItsLocalPartException {
         this.setName(name);
         this.setAddress(address);
-        this.setPhone(telephone);
+        this.setPhone(phone);
         this.setZipCode(zipCode);
         this.setEmail(email);
     }
@@ -120,6 +121,35 @@ public class Client {
             throw new EmailWithInvalidCharInItsLocalPartException(email, invalidCharsText.substring(1, invalidCharsText.length()-2));
         }
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        final Client other = (Client) obj;
+        if (!Objects.equals(this.name, other.name))
+            return false;
+        if (!Objects.equals(this.address, other.address))
+            return false;
+        if (!Objects.equals(this.phone, other.phone))
+            return false;
+        if (!Objects.equals(this.zipCode, other.zipCode))
+            return false;
+        if (!Objects.equals(this.email, other.email))
+            return false;
+        return true;
+    }
+
+    
+    
+    @Override
+    public String toString() {
+        return "Client{" + "id=" + id + ", name=" + name + ", address=" + address + ", phone=" + phone + ", zipCode=" + zipCode + ", email=" + email + '}';
     }
     
 }

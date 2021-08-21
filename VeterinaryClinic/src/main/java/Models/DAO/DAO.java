@@ -12,13 +12,11 @@ import java.util.logging.Logger;
 public abstract class DAO {
     
     public static final String DBURL = "jdbc:sqlite:vet2021.db";
-    private static String username = "LAPTOP-68AR4KG4\\mateu";
     private static Connection conn;
-    protected static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    protected static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
     
     // Connect to SQLite
     public static Connection getConnection() throws SQLException {
-        //            DAO.conn = DriverManager.getConnection(DAO.DBURL);
         if (DAO.conn == null)
             DAO.conn = DriverManager.getConnection(DAO.DBURL);
         return DAO.conn;
@@ -127,11 +125,11 @@ public abstract class DAO {
                 "CREATE TABLE IF NOT EXISTS consultation( \n"
                 + "id INTEGER PRIMARY KEY, \n"
                 + "date TEXT, \n"                                               
-                + "horario VARCHAR, \n"                                         // Traduzir
-                + "comentario VARCHAR, \n"                                      // Traduzir
+                + "time VARCHAR, \n"                                         
+                + "comment VARCHAR, \n"                                      
                 + "id_animal INTEGER, \n"
                 + "id_vet INTEGER, \n"
-                + "id_treattment INTEGER, \n"
+                + "id_treatment INTEGER, \n"
                 + "finished INTEGER); \n"
             )
         );
