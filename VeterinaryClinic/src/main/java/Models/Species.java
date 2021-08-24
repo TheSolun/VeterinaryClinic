@@ -40,5 +40,10 @@ public class Species {
             throw new BlankNameException(name);
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Species{" + "id=" + id + ", name=" + name + '}';
+    }
     
 }

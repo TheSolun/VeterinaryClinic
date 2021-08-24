@@ -75,7 +75,7 @@ public abstract class DAO {
                 "CREATE TABLE IF NOT EXISTS animal( \n"
                 + "id INTEGER PRIMARY KEY, \n"
                 + "name VARCHAR, \n"
-                + "birthYear INTEGER, \n"
+                + "birthYear VARCHAR, \n"
                 + "gender VARCHAR, \n"
                 + "id_species INTEGER, \n"
                 + "id_client INTEGER); \n"
@@ -146,12 +146,15 @@ public abstract class DAO {
         );
     }
     
-    public static void main(String[] args){
-        try {
-            Connection conn2 = DAO.getConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    // is not being used
+    private static void dropTables() throws SQLException{
+        (DAO.getConnection().prepareStatement("DROP TABLE client;")).executeUpdate();
+        (DAO.getConnection().prepareStatement("DROP TABLE animal;")).executeUpdate();
+        (DAO.getConnection().prepareStatement("DROP TABLE species;")).executeUpdate();
+        (DAO.getConnection().prepareStatement("DROP TABLE vet;")).executeUpdate();
+        (DAO.getConnection().prepareStatement("DROP TABLE treatment;")).executeUpdate();
+        (DAO.getConnection().prepareStatement("DROP TABLE consultation;")).executeUpdate();
+        (DAO.getConnection().prepareStatement("DROP TABLE exam;")).executeUpdate();
     }
     
 }

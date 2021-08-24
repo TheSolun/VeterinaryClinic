@@ -1,8 +1,11 @@
 package Models;
 
 import Exceptions.BlankNameException;
+import Exceptions.InvalidBirthYearException;
 import Exceptions.NotPositiveAgeException;
 import Exceptions.NotPositiveIdException;
+import java.util.Calendar;
+import java.util.Locale;
 
 /**
  *
@@ -12,23 +15,23 @@ public class Animal {
     
     private Integer id = null;
     private String name;
-    private int age;
+    private String birthYear;
     private Gender gender;
     private Client owner;
     private Species species;
 
-    public Animal(int id, String name, int age, Gender gender, Client owner, Species species) throws NotPositiveIdException, BlankNameException, NotPositiveAgeException {
+    public Animal(int id, String name, String birthYear, Gender gender, Client owner, Species species) throws NotPositiveIdException, BlankNameException, InvalidBirthYearException {
         this.setId(id);
         this.setName(name);
-        this.setAge(age);
+        this.setBirthYear(birthYear);
         this.gender = gender;
         this.owner = owner;
         this.species = species;
     }
     
-    public Animal(String name, int age, Gender gender, Client owner) throws BlankNameException, NotPositiveAgeException {
+    public Animal(String name, String birthYear, Gender gender, Client owner, Species species) throws BlankNameException, InvalidBirthYearException {
         this.setName(name);
-        this.setAge(age);
+        this.setBirthYear(birthYear);
         this.gender = gender;
         this.owner = owner;
         this.species = species;
@@ -54,14 +57,19 @@ public class Animal {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public String getBirthYear() {
+        return birthYear;
     }
 
-    public void setAge(int age) throws NotPositiveAgeException {
-        if(age < 0)
-            throw new NotPositiveAgeException(age);
-        this.age = age;
+    public void setBirthYear(String birthYear) throws InvalidBirthYearException {
+        try {
+            int intBirthYear = Integer.parseInt(birthYear);
+            if(intBirthYear > Calendar.getInstance().get(Calendar.YEAR) || intBirthYear < 1000)
+                throw new InvalidBirthYearException(birthYear);
+        } catch (NumberFormatException ex){
+            throw new InvalidBirthYearException(birthYear);
+        }
+        this.birthYear = birthYear;
     }
 
     public Gender getGender() {
@@ -86,6 +94,11 @@ public class Animal {
 
     public void setSpecies(Species species) {
         this.species = species;
+    }
+
+    @Override
+    public String toString() {
+        return "Animal{" + "id=" + id + ", name=" + name + ", birthYear=" + birthYear + ", gender=" + gender + ", owner=" + owner + ", species=" + species + '}';
     }
     
 }
