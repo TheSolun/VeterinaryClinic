@@ -1,5 +1,6 @@
 package Models;
 
+import Exceptions.BlankNameException;
 import Exceptions.NotPositiveIdException;
 import Exceptions.StartAndEndDatesNotInChronologicalOrderException;
 import java.time.LocalDate;
@@ -11,20 +12,26 @@ import java.time.LocalDate;
 public class Treatment {
 
     private Integer id = null;
+    private String name;
     private LocalDate endDay;
     private LocalDate startDay;
+    private boolean finished;
     private Animal animal;
 
-    public Treatment(int id, LocalDate startDay, LocalDate endDay, Animal animal) throws NotPositiveIdException, StartAndEndDatesNotInChronologicalOrderException {
+    public Treatment(int id, String name, LocalDate startDay, LocalDate endDay, boolean finished, Animal animal) throws NotPositiveIdException, StartAndEndDatesNotInChronologicalOrderException, BlankNameException {
         this.setId(id);
+        this.setName(name);
         this.setStartDay(startDay);
         this.setEndDay(endDay);
+        this.finished = finished;
         this.animal = animal;
     }
     
-    public Treatment(LocalDate startDay, LocalDate endDay, Animal animal) throws StartAndEndDatesNotInChronologicalOrderException {
+    public Treatment(String name, LocalDate startDay, LocalDate endDay, boolean finished, Animal animal) throws StartAndEndDatesNotInChronologicalOrderException, BlankNameException {
+        this.setName(name);
         this.setStartDay(startDay);
         this.setEndDay(endDay);
+        this.finished = finished;
         this.animal = animal;
     }
 
@@ -36,6 +43,16 @@ public class Treatment {
         if(id < 0)
             throw new NotPositiveIdException(id);
         this.id = id;
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) throws BlankNameException {
+        if(name.isBlank())
+            throw new BlankNameException(name);
+        this.name = name;
     }
     
     public LocalDate getEndDay() {
@@ -66,6 +83,15 @@ public class Treatment {
 
     public void setAnimal(Animal animal) {
         this.animal = animal;
+    }
+    
+    public boolean isFinished(){
+        return this.finished;
+    }
+
+    @Override
+    public String toString() {
+        return "Treatment{" + "id=" + id + ", name=" + name + ", endDay=" + endDay + ", startDay=" + startDay + ", finished=" + finished + ", animal=" + animal + '}';
     }
     
 }

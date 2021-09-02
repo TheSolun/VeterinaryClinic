@@ -6,6 +6,7 @@ Exceptions\BlankAddressException.class
 Models\DAO\DAO.class
 Models\Vet.class
 Exceptions\PhoneNotOnlyWithNumbersException.class
+Models\DAO\TreatmentDAO.class
 Exceptions\BlankNameException.class
 Exceptions\InvalidBirthYearException.class
 Exceptions\InvalidPhoneLengthException.class
@@ -14,6 +15,7 @@ Main.class
 Models\Animal.class
 Models\DAO\AnimalDAO.class
 Exceptions\BlankDescriptionException.class
+Exceptions\InvalidFinishedIntValueException.class
 Models\DAO\ClientDAO.class
 Exceptions\NotPositiveIdException.class
 Exceptions\ZipCodeNotOnlyWithNumbersException.class
@@ -22,4 +24,5 @@ Exceptions\NotPositiveAgeException.class
 Models\Consultation.class
 Models\Treatment.class
 Models\Exam.class
+Models\DAO\VetDAO.class
 Models\Species.class

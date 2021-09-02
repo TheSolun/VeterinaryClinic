@@ -99,7 +99,7 @@ public abstract class DAO {
                 "CREATE TABLE IF NOT EXISTS vet( \n"
                 + "id INTEGER PRIMARY KEY, \n"
                 + "name VARCHAR, \n"
-                + "email VARCHAR, \n"
+                + "address VARCHAR, \n"
                 + "phone VARCHAR); \n"
             )
         );
@@ -147,7 +147,7 @@ public abstract class DAO {
     }
     
     // is not being used
-    private static void dropTables() throws SQLException{
+    public static void dropTables() throws SQLException{
         (DAO.getConnection().prepareStatement("DROP TABLE client;")).executeUpdate();
         (DAO.getConnection().prepareStatement("DROP TABLE animal;")).executeUpdate();
         (DAO.getConnection().prepareStatement("DROP TABLE species;")).executeUpdate();

@@ -77,5 +77,10 @@ public class Vet {
         }
         this.phone = phone;
     }
+
+    @Override
+    public String toString() {
+        return "Vet{" + "id=" + id + ", name=" + name + ", address=" + address + ", phone=" + phone + '}';
+    }
     
 }
