@@ -1,6 +1,6 @@
 package Models;
 
-import Exceptions.BlankDescriptionException;
+import Exceptions.BlankNameException;
 import Exceptions.NotPositiveIdException;
 
 /**
@@ -10,17 +10,17 @@ import Exceptions.NotPositiveIdException;
 public class Exam {
    
     private Integer id = null;
-    private String description;
+    private String name;
     private Consultation consultation;
 
-    public Exam(int id, String description, Consultation consultation) throws NotPositiveIdException, BlankDescriptionException {
+    public Exam(int id, String name, Consultation consultation) throws NotPositiveIdException, BlankNameException {
         this.setId(id);
-        this.setDescription(description);
+        this.setName(name);
         this.consultation = consultation;
     }
     
-    public Exam(String description, Consultation consultation) throws BlankDescriptionException {
-        this.setDescription(description);
+    public Exam(String name, Consultation consultation) throws BlankNameException {
+        this.setName(name);
         this.consultation = consultation;
     }
     
@@ -34,14 +34,14 @@ public class Exam {
         this.id = id;
     }
     
-    public String getDescription() {
-        return this.description;
+    public String getName() {
+        return name;
     }
     
-    public void setDescription(String description) throws BlankDescriptionException {
-        if(description.isBlank())
-            throw new BlankDescriptionException(description);
-        this.description = description;
+    public void setName(String name) throws BlankNameException {
+        if(name.isBlank())
+            throw new BlankNameException(name);
+        this.name = name;
     }
 
     public Consultation getConsultation() {
@@ -50,6 +50,11 @@ public class Exam {
 
     public void setConsultation(Consultation consultation) {
         this.consultation = consultation;
+    }
+
+    @Override
+    public String toString() {
+        return "Exam{" + "id=" + id + ", name=" + name + ", consultation=" + consultation + '}';
     }
     
 }

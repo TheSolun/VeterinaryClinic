@@ -8,6 +8,7 @@ Models\Vet.class
 Exceptions\PhoneNotOnlyWithNumbersException.class
 Models\DAO\TreatmentDAO.class
 Exceptions\BlankNameException.class
+Models\DAO\ExamDAO.class
 Exceptions\InvalidBirthYearException.class
 Exceptions\InvalidPhoneLengthException.class
 Exceptions\StartAndEndDatesNotInChronologicalOrderException.class
@@ -21,6 +22,7 @@ Exceptions\NotPositiveIdException.class
 Exceptions\ZipCodeNotOnlyWithNumbersException.class
 Models\DAO\SpeciesDAO.class
 Exceptions\NotPositiveAgeException.class
+Models\DAO\ConsultationDAO.class
 Models\Consultation.class
 Models\Treatment.class
 Models\Exam.class

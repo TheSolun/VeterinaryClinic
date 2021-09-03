@@ -1,7 +1,7 @@
 package Models;
 
 import Exceptions.NotPositiveIdException;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -10,22 +10,25 @@ import java.time.LocalDate;
 public class Consultation {
 
     private Integer id = null;
-    private LocalDate date;
-    private String historic;
+    private LocalDateTime dateTime;
+    private String comment;
+    private boolean finished;
     private Treatment treatment;
     private Vet vet;
 
-    public Consultation(int id, LocalDate date, String historic, Treatment treatment, Vet vet) throws NotPositiveIdException {
+    public Consultation(int id, LocalDateTime dateTime, String comment, boolean finished, Treatment treatment, Vet vet) throws NotPositiveIdException {
         this.setId(id);
-        this.date = date;
-        this.historic = historic;
+        this.dateTime = dateTime;
+        this.comment = comment;
+        this.finished = finished;
         this.treatment = treatment;
         this.vet = vet;
     }
     
-    public Consultation(LocalDate date, String historic, Treatment treatment, Vet vet) {
-        this.date = date;
-        this.historic = historic;
+    public Consultation(LocalDateTime dateTime, String comment, boolean finished, Treatment treatment, Vet vet) {
+        this.dateTime = dateTime;
+        this.comment = comment;
+        this.finished = finished;
         this.treatment = treatment;
         this.vet = vet;
     }
@@ -40,22 +43,22 @@ public class Consultation {
         this.id = id;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDateTime getDateTime(){
+        return dateTime;
+    }
+    
+    public void setDateTime(LocalDateTime dateTime){
+        this.dateTime = dateTime;
+    }
+    
+    public String getComment() {
+        return comment;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
-
-    public String getHistoric() {
-        return historic;
-    }
-
-    public void setHistoric(String historic) {
-        this.historic = historic;
-    }
-
+    
     public Treatment getTreatment() {
         return treatment;
     }
@@ -70,6 +73,15 @@ public class Consultation {
 
     public void setVet(Vet vet) {
         this.vet = vet;
+    }
+    
+    public boolean isFinished(){
+        return finished;
+    }
+
+    @Override
+    public String toString() {
+        return "Consultation{" + "id=" + id + ", dateTime=" + dateTime + ", comment=" + comment + ", finished=" + finished + ", treatment=" + treatment + ", vet=" + vet + '}';
     }
     
 }

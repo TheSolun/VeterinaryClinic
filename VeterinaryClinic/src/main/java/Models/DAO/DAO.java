@@ -127,7 +127,7 @@ public abstract class DAO {
                 + "date TEXT, \n"                                               
                 + "time VARCHAR, \n"                                         
                 + "comment VARCHAR, \n"                                      
-                + "id_animal INTEGER, \n"
+//                + "id_animal INTEGER, \n"
                 + "id_vet INTEGER, \n"
                 + "id_treatment INTEGER, \n"
                 + "finished INTEGER); \n"

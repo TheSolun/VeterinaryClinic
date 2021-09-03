@@ -1,17 +1,22 @@
 
 import Models.Animal;
 import Models.Client;
+import Models.Consultation;
 import Models.DAO.AnimalDAO;
 import Models.DAO.ClientDAO;
+import Models.DAO.ConsultationDAO;
 import Models.DAO.DAO;
+import Models.DAO.ExamDAO;
 import Models.DAO.SpeciesDAO;
 import Models.DAO.TreatmentDAO;
 import Models.DAO.VetDAO;
+import Models.Exam;
 import Models.Gender;
 import Models.Species;
 import Models.Treatment;
 import Models.Vet;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -113,7 +118,67 @@ public class Main {
                 System.out.println(treatmentDB);
             
             // Mostrando todos os tratamentos do animal 1
+            System.out.println("\nRegistered Treatments of the Animal '"+animalDBTreatment1.getName()+"':");
+            List<Treatment> treatmentsDBAnimalDBTreatment1 = TreatmentDAO.getInstance().retrieveByAnimalId(animalDBTreatment1.getId());
+            for(Treatment treatmentDBAnimalDBTreatment1 : treatmentsDBAnimalDBTreatment1)
+                System.out.println(treatmentDBAnimalDBTreatment1);
             
+            // Criando objetos das Consultas
+            Treatment treatment1DB = treatmentsDB.get(0);
+            Treatment treatment2DB = treatmentsDB.get(1);
+            Vet vet1DB = vetsDB.get(0);
+            Vet vet2DB = vetsDB.get(1);
+            Consultation consultation1treatment1DBVet1DB = new Consultation(LocalDateTime.parse("2021-09-04T09:00"), "Consultation 1 - Treatment 1 - Vet 1", false, treatment1DB, vet1DB);
+            Consultation consultation2treatment1DBVet2DB = new Consultation(LocalDateTime.parse("2021-09-05T19:30"), "Consultation 2 - Treatment 1 - Vet 2", false, treatment1DB, vet2DB);
+            Consultation consultation1treatment2DBVet1DB = new Consultation(LocalDateTime.parse("2021-09-02T18:15"), "Consultation 1 - Treatment 2 - Vet 1", true, treatment2DB, vet1DB);
+            
+            // Inserindo objetos das consultas
+            ConsultationDAO.getInstance().create(consultation1treatment1DBVet1DB);
+            ConsultationDAO.getInstance().create(consultation2treatment1DBVet2DB);
+            ConsultationDAO.getInstance().create(consultation1treatment2DBVet1DB);
+            
+            // Mostrando todos as consultas
+            System.out.println("\nRegistered Consultations:");
+            List<Consultation> consultationsDB = ConsultationDAO.getInstance().retrieveAll();
+            for(Consultation consultationDB : consultationsDB)
+                System.out.println(consultationDB);
+            
+            // Mostrando todas as consultas do treatment 1
+            System.out.println("\nRegistered Consultations of the Treatment '"+treatment1DB.getName()+"':");
+            List<Consultation> consultationsDBTreatment1DB = ConsultationDAO.getInstance().retrieveByTreatmentId(treatment1DB.getId());
+            for(Consultation consultationDBTreatment1DB : consultationsDBTreatment1DB)
+                System.out.println(consultationDBTreatment1DB);
+            
+            // Mostrando todas as consultas do vet 1
+            System.out.println("\nRegistered Consultations of the Vet '"+vet1DB.getName()+"':");
+            List<Consultation> consultationsDBVet1DB = ConsultationDAO.getInstance().retrieveByVetId(vet1DB.getId());
+            for(Consultation consultationDBVet1DB : consultationsDBVet1DB)
+                System.out.println(consultationDBVet1DB);
+            
+            // Criando objetos dos Exames
+            Consultation consultation1DB = consultationsDB.get(0);
+            Consultation consultation2DB = consultationsDB.get(1);
+            Exam exam1Consultation1DB = new Exam("Exame 1 - Consultation 1",consultation1DB);
+            Exam exam2Consultation1DB = new Exam("Exame 2 - Consultation 1",consultation1DB);
+            Exam exam1Consultation2DB = new Exam("Exame 1 - Consultation 2",consultation2DB);
+            
+            // Inserindo objetos dos Exames
+            ExamDAO.getInstance().create(exam1Consultation1DB);
+            ExamDAO.getInstance().create(exam2Consultation1DB);
+            ExamDAO.getInstance().create(exam1Consultation2DB);
+            
+            // Mostrando todos os exames
+            System.out.println("\nRegistered Exams:");
+            List<Exam> examsDB = ExamDAO.getInstance().retrieveAll();
+            for(Exam examDB : examsDB)
+                System.out.println(examDB);
+            
+            // Mostrando todos os exames da consulta 1
+            System.out.println("\nRegistered Exams of the Consultation '"+consultation1DB.getComment()+"':");
+            List<Exam> examsDBConsultation1DB = ExamDAO.getInstance().retrieveByConsultationId(consultation1DB.getId());
+            for(Exam examDBConsultatio1DB : examsDBConsultation1DB)
+                System.out.println(examDBConsultatio1DB);
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }

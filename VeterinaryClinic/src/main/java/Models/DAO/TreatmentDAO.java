@@ -75,6 +75,10 @@ public class TreatmentDAO extends DAO {
         return this.retrieve("SELECT * FROM treatment");
     }
     
+    public List<Treatment> retrieveByAnimalId(int animalId) throws SQLException, Exception {
+        return this.retrieve("SELECT * FROM treatment WHERE id_animal = " + animalId);
+    }
+    
     public Treatment retrieveById(int id) throws SQLException, Exception {
         List<Treatment> treatments = this.retrieve("SELECT * FROM treatment WHERE id = " + id);
         return (treatments.isEmpty())? null : treatments.get(0);
