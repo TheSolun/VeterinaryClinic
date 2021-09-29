@@ -9,12 +9,14 @@ Exceptions\PhoneNotOnlyWithNumbersException.class
 Models\DAO\TreatmentDAO.class
 Exceptions\BlankNameException.class
 Models\DAO\ExamDAO.class
+Tests.class
 Exceptions\InvalidBirthYearException.class
 Exceptions\InvalidPhoneLengthException.class
 Exceptions\StartAndEndDatesNotInChronologicalOrderException.class
 Main.class
 Models\Animal.class
 Models\DAO\AnimalDAO.class
+View\MainJFrame.class
 Exceptions\BlankDescriptionException.class
 Exceptions\InvalidFinishedIntValueException.class
 Models\DAO\ClientDAO.class
@@ -22,6 +24,7 @@ Exceptions\NotPositiveIdException.class
 Exceptions\ZipCodeNotOnlyWithNumbersException.class
 Models\DAO\SpeciesDAO.class
 Exceptions\NotPositiveAgeException.class
+View\MainJFrame$1.class
 Models\DAO\ConsultationDAO.class
 Models\Consultation.class
 Models\Treatment.class
