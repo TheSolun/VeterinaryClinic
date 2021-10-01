@@ -5,15 +5,24 @@
  */
 
 package View;
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.plaf.*;
+import javax.swing.plaf.metal.*;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
  * @author mateu
  */
 public class MainJFrame extends javax.swing.JFrame {
-
+    
     /** Creates new form MainJFrame */
-    public MainJFrame() {
+    public MainJFrame() { 
         initComponents();
     }
 
@@ -26,44 +35,1215 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jPanelMenuBar = new javax.swing.JPanel();
+        jButtonMenuBarTreatments = new javax.swing.JButton();
+        jButtonMenuBarConsultations = new javax.swing.JButton();
+        jButtonMenuBarExams = new javax.swing.JButton();
+        jButtonMenuBarAnimals = new javax.swing.JButton();
+        jButtonMenuBarClients = new javax.swing.JButton();
+        jButtonMenuBarVets = new javax.swing.JButton();
+        jPanelContentBackground = new javax.swing.JPanel();
+        jPanelTreatments = new javax.swing.JPanel();
+        jScrollPaneTreatments = new javax.swing.JScrollPane();
+        jTableTreatments = new javax.swing.JTable();
+        jButtonNewTreatment = new javax.swing.JButton();
+        jPanelActionsTreatments = new javax.swing.JPanel();
+        jButtonSeeTreatment = new javax.swing.JButton();
+        jButtonEditTreatment = new javax.swing.JButton();
+        jButtonDeleteTreatment = new javax.swing.JButton();
+        jPanelConsultations = new javax.swing.JPanel();
+        jScrollPaneConsultations = new javax.swing.JScrollPane();
+        jTableConsultations = new javax.swing.JTable();
+        jButtonNewConsultation = new javax.swing.JButton();
+        jPanelActionsConsultations = new javax.swing.JPanel();
+        jButtonSeeConsultation = new javax.swing.JButton();
+        jButtonEditConsultation = new javax.swing.JButton();
+        jButtonDeleteConsultation = new javax.swing.JButton();
+        jPanelExams = new javax.swing.JPanel();
+        jScrollPaneExams = new javax.swing.JScrollPane();
+        jTableExams = new javax.swing.JTable();
+        jButtonNewExam = new javax.swing.JButton();
+        jPanelActionsExams = new javax.swing.JPanel();
+        jButtonSeeExam = new javax.swing.JButton();
+        jButtonEditExam = new javax.swing.JButton();
+        jButtonDeleteExam = new javax.swing.JButton();
+        jPanelAnimals = new javax.swing.JPanel();
+        jScrollPaneAnimals = new javax.swing.JScrollPane();
+        jTableAnimals = new javax.swing.JTable();
+        jButtonNewAnimal = new javax.swing.JButton();
+        jPanelActionsAnimals = new javax.swing.JPanel();
+        jButtonSeeAnimal = new javax.swing.JButton();
+        jButtonEditAnimal = new javax.swing.JButton();
+        jButtonDeleteAnimal = new javax.swing.JButton();
+        jPanelClients = new javax.swing.JPanel();
+        jScrollPaneClients = new javax.swing.JScrollPane();
+        jTableClients = new javax.swing.JTable();
+        jButtonNewClient = new javax.swing.JButton();
+        jPanelActionsClients = new javax.swing.JPanel();
+        jButtonSeeClient = new javax.swing.JButton();
+        jButtonEditClient = new javax.swing.JButton();
+        jButtonDeleteClient = new javax.swing.JButton();
+        jPanelVets = new javax.swing.JPanel();
+        jScrollPaneVets = new javax.swing.JScrollPane();
+        jTableVets = new javax.swing.JTable();
+        jButtonNewVet = new javax.swing.JButton();
+        jPanelActionsVets = new javax.swing.JPanel();
+        jButtonSeeVet = new javax.swing.JButton();
+        jButtonEditVet = new javax.swing.JButton();
+        jButtonDeleteVet = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Veterinary Clinic Application");
+        setBackground(java.awt.Color.darkGray);
+        setForeground(java.awt.Color.darkGray);
+        setMaximumSize(null);
+        setMinimumSize(null);
+        setSize(new java.awt.Dimension(1000, 1000));
 
-        jLabel1.setText("Opora");
+        jPanelMenuBar.setBackground(java.awt.Color.darkGray);
+        jPanelMenuBar.setForeground(java.awt.Color.white);
 
-        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel1)
-                .addContainerGap(360, Short.MAX_VALUE))
+        jButtonMenuBarTreatments.setBackground(jPanelMenuBar.getBackground());
+        jButtonMenuBarTreatments.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonMenuBarTreatments.setForeground(jPanelMenuBar.getForeground());
+        jButtonMenuBarTreatments.setText("Treatments");
+        jButtonMenuBarTreatments.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 4, 2, 4));
+        jButtonMenuBarTreatments.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMenuBarTreatments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMenuBarTreatmentsActionPerformed(evt);
+            }
+        });
+
+        jButtonMenuBarConsultations.setBackground(jPanelMenuBar.getBackground());
+        jButtonMenuBarConsultations.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonMenuBarConsultations.setForeground(jPanelMenuBar.getForeground());
+        jButtonMenuBarConsultations.setText("Consultations");
+        jButtonMenuBarConsultations.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 4, 2, 4));
+        jButtonMenuBarConsultations.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMenuBarConsultations.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMenuBarConsultationsActionPerformed(evt);
+            }
+        });
+
+        jButtonMenuBarExams.setBackground(jPanelMenuBar.getBackground());
+        jButtonMenuBarExams.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonMenuBarExams.setForeground(jPanelMenuBar.getForeground());
+        jButtonMenuBarExams.setText("Exams");
+        jButtonMenuBarExams.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 4, 2, 4));
+        jButtonMenuBarExams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMenuBarExams.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMenuBarExamsActionPerformed(evt);
+            }
+        });
+
+        jButtonMenuBarAnimals.setBackground(jPanelMenuBar.getBackground());
+        jButtonMenuBarAnimals.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonMenuBarAnimals.setForeground(jPanelMenuBar.getForeground());
+        jButtonMenuBarAnimals.setText("Animals");
+        jButtonMenuBarAnimals.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 4, 2, 4));
+        jButtonMenuBarAnimals.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMenuBarAnimals.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMenuBarAnimalsActionPerformed(evt);
+            }
+        });
+
+        jButtonMenuBarClients.setBackground(jPanelMenuBar.getBackground());
+        jButtonMenuBarClients.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonMenuBarClients.setForeground(jPanelMenuBar.getForeground());
+        jButtonMenuBarClients.setText("Clients");
+        jButtonMenuBarClients.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 4, 2, 4));
+        jButtonMenuBarClients.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMenuBarClients.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMenuBarClientsActionPerformed(evt);
+            }
+        });
+
+        jButtonMenuBarVets.setBackground(jPanelMenuBar.getBackground());
+        jButtonMenuBarVets.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonMenuBarVets.setForeground(jPanelMenuBar.getForeground());
+        jButtonMenuBarVets.setText("Vets");
+        jButtonMenuBarVets.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 4, 2, 4));
+        jButtonMenuBarVets.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMenuBarVets.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMenuBarVetsActionPerformed(evt);
+            }
+        });
+
+        org.jdesktop.layout.GroupLayout jPanelMenuBarLayout = new org.jdesktop.layout.GroupLayout(jPanelMenuBar);
+        jPanelMenuBar.setLayout(jPanelMenuBarLayout);
+        jPanelMenuBarLayout.setHorizontalGroup(
+            jPanelMenuBarLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelMenuBarLayout.createSequentialGroup()
+                .add(jButtonMenuBarTreatments)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonMenuBarConsultations)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonMenuBarExams)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonMenuBarAnimals)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonMenuBarClients)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonMenuBarVets)
+                .add(0, 0, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel1)
-                .addContainerGap(275, Short.MAX_VALUE))
+        jPanelMenuBarLayout.setVerticalGroup(
+            jPanelMenuBarLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelMenuBarLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(jButtonMenuBarTreatments)
+                .add(jButtonMenuBarConsultations))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelMenuBarLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(jButtonMenuBarExams, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jPanelMenuBarLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButtonMenuBarAnimals)
+                    .add(jButtonMenuBarClients)
+                    .add(jButtonMenuBarVets)))
         );
+
+        jPanelContentBackground.setName(""); // NOI18N
+        jPanelContentBackground.setOpaque(false);
+        jPanelContentBackground.setLayout(new java.awt.CardLayout());
+
+        jPanelTreatments.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelTreatments.setPreferredSize(new java.awt.Dimension(407, 200));
+
+        jTableTreatments.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTableTreatments.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Treatment 1", "2021-09-01", "2021-09-02", "Foguinho",  new Boolean(true)},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Name", "Start", "End", "Animal", "Finished"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableTreatments.setIntercellSpacing(new java.awt.Dimension(2, 4));
+        jTableTreatments.setSelectionBackground(java.awt.Color.lightGray);
+        jTableTreatments.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jTableTreatments.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jTableTreatments.setShowGrid(true);
+        jTableTreatments.getTableHeader().setResizingAllowed(false);
+        jTableTreatments.getTableHeader().setReorderingAllowed(false);
+        jScrollPaneTreatments.setViewportView(jTableTreatments);
+
+        jButtonNewTreatment.setText("New Treatment");
+        jButtonNewTreatment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jPanelActionsTreatments.setBackground(jPanelTreatments.getBackground());
+
+        jButtonSeeTreatment.setText("See");
+        jButtonSeeTreatment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jButtonEditTreatment.setText("Edit");
+        jButtonEditTreatment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jButtonDeleteTreatment.setText("Delete");
+        jButtonDeleteTreatment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        org.jdesktop.layout.GroupLayout jPanelActionsTreatmentsLayout = new org.jdesktop.layout.GroupLayout(jPanelActionsTreatments);
+        jPanelActionsTreatments.setLayout(jPanelActionsTreatmentsLayout);
+        jPanelActionsTreatmentsLayout.setHorizontalGroup(
+            jPanelActionsTreatmentsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelActionsTreatmentsLayout.createSequentialGroup()
+                .add(0, 0, Short.MAX_VALUE)
+                .add(jPanelActionsTreatmentsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonSeeTreatment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonEditTreatment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonDeleteTreatment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+        );
+        jPanelActionsTreatmentsLayout.setVerticalGroup(
+            jPanelActionsTreatmentsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelActionsTreatmentsLayout.createSequentialGroup()
+                .add(jButtonSeeTreatment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonEditTreatment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonDeleteTreatment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+        );
+
+        org.jdesktop.layout.GroupLayout jPanelTreatmentsLayout = new org.jdesktop.layout.GroupLayout(jPanelTreatments);
+        jPanelTreatments.setLayout(jPanelTreatmentsLayout);
+        jPanelTreatmentsLayout.setHorizontalGroup(
+            jPanelTreatmentsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelTreatmentsLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelTreatmentsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanelTreatmentsLayout.createSequentialGroup()
+                        .add(jScrollPaneTreatments, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanelActionsTreatments, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanelTreatmentsLayout.createSequentialGroup()
+                        .add(jButtonNewTreatment)
+                        .add(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanelTreatmentsLayout.setVerticalGroup(
+            jPanelTreatmentsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelTreatmentsLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelTreatmentsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jScrollPaneTreatments, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                    .add(jPanelTreatmentsLayout.createSequentialGroup()
+                        .add(jPanelActionsTreatments, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonNewTreatment)
+                .addContainerGap())
+        );
+
+        jPanelContentBackground.add(jPanelTreatments, "card2");
+
+        jPanelConsultations.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelConsultations.setPreferredSize(new java.awt.Dimension(407, 200));
+
+        jTableConsultations.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTableConsultations.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"2021-09-04T09:00", "Tratamento 1", "Vet1", "Consultation 1 - Treatment 1 - Vet 1",  new Boolean(true)},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Date", "Treatment", "Vet", "Comment", "Finished"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableConsultations.setIntercellSpacing(new java.awt.Dimension(2, 4));
+        jTableConsultations.setSelectionBackground(java.awt.Color.lightGray);
+        jTableConsultations.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jTableConsultations.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jTableConsultations.setShowGrid(true);
+        jTableConsultations.getTableHeader().setResizingAllowed(false);
+        jTableConsultations.getTableHeader().setReorderingAllowed(false);
+        jScrollPaneConsultations.setViewportView(jTableConsultations);
+
+        jButtonNewConsultation.setText("New Consultation");
+        jButtonNewConsultation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jPanelActionsConsultations.setBackground(jPanelConsultations.getBackground());
+
+        jButtonSeeConsultation.setText("See");
+        jButtonSeeConsultation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeConsultation.setMinimumSize(new java.awt.Dimension(63, 23));
+
+        jButtonEditConsultation.setText("Edit");
+        jButtonEditConsultation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditConsultation.setMinimumSize(new java.awt.Dimension(63, 23));
+        jButtonEditConsultation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditConsultationActionPerformed(evt);
+            }
+        });
+
+        jButtonDeleteConsultation.setText("Delete");
+        jButtonDeleteConsultation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        org.jdesktop.layout.GroupLayout jPanelActionsConsultationsLayout = new org.jdesktop.layout.GroupLayout(jPanelActionsConsultations);
+        jPanelActionsConsultations.setLayout(jPanelActionsConsultationsLayout);
+        jPanelActionsConsultationsLayout.setHorizontalGroup(
+            jPanelActionsConsultationsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelActionsConsultationsLayout.createSequentialGroup()
+                .add(0, 0, Short.MAX_VALUE)
+                .add(jPanelActionsConsultationsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonDeleteConsultation, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonSeeConsultation, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonEditConsultation, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+        );
+        jPanelActionsConsultationsLayout.setVerticalGroup(
+            jPanelActionsConsultationsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelActionsConsultationsLayout.createSequentialGroup()
+                .add(jButtonSeeConsultation, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(7, 7, 7)
+                .add(jButtonEditConsultation, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonDeleteConsultation, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+        );
+
+        org.jdesktop.layout.GroupLayout jPanelConsultationsLayout = new org.jdesktop.layout.GroupLayout(jPanelConsultations);
+        jPanelConsultations.setLayout(jPanelConsultationsLayout);
+        jPanelConsultationsLayout.setHorizontalGroup(
+            jPanelConsultationsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelConsultationsLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelConsultationsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanelConsultationsLayout.createSequentialGroup()
+                        .add(jScrollPaneConsultations, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanelActionsConsultations, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanelConsultationsLayout.createSequentialGroup()
+                        .add(jButtonNewConsultation)
+                        .add(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanelConsultationsLayout.setVerticalGroup(
+            jPanelConsultationsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelConsultationsLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelConsultationsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jScrollPaneConsultations, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                    .add(jPanelConsultationsLayout.createSequentialGroup()
+                        .add(jPanelActionsConsultations, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonNewConsultation)
+                .addContainerGap())
+        );
+
+        jPanelContentBackground.add(jPanelConsultations, "card3");
+
+        jPanelExams.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelExams.setPreferredSize(new java.awt.Dimension(407, 200));
+
+        jTableExams.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTableExams.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Exam1", "Consultation 1 Comment", "Treatment 1"},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Name", "Consultation", "Treatment"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableExams.setIntercellSpacing(new java.awt.Dimension(4, 2));
+        jTableExams.setSelectionBackground(java.awt.Color.lightGray);
+        jTableExams.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jTableExams.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jTableExams.setShowGrid(true);
+        jTableExams.getTableHeader().setResizingAllowed(false);
+        jTableExams.getTableHeader().setReorderingAllowed(false);
+        jScrollPaneExams.setViewportView(jTableExams);
+
+        jButtonNewExam.setText("New Exam");
+        jButtonNewExam.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jPanelActionsExams.setBackground(jPanelConsultations.getBackground());
+
+        jButtonSeeExam.setText("See");
+        jButtonSeeExam.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeExam.setMinimumSize(new java.awt.Dimension(63, 23));
+
+        jButtonEditExam.setText("Edit");
+        jButtonEditExam.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditExam.setMinimumSize(new java.awt.Dimension(63, 23));
+        jButtonEditExam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditExamActionPerformed(evt);
+            }
+        });
+
+        jButtonDeleteExam.setText("Delete");
+        jButtonDeleteExam.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        org.jdesktop.layout.GroupLayout jPanelActionsExamsLayout = new org.jdesktop.layout.GroupLayout(jPanelActionsExams);
+        jPanelActionsExams.setLayout(jPanelActionsExamsLayout);
+        jPanelActionsExamsLayout.setHorizontalGroup(
+            jPanelActionsExamsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelActionsExamsLayout.createSequentialGroup()
+                .add(0, 0, Short.MAX_VALUE)
+                .add(jPanelActionsExamsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonDeleteExam, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonSeeExam, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonEditExam, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+        );
+        jPanelActionsExamsLayout.setVerticalGroup(
+            jPanelActionsExamsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelActionsExamsLayout.createSequentialGroup()
+                .add(jButtonSeeExam, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(7, 7, 7)
+                .add(jButtonEditExam, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonDeleteExam, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+        );
+
+        org.jdesktop.layout.GroupLayout jPanelExamsLayout = new org.jdesktop.layout.GroupLayout(jPanelExams);
+        jPanelExams.setLayout(jPanelExamsLayout);
+        jPanelExamsLayout.setHorizontalGroup(
+            jPanelExamsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelExamsLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelExamsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanelExamsLayout.createSequentialGroup()
+                        .add(jScrollPaneExams, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanelActionsExams, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanelExamsLayout.createSequentialGroup()
+                        .add(jButtonNewExam)
+                        .add(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanelExamsLayout.setVerticalGroup(
+            jPanelExamsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelExamsLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelExamsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jScrollPaneExams, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                    .add(jPanelExamsLayout.createSequentialGroup()
+                        .add(jPanelActionsExams, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonNewExam)
+                .addContainerGap())
+        );
+
+        jPanelContentBackground.add(jPanelExams, "card3");
+
+        jPanelAnimals.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelAnimals.setPreferredSize(new java.awt.Dimension(407, 200));
+
+        jTableAnimals.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTableAnimals.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Foguinho", "2020", "Male", "Dog", "Jenisvaldo"},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Name", "Birth Year", "Gender", "Species", "Client"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableAnimals.setIntercellSpacing(new java.awt.Dimension(4, 2));
+        jTableAnimals.setSelectionBackground(java.awt.Color.lightGray);
+        jTableAnimals.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jTableAnimals.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jTableAnimals.setShowGrid(true);
+        jTableAnimals.getTableHeader().setResizingAllowed(false);
+        jTableAnimals.getTableHeader().setReorderingAllowed(false);
+        jScrollPaneAnimals.setViewportView(jTableAnimals);
+
+        jButtonNewAnimal.setText("New Animal");
+        jButtonNewAnimal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jPanelActionsAnimals.setBackground(jPanelConsultations.getBackground());
+
+        jButtonSeeAnimal.setText("See");
+        jButtonSeeAnimal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeAnimal.setMinimumSize(new java.awt.Dimension(63, 23));
+
+        jButtonEditAnimal.setText("Edit");
+        jButtonEditAnimal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditAnimal.setMinimumSize(new java.awt.Dimension(63, 23));
+        jButtonEditAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditAnimalActionPerformed(evt);
+            }
+        });
+
+        jButtonDeleteAnimal.setText("Delete");
+        jButtonDeleteAnimal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        org.jdesktop.layout.GroupLayout jPanelActionsAnimalsLayout = new org.jdesktop.layout.GroupLayout(jPanelActionsAnimals);
+        jPanelActionsAnimals.setLayout(jPanelActionsAnimalsLayout);
+        jPanelActionsAnimalsLayout.setHorizontalGroup(
+            jPanelActionsAnimalsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelActionsAnimalsLayout.createSequentialGroup()
+                .add(0, 0, Short.MAX_VALUE)
+                .add(jPanelActionsAnimalsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonDeleteAnimal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonSeeAnimal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonEditAnimal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+        );
+        jPanelActionsAnimalsLayout.setVerticalGroup(
+            jPanelActionsAnimalsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelActionsAnimalsLayout.createSequentialGroup()
+                .add(jButtonSeeAnimal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(7, 7, 7)
+                .add(jButtonEditAnimal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonDeleteAnimal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+        );
+
+        org.jdesktop.layout.GroupLayout jPanelAnimalsLayout = new org.jdesktop.layout.GroupLayout(jPanelAnimals);
+        jPanelAnimals.setLayout(jPanelAnimalsLayout);
+        jPanelAnimalsLayout.setHorizontalGroup(
+            jPanelAnimalsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelAnimalsLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelAnimalsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanelAnimalsLayout.createSequentialGroup()
+                        .add(jScrollPaneAnimals, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanelActionsAnimals, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanelAnimalsLayout.createSequentialGroup()
+                        .add(jButtonNewAnimal)
+                        .add(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanelAnimalsLayout.setVerticalGroup(
+            jPanelAnimalsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelAnimalsLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelAnimalsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jScrollPaneAnimals, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                    .add(jPanelAnimalsLayout.createSequentialGroup()
+                        .add(jPanelActionsAnimals, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonNewAnimal)
+                .addContainerGap())
+        );
+
+        jPanelContentBackground.add(jPanelAnimals, "card3");
+
+        jPanelClients.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelClients.setPreferredSize(new java.awt.Dimension(407, 200));
+
+        jTableClients.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTableClients.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Jenisvaldo", "jenisvaldo@email.com", "77911112222", "Rua 1", "11111222"},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Name", "Email", "Phone", "Address", "Zip Code"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableClients.setIntercellSpacing(new java.awt.Dimension(4, 2));
+        jTableClients.setSelectionBackground(java.awt.Color.lightGray);
+        jTableClients.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jTableClients.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jTableClients.setShowGrid(true);
+        jTableClients.getTableHeader().setResizingAllowed(false);
+        jTableClients.getTableHeader().setReorderingAllowed(false);
+        jScrollPaneClients.setViewportView(jTableClients);
+
+        jButtonNewClient.setText("New Client");
+        jButtonNewClient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jPanelActionsClients.setBackground(jPanelConsultations.getBackground());
+
+        jButtonSeeClient.setText("See");
+        jButtonSeeClient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeClient.setMinimumSize(new java.awt.Dimension(63, 23));
+
+        jButtonEditClient.setText("Edit");
+        jButtonEditClient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditClient.setMinimumSize(new java.awt.Dimension(63, 23));
+        jButtonEditClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditClientActionPerformed(evt);
+            }
+        });
+
+        jButtonDeleteClient.setText("Delete");
+        jButtonDeleteClient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        org.jdesktop.layout.GroupLayout jPanelActionsClientsLayout = new org.jdesktop.layout.GroupLayout(jPanelActionsClients);
+        jPanelActionsClients.setLayout(jPanelActionsClientsLayout);
+        jPanelActionsClientsLayout.setHorizontalGroup(
+            jPanelActionsClientsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelActionsClientsLayout.createSequentialGroup()
+                .add(0, 0, Short.MAX_VALUE)
+                .add(jPanelActionsClientsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonDeleteClient, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonSeeClient, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonEditClient, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+        );
+        jPanelActionsClientsLayout.setVerticalGroup(
+            jPanelActionsClientsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelActionsClientsLayout.createSequentialGroup()
+                .add(jButtonSeeClient, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(7, 7, 7)
+                .add(jButtonEditClient, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonDeleteClient, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+        );
+
+        org.jdesktop.layout.GroupLayout jPanelClientsLayout = new org.jdesktop.layout.GroupLayout(jPanelClients);
+        jPanelClients.setLayout(jPanelClientsLayout);
+        jPanelClientsLayout.setHorizontalGroup(
+            jPanelClientsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelClientsLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelClientsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanelClientsLayout.createSequentialGroup()
+                        .add(jScrollPaneClients, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanelActionsClients, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanelClientsLayout.createSequentialGroup()
+                        .add(jButtonNewClient)
+                        .add(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanelClientsLayout.setVerticalGroup(
+            jPanelClientsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelClientsLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelClientsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jScrollPaneClients, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                    .add(jPanelClientsLayout.createSequentialGroup()
+                        .add(jPanelActionsClients, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonNewClient)
+                .addContainerGap())
+        );
+
+        jPanelContentBackground.add(jPanelClients, "card3");
+
+        jPanelVets.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelVets.setPreferredSize(new java.awt.Dimension(407, 200));
+
+        jTableVets.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTableVets.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Vet 1", "66933334444", "Rua 3"},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Name", "Phone", "Address"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableVets.setIntercellSpacing(new java.awt.Dimension(4, 2));
+        jTableVets.setSelectionBackground(java.awt.Color.lightGray);
+        jTableVets.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jTableVets.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jTableVets.setShowGrid(true);
+        jTableVets.getTableHeader().setResizingAllowed(false);
+        jTableVets.getTableHeader().setReorderingAllowed(false);
+        jScrollPaneVets.setViewportView(jTableVets);
+
+        jButtonNewVet.setText("New Vet");
+        jButtonNewVet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jPanelActionsVets.setBackground(jPanelConsultations.getBackground());
+
+        jButtonSeeVet.setText("See");
+        jButtonSeeVet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeVet.setMinimumSize(new java.awt.Dimension(63, 23));
+
+        jButtonEditVet.setText("Edit");
+        jButtonEditVet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditVet.setMinimumSize(new java.awt.Dimension(63, 23));
+        jButtonEditVet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditVetActionPerformed(evt);
+            }
+        });
+
+        jButtonDeleteVet.setText("Delete");
+        jButtonDeleteVet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        org.jdesktop.layout.GroupLayout jPanelActionsVetsLayout = new org.jdesktop.layout.GroupLayout(jPanelActionsVets);
+        jPanelActionsVets.setLayout(jPanelActionsVetsLayout);
+        jPanelActionsVetsLayout.setHorizontalGroup(
+            jPanelActionsVetsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelActionsVetsLayout.createSequentialGroup()
+                .add(0, 0, Short.MAX_VALUE)
+                .add(jPanelActionsVetsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonDeleteVet, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonSeeVet, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonEditVet, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+        );
+        jPanelActionsVetsLayout.setVerticalGroup(
+            jPanelActionsVetsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelActionsVetsLayout.createSequentialGroup()
+                .add(jButtonSeeVet, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(7, 7, 7)
+                .add(jButtonEditVet, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonDeleteVet, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+        );
+
+        org.jdesktop.layout.GroupLayout jPanelVetsLayout = new org.jdesktop.layout.GroupLayout(jPanelVets);
+        jPanelVets.setLayout(jPanelVetsLayout);
+        jPanelVetsLayout.setHorizontalGroup(
+            jPanelVetsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelVetsLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelVetsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanelVetsLayout.createSequentialGroup()
+                        .add(jScrollPaneVets, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanelActionsVets, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanelVetsLayout.createSequentialGroup()
+                        .add(jButtonNewVet)
+                        .add(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanelVetsLayout.setVerticalGroup(
+            jPanelVetsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelVetsLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelVetsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jScrollPaneVets, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                    .add(jPanelVetsLayout.createSequentialGroup()
+                        .add(jPanelActionsVets, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonNewVet)
+                .addContainerGap())
+        );
+
+        jPanelContentBackground.add(jPanelVets, "card3");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(jPanelContentBackground, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
+            .add(jPanelMenuBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .add(jPanelMenuBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanelContentBackground, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonMenuBarTreatmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarTreatmentsActionPerformed
+        this.setNotVisibleAllCardLayoutJPanels();
+        this.jPanelTreatments.setVisible(true);
+    }//GEN-LAST:event_jButtonMenuBarTreatmentsActionPerformed
+
+    private void jButtonMenuBarConsultationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarConsultationsActionPerformed
+        this.setNotVisibleAllCardLayoutJPanels();
+        this.jPanelConsultations.setVisible(true);
+    }//GEN-LAST:event_jButtonMenuBarConsultationsActionPerformed
+
+    private void jButtonEditConsultationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditConsultationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditConsultationActionPerformed
+
+    private void jButtonEditExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditExamActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditExamActionPerformed
+
+    private void jButtonMenuBarExamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarExamsActionPerformed
+        this.setNotVisibleAllCardLayoutJPanels();
+        this.jPanelExams.setVisible(true);
+    }//GEN-LAST:event_jButtonMenuBarExamsActionPerformed
+
+    private void jButtonEditAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditAnimalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditAnimalActionPerformed
+
+    private void jButtonMenuBarAnimalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarAnimalsActionPerformed
+        this.setNotVisibleAllCardLayoutJPanels();
+        this.jPanelAnimals.setVisible(true);
+    }//GEN-LAST:event_jButtonMenuBarAnimalsActionPerformed
+
+    private void jButtonEditClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditClientActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditClientActionPerformed
+
+    private void jButtonMenuBarClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarClientsActionPerformed
+        this.setNotVisibleAllCardLayoutJPanels();
+        this.jPanelClients.setVisible(true);
+    }//GEN-LAST:event_jButtonMenuBarClientsActionPerformed
+
+    private void jButtonEditVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditVetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditVetActionPerformed
+
+    private void jButtonMenuBarVetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarVetsActionPerformed
+        this.setNotVisibleAllCardLayoutJPanels();
+        this.jPanelVets.setVisible(true);
+    }//GEN-LAST:event_jButtonMenuBarVetsActionPerformed
+
+    private void setNotVisibleAllCardLayoutJPanels() {
+        List<javax.swing.JPanel> cardLayoutJPanels = getCardLayoutJPanels();
+        for (javax.swing.JPanel cardLayoutJPanel : cardLayoutJPanels) {
+            cardLayoutJPanel.setVisible(false);
+        }
+    }
+    
+    private List<javax.swing.JPanel> getCardLayoutJPanels() {
+        List<javax.swing.JPanel> cardLayoutJPanels = new ArrayList<javax.swing.JPanel>();
+        cardLayoutJPanels.add(this.jPanelConsultations);
+        cardLayoutJPanels.add(this.jPanelTreatments);
+        cardLayoutJPanels.add(this.jPanelExams);
+        cardLayoutJPanels.add(this.jPanelAnimals);
+        cardLayoutJPanels.add(this.jPanelClients);
+        cardLayoutJPanels.add(this.jPanelVets);
+        return cardLayoutJPanels;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -94,14 +1274,88 @@ public class MainJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainJFrame().setVisible(true);
+                MainJFrame.showFrame();
             }
         });
     }
+    
+    private static void showFrame() {
+        MainJFrame.setMenuBarColor(Color.darkGray);
+        MainJFrame jFrame = new MainJFrame();
+        jFrame.setExtendedState(jFrame.getExtendedState()|JFrame.MAXIMIZED_BOTH);
+        jFrame.setVisible(true);
+    }
+    
+    private static void setMenuBarColor(Color color) {
+        try {
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+        } catch (ClassNotFoundException ex) {
+        } catch (InstantiationException ex) {
+        } catch (IllegalAccessException ex) {
+        } catch (UnsupportedLookAndFeelException ex) {
+        }
+        UIManager.put("MenuBar.background",color);
+//        UIManager.put("Menu.background",color);
+//        UIManager.put("MenuItem.background",color);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jButtonDeleteAnimal;
+    private javax.swing.JButton jButtonDeleteClient;
+    private javax.swing.JButton jButtonDeleteConsultation;
+    private javax.swing.JButton jButtonDeleteExam;
+    private javax.swing.JButton jButtonDeleteTreatment;
+    private javax.swing.JButton jButtonDeleteVet;
+    private javax.swing.JButton jButtonEditAnimal;
+    private javax.swing.JButton jButtonEditClient;
+    private javax.swing.JButton jButtonEditConsultation;
+    private javax.swing.JButton jButtonEditExam;
+    private javax.swing.JButton jButtonEditTreatment;
+    private javax.swing.JButton jButtonEditVet;
+    private javax.swing.JButton jButtonMenuBarAnimals;
+    private javax.swing.JButton jButtonMenuBarClients;
+    private javax.swing.JButton jButtonMenuBarConsultations;
+    private javax.swing.JButton jButtonMenuBarExams;
+    private javax.swing.JButton jButtonMenuBarTreatments;
+    private javax.swing.JButton jButtonMenuBarVets;
+    private javax.swing.JButton jButtonNewAnimal;
+    private javax.swing.JButton jButtonNewClient;
+    private javax.swing.JButton jButtonNewConsultation;
+    private javax.swing.JButton jButtonNewExam;
+    private javax.swing.JButton jButtonNewTreatment;
+    private javax.swing.JButton jButtonNewVet;
+    private javax.swing.JButton jButtonSeeAnimal;
+    private javax.swing.JButton jButtonSeeClient;
+    private javax.swing.JButton jButtonSeeConsultation;
+    private javax.swing.JButton jButtonSeeExam;
+    private javax.swing.JButton jButtonSeeTreatment;
+    private javax.swing.JButton jButtonSeeVet;
+    private javax.swing.JPanel jPanelActionsAnimals;
+    private javax.swing.JPanel jPanelActionsClients;
+    private javax.swing.JPanel jPanelActionsConsultations;
+    private javax.swing.JPanel jPanelActionsExams;
+    private javax.swing.JPanel jPanelActionsTreatments;
+    private javax.swing.JPanel jPanelActionsVets;
+    private javax.swing.JPanel jPanelAnimals;
+    private javax.swing.JPanel jPanelClients;
+    private javax.swing.JPanel jPanelConsultations;
+    private javax.swing.JPanel jPanelContentBackground;
+    private javax.swing.JPanel jPanelExams;
+    private javax.swing.JPanel jPanelMenuBar;
+    private javax.swing.JPanel jPanelTreatments;
+    private javax.swing.JPanel jPanelVets;
+    private javax.swing.JScrollPane jScrollPaneAnimals;
+    private javax.swing.JScrollPane jScrollPaneClients;
+    private javax.swing.JScrollPane jScrollPaneConsultations;
+    private javax.swing.JScrollPane jScrollPaneExams;
+    private javax.swing.JScrollPane jScrollPaneTreatments;
+    private javax.swing.JScrollPane jScrollPaneVets;
+    private javax.swing.JTable jTableAnimals;
+    private javax.swing.JTable jTableClients;
+    private javax.swing.JTable jTableConsultations;
+    private javax.swing.JTable jTableExams;
+    private javax.swing.JTable jTableTreatments;
+    private javax.swing.JTable jTableVets;
     // End of variables declaration//GEN-END:variables
-
+    
 }
