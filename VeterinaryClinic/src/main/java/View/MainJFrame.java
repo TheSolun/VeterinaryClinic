@@ -6,14 +6,20 @@
 
 package View;
 import java.awt.Color;
+import java.awt.Image;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.plaf.*;
 import javax.swing.plaf.metal.*;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import View.NewTreatmentJFrame;
+import View.EditTreatmentJFrame;
 
 /**
  *
@@ -96,8 +102,8 @@ public class MainJFrame extends javax.swing.JFrame {
         setTitle("Veterinary Clinic Application");
         setBackground(java.awt.Color.darkGray);
         setForeground(java.awt.Color.darkGray);
-        setMaximumSize(null);
         setMinimumSize(null);
+        setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
 
         jPanelMenuBar.setBackground(java.awt.Color.darkGray);
@@ -107,8 +113,10 @@ public class MainJFrame extends javax.swing.JFrame {
         jButtonMenuBarTreatments.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonMenuBarTreatments.setForeground(jPanelMenuBar.getForeground());
         jButtonMenuBarTreatments.setText("Treatments");
-        jButtonMenuBarTreatments.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 4, 2, 4));
+        jButtonMenuBarTreatments.setBorderPainted(false);
         jButtonMenuBarTreatments.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMenuBarTreatments.setRolloverEnabled(false);
+        jButtonMenuBarTreatments.setVerifyInputWhenFocusTarget(false);
         jButtonMenuBarTreatments.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMenuBarTreatmentsActionPerformed(evt);
@@ -119,8 +127,10 @@ public class MainJFrame extends javax.swing.JFrame {
         jButtonMenuBarConsultations.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonMenuBarConsultations.setForeground(jPanelMenuBar.getForeground());
         jButtonMenuBarConsultations.setText("Consultations");
-        jButtonMenuBarConsultations.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 4, 2, 4));
+        jButtonMenuBarConsultations.setBorderPainted(false);
         jButtonMenuBarConsultations.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMenuBarConsultations.setRolloverEnabled(false);
+        jButtonMenuBarConsultations.setVerifyInputWhenFocusTarget(false);
         jButtonMenuBarConsultations.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMenuBarConsultationsActionPerformed(evt);
@@ -131,8 +141,10 @@ public class MainJFrame extends javax.swing.JFrame {
         jButtonMenuBarExams.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonMenuBarExams.setForeground(jPanelMenuBar.getForeground());
         jButtonMenuBarExams.setText("Exams");
-        jButtonMenuBarExams.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 4, 2, 4));
+        jButtonMenuBarExams.setBorderPainted(false);
         jButtonMenuBarExams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMenuBarExams.setRolloverEnabled(false);
+        jButtonMenuBarExams.setVerifyInputWhenFocusTarget(false);
         jButtonMenuBarExams.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMenuBarExamsActionPerformed(evt);
@@ -143,8 +155,10 @@ public class MainJFrame extends javax.swing.JFrame {
         jButtonMenuBarAnimals.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonMenuBarAnimals.setForeground(jPanelMenuBar.getForeground());
         jButtonMenuBarAnimals.setText("Animals");
-        jButtonMenuBarAnimals.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 4, 2, 4));
+        jButtonMenuBarAnimals.setBorderPainted(false);
         jButtonMenuBarAnimals.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMenuBarAnimals.setRolloverEnabled(false);
+        jButtonMenuBarAnimals.setVerifyInputWhenFocusTarget(false);
         jButtonMenuBarAnimals.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMenuBarAnimalsActionPerformed(evt);
@@ -155,8 +169,10 @@ public class MainJFrame extends javax.swing.JFrame {
         jButtonMenuBarClients.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonMenuBarClients.setForeground(jPanelMenuBar.getForeground());
         jButtonMenuBarClients.setText("Clients");
-        jButtonMenuBarClients.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 4, 2, 4));
+        jButtonMenuBarClients.setBorderPainted(false);
         jButtonMenuBarClients.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMenuBarClients.setRolloverEnabled(false);
+        jButtonMenuBarClients.setVerifyInputWhenFocusTarget(false);
         jButtonMenuBarClients.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMenuBarClientsActionPerformed(evt);
@@ -167,8 +183,10 @@ public class MainJFrame extends javax.swing.JFrame {
         jButtonMenuBarVets.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonMenuBarVets.setForeground(jPanelMenuBar.getForeground());
         jButtonMenuBarVets.setText("Vets");
-        jButtonMenuBarVets.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 4, 2, 4));
+        jButtonMenuBarVets.setBorderPainted(false);
         jButtonMenuBarVets.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMenuBarVets.setRolloverEnabled(false);
+        jButtonMenuBarVets.setVerifyInputWhenFocusTarget(false);
         jButtonMenuBarVets.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMenuBarVetsActionPerformed(evt);
@@ -195,15 +213,15 @@ public class MainJFrame extends javax.swing.JFrame {
         );
         jPanelMenuBarLayout.setVerticalGroup(
             jPanelMenuBarLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelMenuBarLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                .add(jButtonMenuBarTreatments)
-                .add(jButtonMenuBarConsultations))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelMenuBarLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                .add(jButtonMenuBarExams, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(jPanelMenuBarLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelMenuBarLayout.createSequentialGroup()
+                .add(0, 0, Short.MAX_VALUE)
+                .add(jPanelMenuBarLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jButtonMenuBarExams)
                     .add(jButtonMenuBarAnimals)
                     .add(jButtonMenuBarClients)
                     .add(jButtonMenuBarVets)))
+            .add(jButtonMenuBarConsultations)
+            .add(jButtonMenuBarTreatments)
         );
 
         jPanelContentBackground.setName(""); // NOI18N
@@ -297,6 +315,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jButtonNewTreatment.setText("New Treatment");
         jButtonNewTreatment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonNewTreatment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNewTreatmentActionPerformed(evt);
+            }
+        });
 
         jPanelActionsTreatments.setBackground(jPanelTreatments.getBackground());
 
@@ -305,6 +328,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jButtonEditTreatment.setText("Edit");
         jButtonEditTreatment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditTreatment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditTreatmentActionPerformed(evt);
+            }
+        });
 
         jButtonDeleteTreatment.setText("Delete");
         jButtonDeleteTreatment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1226,6 +1254,16 @@ public class MainJFrame extends javax.swing.JFrame {
         this.jPanelVets.setVisible(true);
     }//GEN-LAST:event_jButtonMenuBarVetsActionPerformed
 
+    private void jButtonNewTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewTreatmentActionPerformed
+        NewTreatmentJFrame newTreatmentJFrame = new NewTreatmentJFrame();
+        newTreatmentJFrame.setVisible(true);
+    }//GEN-LAST:event_jButtonNewTreatmentActionPerformed
+
+    private void jButtonEditTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditTreatmentActionPerformed
+        EditTreatmentJFrame editTreatmentJFrame = new EditTreatmentJFrame();
+        editTreatmentJFrame.setVisible(true);
+    }//GEN-LAST:event_jButtonEditTreatmentActionPerformed
+
     private void setNotVisibleAllCardLayoutJPanels() {
         List<javax.swing.JPanel> cardLayoutJPanels = getCardLayoutJPanels();
         for (javax.swing.JPanel cardLayoutJPanel : cardLayoutJPanels) {
@@ -1280,23 +1318,9 @@ public class MainJFrame extends javax.swing.JFrame {
     }
     
     private static void showFrame() {
-        MainJFrame.setMenuBarColor(Color.darkGray);
         MainJFrame jFrame = new MainJFrame();
         jFrame.setExtendedState(jFrame.getExtendedState()|JFrame.MAXIMIZED_BOTH);
         jFrame.setVisible(true);
-    }
-    
-    private static void setMenuBarColor(Color color) {
-        try {
-            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-        } catch (ClassNotFoundException ex) {
-        } catch (InstantiationException ex) {
-        } catch (IllegalAccessException ex) {
-        } catch (UnsupportedLookAndFeelException ex) {
-        }
-        UIManager.put("MenuBar.background",color);
-//        UIManager.put("Menu.background",color);
-//        UIManager.put("MenuItem.background",color);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
