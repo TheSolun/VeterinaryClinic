@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package View;
+package View.Treatment;
 
 /**
  *
@@ -27,61 +27,61 @@ public class EditTreatmentJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelFrame = new javax.swing.JPanel();
-        jPanelNewTreatmentTittle = new javax.swing.JPanel();
+        jPanelEditTreatmentTittle = new javax.swing.JPanel();
         jLabelNewTreatmentTittle = new javax.swing.JLabel();
-        jPanelNewTreatmentForm = new javax.swing.JPanel();
+        jPanelEditTreatmentForm = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldNewTreatmentName = new javax.swing.JTextField();
+        jTextFieldEditTreatmentName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldNewTreatmentStartDate = new javax.swing.JFormattedTextField();
+        jTextFieldEditTreatmentStartDate = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextFieldNewTreatmentEndDate = new javax.swing.JFormattedTextField();
-        jButtonNewTreatmentSelectAnimal = new javax.swing.JButton();
+        jTextFieldEditTreatmentEndDate = new javax.swing.JFormattedTextField();
+        jButtonEditTreatmentSelectAnimal = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
-        jButtonNewTreatmentRegister = new javax.swing.JButton();
+        jButtonEditTreatmentRegister = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        jPanelNewTreatmentTittle.setLayout(new java.awt.BorderLayout());
+        jPanelEditTreatmentTittle.setLayout(new java.awt.BorderLayout());
 
         jLabelNewTreatmentTittle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabelNewTreatmentTittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelNewTreatmentTittle.setText("Edit Treatment");
-        jPanelNewTreatmentTittle.add(jLabelNewTreatmentTittle, java.awt.BorderLayout.CENTER);
+        jPanelEditTreatmentTittle.add(jLabelNewTreatmentTittle, java.awt.BorderLayout.CENTER);
 
         jLabel1.setText("Name");
 
-        jTextFieldNewTreatmentName.setText("Treatment1");
-        jTextFieldNewTreatmentName.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldEditTreatmentName.setText("Treatment1");
+        jTextFieldEditTreatmentName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNewTreatmentNameActionPerformed(evt);
+                jTextFieldEditTreatmentNameActionPerformed(evt);
             }
         });
 
         jLabel2.setText("Start Date");
 
         try {
-            jTextFieldNewTreatmentStartDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
+            jTextFieldEditTreatmentStartDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jTextFieldNewTreatmentStartDate.setText("2019-09-01");
+        jTextFieldEditTreatmentStartDate.setText("2019-09-01");
 
         jLabel3.setText("End Date");
 
         try {
-            jTextFieldNewTreatmentEndDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
+            jTextFieldEditTreatmentEndDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jTextFieldNewTreatmentEndDate.setText("2019-09-02");
+        jTextFieldEditTreatmentEndDate.setText("2019-09-02");
 
-        jButtonNewTreatmentSelectAnimal.setText("Select Animal");
-        jButtonNewTreatmentSelectAnimal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditTreatmentSelectAnimal.setText("Select Animal");
+        jButtonEditTreatmentSelectAnimal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel4.setText("Animal");
 
@@ -93,85 +93,85 @@ public class EditTreatmentJFrame extends javax.swing.JFrame {
         jTextField3.setEditable(false);
         jTextField3.setText("Jenisvaldo");
 
-        jButtonNewTreatmentRegister.setText("Update");
-        jButtonNewTreatmentRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonNewTreatmentRegister.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEditTreatmentRegister.setText("Update");
+        jButtonEditTreatmentRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditTreatmentRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNewTreatmentRegisterActionPerformed(evt);
+                jButtonEditTreatmentRegisterActionPerformed(evt);
             }
         });
 
-        org.jdesktop.layout.GroupLayout jPanelNewTreatmentFormLayout = new org.jdesktop.layout.GroupLayout(jPanelNewTreatmentForm);
-        jPanelNewTreatmentForm.setLayout(jPanelNewTreatmentFormLayout);
-        jPanelNewTreatmentFormLayout.setHorizontalGroup(
-            jPanelNewTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelNewTreatmentFormLayout.createSequentialGroup()
-                .add(jPanelNewTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+        org.jdesktop.layout.GroupLayout jPanelEditTreatmentFormLayout = new org.jdesktop.layout.GroupLayout(jPanelEditTreatmentForm);
+        jPanelEditTreatmentForm.setLayout(jPanelEditTreatmentFormLayout);
+        jPanelEditTreatmentFormLayout.setHorizontalGroup(
+            jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelEditTreatmentFormLayout.createSequentialGroup()
+                .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel1)
                     .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jTextFieldNewTreatmentName)
-                    .add(jTextFieldNewTreatmentStartDate)
-                    .add(jTextFieldNewTreatmentEndDate)
+                .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jTextFieldEditTreatmentName)
+                    .add(jTextFieldEditTreatmentStartDate)
+                    .add(jTextFieldEditTreatmentEndDate)
                     .add(jTextField2)
                     .add(jTextField3)))
-            .add(jPanelNewTreatmentFormLayout.createSequentialGroup()
+            .add(jPanelEditTreatmentFormLayout.createSequentialGroup()
                 .add(142, 142, 142)
-                .add(jButtonNewTreatmentSelectAnimal)
+                .add(jButtonEditTreatmentSelectAnimal)
                 .addContainerGap(143, Short.MAX_VALUE))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelNewTreatmentFormLayout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelEditTreatmentFormLayout.createSequentialGroup()
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(jButtonNewTreatmentRegister)
+                .add(jButtonEditTreatmentRegister)
                 .add(153, 153, 153))
         );
-        jPanelNewTreatmentFormLayout.setVerticalGroup(
-            jPanelNewTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelNewTreatmentFormLayout.createSequentialGroup()
-                .add(jPanelNewTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jTextFieldNewTreatmentName)
+        jPanelEditTreatmentFormLayout.setVerticalGroup(
+            jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelEditTreatmentFormLayout.createSequentialGroup()
+                .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jTextFieldEditTreatmentName)
                     .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jTextFieldNewTreatmentStartDate)
+                .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jTextFieldEditTreatmentStartDate)
                     .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jTextFieldNewTreatmentEndDate)
+                .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jTextFieldEditTreatmentEndDate)
                     .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButtonNewTreatmentSelectAnimal, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jButtonEditTreatmentSelectAnimal, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(4, 4, 4)
-                .add(jPanelNewTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(61, 61, 61)
-                .add(jButtonNewTreatmentRegister))
+                .add(jButtonEditTreatmentRegister))
         );
 
         org.jdesktop.layout.GroupLayout jPanelFrameLayout = new org.jdesktop.layout.GroupLayout(jPanelFrame);
         jPanelFrame.setLayout(jPanelFrameLayout);
         jPanelFrameLayout.setHorizontalGroup(
             jPanelFrameLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelNewTreatmentTittle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(jPanelEditTreatmentTittle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanelNewTreatmentForm, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jPanelEditTreatmentForm, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelFrameLayout.setVerticalGroup(
             jPanelFrameLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelFrameLayout.createSequentialGroup()
-                .add(jPanelNewTreatmentTittle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jPanelEditTreatmentTittle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(1, 1, 1)
-                .add(jPanelNewTreatmentForm, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jPanelEditTreatmentForm, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -190,13 +190,13 @@ public class EditTreatmentJFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldNewTreatmentNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNewTreatmentNameActionPerformed
+    private void jTextFieldEditTreatmentNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEditTreatmentNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNewTreatmentNameActionPerformed
+    }//GEN-LAST:event_jTextFieldEditTreatmentNameActionPerformed
 
-    private void jButtonNewTreatmentRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewTreatmentRegisterActionPerformed
+    private void jButtonEditTreatmentRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditTreatmentRegisterActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonNewTreatmentRegisterActionPerformed
+    }//GEN-LAST:event_jButtonEditTreatmentRegisterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,22 +234,22 @@ public class EditTreatmentJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonNewTreatmentRegister;
-    private javax.swing.JButton jButtonNewTreatmentSelectAnimal;
+    private javax.swing.JButton jButtonEditTreatmentRegister;
+    private javax.swing.JButton jButtonEditTreatmentSelectAnimal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelNewTreatmentTittle;
+    private javax.swing.JPanel jPanelEditTreatmentForm;
+    private javax.swing.JPanel jPanelEditTreatmentTittle;
     private javax.swing.JPanel jPanelFrame;
-    private javax.swing.JPanel jPanelNewTreatmentForm;
-    private javax.swing.JPanel jPanelNewTreatmentTittle;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JFormattedTextField jTextFieldNewTreatmentEndDate;
-    private javax.swing.JTextField jTextFieldNewTreatmentName;
-    private javax.swing.JFormattedTextField jTextFieldNewTreatmentStartDate;
+    private javax.swing.JFormattedTextField jTextFieldEditTreatmentEndDate;
+    private javax.swing.JTextField jTextFieldEditTreatmentName;
+    private javax.swing.JFormattedTextField jTextFieldEditTreatmentStartDate;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package View;
+package View.Treatment;
 
 /**
  *
@@ -65,7 +65,7 @@ public class NewTreatmentJFrame extends javax.swing.JFrame {
         jLabel2.setText("Start Date");
 
         try {
-            jTextFieldNewTreatmentStartDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            jTextFieldNewTreatmentStartDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -73,7 +73,7 @@ public class NewTreatmentJFrame extends javax.swing.JFrame {
         jLabel3.setText("End Date");
 
         try {
-            jTextFieldNewTreatmentEndDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            jTextFieldNewTreatmentEndDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
