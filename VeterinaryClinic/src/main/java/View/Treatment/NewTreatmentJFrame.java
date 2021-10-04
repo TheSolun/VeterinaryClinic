@@ -121,7 +121,7 @@ public class NewTreatmentJFrame extends javax.swing.JFrame {
                         .add(142, 142, 142)
                         .add(jButtonNewTreatmentSelectAnimal))
                     .add(jPanelNewTreatmentFormLayout.createSequentialGroup()
-                        .add(152, 152, 152)
+                        .add(153, 153, 153)
                         .add(jButtonNewTreatmentRegister)))
                 .addContainerGap(143, Short.MAX_VALUE))
         );
@@ -149,7 +149,7 @@ public class NewTreatmentJFrame extends javax.swing.JFrame {
                 .add(jPanelNewTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(61, 61, 61)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButtonNewTreatmentRegister))
         );
 
@@ -168,8 +168,8 @@ public class NewTreatmentJFrame extends javax.swing.JFrame {
             .add(layout.createSequentialGroup()
                 .add(jPanelNewTreatmentTittle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewTreatmentForm, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .add(jPanelNewTreatmentForm, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

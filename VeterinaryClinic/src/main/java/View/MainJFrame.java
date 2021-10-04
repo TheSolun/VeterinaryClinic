@@ -44,6 +44,11 @@ import View.Client.EditClientJDialog;
 import View.Client.NewClientJDialog;
 import View.Client.SeeClientJDialog;
 
+import View.Vet.DeleteVetJDialog;
+import View.Vet.EditVetJDialog;
+import View.Vet.NewVetJDialog;
+import View.Vet.SeeVetJDialog;
+
 /**
  *
  * @author mateu
@@ -1278,12 +1283,22 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jButtonNewVet.setText("New Vet");
         jButtonNewVet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonNewVet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNewVetActionPerformed(evt);
+            }
+        });
 
         jPanelActionsVets.setBackground(jPanelConsultations.getBackground());
 
         jButtonSeeVet.setText("See");
         jButtonSeeVet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonSeeVet.setMinimumSize(new java.awt.Dimension(63, 23));
+        jButtonSeeVet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeVetActionPerformed(evt);
+            }
+        });
 
         jButtonEditVet.setText("Edit");
         jButtonEditVet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1296,6 +1311,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jButtonDeleteVet.setText("Delete");
         jButtonDeleteVet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonDeleteVet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteVetActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanelActionsVetsLayout = new org.jdesktop.layout.GroupLayout(jPanelActionsVets);
         jPanelActionsVets.setLayout(jPanelActionsVetsLayout);
@@ -1415,7 +1435,8 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMenuBarClientsActionPerformed
 
     private void jButtonEditVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditVetActionPerformed
-        // TODO add your handling code here:
+        EditVetJDialog editVetJDialog = new EditVetJDialog(this,true);
+        editVetJDialog.setVisible(true);
     }//GEN-LAST:event_jButtonEditVetActionPerformed
 
     private void jButtonMenuBarVetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarVetsActionPerformed
@@ -1519,6 +1540,21 @@ public class MainJFrame extends javax.swing.JFrame {
         NewClientJDialog newClientJDialog = new NewClientJDialog(this,true);
         newClientJDialog.setVisible(true);
     }//GEN-LAST:event_jButtonNewClientActionPerformed
+
+    private void jButtonSeeVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeVetActionPerformed
+        SeeVetJDialog seeVetJDialog = new SeeVetJDialog(this,true);
+        seeVetJDialog.setVisible(true);
+    }//GEN-LAST:event_jButtonSeeVetActionPerformed
+
+    private void jButtonDeleteVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteVetActionPerformed
+        DeleteVetJDialog deleteVetJDialog = new DeleteVetJDialog(this,true);
+        deleteVetJDialog.setVisible(true);
+    }//GEN-LAST:event_jButtonDeleteVetActionPerformed
+
+    private void jButtonNewVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewVetActionPerformed
+        NewVetJDialog newVetJDialog = new NewVetJDialog(this,true);
+        newVetJDialog.setVisible(true);
+    }//GEN-LAST:event_jButtonNewVetActionPerformed
 
     private void setNotVisibleAllCardLayoutJPanels() {
         List<javax.swing.JPanel> cardLayoutJPanels = getCardLayoutJPanels();
