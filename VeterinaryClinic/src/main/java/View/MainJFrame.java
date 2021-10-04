@@ -20,9 +20,9 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import View.Treatment.DeleteTreatmentJDialog;
-import View.Treatment.EditTreatmentJFrame;
-import View.Treatment.NewTreatmentJFrame;
-import View.Treatment.SeeTreatmentJFrame;
+import View.Treatment.EditTreatmentJDialog;
+import View.Treatment.NewTreatmentJDialog;
+import View.Treatment.SeeTreatmentJDialog;
 
 import View.Consultation.DeleteConsultationJDialog;
 import View.Consultation.EditConsultationJFrame;
@@ -85,8 +85,6 @@ public class MainJFrame extends javax.swing.JFrame {
         jButtonSeeTreatment = new javax.swing.JButton();
         jButtonEditTreatment = new javax.swing.JButton();
         jButtonDeleteTreatment = new javax.swing.JButton();
-        jButtonNewTreatmentConsultation = new javax.swing.JButton();
-        jButtonSeeTreatmentConsultations = new javax.swing.JButton();
         jPanelConsultations = new javax.swing.JPanel();
         jScrollPaneConsultations = new javax.swing.JScrollPane();
         jTableConsultations = new javax.swing.JTable();
@@ -383,22 +381,6 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButtonNewTreatmentConsultation.setText("New Consultation");
-        jButtonNewTreatmentConsultation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonNewTreatmentConsultation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNewTreatmentConsultationActionPerformed(evt);
-            }
-        });
-
-        jButtonSeeTreatmentConsultations.setText("See Consultations");
-        jButtonSeeTreatmentConsultations.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonSeeTreatmentConsultations.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSeeTreatmentConsultationsActionPerformed(evt);
-            }
-        });
-
         org.jdesktop.layout.GroupLayout jPanelActionsTreatmentsLayout = new org.jdesktop.layout.GroupLayout(jPanelActionsTreatments);
         jPanelActionsTreatments.setLayout(jPanelActionsTreatmentsLayout);
         jPanelActionsTreatmentsLayout.setHorizontalGroup(
@@ -406,11 +388,9 @@ public class MainJFrame extends javax.swing.JFrame {
             .add(jPanelActionsTreatmentsLayout.createSequentialGroup()
                 .add(0, 0, Short.MAX_VALUE)
                 .add(jPanelActionsTreatmentsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonSeeTreatmentConsultations, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonNewTreatmentConsultation, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonDeleteTreatment, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonEditTreatment, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonSeeTreatment, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonDeleteTreatment, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jButtonSeeTreatment, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanelActionsTreatmentsLayout.setVerticalGroup(
             jPanelActionsTreatmentsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -419,11 +399,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButtonEditTreatment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButtonDeleteTreatment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButtonNewTreatmentConsultation)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButtonSeeTreatmentConsultations))
+                .add(jButtonDeleteTreatment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
 
         org.jdesktop.layout.GroupLayout jPanelTreatmentsLayout = new org.jdesktop.layout.GroupLayout(jPanelTreatments);
@@ -1445,13 +1421,13 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMenuBarVetsActionPerformed
 
     private void jButtonNewTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewTreatmentActionPerformed
-        NewTreatmentJFrame newTreatmentJFrame = new NewTreatmentJFrame();
-        newTreatmentJFrame.setVisible(true);
+        NewTreatmentJDialog newTreatmentJDialog = new NewTreatmentJDialog(this,true);
+        newTreatmentJDialog.setVisible(true);
     }//GEN-LAST:event_jButtonNewTreatmentActionPerformed
 
     private void jButtonEditTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditTreatmentActionPerformed
-        EditTreatmentJFrame editTreatmentJFrame = new EditTreatmentJFrame();
-        editTreatmentJFrame.setVisible(true);
+        EditTreatmentJDialog editTreatmentJDialog = new EditTreatmentJDialog(this,true);
+        editTreatmentJDialog.setVisible(true);
     }//GEN-LAST:event_jButtonEditTreatmentActionPerformed
 
     private void jButtonDeleteTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteTreatmentActionPerformed
@@ -1460,15 +1436,9 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDeleteTreatmentActionPerformed
 
     private void jButtonSeeTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeTreatmentActionPerformed
-        SeeTreatmentJFrame seeTreatmentJFrame = new SeeTreatmentJFrame();
-        seeTreatmentJFrame.setVisible(true);
+        SeeTreatmentJDialog seeTreatmentJDialog = new SeeTreatmentJDialog(this,true);
+        seeTreatmentJDialog.setVisible(true);
     }//GEN-LAST:event_jButtonSeeTreatmentActionPerformed
-
-    private void jButtonSeeTreatmentConsultationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeTreatmentConsultationsActionPerformed
-        this.setNotVisibleAllCardLayoutJPanels();
-        this.jPanelConsultations.setVisible(true);
-        this.jButtonMenuBarConsultations.requestFocus();
-    }//GEN-LAST:event_jButtonSeeTreatmentConsultationsActionPerformed
 
     private void jButtonDeleteConsultationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteConsultationActionPerformed
         DeleteConsultationJDialog deleteConsultationJDialog = new DeleteConsultationJDialog(this,true);
@@ -1484,11 +1454,6 @@ public class MainJFrame extends javax.swing.JFrame {
         NewConsultationJFrame newConsultationJFrame = new NewConsultationJFrame();
         newConsultationJFrame.setVisible(true);
     }//GEN-LAST:event_jButtonNewConsultationActionPerformed
-
-    private void jButtonNewTreatmentConsultationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewTreatmentConsultationActionPerformed
-        NewConsultationJFrame newConsultationJFrame = new NewConsultationJFrame();
-        newConsultationJFrame.setVisible(true);
-    }//GEN-LAST:event_jButtonNewTreatmentConsultationActionPerformed
 
     private void jButtonSeeConsultationExamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeConsultationExamsActionPerformed
         this.setNotVisibleAllCardLayoutJPanels();
@@ -1640,7 +1605,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonNewConsultationExams;
     private javax.swing.JButton jButtonNewExam;
     private javax.swing.JButton jButtonNewTreatment;
-    private javax.swing.JButton jButtonNewTreatmentConsultation;
     private javax.swing.JButton jButtonNewVet;
     private javax.swing.JButton jButtonSeeAnimal;
     private javax.swing.JButton jButtonSeeAnimalClient;
@@ -1652,7 +1616,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSeeConsultationExams;
     private javax.swing.JButton jButtonSeeExam;
     private javax.swing.JButton jButtonSeeTreatment;
-    private javax.swing.JButton jButtonSeeTreatmentConsultations;
     private javax.swing.JButton jButtonSeeVet;
     private javax.swing.JPanel jPanelActionsAnimals;
     private javax.swing.JPanel jPanelActionsClients;

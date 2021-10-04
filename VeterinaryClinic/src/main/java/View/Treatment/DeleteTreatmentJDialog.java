@@ -75,11 +75,9 @@ public class DeleteTreatmentJDialog extends javax.swing.JDialog {
             .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
             .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(jPanelEditTreatmentFormLayout.createSequentialGroup()
-                .add(100, 100, 100)
                 .add(jButtonDeleteTreatment)
-                .add(84, 84, 84)
-                .add(jButtonCancelTreatment)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jButtonCancelTreatment))
         );
         jPanelEditTreatmentFormLayout.setVerticalGroup(
             jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
