@@ -1190,7 +1190,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jScrollPaneExams" pref="310" max="32767" attributes="0"/>
+                              <Component id="jScrollPaneExams" pref="564" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanelActionsExams" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -1208,7 +1208,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPaneExams" alignment="0" pref="149" max="32767" attributes="0"/>
+                          <Component id="jScrollPaneExams" alignment="0" pref="466" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jPanelActionsExams" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -1522,12 +1522,12 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jScrollPaneAnimals" pref="564" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jScrollPaneAnimals" pref="516" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanelActionsAnimals" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Component id="jButtonNewAnimal" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -1541,8 +1541,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPaneAnimals" alignment="0" pref="466" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Component id="jScrollPaneAnimals" pref="466" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
                               <Component id="jPanelActionsAnimals" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -1858,6 +1858,9 @@
                   <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonNewAnimalActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanelActionsAnimals">
               <Properties>
@@ -1872,9 +1875,13 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jButtonDeleteAnimal" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
-                              <Component id="jButtonSeeAnimal" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
-                              <Component id="jButtonEditAnimal" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="jButtonSeeAnimalConsultations" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jButtonDeleteAnimal" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jButtonEditAnimal" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jButtonSeeAnimal" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jButtonSeeAnimalTreatments" max="32767" attributes="0"/>
+                              <Component id="jButtonSeeAnimalExams" max="32767" attributes="0"/>
+                              <Component id="jButtonSeeAnimalClient" alignment="1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1887,6 +1894,14 @@
                           <Component id="jButtonEditAnimal" min="-2" pref="23" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButtonDeleteAnimal" min="-2" pref="23" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jButtonSeeAnimalTreatments" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jButtonSeeAnimalConsultations" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jButtonSeeAnimalExams" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jButtonSeeAnimalClient" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1902,6 +1917,9 @@
                       <Dimension value="[63, 23]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSeeAnimalActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButtonEditAnimal">
                   <Properties>
@@ -1920,6 +1938,41 @@
                 <Component class="javax.swing.JButton" name="jButtonDeleteAnimal">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Delete"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDeleteAnimalActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonSeeAnimalConsultations">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="See Consultations"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonSeeAnimalTreatments">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="See Treatments"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonSeeAnimalExams">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="See Exams"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonSeeAnimalClient">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="See Client"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
                     </Property>
@@ -1951,7 +2004,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jScrollPaneClients" pref="564" max="32767" attributes="0"/>
+                              <Component id="jScrollPaneClients" pref="310" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanelActionsClients" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -1969,7 +2022,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPaneClients" alignment="0" pref="466" max="32767" attributes="0"/>
+                          <Component id="jScrollPaneClients" alignment="0" pref="149" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jPanelActionsClients" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -2286,6 +2339,9 @@
                   <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonNewClientActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanelActionsClients">
               <Properties>
@@ -2330,6 +2386,9 @@
                       <Dimension value="[63, 23]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSeeClientActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButtonEditClient">
                   <Properties>
@@ -2352,6 +2411,9 @@
                       <Color id="Hand Cursor"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDeleteClientActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
