@@ -10,10 +10,11 @@ package View.Exam;
  *
  * @author mateu
  */
-public class EditExamJFrame extends javax.swing.JFrame {
+public class EditExamJDialog extends javax.swing.JDialog {
 
-    /** Creates new form EditExamJFrame */
-    public EditExamJFrame() {
+    /** Creates new form EditExamJDialog */
+    public EditExamJDialog(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -92,7 +93,7 @@ public class EditExamJFrame extends javax.swing.JFrame {
         jTextAreaEditExamConsultationComment.setText("Consultation 1 - Treatment 1 - Vet 1");
         jScrollPaneEditExamConsultationComment.setViewportView(jTextAreaEditExamConsultationComment);
 
-        jButtonEditExamConfirm.setText("Register");
+        jButtonEditExamConfirm.setText("Update");
         jButtonEditExamConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         org.jdesktop.layout.GroupLayout jPanelEditExamFormLayout = new org.jdesktop.layout.GroupLayout(jPanelEditExamForm);
@@ -221,20 +222,27 @@ public class EditExamJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditExamJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditExamJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditExamJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditExamJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditExamJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditExamJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditExamJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditExamJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditExamJFrame().setVisible(true);
+                EditExamJDialog dialog = new EditExamJDialog(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

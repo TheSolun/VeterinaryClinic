@@ -30,9 +30,9 @@ import View.Consultation.NewConsultationJDialog;
 import View.Consultation.SeeConsultationJDialog;
 
 import View.Exam.DeleteExamJDialog;
-import View.Exam.EditExamJFrame;
-import View.Exam.NewExamJFrame;
-import View.Exam.SeeExamJFrame;
+import View.Exam.EditExamJDialog;
+import View.Exam.NewExamJDialog;
+import View.Exam.SeeExamJDialog;
 
 import View.Animal.DeleteAnimalJDialog;
 import View.Animal.EditAnimalJDialog;
@@ -1361,8 +1361,8 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditConsultationActionPerformed
 
     private void jButtonEditExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditExamActionPerformed
-        EditExamJFrame editExamJFrame = new EditExamJFrame();
-        editExamJFrame.setVisible(true);
+        EditExamJDialog editExamJDialog = new EditExamJDialog(this,true);
+        editExamJDialog.setVisible(true);
     }//GEN-LAST:event_jButtonEditExamActionPerformed
 
     private void jButtonMenuBarExamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarExamsActionPerformed
@@ -1436,8 +1436,8 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNewConsultationActionPerformed
 
     private void jButtonSeeExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeExamActionPerformed
-        SeeExamJFrame seeExamJFrame = new SeeExamJFrame();
-        seeExamJFrame.setVisible(true);
+        SeeExamJDialog seeExamJDialog = new SeeExamJDialog(this,true);
+        seeExamJDialog.setVisible(true);
     }//GEN-LAST:event_jButtonSeeExamActionPerformed
 
     private void jButtonDeleteExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteExamActionPerformed
@@ -1446,8 +1446,8 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDeleteExamActionPerformed
 
     private void jButtonNewExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewExamActionPerformed
-        NewExamJFrame newExamJFrame = new NewExamJFrame();
-        newExamJFrame.setVisible(true);
+        NewExamJDialog newExamJDialog = new NewExamJDialog(this,true);
+        newExamJDialog.setVisible(true);
     }//GEN-LAST:event_jButtonNewExamActionPerformed
 
     private void jButtonSeeAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeAnimalActionPerformed
