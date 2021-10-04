@@ -29,6 +29,11 @@ import View.Consultation.EditConsultationJFrame;
 import View.Consultation.NewConsultationJFrame;
 import View.Consultation.SeeConsultationJFrame;
 
+import View.Exam.DeleteExamJDialog;
+import View.Exam.EditExamJFrame;
+import View.Exam.NewExamJFrame;
+import View.Exam.SeeExamJFrame;
+
 /**
  *
  * @author mateu
@@ -65,7 +70,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jButtonSeeTreatment = new javax.swing.JButton();
         jButtonEditTreatment = new javax.swing.JButton();
         jButtonDeleteTreatment = new javax.swing.JButton();
-        jButtonNewConsultationInTreatments = new javax.swing.JButton();
+        jButtonNewTreatmentConsultation = new javax.swing.JButton();
         jButtonSeeTreatmentConsultations = new javax.swing.JButton();
         jPanelConsultations = new javax.swing.JPanel();
         jScrollPaneConsultations = new javax.swing.JScrollPane();
@@ -75,6 +80,8 @@ public class MainJFrame extends javax.swing.JFrame {
         jButtonSeeConsultation = new javax.swing.JButton();
         jButtonEditConsultation = new javax.swing.JButton();
         jButtonDeleteConsultation = new javax.swing.JButton();
+        jButtonSeeConsultationExams = new javax.swing.JButton();
+        jButtonNewConsultationExams = new javax.swing.JButton();
         jPanelExams = new javax.swing.JPanel();
         jScrollPaneExams = new javax.swing.JScrollPane();
         jTableExams = new javax.swing.JTable();
@@ -357,8 +364,13 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButtonNewConsultationInTreatments.setText("New Consultation");
-        jButtonNewConsultationInTreatments.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonNewTreatmentConsultation.setText("New Consultation");
+        jButtonNewTreatmentConsultation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonNewTreatmentConsultation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNewTreatmentConsultationActionPerformed(evt);
+            }
+        });
 
         jButtonSeeTreatmentConsultations.setText("See Consultations");
         jButtonSeeTreatmentConsultations.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -376,7 +388,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .add(0, 0, Short.MAX_VALUE)
                 .add(jPanelActionsTreatmentsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonSeeTreatmentConsultations, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonNewConsultationInTreatments, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonNewTreatmentConsultation, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonDeleteTreatment, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonEditTreatment, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonSeeTreatment, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -390,7 +402,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButtonDeleteTreatment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButtonNewConsultationInTreatments)
+                .add(jButtonNewTreatmentConsultation)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButtonSeeTreatmentConsultations))
         );
@@ -548,16 +560,29 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButtonSeeConsultationExams.setText("See Exams");
+        jButtonSeeConsultationExams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeConsultationExams.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeConsultationExamsActionPerformed(evt);
+            }
+        });
+
+        jButtonNewConsultationExams.setText("New Exam");
+        jButtonNewConsultationExams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         org.jdesktop.layout.GroupLayout jPanelActionsConsultationsLayout = new org.jdesktop.layout.GroupLayout(jPanelActionsConsultations);
         jPanelActionsConsultations.setLayout(jPanelActionsConsultationsLayout);
         jPanelActionsConsultationsLayout.setHorizontalGroup(
             jPanelActionsConsultationsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelActionsConsultationsLayout.createSequentialGroup()
+            .add(jPanelActionsConsultationsLayout.createSequentialGroup()
                 .add(0, 0, Short.MAX_VALUE)
                 .add(jPanelActionsConsultationsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonDeleteConsultation, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonSeeConsultation, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonEditConsultation, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonSeeConsultationExams, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonDeleteConsultation, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonEditConsultation, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonSeeConsultation, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jButtonNewConsultationExams, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanelActionsConsultationsLayout.setVerticalGroup(
             jPanelActionsConsultationsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -566,7 +591,12 @@ public class MainJFrame extends javax.swing.JFrame {
                 .add(7, 7, 7)
                 .add(jButtonEditConsultation, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButtonDeleteConsultation, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jButtonDeleteConsultation, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonSeeConsultationExams)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonNewConsultationExams, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         org.jdesktop.layout.GroupLayout jPanelConsultationsLayout = new org.jdesktop.layout.GroupLayout(jPanelConsultations);
@@ -577,7 +607,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jPanelConsultationsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanelConsultationsLayout.createSequentialGroup()
-                        .add(jScrollPaneConsultations, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+                        .add(jScrollPaneConsultations, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanelActionsConsultations, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanelConsultationsLayout.createSequentialGroup()
@@ -590,7 +620,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .add(jPanelConsultationsLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanelConsultationsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jScrollPaneConsultations, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                    .add(jScrollPaneConsultations, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .add(jPanelConsultationsLayout.createSequentialGroup()
                         .add(jPanelActionsConsultations, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(0, 0, Short.MAX_VALUE)))
@@ -688,12 +718,22 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jButtonNewExam.setText("New Exam");
         jButtonNewExam.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonNewExam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNewExamActionPerformed(evt);
+            }
+        });
 
         jPanelActionsExams.setBackground(jPanelConsultations.getBackground());
 
         jButtonSeeExam.setText("See");
         jButtonSeeExam.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonSeeExam.setMinimumSize(new java.awt.Dimension(63, 23));
+        jButtonSeeExam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeExamActionPerformed(evt);
+            }
+        });
 
         jButtonEditExam.setText("Edit");
         jButtonEditExam.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -706,6 +746,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jButtonDeleteExam.setText("Delete");
         jButtonDeleteExam.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonDeleteExam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteExamActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanelActionsExamsLayout = new org.jdesktop.layout.GroupLayout(jPanelActionsExams);
         jPanelActionsExams.setLayout(jPanelActionsExamsLayout);
@@ -736,7 +781,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jPanelExamsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanelExamsLayout.createSequentialGroup()
-                        .add(jScrollPaneExams, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+                        .add(jScrollPaneExams, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanelActionsExams, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanelExamsLayout.createSequentialGroup()
@@ -749,7 +794,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .add(jPanelExamsLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanelExamsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jScrollPaneExams, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                    .add(jScrollPaneExams, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                     .add(jPanelExamsLayout.createSequentialGroup()
                         .add(jPanelActionsExams, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(0, 0, Short.MAX_VALUE)))
@@ -1272,7 +1317,8 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditConsultationActionPerformed
 
     private void jButtonEditExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditExamActionPerformed
-        // TODO add your handling code here:
+        EditExamJFrame editExamJFrame = new EditExamJFrame();
+        editExamJFrame.setVisible(true);
     }//GEN-LAST:event_jButtonEditExamActionPerformed
 
     private void jButtonMenuBarExamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarExamsActionPerformed
@@ -1347,6 +1393,32 @@ public class MainJFrame extends javax.swing.JFrame {
         NewConsultationJFrame newConsultationJFrame = new NewConsultationJFrame();
         newConsultationJFrame.setVisible(true);
     }//GEN-LAST:event_jButtonNewConsultationActionPerformed
+
+    private void jButtonNewTreatmentConsultationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewTreatmentConsultationActionPerformed
+        NewConsultationJFrame newConsultationJFrame = new NewConsultationJFrame();
+        newConsultationJFrame.setVisible(true);
+    }//GEN-LAST:event_jButtonNewTreatmentConsultationActionPerformed
+
+    private void jButtonSeeConsultationExamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeConsultationExamsActionPerformed
+        this.setNotVisibleAllCardLayoutJPanels();
+        this.jPanelExams.setVisible(true);
+        this.jButtonMenuBarExams.requestFocus();
+    }//GEN-LAST:event_jButtonSeeConsultationExamsActionPerformed
+
+    private void jButtonSeeExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeExamActionPerformed
+        SeeExamJFrame seeExamJFrame = new SeeExamJFrame();
+        seeExamJFrame.setVisible(true);
+    }//GEN-LAST:event_jButtonSeeExamActionPerformed
+
+    private void jButtonDeleteExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteExamActionPerformed
+        DeleteExamJDialog deleteExamJDialog = new DeleteExamJDialog(this,true);
+        deleteExamJDialog.setVisible(true);
+    }//GEN-LAST:event_jButtonDeleteExamActionPerformed
+
+    private void jButtonNewExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewExamActionPerformed
+        NewExamJFrame newExamJFrame = new NewExamJFrame();
+        newExamJFrame.setVisible(true);
+    }//GEN-LAST:event_jButtonNewExamActionPerformed
 
     private void setNotVisibleAllCardLayoutJPanels() {
         List<javax.swing.JPanel> cardLayoutJPanels = getCardLayoutJPanels();
@@ -1429,13 +1501,15 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonNewAnimal;
     private javax.swing.JButton jButtonNewClient;
     private javax.swing.JButton jButtonNewConsultation;
-    private javax.swing.JButton jButtonNewConsultationInTreatments;
+    private javax.swing.JButton jButtonNewConsultationExams;
     private javax.swing.JButton jButtonNewExam;
     private javax.swing.JButton jButtonNewTreatment;
+    private javax.swing.JButton jButtonNewTreatmentConsultation;
     private javax.swing.JButton jButtonNewVet;
     private javax.swing.JButton jButtonSeeAnimal;
     private javax.swing.JButton jButtonSeeClient;
     private javax.swing.JButton jButtonSeeConsultation;
+    private javax.swing.JButton jButtonSeeConsultationExams;
     private javax.swing.JButton jButtonSeeExam;
     private javax.swing.JButton jButtonSeeTreatment;
     private javax.swing.JButton jButtonSeeTreatmentConsultations;
