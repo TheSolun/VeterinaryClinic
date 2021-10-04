@@ -37,6 +37,7 @@ public class DeleteConsultationJDialog extends javax.swing.JDialog {
         jButtonCancelTreatment = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Delete Consultation");
         setResizable(false);
 
         jPanelEditTreatmentTittle.setLayout(new java.awt.BorderLayout());

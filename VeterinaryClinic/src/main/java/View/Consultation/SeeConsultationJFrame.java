@@ -6,8 +6,6 @@
 
 package View.Consultation;
 
-import View.Treatment.SeeTreatmentJFrame;
-
 /**
  *
  * @author mateu
@@ -201,9 +199,7 @@ public class SeeConsultationJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSeeConsultationSeeTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeConsultationSeeTreatmentActionPerformed
-        SeeTreatmentJFrame seeTreatmentJFrame = new SeeTreatmentJFrame();
-        seeTreatmentJFrame.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_jButtonSeeConsultationSeeTreatmentActionPerformed
 
     /**

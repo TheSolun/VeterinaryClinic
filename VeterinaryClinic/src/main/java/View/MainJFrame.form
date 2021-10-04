@@ -699,13 +699,13 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jScrollPaneConsultations" pref="0" max="32767" attributes="0"/>
+                              <Component id="jScrollPaneConsultations" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanelActionsConsultations" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jButtonNewConsultation" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="524" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -717,7 +717,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPaneConsultations" pref="0" max="32767" attributes="0"/>
+                          <Component id="jScrollPaneConsultations" pref="466" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="jPanelActionsConsultations" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -1051,11 +1051,9 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jButtonSeeConsultationExams" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jButtonDeleteConsultation" alignment="1" max="32767" attributes="0"/>
                               <Component id="jButtonEditConsultation" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jButtonSeeConsultation" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jButtonNewConsultationExams" max="32767" attributes="0"/>
+                              <Component id="jButtonDeleteConsultation" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jButtonSeeConsultation" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1068,11 +1066,6 @@
                           <Component id="jButtonEditConsultation" min="-2" pref="23" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButtonDeleteConsultation" min="-2" pref="23" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButtonSeeConsultationExams" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButtonNewConsultationExams" min="-2" pref="23" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1116,25 +1109,6 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDeleteConsultationActionPerformed"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="jButtonSeeConsultationExams">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="See Exams"/>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Hand Cursor"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSeeConsultationExamsActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="jButtonNewConsultationExams">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="New Exam"/>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Hand Cursor"/>
-                    </Property>
-                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
