@@ -63,6 +63,7 @@ public class SeeTreatmentJDialog extends javax.swing.JDialog {
 
         jTextFieldEditTreatmentName.setEditable(false);
         jTextFieldEditTreatmentName.setText("Treatment1");
+        jTextFieldEditTreatmentName.setDisabledTextColor(java.awt.Color.black);
         jTextFieldEditTreatmentName.setEnabled(false);
         jTextFieldEditTreatmentName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +80,7 @@ public class SeeTreatmentJDialog extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         jTextFieldEditTreatmentStartDate.setText("2019-09-01");
+        jTextFieldEditTreatmentStartDate.setDisabledTextColor(java.awt.Color.black);
         jTextFieldEditTreatmentStartDate.setEnabled(false);
 
         jLabel3.setText("End Date");
@@ -90,18 +92,21 @@ public class SeeTreatmentJDialog extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         jTextFieldEditTreatmentEndDate.setText("2019-09-02");
+        jTextFieldEditTreatmentEndDate.setDisabledTextColor(java.awt.Color.black);
         jTextFieldEditTreatmentEndDate.setEnabled(false);
 
         jLabel4.setText("Animal");
 
         jTextField2.setEditable(false);
         jTextField2.setText("Foguinho");
+        jTextField2.setDisabledTextColor(java.awt.Color.black);
         jTextField2.setEnabled(false);
 
         jLabel5.setText("Client");
 
         jTextField3.setEditable(false);
         jTextField3.setText("Jenisvaldo");
+        jTextField3.setDisabledTextColor(java.awt.Color.black);
         jTextField3.setEnabled(false);
 
         jButton1.setText("See Consultations");

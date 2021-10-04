@@ -114,6 +114,7 @@ public class NewAnimalJDialog extends javax.swing.JDialog {
         jLabelNewAnimalClient.setPreferredSize(new java.awt.Dimension(36, 14));
 
         jTextFieldNewAnimalClientName.setEditable(false);
+        jTextFieldNewAnimalClientName.setDisabledTextColor(java.awt.Color.black);
         jTextFieldNewAnimalClientName.setMaximumSize(new java.awt.Dimension(101, 20));
         jTextFieldNewAnimalClientName.setMinimumSize(new java.awt.Dimension(101, 20));
         jTextFieldNewAnimalClientName.setPreferredSize(new java.awt.Dimension(101, 20));

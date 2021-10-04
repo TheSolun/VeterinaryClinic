@@ -72,6 +72,7 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         jTextFieldEditConsultationDate.setText("2019-09-01");
+        jTextFieldEditConsultationDate.setDisabledTextColor(java.awt.Color.black);
         jTextFieldEditConsultationDate.setEnabled(false);
 
         jLabel3.setText("Hour");
@@ -83,6 +84,7 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         jTextFieldEditConsultationHour.setText("09:00");
+        jTextFieldEditConsultationHour.setDisabledTextColor(java.awt.Color.black);
         jTextFieldEditConsultationHour.setEnabled(false);
 
         jButtonEditConsultationSelectTreatment.setText("See Treatment");
@@ -92,12 +94,14 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
 
         jTextField2.setEditable(false);
         jTextField2.setText("Treatment1");
+        jTextField2.setDisabledTextColor(java.awt.Color.black);
         jTextField2.setEnabled(false);
 
         jLabel5.setText("Vet");
 
         jTextField3.setEditable(false);
         jTextField3.setText("Vet1");
+        jTextField3.setDisabledTextColor(java.awt.Color.black);
         jTextField3.setEnabled(false);
 
         jButtonEditConsultationSelectVet.setText("See Vet");
@@ -109,6 +113,7 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
         jTextAreaEditConsultationComment.setColumns(20);
         jTextAreaEditConsultationComment.setRows(5);
         jTextAreaEditConsultationComment.setText("Consultation 1 - Treatment 1 - Vet 1");
+        jTextAreaEditConsultationComment.setDisabledTextColor(java.awt.Color.black);
         jTextAreaEditConsultationComment.setEnabled(false);
         jScrollPaneEditConsultationComment.setViewportView(jTextAreaEditConsultationComment);
 
@@ -119,12 +124,14 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
 
         jTextField1.setEditable(false);
         jTextField1.setText("Foguinho");
+        jTextField1.setDisabledTextColor(java.awt.Color.black);
         jTextField1.setEnabled(false);
 
         jLabel7.setText("Client");
 
         jTextField4.setEditable(false);
         jTextField4.setText("Jenisvaldo");
+        jTextField4.setDisabledTextColor(java.awt.Color.black);
         jTextField4.setEnabled(false);
 
         jButton2.setText("See Animal");

@@ -61,6 +61,8 @@ public class SeeClientJDialog extends javax.swing.JDialog {
 
         jTextFieldNewAnimalName.setEditable(false);
         jTextFieldNewAnimalName.setText("Jenisvaldo");
+        jTextFieldNewAnimalName.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldNewAnimalName.setEnabled(false);
 
         jLabelNewAnimalBirthYear.setText("Phone");
 
@@ -71,6 +73,8 @@ public class SeeClientJDialog extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         jFormattedTextFieldNewAnimalBirthYear.setText("(77)91111-2222");
+        jFormattedTextFieldNewAnimalBirthYear.setDisabledTextColor(java.awt.Color.black);
+        jFormattedTextFieldNewAnimalBirthYear.setEnabled(false);
 
         jLabel1.setText("Zip Code");
 
@@ -81,16 +85,22 @@ public class SeeClientJDialog extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         jFormattedTextField1.setText("11111-222");
+        jFormattedTextField1.setDisabledTextColor(java.awt.Color.black);
+        jFormattedTextField1.setEnabled(false);
 
         jLabel2.setText("Email");
 
         jTextField1.setEditable(false);
         jTextField1.setText("jenisvaldo@email.com");
+        jTextField1.setDisabledTextColor(java.awt.Color.black);
+        jTextField1.setEnabled(false);
 
         jLabel3.setText("Address");
 
         jTextField2.setEditable(false);
         jTextField2.setText("Rua 1");
+        jTextField2.setDisabledTextColor(java.awt.Color.black);
+        jTextField2.setEnabled(false);
 
         jButton1.setText("See Animals");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

@@ -55,6 +55,7 @@ public class SeeVetJDialog extends javax.swing.JDialog {
 
         jTextFieldNewAnimalName.setEditable(false);
         jTextFieldNewAnimalName.setText("Vet1");
+        jTextFieldNewAnimalName.setDisabledTextColor(java.awt.Color.black);
 
         jLabelNewAnimalBirthYear.setText("Phone");
 
@@ -65,11 +66,13 @@ public class SeeVetJDialog extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         jFormattedTextFieldNewAnimalBirthYear.setText("(66)93333-4444");
+        jFormattedTextFieldNewAnimalBirthYear.setDisabledTextColor(java.awt.Color.black);
 
         jLabel3.setText("Address");
 
         jTextField2.setEditable(false);
         jTextField2.setText("Rua 3");
+        jTextField2.setDisabledTextColor(java.awt.Color.black);
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);

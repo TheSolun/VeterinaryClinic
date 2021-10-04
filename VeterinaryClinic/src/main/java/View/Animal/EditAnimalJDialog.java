@@ -119,6 +119,7 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
         jTextFieldEditAnimalClientName.setEditable(false);
         jTextFieldEditAnimalClientName.setText("Jenisvaldo");
         jTextFieldEditAnimalClientName.setToolTipText("");
+        jTextFieldEditAnimalClientName.setDisabledTextColor(java.awt.Color.black);
         jTextFieldEditAnimalClientName.setEnabled(false);
         jTextFieldEditAnimalClientName.setMaximumSize(new java.awt.Dimension(101, 20));
         jTextFieldEditAnimalClientName.setMinimumSize(new java.awt.Dimension(101, 20));

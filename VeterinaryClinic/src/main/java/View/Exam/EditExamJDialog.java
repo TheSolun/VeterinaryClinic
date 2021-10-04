@@ -69,24 +69,28 @@ public class EditExamJDialog extends javax.swing.JDialog {
 
         jTextField2.setEditable(false);
         jTextField2.setText("Treatment1");
+        jTextField2.setDisabledTextColor(java.awt.Color.black);
         jTextField2.setEnabled(false);
 
         jLabel5.setText("Vet");
 
         jTextField3.setEditable(false);
         jTextField3.setText("Vet1");
+        jTextField3.setDisabledTextColor(java.awt.Color.black);
         jTextField3.setEnabled(false);
 
         jLabel6.setText("Animal");
 
         jTextField4.setEditable(false);
         jTextField4.setText("Foguinho");
+        jTextField4.setDisabledTextColor(java.awt.Color.black);
         jTextField4.setEnabled(false);
 
         jLabel7.setText("Client");
 
         jTextField5.setEditable(false);
         jTextField5.setText("Jenisvaldo");
+        jTextField5.setDisabledTextColor(java.awt.Color.black);
         jTextField5.setEnabled(false);
 
         jLabel1.setText("Consultation Comments");
@@ -95,6 +99,7 @@ public class EditExamJDialog extends javax.swing.JDialog {
         jTextAreaEditExamConsultationComment.setColumns(20);
         jTextAreaEditExamConsultationComment.setRows(5);
         jTextAreaEditExamConsultationComment.setText("Consultation 1 - Treatment 1 - Vet 1");
+        jTextAreaEditExamConsultationComment.setDisabledTextColor(java.awt.Color.black);
         jTextAreaEditExamConsultationComment.setEnabled(false);
         jScrollPaneEditExamConsultationComment.setViewportView(jTextAreaEditExamConsultationComment);
 

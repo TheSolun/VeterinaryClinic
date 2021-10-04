@@ -65,12 +65,14 @@ public class SeeExamJDialog extends javax.swing.JDialog {
 
         jTextFieldSeeExamName.setEditable(false);
         jTextFieldSeeExamName.setText("Exam1");
+        jTextFieldSeeExamName.setDisabledTextColor(java.awt.Color.black);
         jTextFieldSeeExamName.setEnabled(false);
 
         jLabel4.setText("Treatment");
 
         jTextField2.setEditable(false);
         jTextField2.setText("Treatment1");
+        jTextField2.setDisabledTextColor(java.awt.Color.black);
         jTextField2.setEnabled(false);
 
         jButtonSeeExamSeeTreatment.setText("See Treatment");
@@ -80,6 +82,7 @@ public class SeeExamJDialog extends javax.swing.JDialog {
 
         jTextField3.setEditable(false);
         jTextField3.setText("Vet1");
+        jTextField3.setDisabledTextColor(java.awt.Color.black);
         jTextField3.setEnabled(false);
 
         jButtonSeeExamSeeVet.setText("See Vet");
@@ -89,6 +92,7 @@ public class SeeExamJDialog extends javax.swing.JDialog {
 
         jTextField4.setEditable(false);
         jTextField4.setText("Foguinho");
+        jTextField4.setDisabledTextColor(java.awt.Color.black);
         jTextField4.setEnabled(false);
 
         jButtonSeeExamSeeAnimal.setText("See Animal");
@@ -98,6 +102,7 @@ public class SeeExamJDialog extends javax.swing.JDialog {
 
         jTextField5.setEditable(false);
         jTextField5.setText("Jenisvaldo");
+        jTextField5.setDisabledTextColor(java.awt.Color.black);
         jTextField5.setEnabled(false);
 
         jButtonSeeExamSeeClient.setText("See Client");
@@ -117,6 +122,7 @@ public class SeeExamJDialog extends javax.swing.JDialog {
         jTextAreaSeeExamConsultationComment.setColumns(20);
         jTextAreaSeeExamConsultationComment.setRows(5);
         jTextAreaSeeExamConsultationComment.setText("Consultation 1 - Treatment 1 - Vet 1");
+        jTextAreaSeeExamConsultationComment.setDisabledTextColor(java.awt.Color.black);
         jTextAreaSeeExamConsultationComment.setEnabled(false);
         jScrollPaneSeeExamConsultationComment.setViewportView(jTextAreaSeeExamConsultationComment);
 

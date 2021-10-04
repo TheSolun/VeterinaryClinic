@@ -85,11 +85,13 @@ public class NewConsultationJDialog extends javax.swing.JDialog {
         jLabel4.setText("Treatment");
 
         jTextField2.setEditable(false);
+        jTextField2.setDisabledTextColor(java.awt.Color.black);
         jTextField2.setEnabled(false);
 
         jLabel5.setText("Vet");
 
         jTextField3.setEditable(false);
+        jTextField3.setDisabledTextColor(java.awt.Color.black);
         jTextField3.setEnabled(false);
 
         jButtonEditConsultationSelectVet.setText("Select Vet");
@@ -113,6 +115,7 @@ public class NewConsultationJDialog extends javax.swing.JDialog {
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jTextField1.setEditable(false);
+        jTextField1.setDisabledTextColor(java.awt.Color.black);
         jTextField1.setEnabled(false);
 
         jLabel6.setText("Animal");
@@ -120,6 +123,7 @@ public class NewConsultationJDialog extends javax.swing.JDialog {
         jLabel7.setText("Client");
 
         jTextField4.setEditable(false);
+        jTextField4.setDisabledTextColor(java.awt.Color.black);
         jTextField4.setEnabled(false);
 
         org.jdesktop.layout.GroupLayout jPanelEditConsultationFormLayout = new org.jdesktop.layout.GroupLayout(jPanelEditConsultationForm);

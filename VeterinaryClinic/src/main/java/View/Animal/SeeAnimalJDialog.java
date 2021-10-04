@@ -61,6 +61,7 @@ public class SeeAnimalJDialog extends javax.swing.JDialog {
 
         jTextFieldEditAnimalName.setEditable(false);
         jTextFieldEditAnimalName.setText("Foguinho");
+        jTextFieldEditAnimalName.setDisabledTextColor(java.awt.Color.black);
         jTextFieldEditAnimalName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldEditAnimalNameActionPerformed(evt);
@@ -76,6 +77,7 @@ public class SeeAnimalJDialog extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         jFormattedTextFieldEditAnimalBirthYear.setText("2020");
+        jFormattedTextFieldEditAnimalBirthYear.setDisabledTextColor(java.awt.Color.black);
 
         jLabelEditAnimalGender.setText("Gender");
 
@@ -105,6 +107,7 @@ public class SeeAnimalJDialog extends javax.swing.JDialog {
         jTextFieldEditAnimalClientName.setEditable(false);
         jTextFieldEditAnimalClientName.setText("Jenisvaldo");
         jTextFieldEditAnimalClientName.setToolTipText("");
+        jTextFieldEditAnimalClientName.setDisabledTextColor(java.awt.Color.black);
         jTextFieldEditAnimalClientName.setMaximumSize(new java.awt.Dimension(101, 20));
         jTextFieldEditAnimalClientName.setMinimumSize(new java.awt.Dimension(101, 20));
         jTextFieldEditAnimalClientName.setPreferredSize(new java.awt.Dimension(101, 20));
