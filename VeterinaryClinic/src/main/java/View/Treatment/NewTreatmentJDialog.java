@@ -89,10 +89,12 @@ public class NewTreatmentJDialog extends javax.swing.JDialog {
         jLabel4.setText("Animal");
 
         jTextField2.setEditable(false);
+        jTextField2.setEnabled(false);
 
         jLabel5.setText("Client");
 
         jTextField3.setEditable(false);
+        jTextField3.setEnabled(false);
 
         jButtonEditTreatmentRegister.setText("Register");
         jButtonEditTreatmentRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

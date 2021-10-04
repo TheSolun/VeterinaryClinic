@@ -66,24 +66,29 @@ public class NewExamJDialog extends javax.swing.JDialog {
         jLabel4.setText("Treatment");
 
         jTextField2.setEditable(false);
+        jTextField2.setEnabled(false);
 
         jLabel5.setText("Vet");
 
         jTextField3.setEditable(false);
+        jTextField3.setEnabled(false);
 
         jLabel6.setText("Animal");
 
         jTextField4.setEditable(false);
+        jTextField4.setEnabled(false);
 
         jLabel7.setText("Client");
 
         jTextField5.setEditable(false);
+        jTextField5.setEnabled(false);
 
         jLabel1.setText("Consultation Comments");
 
         jTextAreaNewExamConsultationComment.setEditable(false);
         jTextAreaNewExamConsultationComment.setColumns(20);
         jTextAreaNewExamConsultationComment.setRows(5);
+        jTextAreaNewExamConsultationComment.setEnabled(false);
         jScrollPaneNewExamConsultationComment.setViewportView(jTextAreaNewExamConsultationComment);
 
         jButtonNewExamConfirm.setText("Register");

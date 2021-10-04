@@ -92,11 +92,13 @@ public class EditTreatmentJDialog extends javax.swing.JDialog {
 
         jTextField2.setEditable(false);
         jTextField2.setText("Foguinho");
+        jTextField2.setEnabled(false);
 
         jLabel5.setText("Client");
 
         jTextField3.setEditable(false);
         jTextField3.setText("Jenisvaldo");
+        jTextField3.setEnabled(false);
 
         jButtonEditTreatmentRegister.setText("Update");
         jButtonEditTreatmentRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

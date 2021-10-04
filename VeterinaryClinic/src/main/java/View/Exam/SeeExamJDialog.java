@@ -65,11 +65,13 @@ public class SeeExamJDialog extends javax.swing.JDialog {
 
         jTextFieldSeeExamName.setEditable(false);
         jTextFieldSeeExamName.setText("Exam1");
+        jTextFieldSeeExamName.setEnabled(false);
 
         jLabel4.setText("Treatment");
 
         jTextField2.setEditable(false);
         jTextField2.setText("Treatment1");
+        jTextField2.setEnabled(false);
 
         jButtonSeeExamSeeTreatment.setText("See Treatment");
         jButtonSeeExamSeeTreatment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -78,6 +80,7 @@ public class SeeExamJDialog extends javax.swing.JDialog {
 
         jTextField3.setEditable(false);
         jTextField3.setText("Vet1");
+        jTextField3.setEnabled(false);
 
         jButtonSeeExamSeeVet.setText("See Vet");
         jButtonSeeExamSeeVet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -86,6 +89,7 @@ public class SeeExamJDialog extends javax.swing.JDialog {
 
         jTextField4.setEditable(false);
         jTextField4.setText("Foguinho");
+        jTextField4.setEnabled(false);
 
         jButtonSeeExamSeeAnimal.setText("See Animal");
         jButtonSeeExamSeeAnimal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -94,6 +98,7 @@ public class SeeExamJDialog extends javax.swing.JDialog {
 
         jTextField5.setEditable(false);
         jTextField5.setText("Jenisvaldo");
+        jTextField5.setEnabled(false);
 
         jButtonSeeExamSeeClient.setText("See Client");
         jButtonSeeExamSeeClient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -112,6 +117,7 @@ public class SeeExamJDialog extends javax.swing.JDialog {
         jTextAreaSeeExamConsultationComment.setColumns(20);
         jTextAreaSeeExamConsultationComment.setRows(5);
         jTextAreaSeeExamConsultationComment.setText("Consultation 1 - Treatment 1 - Vet 1");
+        jTextAreaSeeExamConsultationComment.setEnabled(false);
         jScrollPaneSeeExamConsultationComment.setViewportView(jTextAreaSeeExamConsultationComment);
 
         org.jdesktop.layout.GroupLayout jPanelSeeExamFormLayout = new org.jdesktop.layout.GroupLayout(jPanelSeeExamForm);

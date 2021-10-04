@@ -109,10 +109,6 @@ public class MainJFrame extends javax.swing.JFrame {
         jButtonSeeAnimal = new javax.swing.JButton();
         jButtonEditAnimal = new javax.swing.JButton();
         jButtonDeleteAnimal = new javax.swing.JButton();
-        jButtonSeeAnimalConsultations = new javax.swing.JButton();
-        jButtonSeeAnimalTreatments = new javax.swing.JButton();
-        jButtonSeeAnimalExams = new javax.swing.JButton();
-        jButtonSeeAnimalClient = new javax.swing.JButton();
         jPanelClients = new javax.swing.JPanel();
         jScrollPaneClients = new javax.swing.JScrollPane();
         jTableClients = new javax.swing.JTable();
@@ -582,12 +578,12 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jPanelConsultationsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanelConsultationsLayout.createSequentialGroup()
-                        .add(jScrollPaneConsultations)
+                        .add(jScrollPaneConsultations, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanelActionsConsultations, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanelConsultationsLayout.createSequentialGroup()
                         .add(jButtonNewConsultation)
-                        .add(0, 524, Short.MAX_VALUE)))
+                        .add(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelConsultationsLayout.setVerticalGroup(
@@ -595,7 +591,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .add(jPanelConsultationsLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanelConsultationsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jScrollPaneConsultations, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                    .add(jScrollPaneConsultations, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .add(jPanelConsultationsLayout.createSequentialGroup()
                         .add(jPanelActionsConsultations, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(0, 0, Short.MAX_VALUE)))
@@ -901,18 +897,6 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButtonSeeAnimalConsultations.setText("See Consultations");
-        jButtonSeeAnimalConsultations.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jButtonSeeAnimalTreatments.setText("See Treatments");
-        jButtonSeeAnimalTreatments.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jButtonSeeAnimalExams.setText("See Exams");
-        jButtonSeeAnimalExams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jButtonSeeAnimalClient.setText("See Client");
-        jButtonSeeAnimalClient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         org.jdesktop.layout.GroupLayout jPanelActionsAnimalsLayout = new org.jdesktop.layout.GroupLayout(jPanelActionsAnimals);
         jPanelActionsAnimals.setLayout(jPanelActionsAnimalsLayout);
         jPanelActionsAnimalsLayout.setHorizontalGroup(
@@ -920,13 +904,9 @@ public class MainJFrame extends javax.swing.JFrame {
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelActionsAnimalsLayout.createSequentialGroup()
                 .add(0, 0, Short.MAX_VALUE)
                 .add(jPanelActionsAnimalsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonSeeAnimalConsultations, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonDeleteAnimal, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonEditAnimal, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonSeeAnimal, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jButtonSeeAnimalTreatments, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jButtonSeeAnimalExams, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonSeeAnimalClient, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonDeleteAnimal, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jButtonSeeAnimal, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanelActionsAnimalsLayout.setVerticalGroup(
             jPanelActionsAnimalsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -935,15 +915,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .add(7, 7, 7)
                 .add(jButtonEditAnimal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButtonDeleteAnimal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButtonSeeAnimalTreatments)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButtonSeeAnimalConsultations)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButtonSeeAnimalExams)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButtonSeeAnimalClient))
+                .add(jButtonDeleteAnimal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
 
         org.jdesktop.layout.GroupLayout jPanelAnimalsLayout = new org.jdesktop.layout.GroupLayout(jPanelAnimals);
@@ -954,12 +926,12 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jPanelAnimalsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanelAnimalsLayout.createSequentialGroup()
-                        .add(jScrollPaneAnimals, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
+                        .add(jScrollPaneAnimals)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanelActionsAnimals, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanelAnimalsLayout.createSequentialGroup()
                         .add(jButtonNewAnimal)
-                        .add(0, 0, Short.MAX_VALUE)))
+                        .add(0, 554, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelAnimalsLayout.setVerticalGroup(
@@ -1580,10 +1552,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonNewTreatment;
     private javax.swing.JButton jButtonNewVet;
     private javax.swing.JButton jButtonSeeAnimal;
-    private javax.swing.JButton jButtonSeeAnimalClient;
-    private javax.swing.JButton jButtonSeeAnimalConsultations;
-    private javax.swing.JButton jButtonSeeAnimalExams;
-    private javax.swing.JButton jButtonSeeAnimalTreatments;
     private javax.swing.JButton jButtonSeeClient;
     private javax.swing.JButton jButtonSeeConsultation;
     private javax.swing.JButton jButtonSeeExam;

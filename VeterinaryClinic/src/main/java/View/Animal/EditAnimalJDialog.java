@@ -47,8 +47,10 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
         jTextFieldEditAnimalClientName = new javax.swing.JTextField();
         jButtonEditAnimalSelectClient = new javax.swing.JButton();
         jButtonEditAnimalConfirm = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Edit Animal");
         setResizable(false);
 
         jPanelEditAnimalTittle.setLayout(new java.awt.BorderLayout());
@@ -117,6 +119,7 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
         jTextFieldEditAnimalClientName.setEditable(false);
         jTextFieldEditAnimalClientName.setText("Jenisvaldo");
         jTextFieldEditAnimalClientName.setToolTipText("");
+        jTextFieldEditAnimalClientName.setEnabled(false);
         jTextFieldEditAnimalClientName.setMaximumSize(new java.awt.Dimension(101, 20));
         jTextFieldEditAnimalClientName.setMinimumSize(new java.awt.Dimension(101, 20));
         jTextFieldEditAnimalClientName.setPreferredSize(new java.awt.Dimension(101, 20));
@@ -132,11 +135,15 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
         jButtonEditAnimalConfirm.setText("Update");
         jButtonEditAnimalConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        jButton1.setText("New Treatment");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         org.jdesktop.layout.GroupLayout jPanelEditAnimalFormLayout = new org.jdesktop.layout.GroupLayout(jPanelEditAnimalForm);
         jPanelEditAnimalForm.setLayout(jPanelEditAnimalFormLayout);
         jPanelEditAnimalFormLayout.setHorizontalGroup(
             jPanelEditAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelEditAnimalFormLayout.createSequentialGroup()
+                .add(0, 0, Short.MAX_VALUE)
                 .add(jLabelEditAnimalName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jTextFieldEditAnimalName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 326, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -152,17 +159,20 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
                     .add(jComboBoxEditAnimalSpecies, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .add(jPanelEditAnimalNewSpecies, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(jPanelEditAnimalFormLayout.createSequentialGroup()
-                .add(jPanelEditAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanelEditAnimalFormLayout.createSequentialGroup()
-                        .add(154, 154, 154)
-                        .add(jButtonEditAnimalConfirm))
-                    .add(jPanelEditAnimalFormLayout.createSequentialGroup()
-                        .add(jLabelEditAnimalClient, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 47, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(jTextFieldEditAnimalClientName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 226, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jButtonEditAnimalSelectClient)))
+                .add(jLabelEditAnimalClient, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 47, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jTextFieldEditAnimalClientName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 226, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonEditAnimalSelectClient)
                 .add(0, 0, Short.MAX_VALUE))
+            .add(jPanelEditAnimalFormLayout.createSequentialGroup()
+                .add(137, 137, 137)
+                .add(jButton1)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelEditAnimalFormLayout.createSequentialGroup()
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jButtonEditAnimalConfirm)
+                .add(155, 155, 155))
         );
         jPanelEditAnimalFormLayout.setVerticalGroup(
             jPanelEditAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -189,6 +199,8 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
                     .add(jLabelEditAnimalClient, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(jTextFieldEditAnimalClientName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(jButtonEditAnimalSelectClient, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButton1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jButtonEditAnimalConfirm))
         );
@@ -282,6 +294,7 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonEditAnimalConfirm;
     private javax.swing.JButton jButtonEditAnimalSelectClient;
     private javax.swing.JComboBox<String> jComboBoxEditAnimalGender;

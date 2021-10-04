@@ -63,6 +63,7 @@ public class SeeTreatmentJDialog extends javax.swing.JDialog {
 
         jTextFieldEditTreatmentName.setEditable(false);
         jTextFieldEditTreatmentName.setText("Treatment1");
+        jTextFieldEditTreatmentName.setEnabled(false);
         jTextFieldEditTreatmentName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldEditTreatmentNameActionPerformed(evt);
@@ -78,6 +79,7 @@ public class SeeTreatmentJDialog extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         jTextFieldEditTreatmentStartDate.setText("2019-09-01");
+        jTextFieldEditTreatmentStartDate.setEnabled(false);
 
         jLabel3.setText("End Date");
 
@@ -88,16 +90,19 @@ public class SeeTreatmentJDialog extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         jTextFieldEditTreatmentEndDate.setText("2019-09-02");
+        jTextFieldEditTreatmentEndDate.setEnabled(false);
 
         jLabel4.setText("Animal");
 
         jTextField2.setEditable(false);
         jTextField2.setText("Foguinho");
+        jTextField2.setEnabled(false);
 
         jLabel5.setText("Client");
 
         jTextField3.setEditable(false);
         jTextField3.setText("Jenisvaldo");
+        jTextField3.setEnabled(false);
 
         jButton1.setText("See Consultations");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
