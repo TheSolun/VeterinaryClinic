@@ -13,11 +13,14 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.ImageIcon;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.JFrame;
 import javax.swing.plaf.*;
 import javax.swing.plaf.metal.*;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import Controller.Controller;
 
 import View.Treatment.DeleteTreatmentJDialog;
 import View.Treatment.EditTreatmentJDialog;
@@ -38,11 +41,15 @@ import View.Animal.DeleteAnimalJDialog;
 import View.Animal.EditAnimalJDialog;
 import View.Animal.NewAnimalJDialog;
 import View.Animal.SeeAnimalJDialog;
+import View.Animal.AnimalTableModel;
+import Models.DAO.AnimalDAO;
 
 import View.Client.DeleteClientJDialog;
 import View.Client.EditClientJDialog;
 import View.Client.NewClientJDialog;
 import View.Client.SeeClientJDialog;
+import View.Client.ClientTableModel;
+import Models.DAO.ClientDAO;
 
 import View.Vet.DeleteVetJDialog;
 import View.Vet.EditVetJDialog;
@@ -58,6 +65,22 @@ public class MainJFrame extends javax.swing.JFrame {
     /** Creates new form MainJFrame */
     public MainJFrame() { 
         initComponents();
+        ListSelectionModel model = this.jTableAnimals.getSelectionModel();
+        List<javax.swing.JButton> buttons = new ArrayList<javax.swing.JButton>();
+        buttons.add(this.jButtonSeeAnimal);
+        buttons.add(this.jButtonEditAnimal);
+        buttons.add(this.jButtonDeleteAnimal);
+        model.addListSelectionListener(new ListSelectionListener(){
+            @Override
+            public void valueChanged(ListSelectionEvent event) {
+                if(!model.isSelectionEmpty()) {
+                    for(javax.swing.JButton button : buttons) {
+                       button.setEnabled(true); 
+                    }
+//                    selectedRow = model.getMinSelectionIndex();
+                }
+            }
+        });
     }
 
     /** This method is called from within the constructor to
@@ -873,6 +896,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jButtonSeeAnimal.setText("See");
         jButtonSeeAnimal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeAnimal.setEnabled(false);
         jButtonSeeAnimal.setMinimumSize(new java.awt.Dimension(63, 23));
         jButtonSeeAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -882,6 +906,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jButtonEditAnimal.setText("Edit");
         jButtonEditAnimal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditAnimal.setEnabled(false);
         jButtonEditAnimal.setMinimumSize(new java.awt.Dimension(63, 23));
         jButtonEditAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -891,6 +916,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jButtonDeleteAnimal.setText("Delete");
         jButtonDeleteAnimal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonDeleteAnimal.setEnabled(false);
         jButtonDeleteAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDeleteAnimalActionPerformed(evt);
@@ -926,7 +952,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jPanelAnimalsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanelAnimalsLayout.createSequentialGroup()
-                        .add(jScrollPaneAnimals)
+                        .add(jScrollPaneAnimals, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanelActionsAnimals, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanelAnimalsLayout.createSequentialGroup()
@@ -1348,8 +1374,14 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditAnimalActionPerformed
 
     private void jButtonMenuBarAnimalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarAnimalsActionPerformed
-        this.setNotVisibleAllCardLayoutJPanels();
-        this.jPanelAnimals.setVisible(true);
+        try {
+            this.setNotVisibleAllCardLayoutJPanels();
+            this.setEmptyAllJTables();
+            Controller.setTableModel(this.jTableAnimals, new AnimalTableModel(AnimalDAO.getInstance().retrieveAll()));
+            this.jPanelAnimals.setVisible(true);
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
     }//GEN-LAST:event_jButtonMenuBarAnimalsActionPerformed
 
     private void jButtonEditClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditClientActionPerformed
@@ -1358,8 +1390,14 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditClientActionPerformed
 
     private void jButtonMenuBarClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarClientsActionPerformed
-        this.setNotVisibleAllCardLayoutJPanels();
-        this.jPanelClients.setVisible(true);
+        try {
+            this.setNotVisibleAllCardLayoutJPanels();
+            this.setEmptyAllJTables();
+            Controller.setTableModel(jTableClients, new ClientTableModel(ClientDAO.getInstance().retrieveAll()));
+            this.jPanelClients.setVisible(true);
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
     }//GEN-LAST:event_jButtonMenuBarClientsActionPerformed
 
     private void jButtonEditVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditVetActionPerformed
@@ -1472,6 +1510,11 @@ public class MainJFrame extends javax.swing.JFrame {
         for (javax.swing.JPanel cardLayoutJPanel : cardLayoutJPanels) {
             cardLayoutJPanel.setVisible(false);
         }
+    }
+    
+    private void setEmptyAllJTables() {
+        Controller.setTableModel(jTableAnimals, new AnimalTableModel());
+        Controller.setTableModel(jTableClients, new ClientTableModel());
     }
     
     private List<javax.swing.JPanel> getCardLayoutJPanels() {

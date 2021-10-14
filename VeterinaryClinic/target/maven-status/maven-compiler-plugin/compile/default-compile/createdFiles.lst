@@ -43,6 +43,7 @@ View\Animal\EditAnimalJDialog.class
 View\Vet\EditVetJDialog$3$1.class
 View\Animal\SeeAnimalJDialog$2.class
 View\Treatment\EditTreatmentJDialog$3$1.class
+Controller\Controller.class
 Models\Vet.class
 View\MainJFrame$23.class
 View\Animal\EditAnimalJDialog$1.class
@@ -53,6 +54,7 @@ View\MainJFrame$33.class
 View\Exam\SeeExamJDialog$2.class
 Exceptions\StartAndEndDatesNotInChronologicalOrderException.class
 Main.class
+View\Client\ClientTableModel.class
 View\Exam\NewExamJDialog$1$1.class
 View\Consultation\DeleteConsultationJDialog$2.class
 View\MainJFrame$4.class
@@ -93,6 +95,7 @@ Exceptions\BlankNameException.class
 View\Animal\SeeAnimalJDialog$4.class
 View\Consultation\EditConsultationJDialog$1.class
 Models\DAO\ExamDAO.class
+View\Animal\AnimalTableModel.class
 View\Treatment\DeleteTreatmentJDialog$2.class
 Exceptions\InvalidBirthYearException.class
 Exceptions\InvalidPhoneLengthException.class
@@ -112,6 +115,7 @@ View\MainJFrame$18.class
 View\Treatment\EditTreatmentJDialog$3.class
 View\MainJFrame$5.class
 View\MainJFrame$32.class
+View\MainJFrame$38.class
 View\Vet\DeleteVetJDialog$1.class
 Models\Exam.class
 View\MainJFrame$20.class
@@ -157,6 +161,7 @@ View\Consultation\DeleteConsultationJDialog$2$1.class
 View\Exam\DeleteExamJDialog$2.class
 View\MainJFrame$6.class
 View\Exam\EditExamJDialog$1.class
+View\GenericTableModel.class
 View\MainJFrame$37.class
 View\Consultation\SeeConsultationJDialog$1.class
 View\Consultation\NewConsultationJDialog.class
