@@ -13,11 +13,11 @@ import java.util.ArrayList;
 public class ClientTableModel extends GenericTableModel {
     
     public ClientTableModel() {
-        super(new ArrayList<Object>(), new String[]{"object","Name","Email","Phone","Address","Zip Code"});
+        super(new ArrayList<Object>(), new String[]{objectColumnName,"Name","Email","Phone","Address","Zip Code"});
     }
     
     public ClientTableModel(List vData) {
-        super(vData, new String[]{"object","Name","Email","Phone","Address","Zip Code"});
+        super(vData, new String[]{objectColumnName,"Name","Email","Phone","Address","Zip Code"});
     }
     
     @Override

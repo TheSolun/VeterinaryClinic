@@ -6,15 +6,20 @@
 
 package View.Client;
 
+import Models.Client;
+
 /**
  *
  * @author mateu
  */
 public class SeeClientJDialog extends javax.swing.JDialog {
 
+    private final Client client;
+    
     /** Creates new form SeeClientJDialog */
-    public SeeClientJDialog(java.awt.Frame parent, boolean modal) {
+    public SeeClientJDialog(java.awt.Frame parent, boolean modal, Client client) {
         super(parent, modal);
+        this.client = client;
         initComponents();
     }
 
@@ -60,7 +65,7 @@ public class SeeClientJDialog extends javax.swing.JDialog {
         jLabelNewAnimalName.setText("Name");
 
         jTextFieldNewAnimalName.setEditable(false);
-        jTextFieldNewAnimalName.setText("Jenisvaldo");
+        jTextFieldNewAnimalName.setText(this.client.getName());
         jTextFieldNewAnimalName.setDisabledTextColor(java.awt.Color.black);
         jTextFieldNewAnimalName.setEnabled(false);
 
@@ -72,7 +77,7 @@ public class SeeClientJDialog extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextFieldNewAnimalBirthYear.setText("(77)91111-2222");
+        jFormattedTextFieldNewAnimalBirthYear.setText(this.client.getPhone());
         jFormattedTextFieldNewAnimalBirthYear.setDisabledTextColor(java.awt.Color.black);
         jFormattedTextFieldNewAnimalBirthYear.setEnabled(false);
 
@@ -84,21 +89,21 @@ public class SeeClientJDialog extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextField1.setText("11111-222");
+        jFormattedTextField1.setText(this.client.getZipCode());
         jFormattedTextField1.setDisabledTextColor(java.awt.Color.black);
         jFormattedTextField1.setEnabled(false);
 
         jLabel2.setText("Email");
 
         jTextField1.setEditable(false);
-        jTextField1.setText("jenisvaldo@email.com");
+        jTextField1.setText(this.client.getEmail());
         jTextField1.setDisabledTextColor(java.awt.Color.black);
         jTextField1.setEnabled(false);
 
         jLabel3.setText("Address");
 
         jTextField2.setEditable(false);
-        jTextField2.setText("Rua 1");
+        jTextField2.setText(this.client.getAddress());
         jTextField2.setDisabledTextColor(java.awt.Color.black);
         jTextField2.setEnabled(false);
 
@@ -223,44 +228,7 @@ public class SeeClientJDialog extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SeeClientJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SeeClientJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SeeClientJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SeeClientJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                SeeClientJDialog dialog = new SeeClientJDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

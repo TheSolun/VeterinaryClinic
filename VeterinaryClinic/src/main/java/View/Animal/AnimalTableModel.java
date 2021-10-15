@@ -17,11 +17,11 @@ import java.util.List;
 public class AnimalTableModel extends GenericTableModel {
     
     public AnimalTableModel() {
-        super(new ArrayList<Object>(), new String[]{"object","Name","Birth Year","Gender","Species","Client"});
+        super(new ArrayList<Object>(), new String[]{objectColumnName,"Name","Birth Year","Gender","Species","Client"});
     }
     
     public AnimalTableModel(List vData) {
-        super(vData, new String[]{"object","Name","Birth Year","Gender","Species","Client"});
+        super(vData, new String[]{objectColumnName,"Name","Birth Year","Gender","Species","Client"});
     }
     
     @Override

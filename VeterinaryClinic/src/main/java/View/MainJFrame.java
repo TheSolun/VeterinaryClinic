@@ -29,22 +29,29 @@ import View.Treatment.DeleteTreatmentJDialog;
 import View.Treatment.EditTreatmentJDialog;
 import View.Treatment.NewTreatmentJDialog;
 import View.Treatment.SeeTreatmentJDialog;
+import Models.Treatment;
+import Models.DAO.TreatmentDAO;
 
 import View.Consultation.DeleteConsultationJDialog;
 import View.Consultation.EditConsultationJDialog;
 import View.Consultation.NewConsultationJDialog;
 import View.Consultation.SeeConsultationJDialog;
+import Models.Consultation;
+import Models.DAO.ConsultationDAO;
 
 import View.Exam.DeleteExamJDialog;
 import View.Exam.EditExamJDialog;
 import View.Exam.NewExamJDialog;
 import View.Exam.SeeExamJDialog;
+import Models.Exam;
+import Models.DAO.ExamDAO;
 
 import View.Animal.DeleteAnimalJDialog;
 import View.Animal.EditAnimalJDialog;
 import View.Animal.NewAnimalJDialog;
 import View.Animal.SeeAnimalJDialog;
 import View.Animal.AnimalTableModel;
+import Models.Animal;
 import Models.DAO.AnimalDAO;
 
 import View.Client.DeleteClientJDialog;
@@ -52,12 +59,15 @@ import View.Client.EditClientJDialog;
 import View.Client.NewClientJDialog;
 import View.Client.SeeClientJDialog;
 import View.Client.ClientTableModel;
+import Models.Client;
 import Models.DAO.ClientDAO;
 
 import View.Vet.DeleteVetJDialog;
 import View.Vet.EditVetJDialog;
 import View.Vet.NewVetJDialog;
 import View.Vet.SeeVetJDialog;
+import Models.Vet;
+import Models.DAO.VetDAO;
 
 /**
  *
@@ -66,6 +76,7 @@ import View.Vet.SeeVetJDialog;
 public class MainJFrame extends javax.swing.JFrame {
     
     private List<javax.swing.JButton> jTableActionButtons = new ArrayList<javax.swing.JButton>();
+    private List<javax.swing.JTable> jTables = new ArrayList<javax.swing.JTable>();
     
     private void setJTableActionButtons() {
         this.jTableActionButtons.add(this.jButtonSeeTreatment);
@@ -82,11 +93,19 @@ public class MainJFrame extends javax.swing.JFrame {
         this.jTableActionButtons.add(this.jButtonDeleteAnimal);
         this.jTableActionButtons.add(this.jButtonSeeClient);
         this.jTableActionButtons.add(this.jButtonEditClient);
-        this.jTableActionButtons.add(this.jButtonEditClient);
         this.jTableActionButtons.add(this.jButtonDeleteClient);
         this.jTableActionButtons.add(this.jButtonSeeVet);
         this.jTableActionButtons.add(this.jButtonEditVet);
         this.jTableActionButtons.add(this.jButtonDeleteVet);
+    }
+    
+    private void setJTables() {
+        this.jTables.add(this.jTableTreatments);
+        this.jTables.add(this.jTableConsultations);
+        this.jTables.add(this.jTableExams);
+        this.jTables.add(this.jTableAnimals);
+        this.jTables.add(this.jTableClients);
+        this.jTables.add(this.jTableVets);
     }
     
     /** Creates new form MainJFrame */
@@ -94,6 +113,8 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         this.setJTableActionButtons();
         this.addJTablesSelectionRowEvents();
+        this.setJTables();
+        this.removeObjectColumnsFromJTables();
     }
 
     /** This method is called from within the constructor to
@@ -298,66 +319,66 @@ public class MainJFrame extends javax.swing.JFrame {
         jTableTreatments.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTableTreatments.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Treatment 1", "2021-09-01", "2021-09-02", "Foguinho",  new Boolean(true)},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, "Treatment 1", "2021-09-01", "2021-09-02", "Foguinho",  new Boolean(true)},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Name", "Start", "End", "Animal", "Finished"
+                "object", "Name", "Start", "End", "Animal", "Finished"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -440,12 +461,12 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jPanelTreatmentsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanelTreatmentsLayout.createSequentialGroup()
-                        .add(jScrollPaneTreatments)
+                        .add(jScrollPaneTreatments, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanelActionsTreatments, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanelTreatmentsLayout.createSequentialGroup()
                         .add(jButtonNewTreatment)
-                        .add(0, 534, Short.MAX_VALUE)))
+                        .add(0, 280, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelTreatmentsLayout.setVerticalGroup(
@@ -453,7 +474,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .add(jPanelTreatmentsLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanelTreatmentsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jScrollPaneTreatments, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                    .add(jScrollPaneTreatments, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                     .add(jPanelTreatmentsLayout.createSequentialGroup()
                         .add(jPanelActionsTreatments, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(0, 0, Short.MAX_VALUE)))
@@ -470,66 +491,66 @@ public class MainJFrame extends javax.swing.JFrame {
         jTableConsultations.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTableConsultations.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"2021-09-04T09:00", "Tratamento 1", "Vet1", "Consultation 1 - Treatment 1 - Vet 1",  new Boolean(true)},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, "2021-09-04T09:00", "Tratamento 1", "Vet1", "Consultation 1 - Treatment 1 - Vet 1",  new Boolean(true)},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Date", "Treatment", "Vet", "Comment", "Finished"
+                "object", "Date", "Treatment", "Vet", "Comment", "Finished"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -644,66 +665,66 @@ public class MainJFrame extends javax.swing.JFrame {
         jTableExams.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTableExams.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Exam1", "Consultation 1 Comment", "Treatment 1"},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, "Exam1", "Consultation 1 Comment", "Treatment 1"},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Name", "Consultation", "Treatment"
+                "object", "Name", "Consultation", "Treatment"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -788,7 +809,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jPanelExamsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanelExamsLayout.createSequentialGroup()
-                        .add(jScrollPaneExams, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+                        .add(jScrollPaneExams, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanelActionsExams, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanelExamsLayout.createSequentialGroup()
@@ -801,7 +822,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .add(jPanelExamsLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanelExamsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jScrollPaneExams, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                    .add(jScrollPaneExams, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                     .add(jPanelExamsLayout.createSequentialGroup()
                         .add(jPanelActionsExams, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(0, 0, Short.MAX_VALUE)))
@@ -818,66 +839,66 @@ public class MainJFrame extends javax.swing.JFrame {
         jTableAnimals.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTableAnimals.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Foguinho", "2020", "Male", "Dog", "Jenisvaldo"},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, "Foguinho", "2020", "Male", "Dog", "Jenisvaldo"},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Name", "Birth Year", "Gender", "Species", "Client"
+                "object", "Name", "Birth Year", "Gender", "Species", "Client"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -962,12 +983,12 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jPanelAnimalsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanelAnimalsLayout.createSequentialGroup()
-                        .add(jScrollPaneAnimals, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
+                        .add(jScrollPaneAnimals, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanelActionsAnimals, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanelAnimalsLayout.createSequentialGroup()
                         .add(jButtonNewAnimal)
-                        .add(0, 554, Short.MAX_VALUE)))
+                        .add(0, 300, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelAnimalsLayout.setVerticalGroup(
@@ -975,7 +996,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .add(jPanelAnimalsLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanelAnimalsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jScrollPaneAnimals, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                    .add(jScrollPaneAnimals, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                     .add(jPanelAnimalsLayout.createSequentialGroup()
                         .add(jPanelActionsAnimals, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(0, 0, Short.MAX_VALUE)))
@@ -992,66 +1013,66 @@ public class MainJFrame extends javax.swing.JFrame {
         jTableClients.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTableClients.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Jenisvaldo", "jenisvaldo@email.com", "77911112222", "Rua 1", "11111222"},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, "Jenisvaldo", "jenisvaldo@email.com", "77911112222", "Rua 1", "11111222"},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Name", "Email", "Phone", "Address", "Zip Code"
+                "object", "Name", "Email", "Phone", "Address", "Zip Code"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1166,66 +1187,66 @@ public class MainJFrame extends javax.swing.JFrame {
         jTableVets.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTableVets.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Vet 1", "66933334444", "Rua 3"},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, "Vet 1", "66933334444", "Rua 3"},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Name", "Phone", "Address"
+                "object", "Name", "Phone", "Address"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1310,7 +1331,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jPanelVetsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanelVetsLayout.createSequentialGroup()
-                        .add(jScrollPaneVets, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+                        .add(jScrollPaneVets, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanelActionsVets, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanelVetsLayout.createSequentialGroup()
@@ -1323,7 +1344,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .add(jPanelVetsLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanelVetsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jScrollPaneVets, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                    .add(jScrollPaneVets, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                     .add(jPanelVetsLayout.createSequentialGroup()
                         .add(jPanelActionsVets, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(0, 0, Short.MAX_VALUE)))
@@ -1380,11 +1401,13 @@ public class MainJFrame extends javax.swing.JFrame {
     private void jButtonEditConsultationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditConsultationActionPerformed
         EditConsultationJDialog editConsultationJDialog = new EditConsultationJDialog(this,true);
         editConsultationJDialog.setVisible(true);
+//        (new EditConsultationJDialog(this,true,(Consultation) Controller.getSelectedObjectFromJTable(jTableConsultations))).setVisible(true);
     }//GEN-LAST:event_jButtonEditConsultationActionPerformed
 
     private void jButtonEditExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditExamActionPerformed
         EditExamJDialog editExamJDialog = new EditExamJDialog(this,true);
         editExamJDialog.setVisible(true);
+//        (new EditExamJDialog(this,true,(Exam) Controller.getSelectedObjectFromJTable(jTableExams))).setVisible(true);
     }//GEN-LAST:event_jButtonEditExamActionPerformed
 
     private void jButtonMenuBarExamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarExamsActionPerformed
@@ -1402,6 +1425,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private void jButtonEditAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditAnimalActionPerformed
         EditAnimalJDialog editAnimalJDialog = new EditAnimalJDialog(this,true);
         editAnimalJDialog.setVisible(true);
+//        (new EditAnimalJDialog(this,true,(Animal) Controller.getSelectedObjectFromJTable(jTableAnimals))).setVisible(true);
     }//GEN-LAST:event_jButtonEditAnimalActionPerformed
 
     private void jButtonMenuBarAnimalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarAnimalsActionPerformed
@@ -1417,8 +1441,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMenuBarAnimalsActionPerformed
 
     private void jButtonEditClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditClientActionPerformed
-        EditClientJDialog editClientJDialog = new EditClientJDialog(this,true);
-        editClientJDialog.setVisible(true);
+        (new EditClientJDialog(this,true,(Client) Controller.getSelectedObjectFromJTable(jTableClients))).setVisible(true);
     }//GEN-LAST:event_jButtonEditClientActionPerformed
 
     private void jButtonMenuBarClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarClientsActionPerformed
@@ -1436,6 +1459,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private void jButtonEditVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditVetActionPerformed
         EditVetJDialog editVetJDialog = new EditVetJDialog(this,true);
         editVetJDialog.setVisible(true);
+//        (new EditVetJDialog(this,true,(Vet) Controller.getSelectedObjectFromJTable(jTableVets))).setVisible(true);
     }//GEN-LAST:event_jButtonEditVetActionPerformed
 
     private void jButtonMenuBarVetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarVetsActionPerformed
@@ -1458,26 +1482,31 @@ public class MainJFrame extends javax.swing.JFrame {
     private void jButtonEditTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditTreatmentActionPerformed
         EditTreatmentJDialog editTreatmentJDialog = new EditTreatmentJDialog(this,true);
         editTreatmentJDialog.setVisible(true);
+//        (new EditTreatmentJDialog(this,true,(Treatment) Controller.getSelectedObjectFromJTable(jTableTreatments))).setVisible(true);
     }//GEN-LAST:event_jButtonEditTreatmentActionPerformed
 
     private void jButtonDeleteTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteTreatmentActionPerformed
         DeleteTreatmentJDialog deleteTreatmentJDialog = new DeleteTreatmentJDialog(this,true);
         deleteTreatmentJDialog.setVisible(true);
+//        (new DeleteTreatmentJDialog(this,true,(Treatment) Controller.getSelectedObjectFromJTable(jTableTreatments))).setVisible(true);
     }//GEN-LAST:event_jButtonDeleteTreatmentActionPerformed
 
     private void jButtonSeeTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeTreatmentActionPerformed
         SeeTreatmentJDialog seeTreatmentJDialog = new SeeTreatmentJDialog(this,true);
         seeTreatmentJDialog.setVisible(true);
+//        (new SeeTreatmentJDialog(this,true,(Treatment) Controller.getSelectedObjectFromJTable(jTableTreatments))).setVisible(true);
     }//GEN-LAST:event_jButtonSeeTreatmentActionPerformed
 
     private void jButtonDeleteConsultationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteConsultationActionPerformed
         DeleteConsultationJDialog deleteConsultationJDialog = new DeleteConsultationJDialog(this,true);
         deleteConsultationJDialog.setVisible(true);
+//        (new DeleteConsultationJDialog(this,true,(Consultation) Controller.getSelectedObjectFromJTable(jTableConsultations))).setVisible(true);
     }//GEN-LAST:event_jButtonDeleteConsultationActionPerformed
 
     private void jButtonSeeConsultationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeConsultationActionPerformed
         SeeConsultationJDialog seeConsultationJDialog = new SeeConsultationJDialog(this,true);
         seeConsultationJDialog.setVisible(true);
+//        (new SeeConsultationJDialog(this,true,(Consultation) Controller.getSelectedObjectFromJTable(jTableConsultations))).setVisible(true);
     }//GEN-LAST:event_jButtonSeeConsultationActionPerformed
 
     private void jButtonNewConsultationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewConsultationActionPerformed
@@ -1488,11 +1517,13 @@ public class MainJFrame extends javax.swing.JFrame {
     private void jButtonSeeExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeExamActionPerformed
         SeeExamJDialog seeExamJDialog = new SeeExamJDialog(this,true);
         seeExamJDialog.setVisible(true);
+//        (new SeeExamJDialog(this,true,(Exam) Controller.getSelectedObjectFromJTable(jTableExams))).setVisible(true);
     }//GEN-LAST:event_jButtonSeeExamActionPerformed
 
     private void jButtonDeleteExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteExamActionPerformed
         DeleteExamJDialog deleteExamJDialog = new DeleteExamJDialog(this,true);
         deleteExamJDialog.setVisible(true);
+//        (new DeleteExamJDialog(this,true,(Exam) Controller.getSelectedObjectFromJTable(jTableExams))).setVisible(true);
     }//GEN-LAST:event_jButtonDeleteExamActionPerformed
 
     private void jButtonNewExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewExamActionPerformed
@@ -1503,11 +1534,13 @@ public class MainJFrame extends javax.swing.JFrame {
     private void jButtonSeeAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeAnimalActionPerformed
         SeeAnimalJDialog seeAnimalJDialog = new SeeAnimalJDialog(this,true);
         seeAnimalJDialog.setVisible(true);
+//        (new SeeAnimalJDialog(this,true,(Animal) Controller.getSelectedObjectFromJTable(jTableAnimals))).setVisible(true);
     }//GEN-LAST:event_jButtonSeeAnimalActionPerformed
 
     private void jButtonDeleteAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteAnimalActionPerformed
         DeleteAnimalJDialog deleteAnimalJDialog = new DeleteAnimalJDialog(this,true);
         deleteAnimalJDialog.setVisible(true);
+//        (new DeleteAnimalJDialog(this,true,(Animal) Controller.getSelectedObjectFromJTable(jTableAnimals))).setVisible(true);
     }//GEN-LAST:event_jButtonDeleteAnimalActionPerformed
 
     private void jButtonNewAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewAnimalActionPerformed
@@ -1516,13 +1549,11 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNewAnimalActionPerformed
 
     private void jButtonSeeClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeClientActionPerformed
-        SeeClientJDialog seeClientJDialog = new SeeClientJDialog(this,true);
-        seeClientJDialog.setVisible(true);
+        (new SeeClientJDialog(this,true,(Client) Controller.getSelectedObjectFromJTable(jTableClients))).setVisible(true);
     }//GEN-LAST:event_jButtonSeeClientActionPerformed
 
     private void jButtonDeleteClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteClientActionPerformed
-        DeleteClientJDialog deleteClientJDialog = new DeleteClientJDialog(this,true);
-        deleteClientJDialog.setVisible(true);
+        (new DeleteClientJDialog(this,true,(Client) Controller.getSelectedObjectFromJTable(jTableClients))).setVisible(true);
     }//GEN-LAST:event_jButtonDeleteClientActionPerformed
 
     private void jButtonNewClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewClientActionPerformed
@@ -1533,11 +1564,13 @@ public class MainJFrame extends javax.swing.JFrame {
     private void jButtonSeeVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeVetActionPerformed
         SeeVetJDialog seeVetJDialog = new SeeVetJDialog(this,true);
         seeVetJDialog.setVisible(true);
+//        (new SeeVetJDialog(this,true,(Vet) Controller.getSelectedObjectFromJTable(jTableVets))).setVisible(true);
     }//GEN-LAST:event_jButtonSeeVetActionPerformed
 
     private void jButtonDeleteVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteVetActionPerformed
         DeleteVetJDialog deleteVetJDialog = new DeleteVetJDialog(this,true);
         deleteVetJDialog.setVisible(true);
+//        (new DeleteVetJDialog(this,true,(Vet) Controller.getSelectedObjectFromJTable(jTableVets))).setVisible(true);
     }//GEN-LAST:event_jButtonDeleteVetActionPerformed
 
     private void jButtonNewVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewVetActionPerformed
@@ -1545,6 +1578,12 @@ public class MainJFrame extends javax.swing.JFrame {
         newVetJDialog.setVisible(true);
     }//GEN-LAST:event_jButtonNewVetActionPerformed
 
+    private void removeObjectColumnsFromJTables() {
+        for(javax.swing.JTable jTable : this.jTables) {
+            Controller.removeObjectColumnFromJTable(jTable);
+        }
+    }
+    
     private void setNotVisibleAllCardLayoutJPanels() {
         List<javax.swing.JPanel> cardLayoutJPanels = getCardLayoutJPanels();
         for (javax.swing.JPanel cardLayoutJPanel : cardLayoutJPanels) {

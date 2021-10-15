@@ -6,15 +6,19 @@
 
 package View.Client;
 
+import Models.Client;
 /**
  *
  * @author mateu
  */
 public class EditClientJDialog extends javax.swing.JDialog {
 
+    private final Client client;
+    
     /** Creates new form EditClientJDialog */
-    public EditClientJDialog(java.awt.Frame parent, boolean modal) {
+    public EditClientJDialog(java.awt.Frame parent, boolean modal, Client client) {
         super(parent, modal);
+        this.client = client;
         initComponents();
     }
 
@@ -57,7 +61,7 @@ public class EditClientJDialog extends javax.swing.JDialog {
 
         jLabelNewAnimalName.setText("Name");
 
-        jTextFieldNewAnimalName.setText("Jenisvaldo");
+        jTextFieldNewAnimalName.setText(this.client.getName());
 
         jLabelNewAnimalBirthYear.setText("Phone");
 
@@ -66,7 +70,7 @@ public class EditClientJDialog extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextFieldNewAnimalBirthYear.setText("(77)91111-2222");
+        jFormattedTextFieldNewAnimalBirthYear.setText(this.client.getPhone());
 
         jButtonNewAnimalConfirm.setText("Update");
         jButtonNewAnimalConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -78,15 +82,15 @@ public class EditClientJDialog extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextField1.setText("11111-222");
+        jFormattedTextField1.setText(this.client.getZipCode());
 
         jLabel2.setText("Email");
 
-        jTextField1.setText("jenisvaldo@email.com");
+        jTextField1.setText(this.client.getEmail());
 
         jLabel3.setText("Address");
 
-        jTextField2.setText("Rua 1");
+        jTextField2.setText(this.client.getAddress());
 
         jButton1.setText("New Animal");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -184,44 +188,6 @@ public class EditClientJDialog extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditClientJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditClientJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditClientJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditClientJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                EditClientJDialog dialog = new EditClientJDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

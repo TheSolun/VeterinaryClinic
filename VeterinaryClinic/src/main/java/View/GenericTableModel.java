@@ -14,6 +14,8 @@ import javax.swing.table.TableColumn;
 public abstract class GenericTableModel extends AbstractTableModel {
     protected ArrayList<Object> vData;
     protected String[] columns;
+    
+    public final static String objectColumnName = "object";
 
     public GenericTableModel(List vData, String[] columns) {
         this.columns = columns;

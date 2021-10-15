@@ -12,12 +12,10 @@ View\Treatment\EditTreatmentJDialog$2.class
 View\Animal\SeeAnimalJDialog$5$1.class
 View\MainJFrame$19.class
 View\MainJFrame$29.class
-View\Client\EditClientJDialog$1$1.class
 View\Client\NewClientJDialog$2$1.class
 View\MainJFrame$11.class
 View\MainJFrame$21.class
 View\Vet\SeeVetJDialog$2.class
-View\Client\DeleteClientJDialog$2$1.class
 View\Consultation\EditConsultationJDialog$2.class
 Exceptions\BlankDescriptionException.class
 View\Vet\DeleteVetJDialog.class
@@ -26,7 +24,6 @@ View\MainJFrame$24.class
 Exceptions\ZipCodeNotOnlyWithNumbersException.class
 View\Client\NewClientJDialog.class
 View\Animal\NewAnimalJDialog$1.class
-View\Client\EditClientJDialog$1.class
 View\MainJFrame$1.class
 View\Treatment\DeleteTreatmentJDialog.class
 Models\Consultation.class
@@ -49,7 +46,6 @@ View\MainJFrame$23.class
 View\Animal\EditAnimalJDialog$1.class
 View\MainJFrame$17.class
 View\MainJFrame$27.class
-View\Client\SeeClientJDialog$2$1.class
 View\MainJFrame$33.class
 View\Exam\SeeExamJDialog$2.class
 Exceptions\StartAndEndDatesNotInChronologicalOrderException.class
@@ -104,7 +100,6 @@ View\Consultation\NewConsultationJDialog$1.class
 View\Treatment\SeeTreatmentJDialog$1.class
 View\Animal\SeeAnimalJDialog$1.class
 View\Consultation\EditConsultationJDialog.class
-View\Client\DeleteClientJDialog$2.class
 View\Animal\NewAnimalJDialog$3.class
 View\Animal\EditAnimalJDialog$2.class
 View\Client\SeeClientJDialog.class
@@ -124,7 +119,6 @@ View\Vet\NewVetJDialog$1.class
 View\Animal\DeleteAnimalJDialog$1.class
 View\MainJFrame$35.class
 View\MainJFrame$8.class
-View\Client\SeeClientJDialog$2.class
 Models\Client.class
 View\Animal\NewAnimalJDialog$3$1.class
 View\Treatment\NewTreatmentJDialog$2.class
