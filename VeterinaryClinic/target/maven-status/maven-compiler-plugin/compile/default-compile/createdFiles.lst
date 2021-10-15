@@ -148,6 +148,7 @@ View\MainJFrame$36.class
 View\MainJFrame$7.class
 View\Client\DeleteClientJDialog.class
 View\Exam\NewExamJDialog$1.class
+View\MainJFrame$SetAllButtonsAsDisabled.class
 View\Treatment\NewTreatmentJDialog$3.class
 View\MainJFrame.class
 View\Client\SeeClientJDialog$1.class
