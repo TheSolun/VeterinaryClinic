@@ -88,24 +88,24 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jLabelEditAnimalClient" max="32767" attributes="0"/>
-                              <Component id="jLabelEditAnimalBirthYear" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabelEditAnimalGender" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabelEditAnimalSpecies" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabelSeeAnimalClient" max="32767" attributes="0"/>
+                              <Component id="jLabelSeeAnimalBirthYear" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabelSeeAnimalGender" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabelSeeAnimalSpecies" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jLabelEditAnimalName" alignment="0" min="-2" pref="47" max="-2" attributes="0"/>
+                          <Component id="jLabelSeeAnimalName" alignment="0" min="-2" pref="47" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextFieldEditAnimalName" max="32767" attributes="0"/>
+                          <Component id="jTextFieldSeeAnimalName" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jTextFieldEditAnimalClientName" pref="257" max="32767" attributes="0"/>
+                              <Component id="jTextFieldSeeAnimalClientName" pref="257" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonEditAnimalSelectClient" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonSeeAnimalSelectClient" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jComboBoxEditAnimalGender" max="32767" attributes="0"/>
-                          <Component id="jComboBoxEditAnimalSpecies" max="32767" attributes="0"/>
-                          <Component id="jFormattedTextFieldEditAnimalBirthYear" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jComboBoxSeeAnimalGender" max="32767" attributes="0"/>
+                          <Component id="jComboBoxSeeAnimalSpecies" max="32767" attributes="0"/>
+                          <Component id="jFormattedTextFieldSeeAnimalBirthYear" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -121,34 +121,34 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelEditAnimalName" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="jTextFieldEditAnimalName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelSeeAnimalName" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="jTextFieldSeeAnimalName" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelEditAnimalBirthYear" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="jFormattedTextFieldEditAnimalBirthYear" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelSeeAnimalBirthYear" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="jFormattedTextFieldSeeAnimalBirthYear" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jLabelEditAnimalGender" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelSeeAnimalGender" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="jLabelEditAnimalSpecies" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="jLabelSeeAnimalSpecies" min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="jComboBoxEditAnimalGender" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxSeeAnimalGender" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                              <Component id="jComboBoxEditAnimalSpecies" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxSeeAnimalSpecies" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabelEditAnimalClient" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jButtonEditAnimalSelectClient" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelSeeAnimalClient" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="jButtonSeeAnimalSelectClient" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jTextFieldEditAnimalClientName" max="32767" attributes="0"/>
+                          <Component id="jTextFieldSeeAnimalClientName" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -161,54 +161,63 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabelEditAnimalName">
+            <Component class="javax.swing.JLabel" name="jLabelSeeAnimalName">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Name"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldEditAnimalName">
+            <Component class="javax.swing.JTextField" name="jTextFieldSeeAnimalName">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="text" type="java.lang.String" value="Foguinho"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="this.animal.getName()" type="code"/>
+                </Property>
                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldEditAnimalNameActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldSeeAnimalNameActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelEditAnimalBirthYear">
+            <Component class="javax.swing.JLabel" name="jLabelSeeAnimalBirthYear">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Birth Year"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldEditAnimalBirthYear">
+            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldSeeAnimalBirthYear">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                   <Format format="####" subtype="-1" type="5"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="2020"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="this.animal.getBirthYear()" type="code"/>
+                </Property>
                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelEditAnimalGender">
+            <Component class="javax.swing.JLabel" name="jLabelSeeAnimalGender">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gender"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBoxEditAnimalGender">
+            <Component class="javax.swing.JComboBox" name="jComboBoxSeeAnimalGender">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
-                    <StringItem index="0" value="Female"/>
-                    <StringItem index="1" value="Male"/>
+                    <StringItem index="0" value="FEMALE"/>
+                    <StringItem index="1" value="MALE"/>
                   </StringArray>
                 </Property>
-                <Property name="selectedIndex" type="int" value="1"/>
+                <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="this.getGenderComboBoxIndexFromValue(this.animal.getGender().toString())" type="code"/>
+                </Property>
+                <Property name="selectedItem" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="this.animal.getGender().toString()" type="code"/>
+                </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
                 </Property>
@@ -218,15 +227,15 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelEditAnimalSpecies">
+            <Component class="javax.swing.JLabel" name="jLabelSeeAnimalSpecies">
               <Properties>
                 <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="jComboBoxEditAnimalSpecies" type="code"/>
+                  <Connection code="jComboBoxSeeAnimalSpecies" type="code"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Species"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBoxEditAnimalSpecies">
+            <Component class="javax.swing.JComboBox" name="jComboBoxSeeAnimalSpecies">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">
@@ -235,22 +244,28 @@
                     <StringItem index="2" value="Other"/>
                   </StringArray>
                 </Property>
+                <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="this.getSpeciesComboBoxIndexFromValue(this.animal.getSpecies().getName())" type="code"/>
+                </Property>
+                <Property name="selectedItem" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="this.animal.getSpecies().getName()" type="code"/>
+                </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxEditAnimalSpeciesActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxSeeAnimalSpeciesActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelEditAnimalClient">
+            <Component class="javax.swing.JLabel" name="jLabelSeeAnimalClient">
               <Properties>
                 <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="jTextFieldEditAnimalClientName" type="code"/>
+                  <Connection code="jTextFieldSeeAnimalClientName" type="code"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Client"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -264,10 +279,12 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldEditAnimalClientName">
+            <Component class="javax.swing.JTextField" name="jTextFieldSeeAnimalClientName">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="text" type="java.lang.String" value="Jenisvaldo"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="this.animal.getOwner().getName()" type="code"/>
+                </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
@@ -283,10 +300,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldEditAnimalClientNameActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldSeeAnimalClientNameActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonEditAnimalSelectClient">
+            <Component class="javax.swing.JButton" name="jButtonSeeAnimalSelectClient">
               <Properties>
                 <Property name="text" type="java.lang.String" value="See Client"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -294,7 +311,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEditAnimalSelectClientActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSeeAnimalSelectClientActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton1">

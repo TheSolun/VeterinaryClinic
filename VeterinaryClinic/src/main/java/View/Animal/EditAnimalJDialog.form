@@ -171,7 +171,9 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldEditAnimalName">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Foguinho"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="this.animal.getName()" type="code"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelEditAnimalBirthYear">
@@ -184,7 +186,9 @@
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                   <Format format="####" subtype="-1" type="5"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="2020"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="this.animal.getBirthYear()" type="code"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelEditAnimalGender">
@@ -196,11 +200,16 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
-                    <StringItem index="0" value="Female"/>
-                    <StringItem index="1" value="Male"/>
+                    <StringItem index="0" value="FEMALE"/>
+                    <StringItem index="1" value="MALE"/>
                   </StringArray>
                 </Property>
-                <Property name="selectedIndex" type="int" value="1"/>
+                <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="this.getGenderComboBoxIndexFromValue(this.animal.getGender().toString())" type="code"/>
+                </Property>
+                <Property name="selectedItem" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="this.animal.getGender().toString()" type="code"/>
+                </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
                 </Property>
@@ -225,6 +234,12 @@
                     <StringItem index="1" value="Cat"/>
                     <StringItem index="2" value="Other"/>
                   </StringArray>
+                </Property>
+                <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="this.getSpeciesComboBoxIndexFromValue(this.animal.getSpecies().getName())" type="code"/>
+                </Property>
+                <Property name="selectedItem" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="this.animal.getSpecies().getName()" type="code"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
@@ -292,7 +307,9 @@
             <Component class="javax.swing.JTextField" name="jTextFieldEditAnimalClientName">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="text" type="java.lang.String" value="Jenisvaldo"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="this.animal.getOwner().getName()" type="code"/>
+                </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>

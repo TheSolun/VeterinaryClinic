@@ -15,15 +15,19 @@ import java.util.function.Consumer;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.ImageIcon;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JTable;
 import javax.swing.plaf.*;
 import javax.swing.plaf.metal.*;
+import javax.swing.table.*;
+import javax.swing.table.TableColumn;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import Controller.Controller;
+import View.GenericTableModel;
 
 import View.Treatment.DeleteTreatmentJDialog;
 import View.Treatment.EditTreatmentJDialog;
@@ -77,6 +81,7 @@ public class MainJFrame extends javax.swing.JFrame {
     
     private List<javax.swing.JButton> jTableActionButtons = new ArrayList<javax.swing.JButton>();
     private List<javax.swing.JTable> jTables = new ArrayList<javax.swing.JTable>();
+    private javax.swing.JButton initialTableBarButton;
     
     private void setJTableActionButtons() {
         this.jTableActionButtons.add(this.jButtonSeeTreatment);
@@ -99,13 +104,12 @@ public class MainJFrame extends javax.swing.JFrame {
         this.jTableActionButtons.add(this.jButtonDeleteVet);
     }
     
-    private void setJTables() {
-        this.jTables.add(this.jTableTreatments);
-        this.jTables.add(this.jTableConsultations);
-        this.jTables.add(this.jTableExams);
-        this.jTables.add(this.jTableAnimals);
-        this.jTables.add(this.jTableClients);
-        this.jTables.add(this.jTableVets);
+    private void setInitialTableBarButton() {
+        this.initialTableBarButton = jButtonMenuBarTreatments;
+    }
+    
+    private void clickInitialTableBarButton() {
+        this.initialTableBarButton.doClick();
     }
     
     /** Creates new form MainJFrame */
@@ -113,8 +117,9 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         this.setJTableActionButtons();
         this.addJTablesSelectionRowEvents();
-        this.setJTables();
-        this.removeObjectColumnsFromJTables();
+        this.setEmptyAllJTables();
+        this.setInitialTableBarButton();
+        this.clickInitialTableBarButton();
     }
 
     /** This method is called from within the constructor to
@@ -837,78 +842,6 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanelAnimals.setPreferredSize(new java.awt.Dimension(407, 200));
 
         jTableAnimals.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTableAnimals.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, "Foguinho", "2020", "Male", "Dog", "Jenisvaldo"},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "object", "Name", "Birth Year", "Gender", "Species", "Client"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
         jTableAnimals.setIntercellSpacing(new java.awt.Dimension(4, 2));
         jTableAnimals.setSelectionBackground(java.awt.Color.lightGray);
         jTableAnimals.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -1011,78 +944,6 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanelClients.setPreferredSize(new java.awt.Dimension(407, 200));
 
         jTableClients.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTableClients.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, "Jenisvaldo", "jenisvaldo@email.com", "77911112222", "Rua 1", "11111222"},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "object", "Name", "Email", "Phone", "Address", "Zip Code"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
         jTableClients.setIntercellSpacing(new java.awt.Dimension(4, 2));
         jTableClients.setSelectionBackground(java.awt.Color.lightGray);
         jTableClients.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -1380,6 +1241,7 @@ public class MainJFrame extends javax.swing.JFrame {
             this.setAllJTablesActionButtonsAsDisabled();
             this.setEmptyAllJTables();
             //Controller.setTableModel
+            Controller.removeObjectColumnFromJTable(this.jTableTreatments);
             this.jPanelTreatments.setVisible(true);
         } catch (Exception ex) {
             System.out.println(ex);
@@ -1392,6 +1254,7 @@ public class MainJFrame extends javax.swing.JFrame {
             this.setAllJTablesActionButtonsAsDisabled();
             this.setEmptyAllJTables();
             //Controller.setTableModel
+            Controller.removeObjectColumnFromJTable(this.jTableConsultations);
             this.jPanelConsultations.setVisible(true);
         } catch (Exception ex) {
             System.out.println(ex);
@@ -1416,6 +1279,7 @@ public class MainJFrame extends javax.swing.JFrame {
             this.setAllJTablesActionButtonsAsDisabled();
             this.setEmptyAllJTables();
             //Controller.setTableModel
+            Controller.removeObjectColumnFromJTable(this.jTableExams);
             this.jPanelExams.setVisible(true);
         } catch (Exception ex) {
             System.out.println(ex);
@@ -1423,9 +1287,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMenuBarExamsActionPerformed
 
     private void jButtonEditAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditAnimalActionPerformed
-        EditAnimalJDialog editAnimalJDialog = new EditAnimalJDialog(this,true);
-        editAnimalJDialog.setVisible(true);
-//        (new EditAnimalJDialog(this,true,(Animal) Controller.getSelectedObjectFromJTable(jTableAnimals))).setVisible(true);
+        (new EditAnimalJDialog(this,true,(Animal) Controller.getSelectedObjectFromJTable(jTableAnimals))).setVisible(true);
     }//GEN-LAST:event_jButtonEditAnimalActionPerformed
 
     private void jButtonMenuBarAnimalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarAnimalsActionPerformed
@@ -1434,6 +1296,7 @@ public class MainJFrame extends javax.swing.JFrame {
             this.setAllJTablesActionButtonsAsDisabled();
             this.setEmptyAllJTables();
             Controller.setTableModel(this.jTableAnimals, new AnimalTableModel(AnimalDAO.getInstance().retrieveAll()));
+            Controller.removeObjectColumnFromJTable(this.jTableAnimals);
             this.jPanelAnimals.setVisible(true);
         } catch (Exception ex) {
             System.out.println(ex);
@@ -1450,6 +1313,7 @@ public class MainJFrame extends javax.swing.JFrame {
             this.setAllJTablesActionButtonsAsDisabled();
             this.setEmptyAllJTables();
             Controller.setTableModel(jTableClients, new ClientTableModel(ClientDAO.getInstance().retrieveAll()));
+            Controller.removeObjectColumnFromJTable(this.jTableClients);
             this.jPanelClients.setVisible(true);
         } catch (Exception ex) {
             System.out.println(ex);
@@ -1468,6 +1332,7 @@ public class MainJFrame extends javax.swing.JFrame {
             this.setAllJTablesActionButtonsAsDisabled();
             this.setEmptyAllJTables();
             //Controller.setTableModel
+            Controller.removeObjectColumnFromJTable(this.jTableVets);
             this.jPanelVets.setVisible(true);
         } catch (Exception ex) {
             System.out.println(ex);
@@ -1532,15 +1397,11 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNewExamActionPerformed
 
     private void jButtonSeeAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeAnimalActionPerformed
-        SeeAnimalJDialog seeAnimalJDialog = new SeeAnimalJDialog(this,true);
-        seeAnimalJDialog.setVisible(true);
-//        (new SeeAnimalJDialog(this,true,(Animal) Controller.getSelectedObjectFromJTable(jTableAnimals))).setVisible(true);
+        (new SeeAnimalJDialog(this,true,(Animal) Controller.getSelectedObjectFromJTable(jTableAnimals))).setVisible(true);
     }//GEN-LAST:event_jButtonSeeAnimalActionPerformed
 
     private void jButtonDeleteAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteAnimalActionPerformed
-        DeleteAnimalJDialog deleteAnimalJDialog = new DeleteAnimalJDialog(this,true);
-        deleteAnimalJDialog.setVisible(true);
-//        (new DeleteAnimalJDialog(this,true,(Animal) Controller.getSelectedObjectFromJTable(jTableAnimals))).setVisible(true);
+        (new DeleteAnimalJDialog(this,true,(Animal) Controller.getSelectedObjectFromJTable(jTableAnimals))).setVisible(true);
     }//GEN-LAST:event_jButtonDeleteAnimalActionPerformed
 
     private void jButtonNewAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewAnimalActionPerformed
@@ -1577,12 +1438,6 @@ public class MainJFrame extends javax.swing.JFrame {
         NewVetJDialog newVetJDialog = new NewVetJDialog(this,true);
         newVetJDialog.setVisible(true);
     }//GEN-LAST:event_jButtonNewVetActionPerformed
-
-    private void removeObjectColumnsFromJTables() {
-        for(javax.swing.JTable jTable : this.jTables) {
-            Controller.removeObjectColumnFromJTable(jTable);
-        }
-    }
     
     private void setNotVisibleAllCardLayoutJPanels() {
         List<javax.swing.JPanel> cardLayoutJPanels = getCardLayoutJPanels();

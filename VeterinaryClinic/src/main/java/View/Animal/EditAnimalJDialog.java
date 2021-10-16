@@ -6,19 +6,40 @@
 
 package View.Animal;
 
+import Models.Animal;
+
 /**
  *
  * @author mateu
  */
 public class EditAnimalJDialog extends javax.swing.JDialog {
 
+    private Animal animal;
+    
     /** Creates new form EditAnimalJDialog */
-    public EditAnimalJDialog(java.awt.Frame parent, boolean modal) {
+    public EditAnimalJDialog(java.awt.Frame parent, boolean modal, Animal animal) {
         super(parent, modal);
+        this.animal = animal;
         initComponents();
         this.jPanelEditAnimalNewSpecies.setVisible(false);
     }
 
+    private int getGenderComboBoxIndexFromValue(String value) {
+        for (int i = 0; i < this.jComboBoxEditAnimalGender.getItemCount(); i++) {
+            if (this.jComboBoxEditAnimalGender.getItemAt(i).equals(value))
+                return i;
+        }
+        return -1;
+    }
+    
+    private int getSpeciesComboBoxIndexFromValue(String value) {
+        for (int i = 0; i < this.jComboBoxEditAnimalSpecies.getItemCount(); i++) {
+            if (this.jComboBoxEditAnimalSpecies.getItemAt(i).equals(value))
+                return i;
+        }
+        return -1;
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -62,7 +83,7 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
 
         jLabelEditAnimalName.setText("Name");
 
-        jTextFieldEditAnimalName.setText("Foguinho");
+        jTextFieldEditAnimalName.setText(this.animal.getName());
 
         jLabelEditAnimalBirthYear.setText("Birth Year");
 
@@ -71,18 +92,21 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextFieldEditAnimalBirthYear.setText("2020");
+        jFormattedTextFieldEditAnimalBirthYear.setText(this.animal.getBirthYear());
 
         jLabelEditAnimalGender.setText("Gender");
 
-        jComboBoxEditAnimalGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Female", "Male" }));
-        jComboBoxEditAnimalGender.setSelectedIndex(1);
+        jComboBoxEditAnimalGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FEMALE", "MALE" }));
+        jComboBoxEditAnimalGender.setSelectedIndex(this.getGenderComboBoxIndexFromValue(this.animal.getGender().toString()));
+        jComboBoxEditAnimalGender.setSelectedItem(this.animal.getGender().toString());
         jComboBoxEditAnimalGender.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabelEditAnimalSpecies.setLabelFor(jComboBoxEditAnimalSpecies);
         jLabelEditAnimalSpecies.setText("Species");
 
         jComboBoxEditAnimalSpecies.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dog", "Cat", "Other" }));
+        jComboBoxEditAnimalSpecies.setSelectedIndex(this.getSpeciesComboBoxIndexFromValue(this.animal.getSpecies().getName()));
+        jComboBoxEditAnimalSpecies.setSelectedItem(this.animal.getSpecies().getName());
         jComboBoxEditAnimalSpecies.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jComboBoxEditAnimalSpecies.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +141,7 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
         jLabelEditAnimalClient.setPreferredSize(new java.awt.Dimension(36, 14));
 
         jTextFieldEditAnimalClientName.setEditable(false);
-        jTextFieldEditAnimalClientName.setText("Jenisvaldo");
+        jTextFieldEditAnimalClientName.setText(this.animal.getOwner().getName());
         jTextFieldEditAnimalClientName.setToolTipText("");
         jTextFieldEditAnimalClientName.setDisabledTextColor(java.awt.Color.black);
         jTextFieldEditAnimalClientName.setEnabled(false);
@@ -252,47 +276,6 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonEditAnimalSelectClientActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditAnimalJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditAnimalJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditAnimalJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditAnimalJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                EditAnimalJDialog dialog = new EditAnimalJDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -6,10 +6,8 @@ View\MainJFrame$9.class
 View\Client\EditClientJDialog.class
 View\Consultation\SeeConsultationJDialog$1$1.class
 Tests.class
-View\Animal\DeleteAnimalJDialog$2.class
 View\MainJFrame$31.class
 View\Treatment\EditTreatmentJDialog$2.class
-View\Animal\SeeAnimalJDialog$5$1.class
 View\MainJFrame$19.class
 View\MainJFrame$29.class
 View\Client\NewClientJDialog$2$1.class
@@ -31,8 +29,6 @@ View\Exam\DeleteExamJDialog$2$1.class
 View\Vet\EditVetJDialog$1.class
 View\Vet\EditVetJDialog.class
 Models\Treatment.class
-View\Animal\SeeAnimalJDialog$5.class
-View\Animal\DeleteAnimalJDialog$2$1.class
 View\Treatment\DeleteTreatmentJDialog$1.class
 View\Treatment\NewTreatmentJDialog$1.class
 View\Client\NewClientJDialog$2.class
@@ -80,7 +76,6 @@ View\MainJFrame$10.class
 View\Exam\SeeExamJDialog$2$1.class
 View\MainJFrame$3.class
 View\Vet\NewVetJDialog.class
-View\Animal\EditAnimalJDialog$3$1.class
 View\Animal\DeleteAnimalJDialog.class
 View\MainJFrame$15.class
 View\MainJFrame$2.class
@@ -110,7 +105,6 @@ View\MainJFrame$18.class
 View\Treatment\EditTreatmentJDialog$3.class
 View\MainJFrame$5.class
 View\MainJFrame$32.class
-View\MainJFrame$38.class
 View\Vet\DeleteVetJDialog$1.class
 Models\Exam.class
 View\MainJFrame$20.class
@@ -157,14 +151,12 @@ View\Exam\DeleteExamJDialog$2.class
 View\MainJFrame$6.class
 View\Exam\EditExamJDialog$1.class
 View\GenericTableModel.class
-View\MainJFrame$37.class
 View\Consultation\SeeConsultationJDialog$1.class
 View\Consultation\NewConsultationJDialog.class
 View\Vet\NewVetJDialog$3$1.class
 View\Vet\DeleteVetJDialog$2$1.class
 View\Consultation\DeleteConsultationJDialog.class
 View\MainJFrame$30.class
-View\Animal\EditAnimalJDialog$3.class
 View\MainJFrame$25.class
 Models\DAO\VetDAO.class
 Models\Species.class

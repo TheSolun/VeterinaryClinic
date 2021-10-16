@@ -18,10 +18,18 @@ public abstract class GenericTableModel extends AbstractTableModel {
     public final static String objectColumnName = "object";
 
     public GenericTableModel(List vData, String[] columns) {
-        this.columns = columns;
+        this.setColumns(columns);
         this.vData = (ArrayList)vData;
     }
-
+    
+    private void setColumns(String[] columns) {
+        this.columns = new String[columns.length + 1];
+        this.columns[0] = objectColumnName;
+        for (int i=0; i<columns.length; i++) {
+           this.columns[i+1] =  columns[i];
+        }
+    }
+    
     @Override
     public int getColumnCount() {
         return columns.length;
@@ -36,6 +44,14 @@ public abstract class GenericTableModel extends AbstractTableModel {
     public String getColumnName(int columnIndex) {
         return columns[columnIndex];
     }
+    
+    public int getColumnIndex(String columnName) {
+        for (int i=0; i<columns.length; i++) {
+            if (columns[i].equals(columnName))
+                return i;
+        }
+        return -1;
+    }
 
     // Metodos auxiliares:
     public Object getItem(int rowIndex) {
@@ -47,8 +63,8 @@ public abstract class GenericTableModel extends AbstractTableModel {
 
     public void addItem(Object obj) {
         vData.add(obj);
-        int ultimoIndice = getRowCount() - 1;
-        fireTableRowsInserted(ultimoIndice, ultimoIndice);
+        int lastIndex = getRowCount() - 1;
+        fireTableRowsInserted(lastIndex, lastIndex);
     }
 
     public void removeItem(int rowIndex) {

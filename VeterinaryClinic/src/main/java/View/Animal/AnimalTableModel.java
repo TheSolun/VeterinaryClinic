@@ -21,7 +21,17 @@ public class AnimalTableModel extends GenericTableModel {
     }
     
     public AnimalTableModel(List vData) {
-        super(vData, new String[]{objectColumnName,"Name","Birth Year","Gender","Species","Client"});
+        super(vData, new String[]{"Name","Birth Year","Gender","Species","Client"});
+    }
+    
+    public Object[][] getDataAsObjectMatrix() {
+        Object[][] dataAsObjMatrix  = new Object[getRowCount()][getColumnCount()];
+        for(int rowIdx = 0; rowIdx < getRowCount(); rowIdx++) {
+            for(int columnIdx = 0; columnIdx < getColumnCount(); columnIdx++) {
+                dataAsObjMatrix[rowIdx][columnIdx] = getValueAt(rowIdx,columnIdx);
+            }
+        }
+        return dataAsObjMatrix;
     }
     
     @Override
