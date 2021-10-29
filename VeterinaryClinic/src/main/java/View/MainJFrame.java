@@ -38,6 +38,7 @@ import View.Treatment.NewTreatmentJDialog;
 import View.Treatment.SeeTreatmentJDialog;
 import Models.Treatment;
 import Models.DAO.TreatmentDAO;
+import Controller.ControllerTreatment;
 
 import View.Consultation.DeleteConsultationJDialog;
 import View.Consultation.EditConsultationJDialog;
@@ -1243,15 +1244,10 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jButtonMenuBarTreatmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarTreatmentsActionPerformed
         try {
-//            this.setNotVisibleAllCardLayoutJPanels();
-//            this.setAllJTablesActionButtonsAsDisabled();
-//            Controller.setEmptyAllJTables(this.tableComponentsCollection);
-//            Controller.setTableModel
-//            Controller.removeObjectColumnFromJTable(this.jTableTreatments);
-//            this.jPanelTreatments.setVisible(true);
-            Controller.showDataTableAll(this.tableComponentsCollection,this.getTableComponentsTreatments());
+            ControllerTreatment.showDataTableAll(this.tableComponentsCollection,this.getTableComponentsTreatments());
         } catch (Exception ex) {
             System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this,ex);
         }
     }//GEN-LAST:event_jButtonMenuBarTreatmentsActionPerformed
 
@@ -1292,6 +1288,7 @@ public class MainJFrame extends javax.swing.JFrame {
             Controller.showDataTableAll(this.tableComponentsCollection,this.getTableComponentsExams());
         } catch (Exception ex) {
             System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this,ex);
         }
     }//GEN-LAST:event_jButtonMenuBarExamsActionPerformed
 
@@ -1300,7 +1297,7 @@ public class MainJFrame extends javax.swing.JFrame {
             ControllerAnimal.showEditAnimalJDialogFromJTableSelection(this);
         } catch (Exception ex) {
             System.out.println(ex);
-            JOptionPane.showMessageDialog(this,ex);
+            javax.swing.JOptionPane.showMessageDialog(this,ex);
         }
     }//GEN-LAST:event_jButtonEditAnimalActionPerformed
 
@@ -1309,6 +1306,7 @@ public class MainJFrame extends javax.swing.JFrame {
             ControllerAnimal.showDataTableAll(this.tableComponentsCollection,this.getTableComponentsAnimals());
         } catch (Exception ex) {
             System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this,ex);
         }
     }//GEN-LAST:event_jButtonMenuBarAnimalsActionPerformed
 
@@ -1321,6 +1319,7 @@ public class MainJFrame extends javax.swing.JFrame {
             ControllerClient.showDataTableAll(this.tableComponentsCollection,this.getTableComponentsClients());
         } catch (Exception ex) {
             System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this,ex);
         }
     }//GEN-LAST:event_jButtonMenuBarClientsActionPerformed
 
@@ -1338,26 +1337,20 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMenuBarVetsActionPerformed
 
     private void jButtonNewTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewTreatmentActionPerformed
-        NewTreatmentJDialog newTreatmentJDialog = new NewTreatmentJDialog(this,true);
-        newTreatmentJDialog.setVisible(true);
+        this.jButtonMenuBarAnimals.doClick();
+        javax.swing.JOptionPane.showMessageDialog(this,"Select a animal, click 'Edit' and then click 'New Treatment'.");
     }//GEN-LAST:event_jButtonNewTreatmentActionPerformed
 
     private void jButtonEditTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditTreatmentActionPerformed
-        EditTreatmentJDialog editTreatmentJDialog = new EditTreatmentJDialog(this,true);
-        editTreatmentJDialog.setVisible(true);
-//        (new EditTreatmentJDialog(this,true,(Treatment) Controller.getSelectedObjectFromJTable(jTableTreatments))).setVisible(true);
+        ControllerTreatment.showEditTreatmentJDialogFromJTableSelection(this);
     }//GEN-LAST:event_jButtonEditTreatmentActionPerformed
 
     private void jButtonDeleteTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteTreatmentActionPerformed
-        DeleteTreatmentJDialog deleteTreatmentJDialog = new DeleteTreatmentJDialog(this,true);
-        deleteTreatmentJDialog.setVisible(true);
-//        (new DeleteTreatmentJDialog(this,true,(Treatment) Controller.getSelectedObjectFromJTable(jTableTreatments))).setVisible(true);
+        ControllerTreatment.showDeleteTreatmentJDialogFromJTableSelection(this);
     }//GEN-LAST:event_jButtonDeleteTreatmentActionPerformed
 
     private void jButtonSeeTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeTreatmentActionPerformed
-        SeeTreatmentJDialog seeTreatmentJDialog = new SeeTreatmentJDialog(this,true);
-        seeTreatmentJDialog.setVisible(true);
-//        (new SeeTreatmentJDialog(this,true,(Treatment) Controller.getSelectedObjectFromJTable(jTableTreatments))).setVisible(true);
+        ControllerTreatment.showSeeTreatmentJDialogFromJTableSelection(this);
     }//GEN-LAST:event_jButtonSeeTreatmentActionPerformed
 
     private void jButtonDeleteConsultationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteConsultationActionPerformed
@@ -1433,8 +1426,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDeleteVetActionPerformed
 
     private void jButtonNewVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewVetActionPerformed
-        NewVetJDialog newVetJDialog = new NewVetJDialog(this,true);
-        newVetJDialog.setVisible(true);
+        ControllerVet.showNewVetJDialogFromJTableSelection(this);
     }//GEN-LAST:event_jButtonNewVetActionPerformed
     
     /**

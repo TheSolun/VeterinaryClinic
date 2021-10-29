@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import javax.swing.ComboBoxModel;
 
 import Controller.ControllerAnimal;
+import Controller.ControllerTreatment;
 
 /**
  *
@@ -19,7 +20,7 @@ import Controller.ControllerAnimal;
  */
 public class EditAnimalJDialog extends javax.swing.JDialog {
 
-    private java.awt.Frame frameParent;
+    private View.MainJFrame frame;
     private int animalId;
     private String animalName;
     private String animalBirthYear;
@@ -32,9 +33,9 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
     private ComboBoxModel speciesComboModel;
     
     /** Creates new form EditAnimalJDialog */
-    public EditAnimalJDialog(java.awt.Frame parent, boolean modal, int animalId, String animalName, String animalBirthYear, String animalGender, int clientId, String clientName, int speciesId, String speciesName) throws SQLException, Exception {
-        super(parent, modal);
-        this.frameParent = parent;
+    public EditAnimalJDialog(View.MainJFrame frame, boolean modal, int animalId, String animalName, String animalBirthYear, String animalGender, int clientId, String clientName, int speciesId, String speciesName) throws SQLException, Exception {
+        super(frame, modal);
+        this.frame = frame;
         this.animalId = animalId;
         this.animalName = animalName;
         this.animalBirthYear = animalBirthYear;
@@ -158,6 +159,11 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
 
         jButton1.setText("New Treatment");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanelEditAnimalFormLayout = new org.jdesktop.layout.GroupLayout(jPanelEditAnimalForm);
         jPanelEditAnimalForm.setLayout(jPanelEditAnimalFormLayout);
@@ -259,6 +265,15 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
     private void jComboBoxEditAnimalSpeciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEditAnimalSpeciesActionPerformed
         this.jPanelEditAnimalNewSpecies.setVisible(this.jComboBoxEditAnimalSpecies.getSelectedItem().toString() == "Other");
     }//GEN-LAST:event_jComboBoxEditAnimalSpeciesActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            ControllerTreatment.showNewTreatmentJDialogByAnimalId(this.frame,this.animalId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

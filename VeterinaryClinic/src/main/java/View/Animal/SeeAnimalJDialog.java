@@ -13,6 +13,7 @@ import javax.swing.ComboBoxModel;
 
 import Controller.ControllerAnimal;
 import Controller.ControllerClient;
+import Controller.ControllerTreatment;
 /**
  *
  * @author mateu
@@ -159,6 +160,11 @@ public class SeeAnimalJDialog extends javax.swing.JDialog {
         jButton1.setMaximumSize(new java.awt.Dimension(122, 23));
         jButton1.setMinimumSize(new java.awt.Dimension(122, 23));
         jButton1.setPreferredSize(new java.awt.Dimension(122, 23));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("See Consultations");
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -282,6 +288,15 @@ public class SeeAnimalJDialog extends javax.swing.JDialog {
     private void jTextFieldSeeAnimalNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSeeAnimalNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldSeeAnimalNameActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            ControllerTreatment.showDataTableByAnimalId(this.frame.getTableComponentsCollection(), this.frame.getTableComponentsTreatments(), this.animalId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

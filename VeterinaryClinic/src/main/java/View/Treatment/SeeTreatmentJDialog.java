@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package View.Treatment;
+
+import Controller.ControllerAnimal;
+import Controller.ControllerClient;
 
 /**
  *
@@ -12,9 +9,28 @@ package View.Treatment;
  */
 public class SeeTreatmentJDialog extends javax.swing.JDialog {
 
+    private final View.MainJFrame frame;
+    private final int treatmentId;
+    private final String treatmentName;
+    private final String treatmentStartDay;
+    private final String treatmentEndDay;
+    private final int animalId;
+    private final String animalName;
+    private final int clientId;
+    private final String clientName;
+    
     /** Creates new form SeeTreatmentJDialog */
-    public SeeTreatmentJDialog(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public SeeTreatmentJDialog(View.MainJFrame frame, boolean modal, int treatmentId, String treatmentName, String treatmentStartDay, String treatmentEndDay, int animalId, String animalName, int clientId, String clientName) {
+        super(frame, modal);
+        this.frame = frame;
+        this.treatmentId = treatmentId;
+        this.treatmentName = treatmentName;
+        this.treatmentStartDay = treatmentStartDay;
+        this.treatmentEndDay = treatmentEndDay;
+        this.animalId = animalId;
+        this.animalName = animalName;
+        this.clientId = clientId;
+        this.clientName = clientName;
         initComponents();
     }
 
@@ -28,23 +44,23 @@ public class SeeTreatmentJDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanelFrame = new javax.swing.JPanel();
-        jPanelEditTreatmentTittle = new javax.swing.JPanel();
-        jLabelNewTreatmentTittle = new javax.swing.JLabel();
-        jPanelEditTreatmentForm = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextFieldEditTreatmentName = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextFieldEditTreatmentStartDate = new javax.swing.JFormattedTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextFieldEditTreatmentEndDate = new javax.swing.JFormattedTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jPanelSeeTreatmentTittle = new javax.swing.JPanel();
+        jLabelSeeTreatmentTittle = new javax.swing.JLabel();
+        jPanelSeeTreatmentForm = new javax.swing.JPanel();
+        jLabelSeeTreatmentName = new javax.swing.JLabel();
+        jTextFieldSeeTreatmentName = new javax.swing.JTextField();
+        jLabelSeeTreatmentStartDay = new javax.swing.JLabel();
+        jTextFieldSeeTreatmentStartDay = new javax.swing.JFormattedTextField();
+        jLabelSeeTreatmentEndDay = new javax.swing.JLabel();
+        jTextFieldSeeTreatmentEndDay = new javax.swing.JFormattedTextField();
+        jLabelSeeTreatmentAnimalName = new javax.swing.JLabel();
+        jTextFieldSeeTreatmentAnimalName = new javax.swing.JTextField();
+        jLabelSeeTreatmentClientName = new javax.swing.JLabel();
+        jTextFieldSeeTreatmentClientName = new javax.swing.JTextField();
+        jButtonSeeTreatmentSeeConsultations = new javax.swing.JButton();
+        jButtonSeeTreatmentSeeExams = new javax.swing.JButton();
+        jButtonSeeTreatmentSeeAnimal = new javax.swing.JButton();
+        jButtonSeeTreatmentSeeClient = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("See Treatment");
@@ -52,150 +68,160 @@ public class SeeTreatmentJDialog extends javax.swing.JDialog {
 
         jPanelFrame.setToolTipText("");
 
-        jPanelEditTreatmentTittle.setLayout(new java.awt.BorderLayout());
+        jPanelSeeTreatmentTittle.setLayout(new java.awt.BorderLayout());
 
-        jLabelNewTreatmentTittle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabelNewTreatmentTittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNewTreatmentTittle.setText("See Treatment");
-        jPanelEditTreatmentTittle.add(jLabelNewTreatmentTittle, java.awt.BorderLayout.CENTER);
+        jLabelSeeTreatmentTittle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabelSeeTreatmentTittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelSeeTreatmentTittle.setText("See Treatment");
+        jPanelSeeTreatmentTittle.add(jLabelSeeTreatmentTittle, java.awt.BorderLayout.CENTER);
 
-        jLabel1.setText("Name");
+        jLabelSeeTreatmentName.setText("Name");
 
-        jTextFieldEditTreatmentName.setEditable(false);
-        jTextFieldEditTreatmentName.setText("Treatment1");
-        jTextFieldEditTreatmentName.setDisabledTextColor(java.awt.Color.black);
-        jTextFieldEditTreatmentName.setEnabled(false);
-        jTextFieldEditTreatmentName.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldSeeTreatmentName.setEditable(false);
+        jTextFieldSeeTreatmentName.setText(this.treatmentName);
+        jTextFieldSeeTreatmentName.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldSeeTreatmentName.setEnabled(false);
+        jTextFieldSeeTreatmentName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldEditTreatmentNameActionPerformed(evt);
+                jTextFieldSeeTreatmentNameActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Start Date");
+        jLabelSeeTreatmentStartDay.setText("Start Day");
 
-        jTextFieldEditTreatmentStartDate.setEditable(false);
+        jTextFieldSeeTreatmentStartDay.setEditable(false);
         try {
-            jTextFieldEditTreatmentStartDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
+            jTextFieldSeeTreatmentStartDay.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jTextFieldEditTreatmentStartDate.setText("2019-09-01");
-        jTextFieldEditTreatmentStartDate.setDisabledTextColor(java.awt.Color.black);
-        jTextFieldEditTreatmentStartDate.setEnabled(false);
+        jTextFieldSeeTreatmentStartDay.setText(this.treatmentStartDay);
+        jTextFieldSeeTreatmentStartDay.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldSeeTreatmentStartDay.setEnabled(false);
 
-        jLabel3.setText("End Date");
+        jLabelSeeTreatmentEndDay.setText("End Day");
 
-        jTextFieldEditTreatmentEndDate.setEditable(false);
+        jTextFieldSeeTreatmentEndDay.setEditable(false);
         try {
-            jTextFieldEditTreatmentEndDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
+            jTextFieldSeeTreatmentEndDay.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jTextFieldEditTreatmentEndDate.setText("2019-09-02");
-        jTextFieldEditTreatmentEndDate.setDisabledTextColor(java.awt.Color.black);
-        jTextFieldEditTreatmentEndDate.setEnabled(false);
+        jTextFieldSeeTreatmentEndDay.setText(this.treatmentEndDay);
+        jTextFieldSeeTreatmentEndDay.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldSeeTreatmentEndDay.setEnabled(false);
 
-        jLabel4.setText("Animal");
+        jLabelSeeTreatmentAnimalName.setText("Animal");
 
-        jTextField2.setEditable(false);
-        jTextField2.setText("Foguinho");
-        jTextField2.setDisabledTextColor(java.awt.Color.black);
-        jTextField2.setEnabled(false);
+        jTextFieldSeeTreatmentAnimalName.setEditable(false);
+        jTextFieldSeeTreatmentAnimalName.setText(this.animalName);
+        jTextFieldSeeTreatmentAnimalName.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldSeeTreatmentAnimalName.setEnabled(false);
 
-        jLabel5.setText("Client");
+        jLabelSeeTreatmentClientName.setText("Client");
 
-        jTextField3.setEditable(false);
-        jTextField3.setText("Jenisvaldo");
-        jTextField3.setDisabledTextColor(java.awt.Color.black);
-        jTextField3.setEnabled(false);
+        jTextFieldSeeTreatmentClientName.setEditable(false);
+        jTextFieldSeeTreatmentClientName.setText(this.clientName);
+        jTextFieldSeeTreatmentClientName.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldSeeTreatmentClientName.setEnabled(false);
 
-        jButton1.setText("See Consultations");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeTreatmentSeeConsultations.setText("See Consultations");
+        jButtonSeeTreatmentSeeConsultations.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton2.setText("See Exams");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeTreatmentSeeExams.setText("See Exams");
+        jButtonSeeTreatmentSeeExams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton3.setText("See Animal");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeTreatmentSeeAnimal.setText("See Animal");
+        jButtonSeeTreatmentSeeAnimal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeTreatmentSeeAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeTreatmentSeeAnimalActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("See Client");
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeTreatmentSeeClient.setText("See Client");
+        jButtonSeeTreatmentSeeClient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeTreatmentSeeClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeTreatmentSeeClientActionPerformed(evt);
+            }
+        });
 
-        org.jdesktop.layout.GroupLayout jPanelEditTreatmentFormLayout = new org.jdesktop.layout.GroupLayout(jPanelEditTreatmentForm);
-        jPanelEditTreatmentForm.setLayout(jPanelEditTreatmentFormLayout);
-        jPanelEditTreatmentFormLayout.setHorizontalGroup(
-            jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelEditTreatmentFormLayout.createSequentialGroup()
-                .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel1)
-                    .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        org.jdesktop.layout.GroupLayout jPanelSeeTreatmentFormLayout = new org.jdesktop.layout.GroupLayout(jPanelSeeTreatmentForm);
+        jPanelSeeTreatmentForm.setLayout(jPanelSeeTreatmentFormLayout);
+        jPanelSeeTreatmentFormLayout.setHorizontalGroup(
+            jPanelSeeTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelSeeTreatmentFormLayout.createSequentialGroup()
+                .add(jPanelSeeTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabelSeeTreatmentEndDay, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabelSeeTreatmentStartDay, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabelSeeTreatmentName)
+                    .add(jLabelSeeTreatmentAnimalName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jLabelSeeTreatmentClientName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jTextFieldEditTreatmentName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
-                    .add(jTextFieldEditTreatmentStartDate)
-                    .add(jTextFieldEditTreatmentEndDate)
-                    .add(jPanelEditTreatmentFormLayout.createSequentialGroup()
-                        .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jTextField3)
-                            .add(jTextField2))
+                .add(jPanelSeeTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jTextFieldSeeTreatmentName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                    .add(jTextFieldSeeTreatmentStartDay)
+                    .add(jTextFieldSeeTreatmentEndDay)
+                    .add(jPanelSeeTreatmentFormLayout.createSequentialGroup()
+                        .add(jPanelSeeTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jTextFieldSeeTreatmentClientName)
+                            .add(jTextFieldSeeTreatmentAnimalName))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(jButton3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(jButton4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-            .add(jPanelEditTreatmentFormLayout.createSequentialGroup()
-                .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 187, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jPanelSeeTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(jButtonSeeTreatmentSeeAnimal, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(jButtonSeeTreatmentSeeClient, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+            .add(jPanelSeeTreatmentFormLayout.createSequentialGroup()
+                .add(jButtonSeeTreatmentSeeConsultations, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 187, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(jButtonSeeTreatmentSeeExams, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanelEditTreatmentFormLayout.setVerticalGroup(
-            jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelEditTreatmentFormLayout.createSequentialGroup()
-                .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jTextFieldEditTreatmentName)
-                    .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jPanelSeeTreatmentFormLayout.setVerticalGroup(
+            jPanelSeeTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelSeeTreatmentFormLayout.createSequentialGroup()
+                .add(jPanelSeeTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jTextFieldSeeTreatmentName)
+                    .add(jLabelSeeTreatmentName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jTextFieldEditTreatmentStartDate)
-                    .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(jPanelSeeTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jTextFieldSeeTreatmentStartDay)
+                    .add(jLabelSeeTreatmentStartDay, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jTextFieldEditTreatmentEndDate)
-                    .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(jPanelSeeTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jTextFieldSeeTreatmentEndDay)
+                    .add(jLabelSeeTreatmentEndDay, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jButton3))
+                .add(jPanelSeeTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabelSeeTreatmentAnimalName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jTextFieldSeeTreatmentAnimalName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jButtonSeeTreatmentSeeAnimal))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jButton4))
+                .add(jPanelSeeTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabelSeeTreatmentClientName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jTextFieldSeeTreatmentClientName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jButtonSeeTreatmentSeeClient))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton1)
-                    .add(jButton2)))
+                .add(jPanelSeeTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButtonSeeTreatmentSeeConsultations)
+                    .add(jButtonSeeTreatmentSeeExams)))
         );
 
         org.jdesktop.layout.GroupLayout jPanelFrameLayout = new org.jdesktop.layout.GroupLayout(jPanelFrame);
         jPanelFrame.setLayout(jPanelFrameLayout);
         jPanelFrameLayout.setHorizontalGroup(
             jPanelFrameLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelEditTreatmentTittle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .add(jPanelSeeTreatmentTittle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanelEditTreatmentForm, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jPanelSeeTreatmentForm, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelFrameLayout.setVerticalGroup(
             jPanelFrameLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelFrameLayout.createSequentialGroup()
-                .add(jPanelEditTreatmentTittle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jPanelSeeTreatmentTittle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelEditTreatmentForm, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jPanelSeeTreatmentForm, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -214,71 +240,47 @@ public class SeeTreatmentJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldEditTreatmentNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEditTreatmentNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldEditTreatmentNameActionPerformed
+    private void jTextFieldSeeTreatmentNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSeeTreatmentNameActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    }//GEN-LAST:event_jTextFieldSeeTreatmentNameActionPerformed
+
+    private void jButtonSeeTreatmentSeeAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeTreatmentSeeAnimalActionPerformed
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SeeTreatmentJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SeeTreatmentJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SeeTreatmentJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SeeTreatmentJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            ControllerAnimal.showSeeAnimalJDialogFromAnimalId(this.frame, this.animalId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
         }
-        //</editor-fold>
+    }//GEN-LAST:event_jButtonSeeTreatmentSeeAnimalActionPerformed
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                SeeTreatmentJDialog dialog = new SeeTreatmentJDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    private void jButtonSeeTreatmentSeeClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeTreatmentSeeClientActionPerformed
+        try {
+            ControllerClient.showSeeClientJDialogFromClientId(this.frame, this.clientId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
+    }//GEN-LAST:event_jButtonSeeTreatmentSeeClientActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabelNewTreatmentTittle;
-    private javax.swing.JPanel jPanelEditTreatmentForm;
-    private javax.swing.JPanel jPanelEditTreatmentTittle;
+    private javax.swing.JButton jButtonSeeTreatmentSeeAnimal;
+    private javax.swing.JButton jButtonSeeTreatmentSeeClient;
+    private javax.swing.JButton jButtonSeeTreatmentSeeConsultations;
+    private javax.swing.JButton jButtonSeeTreatmentSeeExams;
+    private javax.swing.JLabel jLabelSeeTreatmentAnimalName;
+    private javax.swing.JLabel jLabelSeeTreatmentClientName;
+    private javax.swing.JLabel jLabelSeeTreatmentEndDay;
+    private javax.swing.JLabel jLabelSeeTreatmentName;
+    private javax.swing.JLabel jLabelSeeTreatmentStartDay;
+    private javax.swing.JLabel jLabelSeeTreatmentTittle;
     private javax.swing.JPanel jPanelFrame;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JFormattedTextField jTextFieldEditTreatmentEndDate;
-    private javax.swing.JTextField jTextFieldEditTreatmentName;
-    private javax.swing.JFormattedTextField jTextFieldEditTreatmentStartDate;
+    private javax.swing.JPanel jPanelSeeTreatmentForm;
+    private javax.swing.JPanel jPanelSeeTreatmentTittle;
+    private javax.swing.JTextField jTextFieldSeeTreatmentAnimalName;
+    private javax.swing.JTextField jTextFieldSeeTreatmentClientName;
+    private javax.swing.JFormattedTextField jTextFieldSeeTreatmentEndDay;
+    private javax.swing.JTextField jTextFieldSeeTreatmentName;
+    private javax.swing.JFormattedTextField jTextFieldSeeTreatmentStartDay;
     // End of variables declaration//GEN-END:variables
 
 }

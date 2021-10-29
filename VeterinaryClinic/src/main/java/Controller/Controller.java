@@ -137,9 +137,6 @@ public class Controller {
     
     public static void showDataTableAll(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents) throws SQLException, Exception {
         switch(tableComponents.getId()) {
-            case "Treatments":
-//                Controller.showDataTable(tableComponentsCollection,tableComponents, new TreatmentTableModel(TreatmentDAO.getInstance().retrieveAll()));
-                break;
             case "Consultations":
 //                Controller.showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(ConsultationDAO.getInstance().retrieveAll()));
                 break;

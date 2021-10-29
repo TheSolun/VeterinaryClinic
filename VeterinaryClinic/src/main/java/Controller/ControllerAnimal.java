@@ -46,6 +46,11 @@ public class ControllerAnimal extends Controller {
         (new SeeAnimalJDialog(frame,true,animal.getId(),animal.getName(),animal.getBirthYear(),animal.getGender().toString(),animal.getOwner().getId(),animal.getOwner().getName(),animal.getSpecies().getId(),animal.getSpecies().getName())).setVisible(true);
     }
     
+    public static void showSeeAnimalJDialogFromAnimalId(MainJFrame frame, int animalId) throws SQLException, Exception {
+        Animal animal = AnimalDAO.getInstance().retrieveById(animalId);
+        (new SeeAnimalJDialog(frame,true,animal.getId(),animal.getName(),animal.getBirthYear(),animal.getGender().toString(),animal.getOwner().getId(),animal.getOwner().getName(),animal.getSpecies().getId(),animal.getSpecies().getName())).setVisible(true);
+    }
+    
     private static List<String> getSpeciesNamesList() throws SQLException, Exception {
         List<Species> speciesList = SpeciesDAO.getInstance().retrieveAll();
         List<String> speciesNamesList = new ArrayList<String>();
