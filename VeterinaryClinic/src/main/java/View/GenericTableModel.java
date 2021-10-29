@@ -15,7 +15,7 @@ public abstract class GenericTableModel extends AbstractTableModel {
     protected ArrayList<Object> vData;
     protected String[] columns;
     
-    public final static String objectColumnName = "object";
+    public final static String idColumnName = "id";
 
     public GenericTableModel(List vData, String[] columns) {
         this.setColumns(columns);
@@ -24,7 +24,7 @@ public abstract class GenericTableModel extends AbstractTableModel {
     
     private void setColumns(String[] columns) {
         this.columns = new String[columns.length + 1];
-        this.columns[0] = objectColumnName;
+        this.columns[0] = idColumnName;
         for (int i=0; i<columns.length; i++) {
            this.columns[i+1] =  columns[i];
         }

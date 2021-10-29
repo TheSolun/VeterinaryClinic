@@ -17,7 +17,7 @@ import java.util.List;
 public class AnimalTableModel extends GenericTableModel {
     
     public AnimalTableModel() {
-        super(new ArrayList<Object>(), new String[]{objectColumnName,"Name","Birth Year","Gender","Species","Client"});
+        super(new ArrayList<Object>(), new String[]{idColumnName,"Name","Birth Year","Gender","Species","Client"});
     }
     
     public AnimalTableModel(List vData) {
@@ -38,7 +38,7 @@ public class AnimalTableModel extends GenericTableModel {
     public Class<?> getColumnClass(int columnIndex) {
         switch(columnIndex) {
             case 0:
-                return Animal.class;
+                return int.class;
             case 1:
                 return String.class;
             case 2:
@@ -60,7 +60,7 @@ public class AnimalTableModel extends GenericTableModel {
         
         switch(columnIndex) {
             case 0:
-                return animal;
+                return animal.getId();
             case 1:
                 return animal.getName();
             case 2:

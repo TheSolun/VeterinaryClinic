@@ -170,7 +170,7 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="this.animal.getName()" type="code"/>
+                  <Connection code="this.animalName" type="code"/>
                 </Property>
                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
@@ -192,7 +192,7 @@
                   <Format format="####" subtype="-1" type="5"/>
                 </Property>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="this.animal.getBirthYear()" type="code"/>
+                  <Connection code="this.animalBirthYear" type="code"/>
                 </Property>
                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
@@ -206,17 +206,8 @@
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBoxSeeAnimalGender">
               <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="FEMALE"/>
-                    <StringItem index="1" value="MALE"/>
-                  </StringArray>
-                </Property>
-                <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="this.getGenderComboBoxIndexFromValue(this.animal.getGender().toString())" type="code"/>
-                </Property>
-                <Property name="selectedItem" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="this.animal.getGender().toString()" type="code"/>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="this.genderComboModel" type="code"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
@@ -237,18 +228,8 @@
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBoxSeeAnimalSpecies">
               <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="3">
-                    <StringItem index="0" value="Dog"/>
-                    <StringItem index="1" value="Cat"/>
-                    <StringItem index="2" value="Other"/>
-                  </StringArray>
-                </Property>
-                <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="this.getSpeciesComboBoxIndexFromValue(this.animal.getSpecies().getName())" type="code"/>
-                </Property>
-                <Property name="selectedItem" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="this.animal.getSpecies().getName()" type="code"/>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="this.speciesComboModel" type="code"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
@@ -283,7 +264,7 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="this.animal.getOwner().getName()" type="code"/>
+                  <Connection code="this.clientName" type="code"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

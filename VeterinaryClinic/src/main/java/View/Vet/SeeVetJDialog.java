@@ -12,9 +12,20 @@ package View.Vet;
  */
 public class SeeVetJDialog extends javax.swing.JDialog {
 
+    private final View.MainJFrame frame;
+    private final int vetId;
+    private final String vetName;
+    private final String vetPhone;
+    private final String vetAddress;
+    
     /** Creates new form SeeVetJDialog */
-    public SeeVetJDialog(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public SeeVetJDialog(View.MainJFrame frame, boolean modal, int vetId, String vetName, String vetPhone, String vetAddress) {
+        super(frame, modal);
+        this.frame = frame;
+        this.vetId = vetId;
+        this.vetName = vetName;
+        this.vetPhone = vetPhone;
+        this.vetAddress = vetAddress;
         initComponents();
     }
 
@@ -28,119 +39,119 @@ public class SeeVetJDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanelFrame = new javax.swing.JPanel();
-        jPanelNewAnimalTittle = new javax.swing.JPanel();
-        jLabelNewAnimalTittle = new javax.swing.JLabel();
-        jPanelNewAnimalForm = new javax.swing.JPanel();
-        jLabelNewAnimalName = new javax.swing.JLabel();
-        jTextFieldNewAnimalName = new javax.swing.JTextField();
-        jLabelNewAnimalBirthYear = new javax.swing.JLabel();
-        jFormattedTextFieldNewAnimalBirthYear = new javax.swing.JFormattedTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jPanelSeeVetTittle = new javax.swing.JPanel();
+        jLabelSeeVetTittle = new javax.swing.JLabel();
+        jPanelSeeVetForm = new javax.swing.JPanel();
+        jLabelSeeVetName = new javax.swing.JLabel();
+        jTextFieldSeeVetName = new javax.swing.JTextField();
+        jLabelSeeVetPhone = new javax.swing.JLabel();
+        jFormattedTextFieldSeeVetPhone = new javax.swing.JFormattedTextField();
+        jLabelSeeVetAddress = new javax.swing.JLabel();
+        jTextFieldSeeVetAddress = new javax.swing.JTextField();
+        jButtonSeeVetSeeConsultations = new javax.swing.JButton();
+        jButtonSeeVetSeeTreatments = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("See Vet");
         setResizable(false);
 
-        jPanelNewAnimalTittle.setLayout(new java.awt.BorderLayout());
+        jPanelSeeVetTittle.setLayout(new java.awt.BorderLayout());
 
-        jLabelNewAnimalTittle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabelNewAnimalTittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNewAnimalTittle.setText("See Vet");
-        jPanelNewAnimalTittle.add(jLabelNewAnimalTittle, java.awt.BorderLayout.CENTER);
+        jLabelSeeVetTittle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabelSeeVetTittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelSeeVetTittle.setText("See Vet");
+        jPanelSeeVetTittle.add(jLabelSeeVetTittle, java.awt.BorderLayout.CENTER);
 
-        jLabelNewAnimalName.setText("Name");
+        jLabelSeeVetName.setText("Name");
 
-        jTextFieldNewAnimalName.setEditable(false);
-        jTextFieldNewAnimalName.setText("Vet1");
-        jTextFieldNewAnimalName.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldSeeVetName.setEditable(false);
+        jTextFieldSeeVetName.setText(this.vetName);
+        jTextFieldSeeVetName.setDisabledTextColor(java.awt.Color.black);
 
-        jLabelNewAnimalBirthYear.setText("Phone");
+        jLabelSeeVetPhone.setText("Phone");
 
-        jFormattedTextFieldNewAnimalBirthYear.setEditable(false);
+        jFormattedTextFieldSeeVetPhone.setEditable(false);
         try {
-            jFormattedTextFieldNewAnimalBirthYear.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+            jFormattedTextFieldSeeVetPhone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextFieldNewAnimalBirthYear.setText("(66)93333-4444");
-        jFormattedTextFieldNewAnimalBirthYear.setDisabledTextColor(java.awt.Color.black);
+        jFormattedTextFieldSeeVetPhone.setText(this.vetPhone);
+        jFormattedTextFieldSeeVetPhone.setDisabledTextColor(java.awt.Color.black);
 
-        jLabel3.setText("Address");
+        jLabelSeeVetAddress.setText("Address");
 
-        jTextField2.setEditable(false);
-        jTextField2.setText("Rua 3");
-        jTextField2.setDisabledTextColor(java.awt.Color.black);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldSeeVetAddress.setEditable(false);
+        jTextFieldSeeVetAddress.setText(this.vetAddress);
+        jTextFieldSeeVetAddress.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldSeeVetAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextFieldSeeVetAddressActionPerformed(evt);
             }
         });
 
-        jButton1.setText("See Consultations");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeVetSeeConsultations.setText("See Consultations");
+        jButtonSeeVetSeeConsultations.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton2.setText("See Treatments");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeVetSeeTreatments.setText("See Treatments");
+        jButtonSeeVetSeeTreatments.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        org.jdesktop.layout.GroupLayout jPanelNewAnimalFormLayout = new org.jdesktop.layout.GroupLayout(jPanelNewAnimalForm);
-        jPanelNewAnimalForm.setLayout(jPanelNewAnimalFormLayout);
-        jPanelNewAnimalFormLayout.setHorizontalGroup(
-            jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelNewAnimalFormLayout.createSequentialGroup()
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                        .add(jLabelNewAnimalName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(jLabelNewAnimalBirthYear, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
-                    .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 42, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+        org.jdesktop.layout.GroupLayout jPanelSeeVetFormLayout = new org.jdesktop.layout.GroupLayout(jPanelSeeVetForm);
+        jPanelSeeVetForm.setLayout(jPanelSeeVetFormLayout);
+        jPanelSeeVetFormLayout.setHorizontalGroup(
+            jPanelSeeVetFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelSeeVetFormLayout.createSequentialGroup()
+                .add(jPanelSeeVetFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanelSeeVetFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                        .add(jLabelSeeVetName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(jLabelSeeVetPhone, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
+                    .add(jLabelSeeVetAddress, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 42, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jTextFieldNewAnimalName)
-                    .add(jFormattedTextFieldNewAnimalBirthYear, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
-                    .add(jTextField2)))
-            .add(jPanelNewAnimalFormLayout.createSequentialGroup()
-                .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 187, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jPanelSeeVetFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jTextFieldSeeVetName)
+                    .add(jFormattedTextFieldSeeVetPhone, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+                    .add(jTextFieldSeeVetAddress)))
+            .add(jPanelSeeVetFormLayout.createSequentialGroup()
+                .add(jButtonSeeVetSeeConsultations, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 187, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(jButtonSeeVetSeeTreatments, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanelNewAnimalFormLayout.setVerticalGroup(
-            jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelNewAnimalFormLayout.createSequentialGroup()
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabelNewAnimalName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jTextFieldNewAnimalName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+        jPanelSeeVetFormLayout.setVerticalGroup(
+            jPanelSeeVetFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelSeeVetFormLayout.createSequentialGroup()
+                .add(jPanelSeeVetFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabelSeeVetName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jTextFieldSeeVetName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabelNewAnimalBirthYear, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jFormattedTextFieldNewAnimalBirthYear, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jPanelSeeVetFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabelSeeVetPhone, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jFormattedTextFieldSeeVetPhone, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jPanelSeeVetFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabelSeeVetAddress, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jTextFieldSeeVetAddress, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton1)
-                    .add(jButton2)))
+                .add(jPanelSeeVetFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButtonSeeVetSeeConsultations)
+                    .add(jButtonSeeVetSeeTreatments)))
         );
 
         org.jdesktop.layout.GroupLayout jPanelFrameLayout = new org.jdesktop.layout.GroupLayout(jPanelFrame);
         jPanelFrame.setLayout(jPanelFrameLayout);
         jPanelFrameLayout.setHorizontalGroup(
             jPanelFrameLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelNewAnimalTittle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(jPanelSeeVetTittle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanelNewAnimalForm, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jPanelSeeVetForm, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelFrameLayout.setVerticalGroup(
             jPanelFrameLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelFrameLayout.createSequentialGroup()
-                .add(jPanelNewAnimalTittle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jPanelSeeVetTittle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalForm, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jPanelSeeVetForm, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -159,65 +170,23 @@ public class SeeVetJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextFieldSeeVetAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSeeVetAddressActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SeeVetJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SeeVetJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SeeVetJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SeeVetJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                SeeVetJDialog dialog = new SeeVetJDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    }//GEN-LAST:event_jTextFieldSeeVetAddressActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JFormattedTextField jFormattedTextFieldNewAnimalBirthYear;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabelNewAnimalBirthYear;
-    private javax.swing.JLabel jLabelNewAnimalName;
-    private javax.swing.JLabel jLabelNewAnimalTittle;
+    private javax.swing.JButton jButtonSeeVetSeeConsultations;
+    private javax.swing.JButton jButtonSeeVetSeeTreatments;
+    private javax.swing.JFormattedTextField jFormattedTextFieldSeeVetPhone;
+    private javax.swing.JLabel jLabelSeeVetAddress;
+    private javax.swing.JLabel jLabelSeeVetName;
+    private javax.swing.JLabel jLabelSeeVetPhone;
+    private javax.swing.JLabel jLabelSeeVetTittle;
     private javax.swing.JPanel jPanelFrame;
-    private javax.swing.JPanel jPanelNewAnimalForm;
-    private javax.swing.JPanel jPanelNewAnimalTittle;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextFieldNewAnimalName;
+    private javax.swing.JPanel jPanelSeeVetForm;
+    private javax.swing.JPanel jPanelSeeVetTittle;
+    private javax.swing.JTextField jTextFieldSeeVetAddress;
+    private javax.swing.JTextField jTextFieldSeeVetName;
     // End of variables declaration//GEN-END:variables
 
 }

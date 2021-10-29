@@ -71,6 +71,10 @@ public class ClientDAO extends DAO {
         return (clients.isEmpty())? null : clients.get(0);
     }
     
+    public List retrieveByIdAsList(int id) throws SQLException, Exception {
+        return this.retrieve("SELECT * FROM client WHERE id = " + id);
+    }
+    
     public List retrieveBySimilarName(String name) throws Exception {
         return this.retrieve("SELECT * FROM cliente WHERE name LIKE '%" + name + "%'");
     }

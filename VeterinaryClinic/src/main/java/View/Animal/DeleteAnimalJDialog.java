@@ -5,8 +5,6 @@
  */
 
 package View.Animal;
-
-import Models.Animal;
         
 /**
  *
@@ -14,12 +12,16 @@ import Models.Animal;
  */
 public class DeleteAnimalJDialog extends javax.swing.JDialog {
 
-    private Animal animal;
+    private java.awt.Frame frameParent;
+    private int animalId;
+    private String animalName;
     
     /** Creates new form DeleteAnimalJDialog */
-    public DeleteAnimalJDialog(java.awt.Frame parent, boolean modal, Animal animal) {
+    public DeleteAnimalJDialog(java.awt.Frame parent, boolean modal, int animalId, String animalName) {
         super(parent, modal);
-        this.animal = animal;
+        this.frameParent = parent;
+        this.animalId = animalId;
+        this.animalName = animalName;
         initComponents();
     }
 
@@ -53,7 +55,7 @@ public class DeleteAnimalJDialog extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Are you sure that you want to delete the animal '"+this.animal.getName()+"'?");
+        jLabel1.setText("Are you sure that you want to delete the animal '"+this.animalName+"'?");
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("If you do, all its info will be deleted with it.");

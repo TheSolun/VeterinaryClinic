@@ -6,19 +6,45 @@
 
 package View.Animal;
 
+import java.sql.SQLException;
+import java.util.List;
+import java.util.ArrayList;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+
+import Controller.ControllerAnimal;
+
+import Models.Gender;
+import Models.Species;
+import Models.Client;
+import Models.DAO.SpeciesDAO;
+import View.Gender.GenderComboModel;
+import View.Species.SpeciesComboModel;
 /**
  *
  * @author mateu
  */
 public class NewAnimalJDialog extends javax.swing.JDialog {
 
+    private java.awt.Frame frameParent;
+    private int clientId;
+    private String clientName;
+    private ComboBoxModel genderComboModel;
+    private ComboBoxModel speciesComboModel;
+    
     /** Creates new form NewAnimalJDialog */
-    public NewAnimalJDialog(java.awt.Frame parent, boolean modal) {
+    public NewAnimalJDialog(java.awt.Frame parent, boolean modal, int clientId, String clientName) throws SQLException, Exception {
         super(parent, modal);
+        this.frameParent = parent;
+        this.clientId = clientId;
+        this.clientName = clientName;
+        this.genderComboModel = ControllerAnimal.getGenderComboModel();
+        this.speciesComboModel = ControllerAnimal.getSpeciesComboModel();
         initComponents();
-        this.jPanelNewAnimalNewSpecies.setVisible(false);
+        this.jPanelNewAnimalNewSpecies.setVisible(this.jComboBoxNewAnimalSpecies.getSelectedItem().toString() == "Other");
+        this.jTextFieldNewAnimalClientName.setEnabled(false);
     }
-
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -45,7 +71,6 @@ public class NewAnimalJDialog extends javax.swing.JDialog {
         jTextFieldNewAnimalNewSpeciesName = new javax.swing.JTextField();
         jLabelNewAnimalClient = new javax.swing.JLabel();
         jTextFieldNewAnimalClientName = new javax.swing.JTextField();
-        jButtonNewAnimalSelectClient = new javax.swing.JButton();
         jButtonNewAnimalConfirm = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -73,13 +98,18 @@ public class NewAnimalJDialog extends javax.swing.JDialog {
         jLabelNewAnimalGender.setLabelFor(jComboBoxNewAnimalGender);
         jLabelNewAnimalGender.setText("Gender");
 
-        jComboBoxNewAnimalGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Female", "Male" }));
+        jComboBoxNewAnimalGender.setModel(this.genderComboModel);
         jComboBoxNewAnimalGender.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jComboBoxNewAnimalGender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxNewAnimalGenderActionPerformed(evt);
+            }
+        });
 
         jLabelNewAnimalSpecies.setLabelFor(jComboBoxNewAnimalSpecies);
         jLabelNewAnimalSpecies.setText("Species");
 
-        jComboBoxNewAnimalSpecies.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dog", "Cat", "Other" }));
+        jComboBoxNewAnimalSpecies.setModel(this.speciesComboModel);
         jComboBoxNewAnimalSpecies.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jComboBoxNewAnimalSpecies.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,18 +144,11 @@ public class NewAnimalJDialog extends javax.swing.JDialog {
         jLabelNewAnimalClient.setPreferredSize(new java.awt.Dimension(36, 14));
 
         jTextFieldNewAnimalClientName.setEditable(false);
+        jTextFieldNewAnimalClientName.setText(this.clientName);
         jTextFieldNewAnimalClientName.setDisabledTextColor(java.awt.Color.black);
         jTextFieldNewAnimalClientName.setMaximumSize(new java.awt.Dimension(101, 20));
         jTextFieldNewAnimalClientName.setMinimumSize(new java.awt.Dimension(101, 20));
         jTextFieldNewAnimalClientName.setPreferredSize(new java.awt.Dimension(101, 20));
-
-        jButtonNewAnimalSelectClient.setText("Select Client");
-        jButtonNewAnimalSelectClient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonNewAnimalSelectClient.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNewAnimalSelectClientActionPerformed(evt);
-            }
-        });
 
         jButtonNewAnimalConfirm.setText("Register");
         jButtonNewAnimalConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -136,14 +159,13 @@ public class NewAnimalJDialog extends javax.swing.JDialog {
             jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelNewAnimalFormLayout.createSequentialGroup()
                 .add(154, 154, 154)
-                .add(jButtonNewAnimalConfirm))
+                .add(jButtonNewAnimalConfirm)
+                .add(0, 153, Short.MAX_VALUE))
             .add(jPanelNewAnimalNewSpecies, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(jPanelNewAnimalFormLayout.createSequentialGroup()
                 .add(jLabelNewAnimalClient, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 47, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextFieldNewAnimalClientName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 232, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButtonNewAnimalSelectClient))
+                .add(jTextFieldNewAnimalClientName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(jPanelNewAnimalFormLayout.createSequentialGroup()
                 .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
@@ -180,9 +202,7 @@ public class NewAnimalJDialog extends javax.swing.JDialog {
                 .add(jPanelNewAnimalNewSpecies, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                        .add(jLabelNewAnimalClient, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(jButtonNewAnimalSelectClient))
+                    .add(jLabelNewAnimalClient, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jTextFieldNewAnimalClientName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jButtonNewAnimalConfirm))
@@ -222,63 +242,17 @@ public class NewAnimalJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonNewAnimalSelectClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewAnimalSelectClientActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonNewAnimalSelectClientActionPerformed
-
     private void jComboBoxNewAnimalSpeciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxNewAnimalSpeciesActionPerformed
-        if(this.jComboBoxNewAnimalSpecies.getSelectedItem().toString() == "Other") {
-            this.jPanelNewAnimalNewSpecies.setVisible(true);
-        } else {
-            this.jPanelNewAnimalNewSpecies.setVisible(false);
-        }
+        this.jPanelNewAnimalNewSpecies.setVisible(this.jComboBoxNewAnimalSpecies.getSelectedItem().toString() == "Other");
     }//GEN-LAST:event_jComboBoxNewAnimalSpeciesActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewAnimalJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewAnimalJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewAnimalJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewAnimalJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jComboBoxNewAnimalGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxNewAnimalGenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxNewAnimalGenderActionPerformed
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                NewAnimalJDialog dialog = new NewAnimalJDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonNewAnimalConfirm;
-    private javax.swing.JButton jButtonNewAnimalSelectClient;
     private javax.swing.JComboBox<String> jComboBoxNewAnimalGender;
     private javax.swing.JComboBox<String> jComboBoxNewAnimalSpecies;
     private javax.swing.JFormattedTextField jFormattedTextFieldNewAnimalBirthYear;

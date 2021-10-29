@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class ClientTableModel extends GenericTableModel {
     
     public ClientTableModel() {
-        super(new ArrayList<Object>(), new String[]{"Name","Email","Phone","Address","Zip Code"});
+        super(new ArrayList<Object>(), new String[]{idColumnName,"Name","Email","Phone","Address","Zip Code"});
     }
     
     public ClientTableModel(List vData) {
@@ -24,7 +24,7 @@ public class ClientTableModel extends GenericTableModel {
     public Class<?> getColumnClass(int columnIndex) {
         switch(columnIndex) {
             case 0:
-                return Client.class;
+                return int.class;
             case 1:
                 return String.class;
             case 2:
@@ -46,17 +46,17 @@ public class ClientTableModel extends GenericTableModel {
         
         switch(columnIndex) {
             case 0:
-                return client;
+                return client.getId();
             case 1:
                 return client.getName();
             case 2:
                 return client.getEmail();
             case 3:
-                return client.getPhone();
+                return "("+client.getPhone().substring(0,2)+")"+client.getPhone().substring(2,7)+"-"+client.getPhone().substring(7);
             case 4:
                 return client.getAddress();
             case 5:
-                return client.getZipCode();
+                return client.getZipCode().substring(0,5)+"-"+client.getZipCode().substring(5);
             default:
                 throw new IndexOutOfBoundsException("column index out of bounds");
         }

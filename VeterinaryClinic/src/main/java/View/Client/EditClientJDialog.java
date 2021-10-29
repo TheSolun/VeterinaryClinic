@@ -6,19 +6,33 @@
 
 package View.Client;
 
-import Models.Client;
+import Controller.ControllerAnimal;
+import Controller.ControllerClient;
+
 /**
  *
  * @author mateu
  */
 public class EditClientJDialog extends javax.swing.JDialog {
 
-    private final Client client;
+    private final View.MainJFrame frame;
+    private final int clientId;
+    private final String clientName;
+    private final String clientAddress;
+    private final String clientPhone;
+    private final String clientZipCode;
+    private final String clientEmail;
     
     /** Creates new form EditClientJDialog */
-    public EditClientJDialog(java.awt.Frame parent, boolean modal, Client client) {
+    public EditClientJDialog(View.MainJFrame parent, boolean modal,  int clientId, String clientName, String clientAddress, String clientPhone, String clientZipCode, String clientEmail) {
         super(parent, modal);
-        this.client = client;
+        this.frame = parent;
+        this.clientId = clientId;
+        this.clientName = clientName;
+        this.clientAddress = clientAddress;
+        this.clientPhone = clientPhone;
+        this.clientZipCode = clientZipCode;
+        this.clientEmail = clientEmail;
         initComponents();
     }
 
@@ -46,7 +60,7 @@ public class EditClientJDialog extends javax.swing.JDialog {
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jButtonEditClientNewAnimal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edit Client");
@@ -61,7 +75,7 @@ public class EditClientJDialog extends javax.swing.JDialog {
 
         jLabelNewAnimalName.setText("Name");
 
-        jTextFieldNewAnimalName.setText(this.client.getName());
+        jTextFieldNewAnimalName.setText(this.clientName);
 
         jLabelNewAnimalBirthYear.setText("Phone");
 
@@ -70,7 +84,7 @@ public class EditClientJDialog extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextFieldNewAnimalBirthYear.setText(this.client.getPhone());
+        jFormattedTextFieldNewAnimalBirthYear.setText(this.clientPhone);
 
         jButtonNewAnimalConfirm.setText("Update");
         jButtonNewAnimalConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -82,18 +96,23 @@ public class EditClientJDialog extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextField1.setText(this.client.getZipCode());
+        jFormattedTextField1.setText(this.clientZipCode);
 
         jLabel2.setText("Email");
 
-        jTextField1.setText(this.client.getEmail());
+        jTextField1.setText(this.clientEmail);
 
         jLabel3.setText("Address");
 
-        jTextField2.setText(this.client.getAddress());
+        jTextField2.setText(this.clientAddress);
 
-        jButton1.setText("New Animal");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditClientNewAnimal.setText("New Animal");
+        jButtonEditClientNewAnimal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditClientNewAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditClientNewAnimalActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanelNewAnimalFormLayout = new org.jdesktop.layout.GroupLayout(jPanelNewAnimalForm);
         jPanelNewAnimalForm.setLayout(jPanelNewAnimalFormLayout);
@@ -120,7 +139,7 @@ public class EditClientJDialog extends javax.swing.JDialog {
                         .add(jButtonNewAnimalConfirm))
                     .add(jPanelNewAnimalFormLayout.createSequentialGroup()
                         .add(144, 144, 144)
-                        .add(jButton1)))
+                        .add(jButtonEditClientNewAnimal)))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelNewAnimalFormLayout.setVerticalGroup(
@@ -146,7 +165,7 @@ public class EditClientJDialog extends javax.swing.JDialog {
                     .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(jButton1)
+                .add(jButtonEditClientNewAnimal)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButtonNewAnimalConfirm))
         );
@@ -185,12 +204,21 @@ public class EditClientJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonEditClientNewAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditClientNewAnimalActionPerformed
+        try {
+            ControllerAnimal.showNewAnimalJDialogFromEditClient(this.frame,this.clientId,this.clientName);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
+    }//GEN-LAST:event_jButtonEditClientNewAnimalActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonEditClientNewAnimal;
     private javax.swing.JButton jButtonNewAnimalConfirm;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextFieldNewAnimalBirthYear;

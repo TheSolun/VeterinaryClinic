@@ -6,37 +6,46 @@
 
 package View.Animal;
 
-import Models.Animal;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.ArrayList;
+import javax.swing.ComboBoxModel;
 
+import Controller.ControllerAnimal;
+import Controller.ControllerClient;
 /**
  *
  * @author mateu
  */
 public class SeeAnimalJDialog extends javax.swing.JDialog {
 
-    private Animal animal;
+    private View.MainJFrame frame;
+    private int animalId;
+    private String animalName;
+    private String animalBirthYear;
+    private String animalGender;
+    private int clientId;
+    private String clientName;
+    private int speciesId;
+    private String speciesName;
+    private ComboBoxModel genderComboModel;
+    private ComboBoxModel speciesComboModel;
     
     /** Creates new form SeeAnimalJDialog */
-    public SeeAnimalJDialog(java.awt.Frame parent, boolean modal, Animal animal) {
+    public SeeAnimalJDialog(View.MainJFrame parent, boolean modal, int animalId, String animalName, String animalBirthYear, String animalGender, int clientId, String clientName, int speciesId, String speciesName) throws SQLException, Exception {
         super(parent, modal);
-        this.animal = animal;
+        this.frame = parent;
+        this.animalId = animalId;
+        this.animalName = animalName;
+        this.animalBirthYear = animalBirthYear;
+        this.animalGender = animalGender;
+        this.clientId = clientId;
+        this.clientName = clientName;
+        this.speciesId = speciesId;
+        this.speciesName = speciesName;
+        this.genderComboModel = ControllerAnimal.getGenderComboModel(this.animalGender);
+        this.speciesComboModel = ControllerAnimal.getSpeciesComboModel(this.speciesName);
         initComponents();
-    }
-
-    private int getGenderComboBoxIndexFromValue(String value) {
-        for (int i = 0; i < this.jComboBoxSeeAnimalGender.getItemCount(); i++) {
-            if (this.jComboBoxSeeAnimalGender.getItemAt(i).equals(value))
-                return i;
-        }
-        return -1;
-    }
-    
-    private int getSpeciesComboBoxIndexFromValue(String value) {
-        for (int i = 0; i < this.jComboBoxSeeAnimalSpecies.getItemCount(); i++) {
-            if (this.jComboBoxSeeAnimalSpecies.getItemAt(i).equals(value))
-                return i;
-        }
-        return -1;
     }
     
     /** This method is called from within the constructor to
@@ -81,7 +90,7 @@ public class SeeAnimalJDialog extends javax.swing.JDialog {
         jLabelSeeAnimalName.setText("Name");
 
         jTextFieldSeeAnimalName.setEditable(false);
-        jTextFieldSeeAnimalName.setText(this.animal.getName());
+        jTextFieldSeeAnimalName.setText(this.animalName);
         jTextFieldSeeAnimalName.setDisabledTextColor(java.awt.Color.black);
         jTextFieldSeeAnimalName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,23 +106,19 @@ public class SeeAnimalJDialog extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextFieldSeeAnimalBirthYear.setText(this.animal.getBirthYear());
+        jFormattedTextFieldSeeAnimalBirthYear.setText(this.animalBirthYear);
         jFormattedTextFieldSeeAnimalBirthYear.setDisabledTextColor(java.awt.Color.black);
 
         jLabelSeeAnimalGender.setText("Gender");
 
-        jComboBoxSeeAnimalGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FEMALE", "MALE" }));
-        jComboBoxSeeAnimalGender.setSelectedIndex(this.getGenderComboBoxIndexFromValue(this.animal.getGender().toString()));
-        jComboBoxSeeAnimalGender.setSelectedItem(this.animal.getGender().toString());
+        jComboBoxSeeAnimalGender.setModel(this.genderComboModel);
         jComboBoxSeeAnimalGender.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jComboBoxSeeAnimalGender.setEnabled(false);
 
         jLabelSeeAnimalSpecies.setLabelFor(jComboBoxSeeAnimalSpecies);
         jLabelSeeAnimalSpecies.setText("Species");
 
-        jComboBoxSeeAnimalSpecies.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dog", "Cat", "Other" }));
-        jComboBoxSeeAnimalSpecies.setSelectedIndex(this.getSpeciesComboBoxIndexFromValue(this.animal.getSpecies().getName()));
-        jComboBoxSeeAnimalSpecies.setSelectedItem(this.animal.getSpecies().getName());
+        jComboBoxSeeAnimalSpecies.setModel(this.speciesComboModel);
         jComboBoxSeeAnimalSpecies.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jComboBoxSeeAnimalSpecies.setEnabled(false);
         jComboBoxSeeAnimalSpecies.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +134,7 @@ public class SeeAnimalJDialog extends javax.swing.JDialog {
         jLabelSeeAnimalClient.setPreferredSize(new java.awt.Dimension(36, 14));
 
         jTextFieldSeeAnimalClientName.setEditable(false);
-        jTextFieldSeeAnimalClientName.setText(this.animal.getOwner().getName());
+        jTextFieldSeeAnimalClientName.setText(this.clientName);
         jTextFieldSeeAnimalClientName.setToolTipText("");
         jTextFieldSeeAnimalClientName.setDisabledTextColor(java.awt.Color.black);
         jTextFieldSeeAnimalClientName.setMaximumSize(new java.awt.Dimension(101, 20));
@@ -262,7 +267,12 @@ public class SeeAnimalJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jComboBoxSeeAnimalSpeciesActionPerformed
 
     private void jButtonSeeAnimalSelectClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeAnimalSelectClientActionPerformed
-        // TODO add your handling code here:
+        try {
+            ControllerClient.showSeeClientJDialogFromClientId(this.frame,this.clientId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
     }//GEN-LAST:event_jButtonSeeAnimalSelectClientActionPerformed
 
     private void jTextFieldSeeAnimalClientNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSeeAnimalClientNameActionPerformed

@@ -6,7 +6,7 @@
 
 package View.Client;
 
-import Models.Client;
+import Controller.ControllerAnimal;
 
 /**
  *
@@ -14,12 +14,24 @@ import Models.Client;
  */
 public class SeeClientJDialog extends javax.swing.JDialog {
 
-    private final Client client;
+    private final View.MainJFrame frame;
+    private final int clientId;
+    private final String clientName;
+    private final String clientAddress;
+    private final String clientPhone;
+    private final String clientZipCode;
+    private final String clientEmail;
     
     /** Creates new form SeeClientJDialog */
-    public SeeClientJDialog(java.awt.Frame parent, boolean modal, Client client) {
+    public SeeClientJDialog(View.MainJFrame parent, boolean modal, int clientId, String clientName, String clientAddress, String clientPhone, String clientZipCode, String clientEmail) {
         super(parent, modal);
-        this.client = client;
+        this.frame = parent;
+        this.clientId = clientId;
+        this.clientName = clientName;
+        this.clientAddress = clientAddress;
+        this.clientPhone = clientPhone;
+        this.clientZipCode = clientZipCode;
+        this.clientEmail = clientEmail;
         initComponents();
     }
 
@@ -46,7 +58,7 @@ public class SeeClientJDialog extends javax.swing.JDialog {
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jButtonSeeClientSeeAnimals = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -65,7 +77,7 @@ public class SeeClientJDialog extends javax.swing.JDialog {
         jLabelNewAnimalName.setText("Name");
 
         jTextFieldNewAnimalName.setEditable(false);
-        jTextFieldNewAnimalName.setText(this.client.getName());
+        jTextFieldNewAnimalName.setText(this.clientName);
         jTextFieldNewAnimalName.setDisabledTextColor(java.awt.Color.black);
         jTextFieldNewAnimalName.setEnabled(false);
 
@@ -77,7 +89,7 @@ public class SeeClientJDialog extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextFieldNewAnimalBirthYear.setText(this.client.getPhone());
+        jFormattedTextFieldNewAnimalBirthYear.setText(this.clientPhone);
         jFormattedTextFieldNewAnimalBirthYear.setDisabledTextColor(java.awt.Color.black);
         jFormattedTextFieldNewAnimalBirthYear.setEnabled(false);
 
@@ -89,29 +101,29 @@ public class SeeClientJDialog extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextField1.setText(this.client.getZipCode());
+        jFormattedTextField1.setText(this.clientZipCode);
         jFormattedTextField1.setDisabledTextColor(java.awt.Color.black);
         jFormattedTextField1.setEnabled(false);
 
         jLabel2.setText("Email");
 
         jTextField1.setEditable(false);
-        jTextField1.setText(this.client.getEmail());
+        jTextField1.setText(this.clientEmail);
         jTextField1.setDisabledTextColor(java.awt.Color.black);
         jTextField1.setEnabled(false);
 
         jLabel3.setText("Address");
 
         jTextField2.setEditable(false);
-        jTextField2.setText(this.client.getAddress());
+        jTextField2.setText(this.clientAddress);
         jTextField2.setDisabledTextColor(java.awt.Color.black);
         jTextField2.setEnabled(false);
 
-        jButton1.setText("See Animals");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSeeClientSeeAnimals.setText("See Animals");
+        jButtonSeeClientSeeAnimals.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeClientSeeAnimals.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonSeeClientSeeAnimalsActionPerformed(evt);
             }
         });
 
@@ -149,7 +161,7 @@ public class SeeClientJDialog extends javax.swing.JDialog {
             .add(jPanelNewAnimalFormLayout.createSequentialGroup()
                 .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
                     .add(jButton3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                    .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(jButtonSeeClientSeeAnimals, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -179,7 +191,7 @@ public class SeeClientJDialog extends javax.swing.JDialog {
                     .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton1)
+                    .add(jButtonSeeClientSeeAnimals)
                     .add(jButton2))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
@@ -221,9 +233,14 @@ public class SeeClientJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonSeeClientSeeAnimalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeClientSeeAnimalsActionPerformed
+        try {
+            ControllerAnimal.showDataTableByClientId(this.frame.getTableComponentsCollection(), this.frame.getTableComponentsAnimals(), this.clientId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_jButtonSeeClientSeeAnimalsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,10 +248,10 @@ public class SeeClientJDialog extends javax.swing.JDialog {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonSeeClientSeeAnimals;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextFieldNewAnimalBirthYear;
     private javax.swing.JLabel jLabel1;

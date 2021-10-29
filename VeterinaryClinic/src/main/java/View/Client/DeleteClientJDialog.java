@@ -6,19 +6,22 @@
 
 package View.Client;
 
-import Models.Client;
 /**
  *
  * @author mateu
  */
 public class DeleteClientJDialog extends javax.swing.JDialog {
 
-    private final Client client;
+    private final java.awt.Frame frameParent;
+    private final int clientId;
+    private final String clientName;
     
     /** Creates new form DeleteClientJDialog */
-    public DeleteClientJDialog(java.awt.Frame parent, boolean modal, Client client) {
+    public DeleteClientJDialog(java.awt.Frame parent, boolean modal, int clientId, String clientName) {
         super(parent, modal);
-        this.client = client;
+        this.frameParent = parent;
+        this.clientId = clientId;
+        this.clientName = clientName;
         initComponents();
     }
 
@@ -53,7 +56,7 @@ public class DeleteClientJDialog extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Are you sure that you want to delete the client '"+this.client.getName()+"'?");
+        jLabel1.setText("Are you sure that you want to delete the client '"+this.clientName+"'?");
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("If you do, all its info will be deleted with it.");

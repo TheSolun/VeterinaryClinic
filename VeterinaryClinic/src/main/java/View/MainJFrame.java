@@ -12,6 +12,8 @@ import java.lang.Runnable;
 import java.lang.Thread;
 import java.util.ArrayList;
 import java.util.function.Consumer;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -26,6 +28,7 @@ import javax.swing.table.*;
 import javax.swing.table.TableColumn;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+
 import Controller.Controller;
 import View.GenericTableModel;
 
@@ -50,21 +53,14 @@ import View.Exam.SeeExamJDialog;
 import Models.Exam;
 import Models.DAO.ExamDAO;
 
-import View.Animal.DeleteAnimalJDialog;
-import View.Animal.EditAnimalJDialog;
-import View.Animal.NewAnimalJDialog;
-import View.Animal.SeeAnimalJDialog;
-import View.Animal.AnimalTableModel;
-import Models.Animal;
-import Models.DAO.AnimalDAO;
+import Controller.ControllerAnimal;
 
 import View.Client.DeleteClientJDialog;
 import View.Client.EditClientJDialog;
 import View.Client.NewClientJDialog;
 import View.Client.SeeClientJDialog;
 import View.Client.ClientTableModel;
-import Models.Client;
-import Models.DAO.ClientDAO;
+import Controller.ControllerClient;
 
 import View.Vet.DeleteVetJDialog;
 import View.Vet.EditVetJDialog;
@@ -72,6 +68,7 @@ import View.Vet.NewVetJDialog;
 import View.Vet.SeeVetJDialog;
 import Models.Vet;
 import Models.DAO.VetDAO;
+import Controller.ControllerVet;
 
 /**
  *
@@ -79,29 +76,26 @@ import Models.DAO.VetDAO;
  */
 public class MainJFrame extends javax.swing.JFrame {
     
-    private List<javax.swing.JButton> jTableActionButtons = new ArrayList<javax.swing.JButton>();
-    private List<javax.swing.JTable> jTables = new ArrayList<javax.swing.JTable>();
+    private View.TableComponentsCollection tableComponentsCollection = new View.TableComponentsCollection();
     private javax.swing.JButton initialTableBarButton;
     
-    private void setJTableActionButtons() {
-        this.jTableActionButtons.add(this.jButtonSeeTreatment);
-        this.jTableActionButtons.add(this.jButtonEditTreatment);
-        this.jTableActionButtons.add(this.jButtonDeleteTreatment);
-        this.jTableActionButtons.add(this.jButtonSeeConsultation);
-        this.jTableActionButtons.add(this.jButtonEditConsultation);
-        this.jTableActionButtons.add(this.jButtonDeleteConsultation);
-        this.jTableActionButtons.add(this.jButtonSeeExam);
-        this.jTableActionButtons.add(this.jButtonEditExam);
-        this.jTableActionButtons.add(this.jButtonDeleteExam);
-        this.jTableActionButtons.add(this.jButtonSeeAnimal);
-        this.jTableActionButtons.add(this.jButtonEditAnimal);
-        this.jTableActionButtons.add(this.jButtonDeleteAnimal);
-        this.jTableActionButtons.add(this.jButtonSeeClient);
-        this.jTableActionButtons.add(this.jButtonEditClient);
-        this.jTableActionButtons.add(this.jButtonDeleteClient);
-        this.jTableActionButtons.add(this.jButtonSeeVet);
-        this.jTableActionButtons.add(this.jButtonEditVet);
-        this.jTableActionButtons.add(this.jButtonDeleteVet);
+    /** Creates new form MainJFrame */
+    public MainJFrame() { 
+        initComponents();
+        this.setTableComponentsCollection();
+        Controller.addJTablesSelectionRowEvents(this.tableComponentsCollection);
+        Controller.setEmptyAllJTables(this.tableComponentsCollection);
+        this.setInitialTableBarButton();
+        this.clickInitialTableBarButton();
+    }
+    
+    private void setTableComponentsCollection() {
+        this.tableComponentsCollection.addTableComponents(new View.TableComponents("Treatments",this.jPanelTreatments,this.jTableTreatments,this.jButtonSeeTreatment,this.jButtonEditTreatment,this.jButtonDeleteTreatment,this.jButtonNewTreatment));
+        this.tableComponentsCollection.addTableComponents(new View.TableComponents("Consultations",this.jPanelConsultations,this.jTableConsultations,this.jButtonSeeConsultation,this.jButtonEditConsultation,this.jButtonDeleteConsultation,this.jButtonNewConsultation));
+        this.tableComponentsCollection.addTableComponents(new View.TableComponents("Exams",this.jPanelExams,this.jTableExams,this.jButtonSeeExam,this.jButtonEditExam,this.jButtonDeleteExam,this.jButtonNewExam));
+        this.tableComponentsCollection.addTableComponents(new View.TableComponents("Animals",this.jPanelAnimals,this.jTableAnimals,this.jButtonSeeAnimal,this.jButtonEditAnimal,this.jButtonDeleteAnimal,this.jButtonNewAnimal));
+        this.tableComponentsCollection.addTableComponents(new View.TableComponents("Clients",this.jPanelClients,this.jTableClients,this.jButtonSeeClient,this.jButtonEditClient,this.jButtonDeleteClient,this.jButtonNewClient));
+        this.tableComponentsCollection.addTableComponents(new View.TableComponents("Vets",this.jPanelVets,this.jTableVets,this.jButtonSeeVet,this.jButtonEditVet,this.jButtonDeleteVet,this.jButtonNewVet));
     }
     
     private void setInitialTableBarButton() {
@@ -112,16 +106,28 @@ public class MainJFrame extends javax.swing.JFrame {
         this.initialTableBarButton.doClick();
     }
     
-    /** Creates new form MainJFrame */
-    public MainJFrame() { 
-        initComponents();
-        this.setJTableActionButtons();
-        this.addJTablesSelectionRowEvents();
-        this.setEmptyAllJTables();
-        this.setInitialTableBarButton();
-        this.clickInitialTableBarButton();
+    public TableComponentsCollection getTableComponentsCollection() {
+        return this.tableComponentsCollection;
     }
-
+    public TableComponents getTableComponentsTreatments() {
+        return this.tableComponentsCollection.getTableComponentsById("Treatments");
+    }
+    public TableComponents getTableComponentsConsultations() {
+        return this.tableComponentsCollection.getTableComponentsById("Consultations");
+    }
+    public TableComponents getTableComponentsExams() {
+        return this.tableComponentsCollection.getTableComponentsById("Exams");
+    }
+    public TableComponents getTableComponentsAnimals() {
+        return this.tableComponentsCollection.getTableComponentsById("Animals");
+    }
+    public TableComponents getTableComponentsClients() {
+        return this.tableComponentsCollection.getTableComponentsById("Clients");
+    }
+    public TableComponents getTableComponentsVets() {
+        return this.tableComponentsCollection.getTableComponentsById("Vets");
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -1237,12 +1243,13 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jButtonMenuBarTreatmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarTreatmentsActionPerformed
         try {
-            this.setNotVisibleAllCardLayoutJPanels();
-            this.setAllJTablesActionButtonsAsDisabled();
-            this.setEmptyAllJTables();
-            //Controller.setTableModel
-            Controller.removeObjectColumnFromJTable(this.jTableTreatments);
-            this.jPanelTreatments.setVisible(true);
+//            this.setNotVisibleAllCardLayoutJPanels();
+//            this.setAllJTablesActionButtonsAsDisabled();
+//            Controller.setEmptyAllJTables(this.tableComponentsCollection);
+//            Controller.setTableModel
+//            Controller.removeObjectColumnFromJTable(this.jTableTreatments);
+//            this.jPanelTreatments.setVisible(true);
+            Controller.showDataTableAll(this.tableComponentsCollection,this.getTableComponentsTreatments());
         } catch (Exception ex) {
             System.out.println(ex);
         }
@@ -1250,12 +1257,13 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jButtonMenuBarConsultationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarConsultationsActionPerformed
         try {
-            this.setNotVisibleAllCardLayoutJPanels();
-            this.setAllJTablesActionButtonsAsDisabled();
-            this.setEmptyAllJTables();
-            //Controller.setTableModel
-            Controller.removeObjectColumnFromJTable(this.jTableConsultations);
-            this.jPanelConsultations.setVisible(true);
+//            this.setNotVisibleAllCardLayoutJPanels();
+//            this.setAllJTablesActionButtonsAsDisabled();
+//            Controller.setEmptyAllJTables(this.tableComponentsCollection);
+//            Controller.setTableModel
+//            Controller.removeObjectColumnFromJTable(this.jTableConsultations);
+//            this.jPanelConsultations.setVisible(true);
+            Controller.showDataTableAll(this.tableComponentsCollection,this.getTableComponentsConsultations());
         } catch (Exception ex) {
             System.out.println(ex);
         }
@@ -1275,67 +1283,57 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jButtonMenuBarExamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarExamsActionPerformed
         try {
-            this.setNotVisibleAllCardLayoutJPanels();
-            this.setAllJTablesActionButtonsAsDisabled();
-            this.setEmptyAllJTables();
-            //Controller.setTableModel
-            Controller.removeObjectColumnFromJTable(this.jTableExams);
-            this.jPanelExams.setVisible(true);
+//            this.setNotVisibleAllCardLayoutJPanels();
+//            this.setAllJTablesActionButtonsAsDisabled();
+//            Controller.setEmptyAllJTables(this.tableComponentsCollection);
+//            Controller.setTableModel
+//            Controller.removeObjectColumnFromJTable(this.jTableExams);
+//            this.jPanelExams.setVisible(true);
+            Controller.showDataTableAll(this.tableComponentsCollection,this.getTableComponentsExams());
         } catch (Exception ex) {
             System.out.println(ex);
         }
     }//GEN-LAST:event_jButtonMenuBarExamsActionPerformed
 
     private void jButtonEditAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditAnimalActionPerformed
-        (new EditAnimalJDialog(this,true,(Animal) Controller.getSelectedObjectFromJTable(jTableAnimals))).setVisible(true);
+        try {
+            ControllerAnimal.showEditAnimalJDialogFromJTableSelection(this);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(this,ex);
+        }
     }//GEN-LAST:event_jButtonEditAnimalActionPerformed
 
     private void jButtonMenuBarAnimalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarAnimalsActionPerformed
         try {
-            this.setNotVisibleAllCardLayoutJPanels();
-            this.setAllJTablesActionButtonsAsDisabled();
-            this.setEmptyAllJTables();
-            Controller.setTableModel(this.jTableAnimals, new AnimalTableModel(AnimalDAO.getInstance().retrieveAll()));
-            Controller.removeObjectColumnFromJTable(this.jTableAnimals);
-            this.jPanelAnimals.setVisible(true);
+            ControllerAnimal.showDataTableAll(this.tableComponentsCollection,this.getTableComponentsAnimals());
         } catch (Exception ex) {
             System.out.println(ex);
         }
     }//GEN-LAST:event_jButtonMenuBarAnimalsActionPerformed
 
     private void jButtonEditClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditClientActionPerformed
-        (new EditClientJDialog(this,true,(Client) Controller.getSelectedObjectFromJTable(jTableClients))).setVisible(true);
+        ControllerClient.showEditClientJDialogFromJTableSelection(this);
     }//GEN-LAST:event_jButtonEditClientActionPerformed
 
     private void jButtonMenuBarClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarClientsActionPerformed
         try {
-            this.setNotVisibleAllCardLayoutJPanels();
-            this.setAllJTablesActionButtonsAsDisabled();
-            this.setEmptyAllJTables();
-            Controller.setTableModel(jTableClients, new ClientTableModel(ClientDAO.getInstance().retrieveAll()));
-            Controller.removeObjectColumnFromJTable(this.jTableClients);
-            this.jPanelClients.setVisible(true);
+            ControllerClient.showDataTableAll(this.tableComponentsCollection,this.getTableComponentsClients());
         } catch (Exception ex) {
             System.out.println(ex);
         }
     }//GEN-LAST:event_jButtonMenuBarClientsActionPerformed
 
     private void jButtonEditVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditVetActionPerformed
-        EditVetJDialog editVetJDialog = new EditVetJDialog(this,true);
-        editVetJDialog.setVisible(true);
-//        (new EditVetJDialog(this,true,(Vet) Controller.getSelectedObjectFromJTable(jTableVets))).setVisible(true);
+        ControllerVet.showEditVetJDialogFromJTableSelection(this);
     }//GEN-LAST:event_jButtonEditVetActionPerformed
 
     private void jButtonMenuBarVetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarVetsActionPerformed
         try {
-            this.setNotVisibleAllCardLayoutJPanels();
-            this.setAllJTablesActionButtonsAsDisabled();
-            this.setEmptyAllJTables();
-            //Controller.setTableModel
-            Controller.removeObjectColumnFromJTable(this.jTableVets);
-            this.jPanelVets.setVisible(true);
+            ControllerVet.showDataTableAll(this.tableComponentsCollection,this.getTableComponentsVets());
         } catch (Exception ex) {
             System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this,ex);
         }
     }//GEN-LAST:event_jButtonMenuBarVetsActionPerformed
 
@@ -1397,160 +1395,47 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNewExamActionPerformed
 
     private void jButtonSeeAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeAnimalActionPerformed
-        (new SeeAnimalJDialog(this,true,(Animal) Controller.getSelectedObjectFromJTable(jTableAnimals))).setVisible(true);
+        try {
+            ControllerAnimal.showSeeAnimalJDialogFromJTableSelection(this);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(this,ex);
+        }
     }//GEN-LAST:event_jButtonSeeAnimalActionPerformed
 
     private void jButtonDeleteAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteAnimalActionPerformed
-        (new DeleteAnimalJDialog(this,true,(Animal) Controller.getSelectedObjectFromJTable(jTableAnimals))).setVisible(true);
+        ControllerAnimal.showDeleteAnimalJDialogFromJTableSelection(this);
     }//GEN-LAST:event_jButtonDeleteAnimalActionPerformed
 
     private void jButtonNewAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewAnimalActionPerformed
-        NewAnimalJDialog newAnimalJDialog = new NewAnimalJDialog(this,true);
-        newAnimalJDialog.setVisible(true);
+        this.jButtonMenuBarClients.doClick();
+        javax.swing.JOptionPane.showMessageDialog(this,"Select a client, click 'Edit' and then click 'New Animal'.");
     }//GEN-LAST:event_jButtonNewAnimalActionPerformed
 
     private void jButtonSeeClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeClientActionPerformed
-        (new SeeClientJDialog(this,true,(Client) Controller.getSelectedObjectFromJTable(jTableClients))).setVisible(true);
+        ControllerClient.showSeeClientJDialogFromJTableSelection(this);
     }//GEN-LAST:event_jButtonSeeClientActionPerformed
 
     private void jButtonDeleteClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteClientActionPerformed
-        (new DeleteClientJDialog(this,true,(Client) Controller.getSelectedObjectFromJTable(jTableClients))).setVisible(true);
+        ControllerClient.showDeleteClientJDialogFromJTableSelection(this);
     }//GEN-LAST:event_jButtonDeleteClientActionPerformed
 
     private void jButtonNewClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewClientActionPerformed
-        NewClientJDialog newClientJDialog = new NewClientJDialog(this,true);
-        newClientJDialog.setVisible(true);
+        ControllerClient.showNewClientJDialogFromJTableSelection(this);
     }//GEN-LAST:event_jButtonNewClientActionPerformed
 
     private void jButtonSeeVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeVetActionPerformed
-        SeeVetJDialog seeVetJDialog = new SeeVetJDialog(this,true);
-        seeVetJDialog.setVisible(true);
-//        (new SeeVetJDialog(this,true,(Vet) Controller.getSelectedObjectFromJTable(jTableVets))).setVisible(true);
+        ControllerVet.showSeeVetJDialogFromJTableSelection(this);
     }//GEN-LAST:event_jButtonSeeVetActionPerformed
 
     private void jButtonDeleteVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteVetActionPerformed
-        DeleteVetJDialog deleteVetJDialog = new DeleteVetJDialog(this,true);
-        deleteVetJDialog.setVisible(true);
-//        (new DeleteVetJDialog(this,true,(Vet) Controller.getSelectedObjectFromJTable(jTableVets))).setVisible(true);
+        ControllerVet.showDeleteVetJDialogFromJTableSelection(this);
     }//GEN-LAST:event_jButtonDeleteVetActionPerformed
 
     private void jButtonNewVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewVetActionPerformed
         NewVetJDialog newVetJDialog = new NewVetJDialog(this,true);
         newVetJDialog.setVisible(true);
     }//GEN-LAST:event_jButtonNewVetActionPerformed
-    
-    private void setNotVisibleAllCardLayoutJPanels() {
-        List<javax.swing.JPanel> cardLayoutJPanels = getCardLayoutJPanels();
-        for (javax.swing.JPanel cardLayoutJPanel : cardLayoutJPanels) {
-            cardLayoutJPanel.setVisible(false);
-        }
-    }
-    
-    private void setEmptyAllJTables() {
-        Controller.setTableModel(jTableAnimals, new AnimalTableModel());
-        Controller.setTableModel(jTableClients, new ClientTableModel());
-    }
-    
-    private void addJTablesSelectionRowEvents() {
-        this.addJTableTreatmentsSelectionRowEvents();
-        this.addJTableConsultationsSelectionRowEvents();
-        this.addJTableExamsSelectionRowEvents();
-        this.addJTableAnimalsSelectionRowEvents();
-        this.addJTableClientsSelectionRowEvents();
-        this.addJTableVetsSelectionRowEvents();
-        this.setAllJTablesActionButtonsAsDisabled();
-    }
-    
-    private class SetAllButtonsAsDisabled implements Runnable{
-        private List<javax.swing.JButton> jButtons;
-        SetAllButtonsAsDisabled(List<javax.swing.JButton> jButtons) {
-            this.jButtons = jButtons;
-        }
-        public void run() {
-            for(javax.swing.JButton jButton : this.jButtons) {
-                jButton.setEnabled(false);
-            }
-        }
-    }
-    
-    private void setAllJTablesActionButtonsAsDisabled() {
-        (new SetAllButtonsAsDisabled(this.jTableActionButtons)).run();
-    }
-    
-    private void addJTableSelectionRowEvents(javax.swing.JTable jTable, List<javax.swing.JButton> buttons) {
-        ListSelectionModel model = jTable.getSelectionModel();
-        List<javax.swing.JButton> allJTableActionButtons = this.jTableActionButtons;
-        model.addListSelectionListener(new ListSelectionListener(){
-            @Override
-            public void valueChanged(ListSelectionEvent event) {
-                (new SetAllButtonsAsDisabled(allJTableActionButtons)).run();
-                if(!model.isSelectionEmpty()) {
-                    for(javax.swing.JButton button : buttons) {
-                       button.setEnabled(true); 
-                    }
-                }
-            }
-        });
-    }
-    
-    private void addJTableTreatmentsSelectionRowEvents() {
-        List<javax.swing.JButton> buttons = new ArrayList<javax.swing.JButton>();
-        buttons.add(this.jButtonSeeTreatment);
-        buttons.add(this.jButtonEditTreatment);
-        buttons.add(this.jButtonDeleteTreatment);
-        this.addJTableSelectionRowEvents(this.jTableTreatments,buttons);
-    }
-    
-    private void addJTableConsultationsSelectionRowEvents() {
-        List<javax.swing.JButton> buttons = new ArrayList<javax.swing.JButton>();
-        buttons.add(this.jButtonSeeConsultation);
-        buttons.add(this.jButtonEditConsultation);
-        buttons.add(this.jButtonDeleteConsultation);
-        this.addJTableSelectionRowEvents(this.jTableConsultations,buttons);
-    }
-    
-    private void addJTableExamsSelectionRowEvents() {
-        List<javax.swing.JButton> buttons = new ArrayList<javax.swing.JButton>();
-        buttons.add(this.jButtonSeeExam);
-        buttons.add(this.jButtonEditExam);
-        buttons.add(this.jButtonDeleteExam);
-        this.addJTableSelectionRowEvents(this.jTableExams,buttons);
-    }
-    
-    private void addJTableAnimalsSelectionRowEvents() {
-        List<javax.swing.JButton> buttons = new ArrayList<javax.swing.JButton>();
-        buttons.add(this.jButtonSeeAnimal);
-        buttons.add(this.jButtonEditAnimal);
-        buttons.add(this.jButtonDeleteAnimal);
-        this.addJTableSelectionRowEvents(this.jTableAnimals,buttons);
-    }
-    
-    private void addJTableClientsSelectionRowEvents() {
-        List<javax.swing.JButton> buttons = new ArrayList<javax.swing.JButton>();
-        buttons.add(this.jButtonSeeClient);
-        buttons.add(this.jButtonEditClient);
-        buttons.add(this.jButtonDeleteClient);
-        this.addJTableSelectionRowEvents(this.jTableClients,buttons);
-    }
-    
-    private void addJTableVetsSelectionRowEvents() {
-        List<javax.swing.JButton> buttons = new ArrayList<javax.swing.JButton>();
-        buttons.add(this.jButtonSeeVet);
-        buttons.add(this.jButtonEditVet);
-        buttons.add(this.jButtonDeleteVet);
-        this.addJTableSelectionRowEvents(this.jTableVets,buttons);
-    }
-    
-    private List<javax.swing.JPanel> getCardLayoutJPanels() {
-        List<javax.swing.JPanel> cardLayoutJPanels = new ArrayList<javax.swing.JPanel>();
-        cardLayoutJPanels.add(this.jPanelConsultations);
-        cardLayoutJPanels.add(this.jPanelTreatments);
-        cardLayoutJPanels.add(this.jPanelExams);
-        cardLayoutJPanels.add(this.jPanelAnimals);
-        cardLayoutJPanels.add(this.jPanelClients);
-        cardLayoutJPanels.add(this.jPanelVets);
-        return cardLayoutJPanels;
-    }
     
     /**
      * @param args the command line arguments

@@ -6,7 +6,12 @@
 
 package View.Animal;
 
-import Models.Animal;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.ArrayList;
+import javax.swing.ComboBoxModel;
+
+import Controller.ControllerAnimal;
 
 /**
  *
@@ -14,30 +19,34 @@ import Models.Animal;
  */
 public class EditAnimalJDialog extends javax.swing.JDialog {
 
-    private Animal animal;
+    private java.awt.Frame frameParent;
+    private int animalId;
+    private String animalName;
+    private String animalBirthYear;
+    private String animalGender;
+    private int clientId;
+    private String clientName;
+    private int speciesId;
+    private String speciesName;
+    private ComboBoxModel genderComboModel;
+    private ComboBoxModel speciesComboModel;
     
     /** Creates new form EditAnimalJDialog */
-    public EditAnimalJDialog(java.awt.Frame parent, boolean modal, Animal animal) {
+    public EditAnimalJDialog(java.awt.Frame parent, boolean modal, int animalId, String animalName, String animalBirthYear, String animalGender, int clientId, String clientName, int speciesId, String speciesName) throws SQLException, Exception {
         super(parent, modal);
-        this.animal = animal;
+        this.frameParent = parent;
+        this.animalId = animalId;
+        this.animalName = animalName;
+        this.animalBirthYear = animalBirthYear;
+        this.animalGender = animalGender;
+        this.clientId = clientId;
+        this.clientName = clientName;
+        this.speciesId = speciesId;
+        this.speciesName = speciesName;
+        this.genderComboModel = ControllerAnimal.getGenderComboModel(this.animalGender);
+        this.speciesComboModel = ControllerAnimal.getSpeciesComboModel(this.speciesName);
         initComponents();
         this.jPanelEditAnimalNewSpecies.setVisible(false);
-    }
-
-    private int getGenderComboBoxIndexFromValue(String value) {
-        for (int i = 0; i < this.jComboBoxEditAnimalGender.getItemCount(); i++) {
-            if (this.jComboBoxEditAnimalGender.getItemAt(i).equals(value))
-                return i;
-        }
-        return -1;
-    }
-    
-    private int getSpeciesComboBoxIndexFromValue(String value) {
-        for (int i = 0; i < this.jComboBoxEditAnimalSpecies.getItemCount(); i++) {
-            if (this.jComboBoxEditAnimalSpecies.getItemAt(i).equals(value))
-                return i;
-        }
-        return -1;
     }
     
     /** This method is called from within the constructor to
@@ -66,7 +75,6 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
         jTextFieldNewAnimalNewSpeciesName = new javax.swing.JTextField();
         jLabelEditAnimalClient = new javax.swing.JLabel();
         jTextFieldEditAnimalClientName = new javax.swing.JTextField();
-        jButtonEditAnimalSelectClient = new javax.swing.JButton();
         jButtonEditAnimalConfirm = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
@@ -83,7 +91,7 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
 
         jLabelEditAnimalName.setText("Name");
 
-        jTextFieldEditAnimalName.setText(this.animal.getName());
+        jTextFieldEditAnimalName.setText(this.animalName);
 
         jLabelEditAnimalBirthYear.setText("Birth Year");
 
@@ -92,21 +100,17 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextFieldEditAnimalBirthYear.setText(this.animal.getBirthYear());
+        jFormattedTextFieldEditAnimalBirthYear.setText(this.animalBirthYear);
 
         jLabelEditAnimalGender.setText("Gender");
 
-        jComboBoxEditAnimalGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FEMALE", "MALE" }));
-        jComboBoxEditAnimalGender.setSelectedIndex(this.getGenderComboBoxIndexFromValue(this.animal.getGender().toString()));
-        jComboBoxEditAnimalGender.setSelectedItem(this.animal.getGender().toString());
+        jComboBoxEditAnimalGender.setModel(this.genderComboModel);
         jComboBoxEditAnimalGender.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabelEditAnimalSpecies.setLabelFor(jComboBoxEditAnimalSpecies);
         jLabelEditAnimalSpecies.setText("Species");
 
-        jComboBoxEditAnimalSpecies.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dog", "Cat", "Other" }));
-        jComboBoxEditAnimalSpecies.setSelectedIndex(this.getSpeciesComboBoxIndexFromValue(this.animal.getSpecies().getName()));
-        jComboBoxEditAnimalSpecies.setSelectedItem(this.animal.getSpecies().getName());
+        jComboBoxEditAnimalSpecies.setModel(this.speciesComboModel);
         jComboBoxEditAnimalSpecies.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jComboBoxEditAnimalSpecies.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,21 +145,13 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
         jLabelEditAnimalClient.setPreferredSize(new java.awt.Dimension(36, 14));
 
         jTextFieldEditAnimalClientName.setEditable(false);
-        jTextFieldEditAnimalClientName.setText(this.animal.getOwner().getName());
+        jTextFieldEditAnimalClientName.setText(this.clientName);
         jTextFieldEditAnimalClientName.setToolTipText("");
         jTextFieldEditAnimalClientName.setDisabledTextColor(java.awt.Color.black);
         jTextFieldEditAnimalClientName.setEnabled(false);
         jTextFieldEditAnimalClientName.setMaximumSize(new java.awt.Dimension(101, 20));
         jTextFieldEditAnimalClientName.setMinimumSize(new java.awt.Dimension(101, 20));
         jTextFieldEditAnimalClientName.setPreferredSize(new java.awt.Dimension(101, 20));
-
-        jButtonEditAnimalSelectClient.setText("Select Client");
-        jButtonEditAnimalSelectClient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonEditAnimalSelectClient.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEditAnimalSelectClientActionPerformed(evt);
-            }
-        });
 
         jButtonEditAnimalConfirm.setText("Update");
         jButtonEditAnimalConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -186,10 +182,7 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
             .add(jPanelEditAnimalFormLayout.createSequentialGroup()
                 .add(jLabelEditAnimalClient, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 47, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jTextFieldEditAnimalClientName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 226, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButtonEditAnimalSelectClient)
-                .add(0, 0, Short.MAX_VALUE))
+                .add(jTextFieldEditAnimalClientName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(jPanelEditAnimalFormLayout.createSequentialGroup()
                 .add(137, 137, 137)
                 .add(jButton1)
@@ -222,8 +215,7 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelEditAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(jLabelEditAnimalClient, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jTextFieldEditAnimalClientName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jButtonEditAnimalSelectClient, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(jTextFieldEditAnimalClientName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -265,22 +257,13 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxEditAnimalSpeciesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEditAnimalSpeciesActionPerformed
-        if(this.jComboBoxEditAnimalSpecies.getSelectedItem().toString() == "Other") {
-            this.jPanelEditAnimalNewSpecies.setVisible(true);
-        } else {
-            this.jPanelEditAnimalNewSpecies.setVisible(false);
-        }
+        this.jPanelEditAnimalNewSpecies.setVisible(this.jComboBoxEditAnimalSpecies.getSelectedItem().toString() == "Other");
     }//GEN-LAST:event_jComboBoxEditAnimalSpeciesActionPerformed
-
-    private void jButtonEditAnimalSelectClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditAnimalSelectClientActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonEditAnimalSelectClientActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonEditAnimalConfirm;
-    private javax.swing.JButton jButtonEditAnimalSelectClient;
     private javax.swing.JComboBox<String> jComboBoxEditAnimalGender;
     private javax.swing.JComboBox<String> jComboBoxEditAnimalSpecies;
     private javax.swing.JFormattedTextField jFormattedTextFieldEditAnimalBirthYear;

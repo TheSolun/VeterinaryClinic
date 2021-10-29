@@ -5,9 +5,30 @@
  */
 package Controller;
 
-import View.GenericTableModel;
+import java.sql.SQLException;
+import java.util.List;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+
+import View.GenericTableModel;
+//import View.Treatment.TreatmentTableModel;
+//import View.Consultation.ConsultationTableModel;
+//import View.Exam.ExamTableModel;
+import View.Animal.AnimalTableModel;
+import View.Client.ClientTableModel;
+//import View.Vet.VetTableModel;
+import View.TableComponents;
+import View.TableComponentsCollection;
+
+import Models.DAO.TreatmentDAO;
+import Models.DAO.ConsultationDAO;
+import Models.DAO.ExamDAO;
+import Models.DAO.AnimalDAO;
+import Models.DAO.ClientDAO;
+import Models.DAO.VetDAO;
 
 /**
  *
@@ -17,14 +38,6 @@ public class Controller {
     
     public static void setTableModel(JTable table, GenericTableModel tableModel) {
         table.setModel(tableModel);
-        String[] items = new String[]{"Rock", "Paper", "Scissors"};
-        JComboBox<String> comboBox = new JComboBox<>(items);
-
-        int size = comboBox.getItemCount();
-        for (int i = 0; i < size; i++) {
-          String item = comboBox.getItemAt(i);
-          System.out.println("Item at " + i + " = " + item);
-        }
     }
     
     private static int getJTableColumnIndexByColumnName(JTable table, String columnName) {
@@ -43,16 +56,98 @@ public class Controller {
         return false;
     }
     
-    public static Object getSelectedObjectFromJTable(JTable table) {
-        String columnName = GenericTableModel.objectColumnName;
-        return (jTableHasColumnByColumnName(table,columnName))? table.getModel().getValueAt(table.getSelectedRow(), getJTableColumnIndexByColumnName(table,columnName)) : null;
+    protected static Object getSelectedObjectFromJTable(JTable table) {
+        return ((GenericTableModel)table.getModel()).getItem(table.getSelectedRow());
     }
     
-    public static void removeObjectColumnFromJTable(JTable table) {
-        String columnName = GenericTableModel.objectColumnName;
+    private static void removeIdColumnFromJTable(JTable table) {
+        String columnName = GenericTableModel.idColumnName;
         if(jTableHasColumnByColumnName(table,columnName)) {
             int colIndex = getJTableColumnIndexByColumnName(table,columnName);
             table.getColumnModel().removeColumn(table.getColumnModel().getColumn(colIndex));
+        }
+    }
+    
+    private static class SetAllButtonsAsDisabled implements Runnable{
+        private List<javax.swing.JButton> jButtons;
+        SetAllButtonsAsDisabled(List<javax.swing.JButton> jButtons) {
+            this.jButtons = jButtons;
+        }
+        public void run() {
+            for(javax.swing.JButton jButton : this.jButtons) {
+                jButton.setEnabled(false);
+            }
+        }
+    }
+    
+    public static void setJTablesActionButtonsAsDisabled(List<javax.swing.JButton> allJTableActionButtons) {
+        (new SetAllButtonsAsDisabled(allJTableActionButtons)).run();
+    }
+    
+    public static void addJTableSelectionRowEvents(javax.swing.JTable jTable, List<javax.swing.JButton> buttons, List<javax.swing.JButton> allJTableActionButtons) {
+        ListSelectionModel model = jTable.getSelectionModel();
+        model.addListSelectionListener(new ListSelectionListener(){
+            @Override
+            public void valueChanged(ListSelectionEvent event) {
+                (new SetAllButtonsAsDisabled(allJTableActionButtons)).run();
+                if(!model.isSelectionEmpty()) {
+                    for(javax.swing.JButton button : buttons) {
+                       button.setEnabled(true); 
+                    }
+                }
+            }
+        });
+    }
+    
+    public static void addJTablesSelectionRowEvents(TableComponentsCollection tableComponentsCollection) {
+        for(View.TableComponents tableComponents : tableComponentsCollection.getAll())
+            Controller.addJTableSelectionRowEvents(tableComponents.getTable(),tableComponents.getAllActionButtons(),tableComponentsCollection.getAllActionButtons());
+        Controller.setJTablesActionButtonsAsDisabled(tableComponentsCollection.getAllActionButtons());
+    }
+    
+    public static void setNotVisibleAllCardLayoutJPanels(TableComponentsCollection tableComponentsCollection) {
+        for (javax.swing.JPanel cardLayoutJPanel : tableComponentsCollection.getAllPanels()) {
+            cardLayoutJPanel.setVisible(false);
+        }
+    }
+    
+    public static void setEmptyAllJTables(TableComponentsCollection tableComponentsCollection) {
+        for(TableComponents tableComponents : tableComponentsCollection.getAll()) {
+            switch(tableComponents.getId()) {
+                case "Animals":
+                    Controller.setTableModel(tableComponents.getTable(), new AnimalTableModel());
+                    break;
+                case "Clients":
+                    Controller.setTableModel(tableComponents.getTable(), new ClientTableModel());
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    
+    protected static void showDataTable(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, GenericTableModel tableModel) {
+        Controller.setNotVisibleAllCardLayoutJPanels(tableComponentsCollection);
+        Controller.setJTablesActionButtonsAsDisabled(tableComponentsCollection.getAllActionButtons());
+        Controller.setEmptyAllJTables(tableComponentsCollection);
+        Controller.setTableModel(tableComponents.getTable(), tableModel);
+        Controller.removeIdColumnFromJTable(tableComponents.getTable());
+        tableComponents.getPanel().setVisible(true);
+    }
+    
+    public static void showDataTableAll(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents) throws SQLException, Exception {
+        switch(tableComponents.getId()) {
+            case "Treatments":
+//                Controller.showDataTable(tableComponentsCollection,tableComponents, new TreatmentTableModel(TreatmentDAO.getInstance().retrieveAll()));
+                break;
+            case "Consultations":
+//                Controller.showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(ConsultationDAO.getInstance().retrieveAll()));
+                break;
+            case "Exams":
+//                Controller.showDataTable(tableComponentsCollection,tableComponents, new ExamTableModel(ExamDAO.getInstance().retrieveAll()));
+                break;
+            default:
+                break;
         }
     }
     
