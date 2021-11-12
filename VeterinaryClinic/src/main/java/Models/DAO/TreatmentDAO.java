@@ -26,7 +26,7 @@ public class TreatmentDAO extends DAO {
     
     private Treatment buildObject(ResultSet rs) throws SQLException, Exception {
         Animal animal = AnimalDAO.getInstance().retrieveById(rs.getInt("id_animal"));
-        return new Treatment(rs.getInt("id"), rs.getString("name"), LocalDate.parse(rs.getString("startDate")), LocalDate.parse(rs.getString("endDate")), (rs.getInt("finished") == 1), animal);
+        return new Treatment(rs.getInt("id"), rs.getString("name"), LocalDate.parse(rs.getString("startDate")), LocalDate.parse(rs.getString("endDate")), animal);
     }
     
     public Treatment create(Treatment treatment) throws SQLException, Exception {
@@ -49,9 +49,17 @@ public class TreatmentDAO extends DAO {
     }
     
     public void delete(Treatment treatment) throws SQLException {
+//        PreparedStatement stmt;
+//        stmt = (DAO.getConnection()).prepareStatement("DELETE FROM treatment WHERE id = ?");
+//        stmt.setInt(1, treatment.getId());
+//        executeUpdate(stmt);
+        this.deleteById(treatment.getId());
+    }
+    
+    public void deleteById(int treatmentId) throws SQLException {
         PreparedStatement stmt;
         stmt = (DAO.getConnection()).prepareStatement("DELETE FROM treatment WHERE id = ?");
-        stmt.setInt(1, treatment.getId());
+        stmt.setInt(1, treatmentId);
         executeUpdate(stmt);
     }
     

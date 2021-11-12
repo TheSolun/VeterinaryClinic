@@ -88,6 +88,7 @@ public class MainJFrame extends javax.swing.JFrame {
         Controller.setEmptyAllJTables(this.tableComponentsCollection);
         this.setInitialTableBarButton();
         this.clickInitialTableBarButton();
+        this.removeEditAndDeleteButtons();
     }
     
     private void setTableComponentsCollection() {
@@ -127,6 +128,17 @@ public class MainJFrame extends javax.swing.JFrame {
     }
     public TableComponents getTableComponentsVets() {
         return this.tableComponentsCollection.getTableComponentsById("Vets");
+    }
+    
+    private void removeEditAndDeleteButtons() {
+        this.jPanelActionsAnimals.remove(this.jButtonEditAnimal);
+        this.jPanelActionsAnimals.remove(this.jButtonDeleteAnimal);
+        this.jPanelActionsClients.remove(this.jButtonEditClient);
+        this.jPanelActionsClients.remove(this.jButtonDeleteClient);
+        this.jPanelActionsTreatments.remove(this.jButtonEditTreatment);
+        this.jPanelActionsTreatments.remove(this.jButtonDeleteTreatment);
+        this.jPanelActionsVets.remove(this.jButtonEditVet);
+        this.jPanelActionsVets.remove(this.jButtonDeleteVet);
     }
     
     /** This method is called from within the constructor to

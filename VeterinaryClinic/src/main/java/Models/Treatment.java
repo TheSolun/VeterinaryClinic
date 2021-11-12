@@ -18,20 +18,20 @@ public class Treatment {
     private boolean finished;
     private Animal animal;
 
-    public Treatment(int id, String name, LocalDate startDay, LocalDate endDay, boolean finished, Animal animal) throws NotPositiveIdException, StartAndEndDatesNotInChronologicalOrderException, BlankNameException {
+    public Treatment(int id, String name, LocalDate startDay, LocalDate endDay, Animal animal) throws NotPositiveIdException, StartAndEndDatesNotInChronologicalOrderException, BlankNameException {
         this.setId(id);
         this.setName(name);
         this.setStartDay(startDay);
         this.setEndDay(endDay);
-        this.finished = finished;
+        this.setFinished();
         this.animal = animal;
     }
     
-    public Treatment(String name, LocalDate startDay, LocalDate endDay, boolean finished, Animal animal) throws StartAndEndDatesNotInChronologicalOrderException, BlankNameException {
+    public Treatment(String name, LocalDate startDay, LocalDate endDay, Animal animal) throws StartAndEndDatesNotInChronologicalOrderException, BlankNameException {
         this.setName(name);
         this.setStartDay(startDay);
         this.setEndDay(endDay);
-        this.finished = finished;
+        this.setFinished();
         this.animal = animal;
     }
 
@@ -87,6 +87,10 @@ public class Treatment {
     
     public boolean isFinished(){
         return this.finished;
+    }
+    
+    private void setFinished() {
+        this.finished = !(this.endDay.isAfter(LocalDate.now()));
     }
 
     @Override

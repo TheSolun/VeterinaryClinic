@@ -6,6 +6,8 @@
 
 package View.Treatment;
 
+import Controller.ControllerTreatment;
+
 /**
  *
  * @author mateu
@@ -15,6 +17,7 @@ public class DeleteTreatmentJDialog extends javax.swing.JDialog {
     private final View.MainJFrame frame;
     private final int treatmentId;
     private final String treatmentName;
+    private boolean deleted = false;
     
     /** Creates new form DeleteTreatmentJDialog */
     public DeleteTreatmentJDialog(View.MainJFrame frame, boolean modal, int treatmentId, String treatmentName) {
@@ -47,6 +50,11 @@ public class DeleteTreatmentJDialog extends javax.swing.JDialog {
         setTitle("Delete Treatment");
         setAlwaysOnTop(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanelEditTreatmentTittle.setLayout(new java.awt.BorderLayout());
 
@@ -66,6 +74,11 @@ public class DeleteTreatmentJDialog extends javax.swing.JDialog {
 
         jButtonDeleteTreatment.setText("Delete");
         jButtonDeleteTreatment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonDeleteTreatment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteTreatmentActionPerformed(evt);
+            }
+        });
 
         jButtonCancelTreatment.setText("Cancel");
         jButtonCancelTreatment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -135,6 +148,29 @@ public class DeleteTreatmentJDialog extends javax.swing.JDialog {
     private void jButtonCancelTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelTreatmentActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonCancelTreatmentActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        try {
+            if(!this.deleted)
+                ControllerTreatment.showSeeTreatmentJDialogFromTreatmentId(this.frame, this.treatmentId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_formWindowClosed
+
+    private void jButtonDeleteTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteTreatmentActionPerformed
+        try {
+            ControllerTreatment.deleteTreatment(this.treatmentId);
+            this.deleted = true;
+            ControllerTreatment.showDataTableAll(this.frame.getTableComponentsCollection(),this.frame.getTableComponentsTreatments());
+            this.dispose();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
+    }//GEN-LAST:event_jButtonDeleteTreatmentActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelTreatment;

@@ -68,7 +68,7 @@ public class SpeciesDAO extends DAO {
         return (speciesList.isEmpty())? null : speciesList.get(0);
     }
     
-    public List retrieveBySimilarName(String name) throws Exception {
+    public List<Species> retrieveBySimilarName(String name) throws Exception {
         return this.retrieve("SELECT * FROM species WHERE name LIKE '%" + name + "%'");
     }
     

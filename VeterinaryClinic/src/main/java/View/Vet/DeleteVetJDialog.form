@@ -10,6 +10,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowClosed" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosed"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -40,10 +43,10 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jPanelDeleteExamTittle" alignment="0" max="32767" attributes="0"/>
+              <Component id="jPanelDeleteVetTittle" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanelDeleteExamForm" max="32767" attributes="0"/>
+                  <Component id="jPanelDeleteVetForm" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -51,16 +54,16 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="jPanelDeleteExamTittle" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="jPanelDeleteVetTittle" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                  <Component id="jPanelDeleteExamForm" max="32767" attributes="0"/>
+                  <Component id="jPanelDeleteVetForm" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanelDeleteExamTittle">
+        <Container class="javax.swing.JPanel" name="jPanelDeleteVetTittle">
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
           <SubComponents>
@@ -80,7 +83,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanelDeleteExamForm">
+        <Container class="javax.swing.JPanel" name="jPanelDeleteVetForm">
 
           <Layout>
             <DimensionLayout dim="0">
@@ -88,9 +91,9 @@
                   <Component id="jLabel1" alignment="0" pref="380" max="32767" attributes="0"/>
                   <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jButtonDeleteExamConfirm" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonDeleteVetConfirm" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButtonDeleteExamCancel" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonDeleteVetCancel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -102,8 +105,8 @@
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="46" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButtonDeleteExamConfirm" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonDeleteExamCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonDeleteVetConfirm" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonDeleteVetCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -127,15 +130,18 @@
                 <Property name="text" type="java.lang.String" value="If you do, all its info will be deleted with it."/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonDeleteExamConfirm">
+            <Component class="javax.swing.JButton" name="jButtonDeleteVetConfirm">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Delete"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDeleteVetConfirmActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonDeleteExamCancel">
+            <Component class="javax.swing.JButton" name="jButtonDeleteVetCancel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cancel"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -143,7 +149,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDeleteExamCancelActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDeleteVetCancelActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

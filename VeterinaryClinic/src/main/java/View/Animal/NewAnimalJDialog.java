@@ -26,16 +26,16 @@ import View.Species.SpeciesComboModel;
  */
 public class NewAnimalJDialog extends javax.swing.JDialog {
 
-    private java.awt.Frame frameParent;
+    private View.MainJFrame frame;
     private int clientId;
     private String clientName;
     private ComboBoxModel genderComboModel;
     private ComboBoxModel speciesComboModel;
     
     /** Creates new form NewAnimalJDialog */
-    public NewAnimalJDialog(java.awt.Frame parent, boolean modal, int clientId, String clientName) throws SQLException, Exception {
-        super(parent, modal);
-        this.frameParent = parent;
+    public NewAnimalJDialog(View.MainJFrame frame, boolean modal, int clientId, String clientName) throws SQLException, Exception {
+        super(frame, modal);
+        this.frame = frame;
         this.clientId = clientId;
         this.clientName = clientName;
         this.genderComboModel = ControllerAnimal.getGenderComboModel();
@@ -43,6 +43,11 @@ public class NewAnimalJDialog extends javax.swing.JDialog {
         initComponents();
         this.jPanelNewAnimalNewSpecies.setVisible(this.jComboBoxNewAnimalSpecies.getSelectedItem().toString() == "Other");
         this.jTextFieldNewAnimalClientName.setEnabled(false);
+    }
+    
+    private String getSelectedSpecies() {
+        String speciesComboModelValue = this.speciesComboModel.getSelectedItem().toString();
+        return (speciesComboModelValue != "Other")? speciesComboModelValue : jTextFieldNewAnimalNewSpeciesName.getText();
     }
     
     /** This method is called from within the constructor to
@@ -100,11 +105,6 @@ public class NewAnimalJDialog extends javax.swing.JDialog {
 
         jComboBoxNewAnimalGender.setModel(this.genderComboModel);
         jComboBoxNewAnimalGender.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jComboBoxNewAnimalGender.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxNewAnimalGenderActionPerformed(evt);
-            }
-        });
 
         jLabelNewAnimalSpecies.setLabelFor(jComboBoxNewAnimalSpecies);
         jLabelNewAnimalSpecies.setText("Species");
@@ -152,6 +152,11 @@ public class NewAnimalJDialog extends javax.swing.JDialog {
 
         jButtonNewAnimalConfirm.setText("Register");
         jButtonNewAnimalConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonNewAnimalConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNewAnimalConfirmActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanelNewAnimalFormLayout = new org.jdesktop.layout.GroupLayout(jPanelNewAnimalForm);
         jPanelNewAnimalForm.setLayout(jPanelNewAnimalFormLayout);
@@ -246,9 +251,17 @@ public class NewAnimalJDialog extends javax.swing.JDialog {
         this.jPanelNewAnimalNewSpecies.setVisible(this.jComboBoxNewAnimalSpecies.getSelectedItem().toString() == "Other");
     }//GEN-LAST:event_jComboBoxNewAnimalSpeciesActionPerformed
 
-    private void jComboBoxNewAnimalGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxNewAnimalGenderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxNewAnimalGenderActionPerformed
+    private void jButtonNewAnimalConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewAnimalConfirmActionPerformed
+        try {
+            ControllerAnimal.newAnimal(this.jTextFieldNewAnimalName.getText(),this.jFormattedTextFieldNewAnimalBirthYear.getText(),((String)this.genderComboModel.getSelectedItem()),this.getSelectedSpecies(),this.clientId);
+            ControllerAnimal.showDataTableAll(this.frame.getTableComponentsCollection(),this.frame.getTableComponentsAnimals());
+            this.dispose();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
+    }//GEN-LAST:event_jButtonNewAnimalConfirmActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

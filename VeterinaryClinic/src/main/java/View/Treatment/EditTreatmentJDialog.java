@@ -1,5 +1,7 @@
 package View.Treatment;
 
+import Controller.ControllerTreatment;
+
 /**
  *
  * @author mateu
@@ -30,6 +32,18 @@ public class EditTreatmentJDialog extends javax.swing.JDialog {
         this.clientName = clientName;
         initComponents();
     }
+    
+    private String getCurrentTreatmentName() {
+        return this.jTextFieldEditTreatmentName.getText();
+    }
+    
+    private String getCurrentTreatmentStartDay() {
+        return this.jFormattedTextFieldEditTreatmentStartDay.getText();
+    }
+    
+    private String getCurrentTreatmentEndDay() {
+        return this.jFormattedTextFieldEditTreatmentEndDay.getText();
+    }
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -47,9 +61,9 @@ public class EditTreatmentJDialog extends javax.swing.JDialog {
         jLabelEditTreatmentName = new javax.swing.JLabel();
         jTextFieldEditTreatmentName = new javax.swing.JTextField();
         jLabelEditTreatmentStartDay = new javax.swing.JLabel();
-        jTextFieldEditTreatmentStartDay = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldEditTreatmentStartDay = new javax.swing.JFormattedTextField();
         jLabelEditTreatmentEndDay = new javax.swing.JLabel();
-        jTextFieldEditTreatmentEndDay = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldEditTreatmentEndDay = new javax.swing.JFormattedTextField();
         jLabelEditTreatmentAnimalName = new javax.swing.JLabel();
         jTextFieldEditTreatmentAnimalName = new javax.swing.JTextField();
         jLabelEditTreatmentClientName = new javax.swing.JLabel();
@@ -60,6 +74,11 @@ public class EditTreatmentJDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edit Treatment");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanelFrame.setToolTipText("");
 
@@ -73,29 +92,24 @@ public class EditTreatmentJDialog extends javax.swing.JDialog {
         jLabelEditTreatmentName.setText("Name");
 
         jTextFieldEditTreatmentName.setText(this.treatmentName);
-        jTextFieldEditTreatmentName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldEditTreatmentNameActionPerformed(evt);
-            }
-        });
 
         jLabelEditTreatmentStartDay.setText("Start Date");
 
         try {
-            jTextFieldEditTreatmentStartDay.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
+            jFormattedTextFieldEditTreatmentStartDay.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jTextFieldEditTreatmentStartDay.setText(this.treatmentStartDay);
+        jFormattedTextFieldEditTreatmentStartDay.setText(this.treatmentStartDay);
 
         jLabelEditTreatmentEndDay.setText("End Date");
 
         try {
-            jTextFieldEditTreatmentEndDay.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
+            jFormattedTextFieldEditTreatmentEndDay.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jTextFieldEditTreatmentEndDay.setText(this.treatmentEndDay);
+        jFormattedTextFieldEditTreatmentEndDay.setText(this.treatmentEndDay);
 
         jLabelEditTreatmentAnimalName.setText("Animal");
 
@@ -134,8 +148,8 @@ public class EditTreatmentJDialog extends javax.swing.JDialog {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jTextFieldEditTreatmentName)
-                    .add(jTextFieldEditTreatmentStartDay)
-                    .add(jTextFieldEditTreatmentEndDay)))
+                    .add(jFormattedTextFieldEditTreatmentStartDay)
+                    .add(jFormattedTextFieldEditTreatmentEndDay)))
             .add(jPanelEditTreatmentFormLayout.createSequentialGroup()
                 .add(157, 157, 157)
                 .add(jButtonEditTreatmentConfirm)
@@ -161,12 +175,12 @@ public class EditTreatmentJDialog extends javax.swing.JDialog {
                     .add(jLabelEditTreatmentName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jTextFieldEditTreatmentStartDay)
+                    .add(jFormattedTextFieldEditTreatmentStartDay)
                     .add(jLabelEditTreatmentStartDay, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabelEditTreatmentEndDay, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jTextFieldEditTreatmentEndDay, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jFormattedTextFieldEditTreatmentEndDay, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelEditTreatmentFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jTextFieldEditTreatmentAnimalName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -215,17 +229,32 @@ public class EditTreatmentJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldEditTreatmentNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEditTreatmentNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldEditTreatmentNameActionPerformed
-
     private void jButtonEditTreatmentConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditTreatmentConfirmActionPerformed
-        // TODO add your handling code here:
+        try {
+            ControllerTreatment.editTreatment(this.treatmentId,this.getCurrentTreatmentName(),this.getCurrentTreatmentStartDay(),this.getCurrentTreatmentEndDay(),this.animalId);
+            ControllerTreatment.showDataTableAll(this.frame.getTableComponentsCollection(),this.frame.getTableComponentsTreatments());
+            this.dispose();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
     }//GEN-LAST:event_jButtonEditTreatmentConfirmActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        try {
+            ControllerTreatment.showSeeTreatmentJDialogFromTreatmentId(this.frame, this.treatmentId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEditTreatmentConfirm;
     private javax.swing.JButton jButtonEditTreatmentNewConsultation;
+    private javax.swing.JFormattedTextField jFormattedTextFieldEditTreatmentEndDay;
+    private javax.swing.JFormattedTextField jFormattedTextFieldEditTreatmentStartDay;
     private javax.swing.JLabel jLabelEditTreatmentAnimalName;
     private javax.swing.JLabel jLabelEditTreatmentClientName;
     private javax.swing.JLabel jLabelEditTreatmentEndDay;
@@ -237,9 +266,7 @@ public class EditTreatmentJDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanelFrame;
     private javax.swing.JTextField jTextFieldEditTreatmentAnimalName;
     private javax.swing.JTextField jTextFieldEditTreatmentClientName;
-    private javax.swing.JFormattedTextField jTextFieldEditTreatmentEndDay;
     private javax.swing.JTextField jTextFieldEditTreatmentName;
-    private javax.swing.JFormattedTextField jTextFieldEditTreatmentStartDay;
     // End of variables declaration//GEN-END:variables
 
 }

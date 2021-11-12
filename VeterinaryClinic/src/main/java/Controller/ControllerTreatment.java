@@ -1,6 +1,7 @@
 package Controller;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import View.MainJFrame;
 import View.TableComponents;
@@ -38,8 +39,22 @@ public class ControllerTreatment extends Controller {
         (new SeeTreatmentJDialog(frame,true,treatment.getId(),treatment.getName(),treatment.getStartDay().toString(),treatment.getEndDay().toString(),animal.getId(),animal.getName(),client.getId(),client.getName())).setVisible(true);
     }
     
+    public static void showSeeTreatmentJDialogFromTreatmentId(MainJFrame frame, int treatmentId) throws SQLException, Exception {
+        Treatment treatment = (Treatment) TreatmentDAO.getInstance().retrieveById(treatmentId);
+        Animal animal = treatment.getAnimal();
+        Client client = animal.getOwner();
+        (new SeeTreatmentJDialog(frame,true,treatment.getId(),treatment.getName(),treatment.getStartDay().toString(),treatment.getEndDay().toString(),animal.getId(),animal.getName(),client.getId(),client.getName())).setVisible(true);
+    }
+    
     public static void showEditTreatmentJDialogFromJTableSelection(MainJFrame frame) {
         Treatment treatment = (Treatment) getSelectedObjectFromJTable(frame.getTableComponentsTreatments().getTable());
+        Animal animal = treatment.getAnimal();
+        Client client = animal.getOwner();
+        (new EditTreatmentJDialog(frame,true,treatment.getId(),treatment.getName(),treatment.getStartDay().toString(),treatment.getEndDay().toString(),animal.getId(),animal.getName(),client.getId(),client.getName())).setVisible(true);
+    }
+    
+    public static void showEditTreatmentJDialogFromTreatmentId(MainJFrame frame, int treatmentId) throws SQLException, Exception {
+        Treatment treatment = TreatmentDAO.getInstance().retrieveById(treatmentId);
         Animal animal = treatment.getAnimal();
         Client client = animal.getOwner();
         (new EditTreatmentJDialog(frame,true,treatment.getId(),treatment.getName(),treatment.getStartDay().toString(),treatment.getEndDay().toString(),animal.getId(),animal.getName(),client.getId(),client.getName())).setVisible(true);
@@ -50,9 +65,26 @@ public class ControllerTreatment extends Controller {
         (new DeleteTreatmentJDialog(frame,true,treatment.getId(),treatment.getName())).setVisible(true);
     }
     
+    public static void showDeleteTreatmentJDialogFromTreatmentId(MainJFrame frame, int treatmentId) throws SQLException, Exception {
+        Treatment treatment = TreatmentDAO.getInstance().retrieveById(treatmentId);
+        (new DeleteTreatmentJDialog(frame,true,treatment.getId(),treatment.getName())).setVisible(true);
+    }
+    
     public static void showNewTreatmentJDialogByAnimalId(MainJFrame frame, int animalId) throws SQLException, Exception {
         Animal animal = AnimalDAO.getInstance().retrieveById(animalId);
         (new NewTreatmentJDialog(frame,true,animal.getName(),animal.getOwner().getName())).setVisible(true);
+    }
+    
+    public static void newTreatment(String treatmentName, String treatmentStartDay, String treatmentEndDay, int animalId) throws SQLException, Exception {
+        TreatmentDAO.getInstance().create(new Treatment(treatmentName, LocalDate.parse(treatmentStartDay), LocalDate.parse(treatmentEndDay), AnimalDAO.getInstance().retrieveById(animalId)));
+    }
+    
+    public static void editTreatment(int treatmentId, String treatmentName, String treatmentStartDay, String treatmentEndDay, int animalId) throws SQLException, Exception {
+        TreatmentDAO.getInstance().update(new Treatment(treatmentId, treatmentName, LocalDate.parse(treatmentStartDay), LocalDate.parse(treatmentEndDay), AnimalDAO.getInstance().retrieveById(animalId)));
+    }
+    
+    public static void deleteTreatment(int treatmentId) throws SQLException, Exception {
+        TreatmentDAO.getInstance().deleteById(treatmentId);
     }
     
 }

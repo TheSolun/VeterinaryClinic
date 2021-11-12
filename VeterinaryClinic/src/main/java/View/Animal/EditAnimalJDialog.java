@@ -50,6 +50,22 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
         this.jPanelEditAnimalNewSpecies.setVisible(false);
     }
     
+    private String getCurrentAnimalName() {
+        return this.jTextFieldEditAnimalName.getText();
+    }
+    
+    private String getCurrentAnimalBirthYear() {
+        return this.jFormattedTextFieldEditAnimalBirthYear.getText();
+    }
+    
+    private String getCurrentAnimalGender() {
+        return (String) this.genderComboModel.getSelectedItem();
+    }
+    
+    private String getCurrentSpeciesName() {
+        return this.speciesComboModel.getSelectedItem().toString();
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -82,6 +98,11 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edit Animal");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanelEditAnimalTittle.setLayout(new java.awt.BorderLayout());
 
@@ -156,6 +177,11 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
 
         jButtonEditAnimalConfirm.setText("Update");
         jButtonEditAnimalConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditAnimalConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditAnimalConfirmActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("New Treatment");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -274,6 +300,27 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
             javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonEditAnimalConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditAnimalConfirmActionPerformed
+        try {
+            ControllerAnimal.editAnimal(this.animalId,this.getCurrentAnimalName(),this.getCurrentAnimalBirthYear(),this.getCurrentAnimalGender(),this.getCurrentSpeciesName(),this.clientId);
+            ControllerAnimal.showDataTableAll(this.frame.getTableComponentsCollection(),this.frame.getTableComponentsAnimals());
+            this.dispose();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
+    }//GEN-LAST:event_jButtonEditAnimalConfirmActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        try {
+            ControllerAnimal.showSeeAnimalJDialogFromAnimalId(this.frame, this.animalId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_formWindowClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

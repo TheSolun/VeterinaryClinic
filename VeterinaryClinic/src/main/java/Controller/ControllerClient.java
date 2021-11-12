@@ -45,13 +45,35 @@ public class ControllerClient extends Controller {
         (new EditClientJDialog(frame,true,client.getId(),client.getName(),client.getAddress(),client.getPhone(),client.getZipCode(),client.getEmail())).setVisible(true);
     }
     
+    public static void showEditClientJDialogFromClientId(MainJFrame frame, int clientId) throws SQLException, Exception {
+        Client client = ClientDAO.getInstance().retrieveById(clientId);
+        (new EditClientJDialog(frame,true,client.getId(),client.getName(),client.getAddress(),client.getPhone(),client.getZipCode(),client.getEmail())).setVisible(true);
+    }
+    
     public static void showDeleteClientJDialogFromJTableSelection(MainJFrame frame) {
         Client client = (Client) getSelectedObjectFromJTable(frame.getTableComponentsClients().getTable());
         (new DeleteClientJDialog(frame,true,client.getId(),client.getName())).setVisible(true);
     }
     
+    public static void showDeleteClientJDialogFromClientId(MainJFrame frame, int clientId) throws SQLException, Exception {
+        Client client = ClientDAO.getInstance().retrieveById(clientId);
+        (new DeleteClientJDialog(frame,true,client.getId(),client.getName())).setVisible(true);
+    }
+    
     public static void showNewClientJDialogFromJTableSelection(MainJFrame frame) {
         (new NewClientJDialog(frame,true)).setVisible(true);
+    }
+    
+    public static void newClient(String clientName, String clientPhone, String clientZipCode, String clientEmail, String clientAddress) throws SQLException, Exception {
+        ClientDAO.getInstance().create(new Client(clientName, clientAddress, clientPhone, clientZipCode, clientEmail));
+    }
+    
+    public static void editClient(int clientId, String clientName, String clientPhone, String clientZipCode, String clientEmail, String clientAddress) throws SQLException, Exception {
+        ClientDAO.getInstance().update(new Client(clientId ,clientName, clientAddress, clientPhone, clientZipCode, clientEmail));
+    }
+    
+    public static void deleteClient(int clientId) throws SQLException, Exception {
+        ClientDAO.getInstance().deleteById(clientId);
     }
     
 }

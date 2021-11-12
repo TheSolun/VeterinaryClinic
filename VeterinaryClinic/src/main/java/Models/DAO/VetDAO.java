@@ -1,6 +1,5 @@
 package Models.DAO;
 
-import Models.Client;
 import Models.Vet;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -39,9 +38,17 @@ public class VetDAO extends DAO {
     }
     
     public void delete(Vet vet) throws SQLException {
+//        PreparedStatement stmt;
+//        stmt = (DAO.getConnection()).prepareStatement("DELETE FROM vet WHERE id = ?");
+//        stmt.setInt(1, vet.getId());
+//        executeUpdate(stmt);
+        this.deleteById(vet.getId());
+    }
+    
+    public void deleteById(int vetId) throws SQLException {
         PreparedStatement stmt;
         stmt = (DAO.getConnection()).prepareStatement("DELETE FROM vet WHERE id = ?");
-        stmt.setInt(1, vet.getId());
+        stmt.setInt(1, vetId);
         executeUpdate(stmt);
     }
     

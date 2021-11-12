@@ -40,9 +40,17 @@ public class ClientDAO extends DAO {
     }
     
     public void delete(Client client) throws SQLException {
+//        PreparedStatement stmt;
+//        stmt = (DAO.getConnection()).prepareStatement("DELETE FROM client WHERE id = ?");
+//        stmt.setInt(1, client.getId());
+//        executeUpdate(stmt);
+        this.deleteById(client.getId());
+    }
+    
+    public void deleteById(int clientId) throws SQLException {
         PreparedStatement stmt;
         stmt = (DAO.getConnection()).prepareStatement("DELETE FROM client WHERE id = ?");
-        stmt.setInt(1, client.getId());
+        stmt.setInt(1, clientId);
         executeUpdate(stmt);
     }
     

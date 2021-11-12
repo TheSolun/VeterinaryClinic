@@ -10,6 +10,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowClosed" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosed"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -97,8 +100,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jTextFieldEditTreatmentName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldEditTreatmentStartDay" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldEditTreatmentEndDay" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jFormattedTextFieldEditTreatmentStartDay" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jFormattedTextFieldEditTreatmentEndDay" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -133,13 +136,13 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextFieldEditTreatmentStartDay" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jFormattedTextFieldEditTreatmentStartDay" alignment="0" max="32767" attributes="0"/>
                           <Component id="jLabelEditTreatmentStartDay" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelEditTreatmentEndDay" alignment="3" max="32767" attributes="0"/>
-                          <Component id="jTextFieldEditTreatmentEndDay" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jFormattedTextFieldEditTreatmentEndDay" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -171,16 +174,13 @@
                   <Connection code="this.treatmentName" type="code"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldEditTreatmentNameActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelEditTreatmentStartDay">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Start Date"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jTextFieldEditTreatmentStartDay">
+            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldEditTreatmentStartDay">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                   <Format format="####-##-##" subtype="-1" type="5"/>
@@ -195,7 +195,7 @@
                 <Property name="text" type="java.lang.String" value="End Date"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jTextFieldEditTreatmentEndDay">
+            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldEditTreatmentEndDay">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                   <Format format="####-##-##" subtype="-1" type="5"/>

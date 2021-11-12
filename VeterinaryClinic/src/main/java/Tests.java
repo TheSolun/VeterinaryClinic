@@ -99,8 +99,8 @@ public class Tests {
         // Criando objetos dos tratamentos
         Animal animalDBTreatment1 = animalsDB.get(0);
         Animal animalDBTreatment2 = animalsDB.get(1);
-        Treatment treatment1 = new Treatment("Tratamento 1", LocalDate.parse("2021-09-01"), LocalDate.parse("2021-09-02"), true, animalDBTreatment1);
-        Treatment treatment2 = new Treatment("Tratamento 2", LocalDate.parse("2021-09-02"), LocalDate.parse("2021-09-03"), false, animalDBTreatment2);
+        Treatment treatment1 = new Treatment("Tratamento 1", LocalDate.parse("2021-09-01"), LocalDate.parse("2021-09-02"), animalDBTreatment1);
+        Treatment treatment2 = new Treatment("Tratamento 2", LocalDate.parse("2021-09-02"), LocalDate.parse("2021-09-03"), animalDBTreatment2);
 
         // Inserindo objetos dos tratamentos na base de dados
         TreatmentDAO.getInstance().create(treatment1);

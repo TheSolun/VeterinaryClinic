@@ -12,8 +12,10 @@ import javax.swing.ComboBoxModel;
 
 import Models.Animal;
 import Models.Client;
+import Models.Gender;
 import Models.Species;
 import Models.DAO.AnimalDAO;
+import Models.DAO.ClientDAO;
 import Models.DAO.SpeciesDAO;
 
 import View.Animal.AnimalTableModel;
@@ -80,13 +82,41 @@ public class ControllerAnimal extends Controller {
         (new EditAnimalJDialog(frame,true,animal.getId(),animal.getName(),animal.getBirthYear(),animal.getGender().toString(),animal.getOwner().getId(),animal.getOwner().getName(),animal.getSpecies().getId(),animal.getSpecies().getName())).setVisible(true);
     }
     
+    public static void showEditAnimalJDialogFromAnimalId(MainJFrame frame, int animalId) throws SQLException, Exception {
+        Animal animal = AnimalDAO.getInstance().retrieveById(animalId);
+        (new EditAnimalJDialog(frame,true,animal.getId(),animal.getName(),animal.getBirthYear(),animal.getGender().toString(),animal.getOwner().getId(),animal.getOwner().getName(),animal.getSpecies().getId(),animal.getSpecies().getName())).setVisible(true);
+    }
+    
     public static void showDeleteAnimalJDialogFromJTableSelection(MainJFrame frame) {
         Animal animal = (Animal) getSelectedObjectFromJTable(frame.getTableComponentsAnimals().getTable());
         (new DeleteAnimalJDialog(frame,true,animal.getId(),animal.getName())).setVisible(true);
     }
     
+    public static void showDeleteAnimalJDialogFromAnimalId(MainJFrame frame, int animalId) throws SQLException, Exception {
+        Animal animal = AnimalDAO.getInstance().retrieveById(animalId);
+        (new DeleteAnimalJDialog(frame,true,animal.getId(),animal.getName())).setVisible(true);
+    }
+    
     public static void showNewAnimalJDialogFromEditClient(MainJFrame frame, int clientId, String clientName) throws SQLException, Exception {
         (new NewAnimalJDialog(frame,true,clientId,clientName)).setVisible(true);
+    }
+    
+    public static void newAnimal(String animalName, String birthYear, String genderName, String speciesName, int clientId) throws SQLException, Exception {
+        List<Species> speciesList = SpeciesDAO.getInstance().retrieveBySimilarName(speciesName);
+        Species species = (speciesList.size() > 0)? speciesList.get(0) : SpeciesDAO.getInstance().create(speciesName);
+        Client client = ClientDAO.getInstance().retrieveById(clientId);
+        AnimalDAO.getInstance().create(new Animal(animalName,birthYear,Gender.valueOf(genderName),client,species));
+    }
+    
+    public static void editAnimal(int animalId, String animalName, String birthYear, String genderName, String speciesName, int clientId) throws SQLException, Exception {
+        List<Species> speciesList = SpeciesDAO.getInstance().retrieveBySimilarName(speciesName);
+        Species species = (speciesList.size() > 0)? speciesList.get(0) : SpeciesDAO.getInstance().create(speciesName);
+        Client client = ClientDAO.getInstance().retrieveById(clientId);
+        AnimalDAO.getInstance().update(new Animal(animalId,animalName,birthYear,Gender.valueOf(genderName),client,species));
+    }
+    
+    public static void deleteAnimal(int animalId) throws SQLException, Exception {
+        AnimalDAO.getInstance().deleteById(animalId);
     }
     
 }

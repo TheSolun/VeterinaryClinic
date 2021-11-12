@@ -6,6 +6,8 @@
 
 package View.Vet;
 
+import Controller.ControllerVet;
+
 /**
  *
  * @author mateu
@@ -41,6 +43,9 @@ public class SeeVetJDialog extends javax.swing.JDialog {
         jPanelFrame = new javax.swing.JPanel();
         jPanelSeeVetTittle = new javax.swing.JPanel();
         jLabelSeeVetTittle = new javax.swing.JLabel();
+        jPanelSeeVetActionButtons = new javax.swing.JPanel();
+        jButtonSeeVetEditVet = new javax.swing.JButton();
+        jButtonSeeVetDeleteVet = new javax.swing.JButton();
         jPanelSeeVetForm = new javax.swing.JPanel();
         jLabelSeeVetName = new javax.swing.JLabel();
         jTextFieldSeeVetName = new javax.swing.JTextField();
@@ -61,6 +66,46 @@ public class SeeVetJDialog extends javax.swing.JDialog {
         jLabelSeeVetTittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelSeeVetTittle.setText("See Vet");
         jPanelSeeVetTittle.add(jLabelSeeVetTittle, java.awt.BorderLayout.CENTER);
+
+        jPanelSeeVetActionButtons.setPreferredSize(new java.awt.Dimension(120, 50));
+
+        jButtonSeeVetEditVet.setText("Edit");
+        jButtonSeeVetEditVet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeVetEditVet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeVetEditVetActionPerformed(evt);
+            }
+        });
+
+        jButtonSeeVetDeleteVet.setText("Delete");
+        jButtonSeeVetDeleteVet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeVetDeleteVet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeVetDeleteVetActionPerformed(evt);
+            }
+        });
+
+        org.jdesktop.layout.GroupLayout jPanelSeeVetActionButtonsLayout = new org.jdesktop.layout.GroupLayout(jPanelSeeVetActionButtons);
+        jPanelSeeVetActionButtons.setLayout(jPanelSeeVetActionButtonsLayout);
+        jPanelSeeVetActionButtonsLayout.setHorizontalGroup(
+            jPanelSeeVetActionButtonsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelSeeVetActionButtonsLayout.createSequentialGroup()
+                .add(jButtonSeeVetEditVet)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonSeeVetDeleteVet)
+                .add(0, 0, Short.MAX_VALUE))
+        );
+        jPanelSeeVetActionButtonsLayout.setVerticalGroup(
+            jPanelSeeVetActionButtonsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelSeeVetActionButtonsLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelSeeVetActionButtonsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButtonSeeVetEditVet)
+                    .add(jButtonSeeVetDeleteVet))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        jPanelSeeVetTittle.add(jPanelSeeVetActionButtons, java.awt.BorderLayout.LINE_END);
 
         jLabelSeeVetName.setText("Name");
 
@@ -84,11 +129,6 @@ public class SeeVetJDialog extends javax.swing.JDialog {
         jTextFieldSeeVetAddress.setEditable(false);
         jTextFieldSeeVetAddress.setText(this.vetAddress);
         jTextFieldSeeVetAddress.setDisabledTextColor(java.awt.Color.black);
-        jTextFieldSeeVetAddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldSeeVetAddressActionPerformed(evt);
-            }
-        });
 
         jButtonSeeVetSeeConsultations.setText("See Consultations");
         jButtonSeeVetSeeConsultations.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -140,11 +180,13 @@ public class SeeVetJDialog extends javax.swing.JDialog {
         jPanelFrame.setLayout(jPanelFrameLayout);
         jPanelFrameLayout.setHorizontalGroup(
             jPanelFrameLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelSeeVetTittle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelFrameLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanelSeeVetForm, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelFrameLayout.createSequentialGroup()
+                .add(0, 0, Short.MAX_VALUE)
+                .add(jPanelSeeVetTittle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 345, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         jPanelFrameLayout.setVerticalGroup(
             jPanelFrameLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -170,11 +212,29 @@ public class SeeVetJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldSeeVetAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSeeVetAddressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldSeeVetAddressActionPerformed
+    private void jButtonSeeVetEditVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeVetEditVetActionPerformed
+        try {
+            this.dispose();
+            ControllerVet.showEditVetJDialogFromVetId(this.frame, this.vetId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_jButtonSeeVetEditVetActionPerformed
+
+    private void jButtonSeeVetDeleteVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeVetDeleteVetActionPerformed
+        try {
+            this.dispose();
+            ControllerVet.showDeleteVetJDialogFromVetId(this.frame, this.vetId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_jButtonSeeVetDeleteVetActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonSeeVetDeleteVet;
+    private javax.swing.JButton jButtonSeeVetEditVet;
     private javax.swing.JButton jButtonSeeVetSeeConsultations;
     private javax.swing.JButton jButtonSeeVetSeeTreatments;
     private javax.swing.JFormattedTextField jFormattedTextFieldSeeVetPhone;
@@ -183,6 +243,7 @@ public class SeeVetJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelSeeVetPhone;
     private javax.swing.JLabel jLabelSeeVetTittle;
     private javax.swing.JPanel jPanelFrame;
+    private javax.swing.JPanel jPanelSeeVetActionButtons;
     private javax.swing.JPanel jPanelSeeVetForm;
     private javax.swing.JPanel jPanelSeeVetTittle;
     private javax.swing.JTextField jTextFieldSeeVetAddress;

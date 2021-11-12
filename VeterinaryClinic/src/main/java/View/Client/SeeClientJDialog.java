@@ -7,6 +7,8 @@
 package View.Client;
 
 import Controller.ControllerAnimal;
+import Controller.ControllerClient;
+
 
 /**
  *
@@ -45,79 +47,121 @@ public class SeeClientJDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanelFrame = new javax.swing.JPanel();
-        jPanelNewAnimalTittle = new javax.swing.JPanel();
-        jLabelNewAnimalTittle = new javax.swing.JLabel();
-        jPanelNewAnimalForm = new javax.swing.JPanel();
-        jLabelNewAnimalName = new javax.swing.JLabel();
-        jTextFieldNewAnimalName = new javax.swing.JTextField();
-        jLabelNewAnimalBirthYear = new javax.swing.JLabel();
-        jFormattedTextFieldNewAnimalBirthYear = new javax.swing.JFormattedTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jPanelSeeClientTittle = new javax.swing.JPanel();
+        jLabelSeeClientTittle = new javax.swing.JLabel();
+        jPanelSeeClientActionButtons = new javax.swing.JPanel();
+        jButtonSeeClientEditClient = new javax.swing.JButton();
+        jButtonSeeClientDeleteClient = new javax.swing.JButton();
+        jPanelSeeClientForm = new javax.swing.JPanel();
+        jLabelSeeClientName = new javax.swing.JLabel();
+        jTextFieldSeeClientName = new javax.swing.JTextField();
+        jLabelSeeClientPhone = new javax.swing.JLabel();
+        jFormattedTextFieldSeeClientPhone = new javax.swing.JFormattedTextField();
+        jLabelSeeClientZipCode = new javax.swing.JLabel();
+        jFormattedTextFieldSeeClientZipCode = new javax.swing.JFormattedTextField();
+        jLabelSeeClientEmail = new javax.swing.JLabel();
+        jTextFieldSeeClientEmail = new javax.swing.JTextField();
+        jLabelSeeClientAddress = new javax.swing.JLabel();
+        jTextFieldSeeClientAddress = new javax.swing.JTextField();
         jButtonSeeClientSeeAnimals = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButtonSeeClientSeeTreatments = new javax.swing.JButton();
+        jButtonSeeClientSeeConsultations = new javax.swing.JButton();
+        jButtonSeeClientSeeExams = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("See Client");
         setResizable(false);
 
-        jPanelNewAnimalTittle.setLayout(new java.awt.BorderLayout());
+        jPanelSeeClientTittle.setLayout(new java.awt.BorderLayout());
 
-        jLabelNewAnimalTittle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabelNewAnimalTittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNewAnimalTittle.setText("See Client");
-        jPanelNewAnimalTittle.add(jLabelNewAnimalTittle, java.awt.BorderLayout.CENTER);
+        jLabelSeeClientTittle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabelSeeClientTittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelSeeClientTittle.setText("See Client");
+        jPanelSeeClientTittle.add(jLabelSeeClientTittle, java.awt.BorderLayout.CENTER);
 
-        jLabelNewAnimalName.setText("Name");
+        jPanelSeeClientActionButtons.setPreferredSize(new java.awt.Dimension(140, 50));
 
-        jTextFieldNewAnimalName.setEditable(false);
-        jTextFieldNewAnimalName.setText(this.clientName);
-        jTextFieldNewAnimalName.setDisabledTextColor(java.awt.Color.black);
-        jTextFieldNewAnimalName.setEnabled(false);
+        jButtonSeeClientEditClient.setText("Edit");
+        jButtonSeeClientEditClient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeClientEditClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeClientEditClientActionPerformed(evt);
+            }
+        });
 
-        jLabelNewAnimalBirthYear.setText("Phone");
+        jButtonSeeClientDeleteClient.setText("Delete");
+        jButtonSeeClientDeleteClient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeClientDeleteClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeClientDeleteClientActionPerformed(evt);
+            }
+        });
 
-        jFormattedTextFieldNewAnimalBirthYear.setEditable(false);
+        org.jdesktop.layout.GroupLayout jPanelSeeClientActionButtonsLayout = new org.jdesktop.layout.GroupLayout(jPanelSeeClientActionButtons);
+        jPanelSeeClientActionButtons.setLayout(jPanelSeeClientActionButtonsLayout);
+        jPanelSeeClientActionButtonsLayout.setHorizontalGroup(
+            jPanelSeeClientActionButtonsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelSeeClientActionButtonsLayout.createSequentialGroup()
+                .add(jButtonSeeClientEditClient)
+                .add(18, 18, 18)
+                .add(jButtonSeeClientDeleteClient, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE))
+        );
+        jPanelSeeClientActionButtonsLayout.setVerticalGroup(
+            jPanelSeeClientActionButtonsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelSeeClientActionButtonsLayout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .add(jPanelSeeClientActionButtonsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButtonSeeClientEditClient)
+                    .add(jButtonSeeClientDeleteClient))
+                .addContainerGap())
+        );
+
+        jPanelSeeClientTittle.add(jPanelSeeClientActionButtons, java.awt.BorderLayout.LINE_END);
+
+        jLabelSeeClientName.setText("Name");
+
+        jTextFieldSeeClientName.setEditable(false);
+        jTextFieldSeeClientName.setText(this.clientName);
+        jTextFieldSeeClientName.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldSeeClientName.setEnabled(false);
+
+        jLabelSeeClientPhone.setText("Phone");
+
+        jFormattedTextFieldSeeClientPhone.setEditable(false);
         try {
-            jFormattedTextFieldNewAnimalBirthYear.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+            jFormattedTextFieldSeeClientPhone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextFieldNewAnimalBirthYear.setText(this.clientPhone);
-        jFormattedTextFieldNewAnimalBirthYear.setDisabledTextColor(java.awt.Color.black);
-        jFormattedTextFieldNewAnimalBirthYear.setEnabled(false);
+        jFormattedTextFieldSeeClientPhone.setText(this.clientPhone);
+        jFormattedTextFieldSeeClientPhone.setDisabledTextColor(java.awt.Color.black);
+        jFormattedTextFieldSeeClientPhone.setEnabled(false);
 
-        jLabel1.setText("Zip Code");
+        jLabelSeeClientZipCode.setText("Zip Code");
 
-        jFormattedTextField1.setEditable(false);
+        jFormattedTextFieldSeeClientZipCode.setEditable(false);
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+            jFormattedTextFieldSeeClientZipCode.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextField1.setText(this.clientZipCode);
-        jFormattedTextField1.setDisabledTextColor(java.awt.Color.black);
-        jFormattedTextField1.setEnabled(false);
+        jFormattedTextFieldSeeClientZipCode.setText(this.clientZipCode);
+        jFormattedTextFieldSeeClientZipCode.setDisabledTextColor(java.awt.Color.black);
+        jFormattedTextFieldSeeClientZipCode.setEnabled(false);
 
-        jLabel2.setText("Email");
+        jLabelSeeClientEmail.setText("Email");
 
-        jTextField1.setEditable(false);
-        jTextField1.setText(this.clientEmail);
-        jTextField1.setDisabledTextColor(java.awt.Color.black);
-        jTextField1.setEnabled(false);
+        jTextFieldSeeClientEmail.setEditable(false);
+        jTextFieldSeeClientEmail.setText(this.clientEmail);
+        jTextFieldSeeClientEmail.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldSeeClientEmail.setEnabled(false);
 
-        jLabel3.setText("Address");
+        jLabelSeeClientAddress.setText("Address");
 
-        jTextField2.setEditable(false);
-        jTextField2.setText(this.clientAddress);
-        jTextField2.setDisabledTextColor(java.awt.Color.black);
-        jTextField2.setEnabled(false);
+        jTextFieldSeeClientAddress.setEditable(false);
+        jTextFieldSeeClientAddress.setText(this.clientAddress);
+        jTextFieldSeeClientAddress.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldSeeClientAddress.setEnabled(false);
 
         jButtonSeeClientSeeAnimals.setText("See Animals");
         jButtonSeeClientSeeAnimals.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -127,94 +171,96 @@ public class SeeClientJDialog extends javax.swing.JDialog {
             }
         });
 
-        jButton2.setText("See Treatments");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeClientSeeTreatments.setText("See Treatments");
+        jButtonSeeClientSeeTreatments.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton3.setText("See Consultations");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeClientSeeConsultations.setText("See Consultations");
+        jButtonSeeClientSeeConsultations.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton4.setText("See Exams");
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeClientSeeExams.setText("See Exams");
+        jButtonSeeClientSeeExams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        org.jdesktop.layout.GroupLayout jPanelNewAnimalFormLayout = new org.jdesktop.layout.GroupLayout(jPanelNewAnimalForm);
-        jPanelNewAnimalForm.setLayout(jPanelNewAnimalFormLayout);
-        jPanelNewAnimalFormLayout.setHorizontalGroup(
-            jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelNewAnimalFormLayout.createSequentialGroup()
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jLabelNewAnimalBirthYear, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                    .add(jLabelNewAnimalName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        org.jdesktop.layout.GroupLayout jPanelSeeClientFormLayout = new org.jdesktop.layout.GroupLayout(jPanelSeeClientForm);
+        jPanelSeeClientForm.setLayout(jPanelSeeClientFormLayout);
+        jPanelSeeClientFormLayout.setHorizontalGroup(
+            jPanelSeeClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelSeeClientFormLayout.createSequentialGroup()
+                .add(jPanelSeeClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jLabelSeeClientPhone, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .add(jLabelSeeClientName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jFormattedTextFieldNewAnimalBirthYear)
-                    .add(jTextFieldNewAnimalName)))
-            .add(jPanelNewAnimalFormLayout.createSequentialGroup()
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(jPanelSeeClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jFormattedTextFieldSeeClientPhone)
+                    .add(jTextFieldSeeClientName)))
+            .add(jPanelSeeClientFormLayout.createSequentialGroup()
+                .add(jPanelSeeClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabelSeeClientZipCode, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabelSeeClientEmail, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jLabelSeeClientAddress, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jFormattedTextField1)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
-                    .add(jTextField2)))
-            .add(jPanelNewAnimalFormLayout.createSequentialGroup()
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                    .add(jButton3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                .add(jPanelSeeClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jFormattedTextFieldSeeClientZipCode)
+                    .add(jTextFieldSeeClientEmail)
+                    .add(jTextFieldSeeClientAddress)))
+            .add(jPanelSeeClientFormLayout.createSequentialGroup()
+                .add(jPanelSeeClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                    .add(jButtonSeeClientSeeConsultations, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                     .add(jButtonSeeClientSeeAnimals, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jButton4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .add(jPanelSeeClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jButtonSeeClientSeeTreatments, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                    .add(jButtonSeeClientSeeExams, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
-        jPanelNewAnimalFormLayout.setVerticalGroup(
-            jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelNewAnimalFormLayout.createSequentialGroup()
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabelNewAnimalName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jTextFieldNewAnimalName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+        jPanelSeeClientFormLayout.setVerticalGroup(
+            jPanelSeeClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelSeeClientFormLayout.createSequentialGroup()
+                .add(jPanelSeeClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabelSeeClientName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jTextFieldSeeClientName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabelNewAnimalBirthYear, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jFormattedTextFieldNewAnimalBirthYear, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jPanelSeeClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabelSeeClientPhone, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jFormattedTextFieldSeeClientPhone, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jFormattedTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jPanelSeeClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabelSeeClientZipCode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jFormattedTextFieldSeeClientZipCode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jTextField1)
-                    .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(jPanelSeeClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jTextFieldSeeClientEmail)
+                    .add(jLabelSeeClientEmail, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jPanelSeeClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jTextFieldSeeClientAddress, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabelSeeClientAddress, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(jPanelSeeClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jButtonSeeClientSeeAnimals)
-                    .add(jButton2))
+                    .add(jButtonSeeClientSeeTreatments))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton3)
-                    .add(jButton4)))
+                .add(jPanelSeeClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButtonSeeClientSeeConsultations)
+                    .add(jButtonSeeClientSeeExams)))
         );
 
         org.jdesktop.layout.GroupLayout jPanelFrameLayout = new org.jdesktop.layout.GroupLayout(jPanelFrame);
         jPanelFrame.setLayout(jPanelFrameLayout);
         jPanelFrameLayout.setHorizontalGroup(
             jPanelFrameLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelNewAnimalTittle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanelNewAnimalForm, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jPanelSeeClientForm, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelFrameLayout.createSequentialGroup()
+                .add(0, 0, Short.MAX_VALUE)
+                .add(jPanelSeeClientTittle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 345, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         jPanelFrameLayout.setVerticalGroup(
             jPanelFrameLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelFrameLayout.createSequentialGroup()
-                .add(jPanelNewAnimalTittle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jPanelSeeClientTittle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalForm, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jPanelSeeClientForm, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -242,30 +288,53 @@ public class SeeClientJDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jButtonSeeClientSeeAnimalsActionPerformed
 
+    private void jButtonSeeClientEditClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeClientEditClientActionPerformed
+        try {
+            this.dispose();
+            ControllerClient.showEditClientJDialogFromClientId(this.frame, this.clientId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_jButtonSeeClientEditClientActionPerformed
+
+    private void jButtonSeeClientDeleteClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeClientDeleteClientActionPerformed
+        try {
+            this.dispose();
+            ControllerClient.showDeleteClientJDialogFromClientId(this.frame, this.clientId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_jButtonSeeClientDeleteClientActionPerformed
+
     /**
      * @param args the command line arguments
      */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonSeeClientDeleteClient;
+    private javax.swing.JButton jButtonSeeClientEditClient;
     private javax.swing.JButton jButtonSeeClientSeeAnimals;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextFieldNewAnimalBirthYear;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabelNewAnimalBirthYear;
-    private javax.swing.JLabel jLabelNewAnimalName;
-    private javax.swing.JLabel jLabelNewAnimalTittle;
+    private javax.swing.JButton jButtonSeeClientSeeConsultations;
+    private javax.swing.JButton jButtonSeeClientSeeExams;
+    private javax.swing.JButton jButtonSeeClientSeeTreatments;
+    private javax.swing.JFormattedTextField jFormattedTextFieldSeeClientPhone;
+    private javax.swing.JFormattedTextField jFormattedTextFieldSeeClientZipCode;
+    private javax.swing.JLabel jLabelSeeClientAddress;
+    private javax.swing.JLabel jLabelSeeClientEmail;
+    private javax.swing.JLabel jLabelSeeClientName;
+    private javax.swing.JLabel jLabelSeeClientPhone;
+    private javax.swing.JLabel jLabelSeeClientTittle;
+    private javax.swing.JLabel jLabelSeeClientZipCode;
     private javax.swing.JPanel jPanelFrame;
-    private javax.swing.JPanel jPanelNewAnimalForm;
-    private javax.swing.JPanel jPanelNewAnimalTittle;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextFieldNewAnimalName;
+    private javax.swing.JPanel jPanelSeeClientActionButtons;
+    private javax.swing.JPanel jPanelSeeClientForm;
+    private javax.swing.JPanel jPanelSeeClientTittle;
+    private javax.swing.JTextField jTextFieldSeeClientAddress;
+    private javax.swing.JTextField jTextFieldSeeClientEmail;
+    private javax.swing.JTextField jTextFieldSeeClientName;
     // End of variables declaration//GEN-END:variables
 
 }

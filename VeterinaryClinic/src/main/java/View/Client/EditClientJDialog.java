@@ -36,6 +36,26 @@ public class EditClientJDialog extends javax.swing.JDialog {
         initComponents();
     }
 
+    private String getCurrentClientName() {
+        return this.jTextFieldEditClientName.getText();
+    }
+    
+    private String getCurrentClientAddress() {
+        return this.jTextFieldEditClientAddress.getText();
+    }
+    
+    private String getCurrentClientPhone() {
+        return this.jFormattedTextFieldEditClientPhone.getText().replace("(","").replace(")","").replace("-","");
+    }
+    
+    private String getCurrentClientZipCode() {
+        return this.jFormattedTextFieldEditClientZipCode.getText().replace("-","");
+    }
+    
+    private String getCurrentClientEmail() {
+        return this.jTextFieldEditClientEmail.getText();
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -46,65 +66,67 @@ public class EditClientJDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanelFrame = new javax.swing.JPanel();
-        jPanelNewAnimalTittle = new javax.swing.JPanel();
-        jLabelNewAnimalTittle = new javax.swing.JLabel();
-        jPanelNewAnimalForm = new javax.swing.JPanel();
-        jLabelNewAnimalName = new javax.swing.JLabel();
-        jTextFieldNewAnimalName = new javax.swing.JTextField();
-        jLabelNewAnimalBirthYear = new javax.swing.JLabel();
-        jFormattedTextFieldNewAnimalBirthYear = new javax.swing.JFormattedTextField();
-        jButtonNewAnimalConfirm = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jPanelEditClientTittle = new javax.swing.JPanel();
+        jLabelEditClientTittle = new javax.swing.JLabel();
+        jPanelEditClientForm = new javax.swing.JPanel();
+        jLabelEditClientName = new javax.swing.JLabel();
+        jTextFieldEditClientName = new javax.swing.JTextField();
+        jLabelEditClientPhone = new javax.swing.JLabel();
+        jFormattedTextFieldEditClientPhone = new javax.swing.JFormattedTextField();
+        jLabelEditClientZipCode = new javax.swing.JLabel();
+        jFormattedTextFieldEditClientZipCode = new javax.swing.JFormattedTextField();
+        jLabelEditClientEmail = new javax.swing.JLabel();
+        jTextFieldEditClientEmail = new javax.swing.JTextField();
+        jLabelEditClientAddress = new javax.swing.JLabel();
+        jTextFieldEditClientAddress = new javax.swing.JTextField();
         jButtonEditClientNewAnimal = new javax.swing.JButton();
+        jButtonEditClientConfirm = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edit Client");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
-        jPanelNewAnimalTittle.setLayout(new java.awt.BorderLayout());
+        jPanelEditClientTittle.setLayout(new java.awt.BorderLayout());
 
-        jLabelNewAnimalTittle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabelNewAnimalTittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelNewAnimalTittle.setText("Edit Client");
-        jPanelNewAnimalTittle.add(jLabelNewAnimalTittle, java.awt.BorderLayout.CENTER);
+        jLabelEditClientTittle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabelEditClientTittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelEditClientTittle.setText("Edit Client");
+        jPanelEditClientTittle.add(jLabelEditClientTittle, java.awt.BorderLayout.CENTER);
 
-        jLabelNewAnimalName.setText("Name");
+        jLabelEditClientName.setText("Name");
 
-        jTextFieldNewAnimalName.setText(this.clientName);
+        jTextFieldEditClientName.setText(this.clientName);
 
-        jLabelNewAnimalBirthYear.setText("Phone");
+        jLabelEditClientPhone.setText("Phone");
 
         try {
-            jFormattedTextFieldNewAnimalBirthYear.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+            jFormattedTextFieldEditClientPhone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextFieldNewAnimalBirthYear.setText(this.clientPhone);
+        jFormattedTextFieldEditClientPhone.setText(this.clientPhone);
 
-        jButtonNewAnimalConfirm.setText("Update");
-        jButtonNewAnimalConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jLabel1.setText("Zip Code");
+        jLabelEditClientZipCode.setText("Zip Code");
 
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+            jFormattedTextFieldEditClientZipCode.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextField1.setText(this.clientZipCode);
+        jFormattedTextFieldEditClientZipCode.setText(this.clientZipCode);
 
-        jLabel2.setText("Email");
+        jLabelEditClientEmail.setText("Email");
 
-        jTextField1.setText(this.clientEmail);
+        jTextFieldEditClientEmail.setText(this.clientEmail);
 
-        jLabel3.setText("Address");
+        jLabelEditClientAddress.setText("Address");
 
-        jTextField2.setText(this.clientAddress);
+        jTextFieldEditClientAddress.setText(this.clientAddress);
 
         jButtonEditClientNewAnimal.setText("New Animal");
         jButtonEditClientNewAnimal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -114,78 +136,86 @@ public class EditClientJDialog extends javax.swing.JDialog {
             }
         });
 
-        org.jdesktop.layout.GroupLayout jPanelNewAnimalFormLayout = new org.jdesktop.layout.GroupLayout(jPanelNewAnimalForm);
-        jPanelNewAnimalForm.setLayout(jPanelNewAnimalFormLayout);
-        jPanelNewAnimalFormLayout.setHorizontalGroup(
-            jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelNewAnimalFormLayout.createSequentialGroup()
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                    .add(jLabelNewAnimalName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jLabelNewAnimalBirthYear, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jButtonEditClientConfirm.setText("Update");
+        jButtonEditClientConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditClientConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditClientConfirmActionPerformed(evt);
+            }
+        });
+
+        org.jdesktop.layout.GroupLayout jPanelEditClientFormLayout = new org.jdesktop.layout.GroupLayout(jPanelEditClientForm);
+        jPanelEditClientForm.setLayout(jPanelEditClientFormLayout);
+        jPanelEditClientFormLayout.setHorizontalGroup(
+            jPanelEditClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelEditClientFormLayout.createSequentialGroup()
+                .add(jPanelEditClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                    .add(jLabelEditClientName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jLabelEditClientPhone, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabelEditClientZipCode, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabelEditClientEmail, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jLabelEditClientAddress, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jTextFieldNewAnimalName)
-                    .add(jFormattedTextField1)
-                    .add(jTextField1)
-                    .add(jTextField2)
-                    .add(jFormattedTextFieldNewAnimalBirthYear)))
-            .add(jPanelNewAnimalFormLayout.createSequentialGroup()
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanelNewAnimalFormLayout.createSequentialGroup()
+                .add(jPanelEditClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jTextFieldEditClientName)
+                    .add(jFormattedTextFieldEditClientZipCode)
+                    .add(jTextFieldEditClientEmail)
+                    .add(jTextFieldEditClientAddress)
+                    .add(jFormattedTextFieldEditClientPhone)))
+            .add(jPanelEditClientFormLayout.createSequentialGroup()
+                .add(jPanelEditClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanelEditClientFormLayout.createSequentialGroup()
                         .add(154, 154, 154)
-                        .add(jButtonNewAnimalConfirm))
-                    .add(jPanelNewAnimalFormLayout.createSequentialGroup()
+                        .add(jButtonEditClientConfirm))
+                    .add(jPanelEditClientFormLayout.createSequentialGroup()
                         .add(144, 144, 144)
                         .add(jButtonEditClientNewAnimal)))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanelNewAnimalFormLayout.setVerticalGroup(
-            jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelNewAnimalFormLayout.createSequentialGroup()
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabelNewAnimalName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jTextFieldNewAnimalName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+        jPanelEditClientFormLayout.setVerticalGroup(
+            jPanelEditClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelEditClientFormLayout.createSequentialGroup()
+                .add(jPanelEditClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabelEditClientName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jTextFieldEditClientName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabelNewAnimalBirthYear, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jFormattedTextFieldNewAnimalBirthYear, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jPanelEditClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabelEditClientPhone, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jFormattedTextFieldEditClientPhone, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jFormattedTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jPanelEditClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabelEditClientZipCode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jFormattedTextFieldEditClientZipCode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jTextField1)
-                    .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(jPanelEditClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jTextFieldEditClientEmail)
+                    .add(jLabelEditClientEmail, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jPanelEditClientFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jTextFieldEditClientAddress, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabelEditClientAddress, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jButtonEditClientNewAnimal)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButtonNewAnimalConfirm))
+                .add(jButtonEditClientConfirm))
         );
 
         org.jdesktop.layout.GroupLayout jPanelFrameLayout = new org.jdesktop.layout.GroupLayout(jPanelFrame);
         jPanelFrame.setLayout(jPanelFrameLayout);
         jPanelFrameLayout.setHorizontalGroup(
             jPanelFrameLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelNewAnimalTittle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .add(jPanelEditClientTittle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanelNewAnimalForm, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jPanelEditClientForm, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelFrameLayout.setVerticalGroup(
             jPanelFrameLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelFrameLayout.createSequentialGroup()
-                .add(jPanelNewAnimalTittle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jPanelEditClientTittle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelNewAnimalForm, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jPanelEditClientForm, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -213,27 +243,48 @@ public class EditClientJDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jButtonEditClientNewAnimalActionPerformed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        try {
+            ControllerClient.showSeeClientJDialogFromClientId(this.frame, this.clientId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_formWindowClosed
+
+    private void jButtonEditClientConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditClientConfirmActionPerformed
+        try {
+            ControllerClient.editClient(this.clientId,this.getCurrentClientName(),this.getCurrentClientPhone(),this.getCurrentClientZipCode(),this.getCurrentClientEmail(),this.getCurrentClientAddress());
+            ControllerClient.showDataTableAll(this.frame.getTableComponentsCollection(),this.frame.getTableComponentsClients());
+            this.dispose();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
+    }//GEN-LAST:event_jButtonEditClientConfirmActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonEditClientConfirm;
     private javax.swing.JButton jButtonEditClientNewAnimal;
-    private javax.swing.JButton jButtonNewAnimalConfirm;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextFieldNewAnimalBirthYear;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabelNewAnimalBirthYear;
-    private javax.swing.JLabel jLabelNewAnimalName;
-    private javax.swing.JLabel jLabelNewAnimalTittle;
+    private javax.swing.JFormattedTextField jFormattedTextFieldEditClientPhone;
+    private javax.swing.JFormattedTextField jFormattedTextFieldEditClientZipCode;
+    private javax.swing.JLabel jLabelEditClientAddress;
+    private javax.swing.JLabel jLabelEditClientEmail;
+    private javax.swing.JLabel jLabelEditClientName;
+    private javax.swing.JLabel jLabelEditClientPhone;
+    private javax.swing.JLabel jLabelEditClientTittle;
+    private javax.swing.JLabel jLabelEditClientZipCode;
+    private javax.swing.JPanel jPanelEditClientForm;
+    private javax.swing.JPanel jPanelEditClientTittle;
     private javax.swing.JPanel jPanelFrame;
-    private javax.swing.JPanel jPanelNewAnimalForm;
-    private javax.swing.JPanel jPanelNewAnimalTittle;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextFieldNewAnimalName;
+    private javax.swing.JTextField jTextFieldEditClientAddress;
+    private javax.swing.JTextField jTextFieldEditClientEmail;
+    private javax.swing.JTextField jTextFieldEditClientName;
     // End of variables declaration//GEN-END:variables
 
 }

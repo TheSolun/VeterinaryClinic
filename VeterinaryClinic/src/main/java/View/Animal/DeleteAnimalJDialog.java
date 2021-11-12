@@ -5,21 +5,24 @@
  */
 
 package View.Animal;
-        
+
+import Controller.ControllerAnimal;
+
 /**
  *
  * @author mateu
  */
 public class DeleteAnimalJDialog extends javax.swing.JDialog {
 
-    private java.awt.Frame frameParent;
+    private View.MainJFrame frame;
     private int animalId;
     private String animalName;
+    private boolean deleted = false;
     
     /** Creates new form DeleteAnimalJDialog */
-    public DeleteAnimalJDialog(java.awt.Frame parent, boolean modal, int animalId, String animalName) {
-        super(parent, modal);
-        this.frameParent = parent;
+    public DeleteAnimalJDialog(View.MainJFrame frame, boolean modal, int animalId, String animalName) {
+        super(frame, modal);
+        this.frame = frame;
         this.animalId = animalId;
         this.animalName = animalName;
         initComponents();
@@ -35,81 +38,91 @@ public class DeleteAnimalJDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanelFrame = new javax.swing.JPanel();
-        jPanelDeleteExamTittle = new javax.swing.JPanel();
-        jLabelDeleteExamTittle = new javax.swing.JLabel();
-        jPanelDeleteExamForm = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButtonDeleteExamConfirm = new javax.swing.JButton();
-        jButtonDeleteExamCancel = new javax.swing.JButton();
+        jPanelDeleteAnimalTittle = new javax.swing.JPanel();
+        jLabelDeleteAnimalTittle = new javax.swing.JLabel();
+        jPanelDeleteAnimalForm = new javax.swing.JPanel();
+        jLabel1DeleteAnimal = new javax.swing.JLabel();
+        jLabel2DeleteAnimal = new javax.swing.JLabel();
+        jButtonDeleteAnimalConfirm = new javax.swing.JButton();
+        jButtonDeleteAnimalCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
-
-        jPanelDeleteExamTittle.setLayout(new java.awt.BorderLayout());
-
-        jLabelDeleteExamTittle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabelDeleteExamTittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelDeleteExamTittle.setText("Delete Animal");
-        jPanelDeleteExamTittle.add(jLabelDeleteExamTittle, java.awt.BorderLayout.CENTER);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Are you sure that you want to delete the animal '"+this.animalName+"'?");
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("If you do, all its info will be deleted with it.");
-
-        jButtonDeleteExamConfirm.setText("Delete");
-        jButtonDeleteExamConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jButtonDeleteExamCancel.setText("Cancel");
-        jButtonDeleteExamCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonDeleteExamCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDeleteExamCancelActionPerformed(evt);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
             }
         });
 
-        org.jdesktop.layout.GroupLayout jPanelDeleteExamFormLayout = new org.jdesktop.layout.GroupLayout(jPanelDeleteExamForm);
-        jPanelDeleteExamForm.setLayout(jPanelDeleteExamFormLayout);
-        jPanelDeleteExamFormLayout.setHorizontalGroup(
-            jPanelDeleteExamFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-            .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(jPanelDeleteExamFormLayout.createSequentialGroup()
-                .add(jButtonDeleteExamConfirm)
+        jPanelDeleteAnimalTittle.setLayout(new java.awt.BorderLayout());
+
+        jLabelDeleteAnimalTittle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabelDeleteAnimalTittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelDeleteAnimalTittle.setText("Delete Animal");
+        jPanelDeleteAnimalTittle.add(jLabelDeleteAnimalTittle, java.awt.BorderLayout.CENTER);
+
+        jLabel1DeleteAnimal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1DeleteAnimal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1DeleteAnimal.setText("Are you sure that you want to delete the animal '"+this.animalName+"'?");
+
+        jLabel2DeleteAnimal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2DeleteAnimal.setText("If you do, all its info will be deleted with it.");
+
+        jButtonDeleteAnimalConfirm.setText("Delete");
+        jButtonDeleteAnimalConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonDeleteAnimalConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteAnimalConfirmActionPerformed(evt);
+            }
+        });
+
+        jButtonDeleteAnimalCancel.setText("Cancel");
+        jButtonDeleteAnimalCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonDeleteAnimalCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteAnimalCancelActionPerformed(evt);
+            }
+        });
+
+        org.jdesktop.layout.GroupLayout jPanelDeleteAnimalFormLayout = new org.jdesktop.layout.GroupLayout(jPanelDeleteAnimalForm);
+        jPanelDeleteAnimalForm.setLayout(jPanelDeleteAnimalFormLayout);
+        jPanelDeleteAnimalFormLayout.setHorizontalGroup(
+            jPanelDeleteAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jLabel1DeleteAnimal, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+            .add(jLabel2DeleteAnimal, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(jPanelDeleteAnimalFormLayout.createSequentialGroup()
+                .add(jButtonDeleteAnimalConfirm)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(jButtonDeleteExamCancel))
+                .add(jButtonDeleteAnimalCancel))
         );
-        jPanelDeleteExamFormLayout.setVerticalGroup(
-            jPanelDeleteExamFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelDeleteExamFormLayout.createSequentialGroup()
-                .add(jLabel1)
+        jPanelDeleteAnimalFormLayout.setVerticalGroup(
+            jPanelDeleteAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelDeleteAnimalFormLayout.createSequentialGroup()
+                .add(jLabel1DeleteAnimal)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel2)
+                .add(jLabel2DeleteAnimal)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 46, Short.MAX_VALUE)
-                .add(jPanelDeleteExamFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButtonDeleteExamConfirm)
-                    .add(jButtonDeleteExamCancel)))
+                .add(jPanelDeleteAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButtonDeleteAnimalConfirm)
+                    .add(jButtonDeleteAnimalCancel)))
         );
 
         org.jdesktop.layout.GroupLayout jPanelFrameLayout = new org.jdesktop.layout.GroupLayout(jPanelFrame);
         jPanelFrame.setLayout(jPanelFrameLayout);
         jPanelFrameLayout.setHorizontalGroup(
             jPanelFrameLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelDeleteExamTittle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(jPanelDeleteAnimalTittle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanelDeleteExamForm, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jPanelDeleteAnimalForm, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelFrameLayout.setVerticalGroup(
             jPanelFrameLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelFrameLayout.createSequentialGroup()
-                .add(jPanelDeleteExamTittle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jPanelDeleteAnimalTittle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(1, 1, 1)
-                .add(jPanelDeleteExamForm, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jPanelDeleteAnimalForm, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -128,19 +141,42 @@ public class DeleteAnimalJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonDeleteExamCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteExamCancelActionPerformed
+    private void jButtonDeleteAnimalCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteAnimalCancelActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButtonDeleteExamCancelActionPerformed
+    }//GEN-LAST:event_jButtonDeleteAnimalCancelActionPerformed
+
+    private void jButtonDeleteAnimalConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteAnimalConfirmActionPerformed
+        try {
+            ControllerAnimal.deleteAnimal(this.animalId);
+            this.deleted = true;
+            ControllerAnimal.showDataTableAll(this.frame.getTableComponentsCollection(),this.frame.getTableComponentsAnimals());
+            this.dispose();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
+    }//GEN-LAST:event_jButtonDeleteAnimalConfirmActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        try {
+            if(!this.deleted)
+                ControllerAnimal.showSeeAnimalJDialogFromAnimalId(this.frame, this.animalId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_formWindowClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonDeleteExamCancel;
-    private javax.swing.JButton jButtonDeleteExamConfirm;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabelDeleteExamTittle;
-    private javax.swing.JPanel jPanelDeleteExamForm;
-    private javax.swing.JPanel jPanelDeleteExamTittle;
+    private javax.swing.JButton jButtonDeleteAnimalCancel;
+    private javax.swing.JButton jButtonDeleteAnimalConfirm;
+    private javax.swing.JLabel jLabel1DeleteAnimal;
+    private javax.swing.JLabel jLabel2DeleteAnimal;
+    private javax.swing.JLabel jLabelDeleteAnimalTittle;
+    private javax.swing.JPanel jPanelDeleteAnimalForm;
+    private javax.swing.JPanel jPanelDeleteAnimalTittle;
     private javax.swing.JPanel jPanelFrame;
     // End of variables declaration//GEN-END:variables
 

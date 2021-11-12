@@ -6,6 +6,8 @@
 
 package View.Vet;
 
+import Controller.ControllerVet;
+
 /**
  *
  * @author mateu
@@ -29,6 +31,18 @@ public class EditVetJDialog extends javax.swing.JDialog {
         initComponents();
     }
 
+    private String getCurrentVetName() {
+        return this.jTextFieldEditVetName.getText();
+    }
+    
+    private String getCurrentVetPhone() {
+        return this.jFormattedTextFieldEditVetPhone.getText().replace("(","").replace(")","").replace("-","");
+    }
+    
+    private String getCurrentVetAddress() {
+        return this.jTextFieldEditVetAddress.getText();
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -53,6 +67,11 @@ public class EditVetJDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edit Vet");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanelEditVetTittle.setLayout(new java.awt.BorderLayout());
 
@@ -77,11 +96,6 @@ public class EditVetJDialog extends javax.swing.JDialog {
         jLabelEditVetAddress.setText("Address");
 
         jTextFieldEditVetAddress.setText(this.vetAddress);
-        jTextFieldEditVetAddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldEditVetAddressActionPerformed(evt);
-            }
-        });
 
         jButtonEditVetConfirm.setText("Upgrade");
         jButtonEditVetConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -163,13 +177,26 @@ public class EditVetJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldEditVetAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEditVetAddressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldEditVetAddressActionPerformed
-
     private void jButtonEditVetConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditVetConfirmActionPerformed
-        // TODO add your handling code here:
+        try {
+            ControllerVet.editVet(this.vetId,this.getCurrentVetName(),this.getCurrentVetPhone(),this.getCurrentVetAddress());
+            ControllerVet.showDataTableAll(this.frame.getTableComponentsCollection(),this.frame.getTableComponentsVets());
+            this.dispose();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
     }//GEN-LAST:event_jButtonEditVetConfirmActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        try {
+            ControllerVet.showSeeVetJDialogFromVetId(this.frame, this.vetId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEditVetConfirm;

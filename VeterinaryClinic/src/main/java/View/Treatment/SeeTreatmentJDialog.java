@@ -2,6 +2,8 @@ package View.Treatment;
 
 import Controller.ControllerAnimal;
 import Controller.ControllerClient;
+import Controller.ControllerTreatment;
+
 
 /**
  *
@@ -46,6 +48,9 @@ public class SeeTreatmentJDialog extends javax.swing.JDialog {
         jPanelFrame = new javax.swing.JPanel();
         jPanelSeeTreatmentTittle = new javax.swing.JPanel();
         jLabelSeeTreatmentTittle = new javax.swing.JLabel();
+        jPanelSeeTreatmentActionButtons = new javax.swing.JPanel();
+        jButtonSeeTreatmentEditTreatment = new javax.swing.JButton();
+        jButtonSeeTreatmentDeleteTreatment = new javax.swing.JButton();
         jPanelSeeTreatmentForm = new javax.swing.JPanel();
         jLabelSeeTreatmentName = new javax.swing.JLabel();
         jTextFieldSeeTreatmentName = new javax.swing.JTextField();
@@ -74,6 +79,46 @@ public class SeeTreatmentJDialog extends javax.swing.JDialog {
         jLabelSeeTreatmentTittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelSeeTreatmentTittle.setText("See Treatment");
         jPanelSeeTreatmentTittle.add(jLabelSeeTreatmentTittle, java.awt.BorderLayout.CENTER);
+
+        jPanelSeeTreatmentActionButtons.setPreferredSize(new java.awt.Dimension(120, 50));
+
+        jButtonSeeTreatmentEditTreatment.setText("Edit");
+        jButtonSeeTreatmentEditTreatment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeTreatmentEditTreatment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeTreatmentEditTreatmentActionPerformed(evt);
+            }
+        });
+
+        jButtonSeeTreatmentDeleteTreatment.setText("Delete");
+        jButtonSeeTreatmentDeleteTreatment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeTreatmentDeleteTreatment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeTreatmentDeleteTreatmentActionPerformed(evt);
+            }
+        });
+
+        org.jdesktop.layout.GroupLayout jPanelSeeTreatmentActionButtonsLayout = new org.jdesktop.layout.GroupLayout(jPanelSeeTreatmentActionButtons);
+        jPanelSeeTreatmentActionButtons.setLayout(jPanelSeeTreatmentActionButtonsLayout);
+        jPanelSeeTreatmentActionButtonsLayout.setHorizontalGroup(
+            jPanelSeeTreatmentActionButtonsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelSeeTreatmentActionButtonsLayout.createSequentialGroup()
+                .add(jButtonSeeTreatmentEditTreatment)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonSeeTreatmentDeleteTreatment)
+                .add(0, 0, Short.MAX_VALUE))
+        );
+        jPanelSeeTreatmentActionButtonsLayout.setVerticalGroup(
+            jPanelSeeTreatmentActionButtonsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelSeeTreatmentActionButtonsLayout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .add(jPanelSeeTreatmentActionButtonsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButtonSeeTreatmentEditTreatment)
+                    .add(jButtonSeeTreatmentDeleteTreatment))
+                .addContainerGap())
+        );
+
+        jPanelSeeTreatmentTittle.add(jPanelSeeTreatmentActionButtons, java.awt.BorderLayout.LINE_END);
 
         jLabelSeeTreatmentName.setText("Name");
 
@@ -210,11 +255,13 @@ public class SeeTreatmentJDialog extends javax.swing.JDialog {
         jPanelFrame.setLayout(jPanelFrameLayout);
         jPanelFrameLayout.setHorizontalGroup(
             jPanelFrameLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelSeeTreatmentTittle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelFrameLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanelSeeTreatmentForm, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelFrameLayout.createSequentialGroup()
+                .add(0, 0, Short.MAX_VALUE)
+                .add(jPanelSeeTreatmentTittle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 340, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         jPanelFrameLayout.setVerticalGroup(
             jPanelFrameLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -262,7 +309,29 @@ public class SeeTreatmentJDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jButtonSeeTreatmentSeeClientActionPerformed
 
+    private void jButtonSeeTreatmentEditTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeTreatmentEditTreatmentActionPerformed
+        try {
+            this.dispose();
+            ControllerTreatment.showEditTreatmentJDialogFromTreatmentId(this.frame, this.treatmentId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_jButtonSeeTreatmentEditTreatmentActionPerformed
+
+    private void jButtonSeeTreatmentDeleteTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeTreatmentDeleteTreatmentActionPerformed
+        try {
+            this.dispose();
+            ControllerTreatment.showDeleteTreatmentJDialogFromTreatmentId(this.frame, this.treatmentId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_jButtonSeeTreatmentDeleteTreatmentActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonSeeTreatmentDeleteTreatment;
+    private javax.swing.JButton jButtonSeeTreatmentEditTreatment;
     private javax.swing.JButton jButtonSeeTreatmentSeeAnimal;
     private javax.swing.JButton jButtonSeeTreatmentSeeClient;
     private javax.swing.JButton jButtonSeeTreatmentSeeConsultations;
@@ -274,6 +343,7 @@ public class SeeTreatmentJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelSeeTreatmentStartDay;
     private javax.swing.JLabel jLabelSeeTreatmentTittle;
     private javax.swing.JPanel jPanelFrame;
+    private javax.swing.JPanel jPanelSeeTreatmentActionButtons;
     private javax.swing.JPanel jPanelSeeTreatmentForm;
     private javax.swing.JPanel jPanelSeeTreatmentTittle;
     private javax.swing.JTextField jTextFieldSeeTreatmentAnimalName;

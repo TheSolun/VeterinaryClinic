@@ -52,6 +52,10 @@ public class AnimalDAO extends DAO {
         executeUpdate(stmt);
     }
     
+    public void deleteById(int animalId) throws SQLException, Exception {
+        this.delete(this.retrieveById(animalId));
+    }
+    
     // Singleton
     public static AnimalDAO getInstance() throws SQLException {
         if(AnimalDAO.instance == null)
@@ -90,7 +94,7 @@ public class AnimalDAO extends DAO {
     }
     
     public void update(Animal animal) throws SQLException {
-        PreparedStatement stmt = (DAO.getConnection()).prepareStatement("UPDATE animal SET name=? birthYear=?, gender=?, id_species=?, id_client=? WHERE id=?");
+        PreparedStatement stmt = (DAO.getConnection()).prepareStatement("UPDATE animal SET name=?, birthYear=?, gender=?, id_species=?, id_client=? WHERE id=?");
         stmt.setString(1, animal.getName());
         stmt.setString(2, animal.getBirthYear());
         stmt.setString(3, animal.getGender().toString());
