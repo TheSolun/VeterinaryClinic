@@ -92,6 +92,7 @@ Models\DAO\ExamDAO.class
 Controller\ControllerExam.class
 View\Animal\AnimalTableModel.class
 View\Treatment\DeleteTreatmentJDialog$2.class
+View\Treatment\SeeTreatmentJDialog$7.class
 Exceptions\InvalidBirthYearException.class
 Exceptions\InvalidPhoneLengthException.class
 View\Consultation\NewConsultationJDialog$1.class

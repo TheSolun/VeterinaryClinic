@@ -147,17 +147,4 @@ public class Controller {
         tableComponents.getPanel().setVisible(true);
     }
     
-//    public static void showDataTableAll(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents) throws SQLException, Exception {
-//        switch(tableComponents.getId()) {
-//            case "Consultations":
-////                Controller.showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(ConsultationDAO.getInstance().retrieveAll()));
-//                break;
-//            case "Exams":
-////                Controller.showDataTable(tableComponentsCollection,tableComponents, new ExamTableModel(ExamDAO.getInstance().retrieveAll()));
-//                break;
-//            default:
-//                break;
-//        }
-//    }
-    
 }
