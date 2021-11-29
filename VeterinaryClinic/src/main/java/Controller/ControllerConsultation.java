@@ -38,17 +38,25 @@ public class ControllerConsultation extends Controller {
         showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(ConsultationDAO.getInstance().retrieveAll()));
     }
     
-    public static void showDataTableByTreatmentId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int treatmentId) throws SQLException, Exception {
-        showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(ConsultationDAO.getInstance().retrieveByTreatmentId(treatmentId)));
+    private static List<Consultation> getConsultationsByTreatmentId(int treatmentId)throws SQLException, Exception {
+        return ConsultationDAO.getInstance().retrieveByTreatmentId(treatmentId);
     }
     
-    public static void showDataTableByAnimalId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int animalId) throws SQLException, Exception {
+    public static void showDataTableByTreatmentId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int treatmentId) throws SQLException, Exception {
+        showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(getConsultationsByTreatmentId(treatmentId)));
+    }
+    
+    private static List<Consultation> getConsultationsByAnimalId(int animalId) throws SQLException, Exception {
         List<Consultation> consultations = new ArrayList<Consultation>();
         List<Treatment> treatments = TreatmentDAO.getInstance().retrieveByAnimalId(animalId);
         for(Treatment treatment : treatments) {
-            consultations.addAll(ConsultationDAO.getInstance().retrieveByTreatmentId(treatment.getId()));
+            consultations.addAll(getConsultationsByTreatmentId(treatment.getId()));
         }
-        showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(consultations));
+        return consultations;
+    }
+    
+    public static void showDataTableByAnimalId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int animalId) throws SQLException, Exception {
+        showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(getConsultationsByAnimalId(animalId)));
     }
     
     private static Consultation getSelectedConsultationFromJTable(MainJFrame frame) {

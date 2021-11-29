@@ -25,7 +25,6 @@ Exceptions\ZipCodeNotOnlyWithNumbersException.class
 View\Client\SeeClientJDialog$3.class
 View\Client\NewClientJDialog.class
 View\Animal\NewAnimalJDialog$1.class
-View\Animal\SeeAnimalJDialog$8.class
 View\Client\EditClientJDialog$1.class
 View\MainJFrame$1.class
 Controller\ControllerAnimal.class
@@ -85,7 +84,6 @@ Exceptions\EmailWithInvalidCharInItsLocalPartException.class
 View\Treatment\SeeTreatmentJDialog$4.class
 Models\DAO\DAO.class
 View\Vet\EditVetJDialog$2.class
-View\Animal\SeeAnimalJDialog$7.class
 Controller\ControllerVet.class
 Exceptions\BlankNameException.class
 View\Animal\SeeAnimalJDialog$4.class
