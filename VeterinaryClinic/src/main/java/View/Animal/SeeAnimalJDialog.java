@@ -13,6 +13,7 @@ import javax.swing.ComboBoxModel;
 
 import Controller.ControllerAnimal;
 import Controller.ControllerClient;
+import Controller.ControllerConsultation;
 import Controller.ControllerTreatment;
 /**
  *
@@ -209,6 +210,11 @@ public class SeeAnimalJDialog extends javax.swing.JDialog {
 
         jButtonSeeAnimalSeeConsultations.setText("See Consultations");
         jButtonSeeAnimalSeeConsultations.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeAnimalSeeConsultations.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeAnimalSeeConsultationsActionPerformed(evt);
+            }
+        });
 
         jButtonSeeAnimalSeeExams.setText("See Exams");
         jButtonSeeAnimalSeeExams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -360,6 +366,15 @@ public class SeeAnimalJDialog extends javax.swing.JDialog {
             javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
         }
     }//GEN-LAST:event_jButtonSeeAnimalDeleteAnimalActionPerformed
+
+    private void jButtonSeeAnimalSeeConsultationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeAnimalSeeConsultationsActionPerformed
+        try {
+            ControllerConsultation.showDataTableByAnimalId(this.frame.getTableComponentsCollection(), this.frame.getTableComponentsConsultations(), this.animalId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_jButtonSeeAnimalSeeConsultationsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

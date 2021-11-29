@@ -13,11 +13,11 @@ import java.util.List;
 public class ConsultationTableModel extends GenericTableModel {
     
     public ConsultationTableModel() {
-        super(new ArrayList<Object>(), new String[]{idColumnName,"Date","Treatemnt","Vet","Comment","Finished"});
+        super(new ArrayList<Object>(), new String[]{idColumnName,"Date","Treatemnt","Animal","Client","Vet","Comment","Finished"});
     }
     
     public ConsultationTableModel(List vData) {
-        super(vData, new String[]{"Date","Treatemnt","Vet","Comment","Finished"});
+        super(vData, new String[]{"Date","Treatemnt","Animal","Client","Vet","Comment","Finished"});
     }
     
     @Override
@@ -34,6 +34,10 @@ public class ConsultationTableModel extends GenericTableModel {
             case 4:
                 return String.class;
             case 5:
+                return String.class;
+            case 6:
+                return String.class;
+            case 7:
                 return boolean.class;
             default:
                 throw new IndexOutOfBoundsException("column index out of bounds");
@@ -52,10 +56,14 @@ public class ConsultationTableModel extends GenericTableModel {
             case 2:
                 return consultation.getTreatment().getName();
             case 3:
-                return consultation.getVet().getName();
+                return consultation.getTreatment().getAnimal().getName();
             case 4:
-                return consultation.getComment();
+                return consultation.getTreatment().getAnimal().getOwner().getName();
             case 5:
+                return consultation.getVet().getName();
+            case 6:
+                return consultation.getComment();
+            case 7:
                 return consultation.isFinished();
             default:
                 throw new IndexOutOfBoundsException("column index out of bounds");

@@ -5,6 +5,8 @@
  */
 package Controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 
@@ -38,6 +40,15 @@ public class ControllerConsultation extends Controller {
     
     public static void showDataTableByTreatmentId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int treatmentId) throws SQLException, Exception {
         showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(ConsultationDAO.getInstance().retrieveByTreatmentId(treatmentId)));
+    }
+    
+    public static void showDataTableByAnimalId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int animalId) throws SQLException, Exception {
+        List<Consultation> consultations = new ArrayList<Consultation>();
+        List<Treatment> treatments = TreatmentDAO.getInstance().retrieveByAnimalId(animalId);
+        for(Treatment treatment : treatments) {
+            consultations.addAll(ConsultationDAO.getInstance().retrieveByTreatmentId(treatment.getId()));
+        }
+        showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(consultations));
     }
     
     private static Consultation getSelectedConsultationFromJTable(MainJFrame frame) {
