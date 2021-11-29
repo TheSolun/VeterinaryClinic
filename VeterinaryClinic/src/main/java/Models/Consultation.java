@@ -16,19 +16,17 @@ public class Consultation {
     private Treatment treatment;
     private Vet vet;
 
-    public Consultation(int id, LocalDateTime dateTime, String comment, boolean finished, Treatment treatment, Vet vet) throws NotPositiveIdException {
+    public Consultation(int id, LocalDateTime dateTime, String comment, Treatment treatment, Vet vet) throws NotPositiveIdException {
         this.setId(id);
         this.dateTime = dateTime;
         this.comment = comment;
-        this.finished = finished;
         this.treatment = treatment;
         this.vet = vet;
     }
     
-    public Consultation(LocalDateTime dateTime, String comment, boolean finished, Treatment treatment, Vet vet) {
+    public Consultation(LocalDateTime dateTime, String comment, Treatment treatment, Vet vet) {
         this.dateTime = dateTime;
         this.comment = comment;
-        this.finished = finished;
         this.treatment = treatment;
         this.vet = vet;
     }
@@ -49,6 +47,7 @@ public class Consultation {
     
     public void setDateTime(LocalDateTime dateTime){
         this.dateTime = dateTime;
+        this.setFinished();
     }
     
     public String getComment() {
@@ -77,6 +76,10 @@ public class Consultation {
     
     public boolean isFinished(){
         return finished;
+    }
+    
+    private void setFinished() {
+        this.finished = LocalDateTime.now().compareTo(this.dateTime) > 0;
     }
 
     @Override

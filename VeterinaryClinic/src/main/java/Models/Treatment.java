@@ -23,7 +23,6 @@ public class Treatment {
         this.setName(name);
         this.setStartDay(startDay);
         this.setEndDay(endDay);
-        this.setFinished();
         this.animal = animal;
     }
     
@@ -31,7 +30,6 @@ public class Treatment {
         this.setName(name);
         this.setStartDay(startDay);
         this.setEndDay(endDay);
-        this.setFinished();
         this.animal = animal;
     }
 
@@ -64,6 +62,7 @@ public class Treatment {
             if(endDay.isBefore(this.startDay))
                 throw new StartAndEndDatesNotInChronologicalOrderException(this.startDay, endDay);
         this.endDay = endDay;
+        this.setFinished();
     }
 
     public LocalDate getStartDay() {

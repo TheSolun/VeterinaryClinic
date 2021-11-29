@@ -14,12 +14,12 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
 import View.GenericTableModel;
-//import View.Treatment.TreatmentTableModel;
-//import View.Consultation.ConsultationTableModel;
-//import View.Exam.ExamTableModel;
+import View.Treatment.TreatmentTableModel;
+import View.Consultation.ConsultationTableModel;
+import View.Exam.ExamTableModel;
 import View.Animal.AnimalTableModel;
 import View.Client.ClientTableModel;
-//import View.Vet.VetTableModel;
+import View.Vet.VetTableModel;
 import View.TableComponents;
 import View.TableComponentsCollection;
 
@@ -120,6 +120,18 @@ public class Controller {
                 case "Clients":
                     Controller.setTableModel(tableComponents.getTable(), new ClientTableModel());
                     break;
+                case "Consultations":
+                    Controller.setTableModel(tableComponents.getTable(), new ConsultationTableModel());
+                    break;
+                case "Exams":
+                    Controller.setTableModel(tableComponents.getTable(), new ExamTableModel());
+                    break;
+                case "Treatments":
+                    Controller.setTableModel(tableComponents.getTable(), new TreatmentTableModel());
+                    break;
+                case "Vets":
+                    Controller.setTableModel(tableComponents.getTable(), new VetTableModel());
+                    break;
                 default:
                     break;
             }
@@ -135,17 +147,17 @@ public class Controller {
         tableComponents.getPanel().setVisible(true);
     }
     
-    public static void showDataTableAll(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents) throws SQLException, Exception {
-        switch(tableComponents.getId()) {
-            case "Consultations":
-//                Controller.showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(ConsultationDAO.getInstance().retrieveAll()));
-                break;
-            case "Exams":
-//                Controller.showDataTable(tableComponentsCollection,tableComponents, new ExamTableModel(ExamDAO.getInstance().retrieveAll()));
-                break;
-            default:
-                break;
-        }
-    }
+//    public static void showDataTableAll(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents) throws SQLException, Exception {
+//        switch(tableComponents.getId()) {
+//            case "Consultations":
+////                Controller.showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(ConsultationDAO.getInstance().retrieveAll()));
+//                break;
+//            case "Exams":
+////                Controller.showDataTable(tableComponentsCollection,tableComponents, new ExamTableModel(ExamDAO.getInstance().retrieveAll()));
+//                break;
+//            default:
+//                break;
+//        }
+//    }
     
 }

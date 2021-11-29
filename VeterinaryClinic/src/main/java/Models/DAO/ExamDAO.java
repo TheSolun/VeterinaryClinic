@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,9 +40,17 @@ public class ExamDAO extends DAO {
     }
     
     public void delete(Exam exam) throws SQLException {
+//        PreparedStatement stmt;
+//        stmt = (DAO.getConnection()).prepareStatement("DELETE FROM exam WHERE id = ?");
+//        stmt.setInt(1, exam.getId());
+//        executeUpdate(stmt);
+        this.deleteById(exam.getId());
+    }
+    
+    public void deleteById(int examId) throws SQLException {
         PreparedStatement stmt;
         stmt = (DAO.getConnection()).prepareStatement("DELETE FROM exam WHERE id = ?");
-        stmt.setInt(1, exam.getId());
+        stmt.setInt(1, examId);
         executeUpdate(stmt);
     }
     

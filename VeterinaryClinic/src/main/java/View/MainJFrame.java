@@ -46,6 +46,7 @@ import View.Consultation.NewConsultationJDialog;
 import View.Consultation.SeeConsultationJDialog;
 import Models.Consultation;
 import Models.DAO.ConsultationDAO;
+import Controller.ControllerConsultation;
 
 import View.Exam.DeleteExamJDialog;
 import View.Exam.EditExamJDialog;
@@ -53,6 +54,7 @@ import View.Exam.NewExamJDialog;
 import View.Exam.SeeExamJDialog;
 import Models.Exam;
 import Models.DAO.ExamDAO;
+import Controller.ControllerExam;
 
 import Controller.ControllerAnimal;
 
@@ -1265,39 +1267,40 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jButtonMenuBarConsultationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarConsultationsActionPerformed
         try {
-//            this.setNotVisibleAllCardLayoutJPanels();
-//            this.setAllJTablesActionButtonsAsDisabled();
-//            Controller.setEmptyAllJTables(this.tableComponentsCollection);
-//            Controller.setTableModel
-//            Controller.removeObjectColumnFromJTable(this.jTableConsultations);
-//            this.jPanelConsultations.setVisible(true);
-            Controller.showDataTableAll(this.tableComponentsCollection,this.getTableComponentsConsultations());
+            ControllerConsultation.showDataTableAll(this.tableComponentsCollection,this.getTableComponentsConsultations());
         } catch (Exception ex) {
             System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this,ex);
         }
     }//GEN-LAST:event_jButtonMenuBarConsultationsActionPerformed
 
     private void jButtonEditConsultationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditConsultationActionPerformed
-        EditConsultationJDialog editConsultationJDialog = new EditConsultationJDialog(this,true);
-        editConsultationJDialog.setVisible(true);
+//        EditConsultationJDialog editConsultationJDialog = new EditConsultationJDialog(this,true);
+//        editConsultationJDialog.setVisible(true);
+        try {
+            ControllerConsultation.showEditConsultationJDialogFromJTableSelection(this);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this,ex);
+        }
 //        (new EditConsultationJDialog(this,true,(Consultation) Controller.getSelectedObjectFromJTable(jTableConsultations))).setVisible(true);
     }//GEN-LAST:event_jButtonEditConsultationActionPerformed
 
     private void jButtonEditExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditExamActionPerformed
-        EditExamJDialog editExamJDialog = new EditExamJDialog(this,true);
-        editExamJDialog.setVisible(true);
+//        EditExamJDialog editExamJDialog = new EditExamJDialog(this,true);
+//        editExamJDialog.setVisible(true);
+        try {
+            ControllerExam.showEditExamJDialogFromJTableSelection(this);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this,ex);
+        }
 //        (new EditExamJDialog(this,true,(Exam) Controller.getSelectedObjectFromJTable(jTableExams))).setVisible(true);
     }//GEN-LAST:event_jButtonEditExamActionPerformed
 
     private void jButtonMenuBarExamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuBarExamsActionPerformed
         try {
-//            this.setNotVisibleAllCardLayoutJPanels();
-//            this.setAllJTablesActionButtonsAsDisabled();
-//            Controller.setEmptyAllJTables(this.tableComponentsCollection);
-//            Controller.setTableModel
-//            Controller.removeObjectColumnFromJTable(this.jTableExams);
-//            this.jPanelExams.setVisible(true);
-            Controller.showDataTableAll(this.tableComponentsCollection,this.getTableComponentsExams());
+            ControllerExam.showDataTableAll(this.tableComponentsCollection,this.getTableComponentsExams());
         } catch (Exception ex) {
             System.out.println(ex);
             javax.swing.JOptionPane.showMessageDialog(this,ex);
@@ -1366,37 +1369,73 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSeeTreatmentActionPerformed
 
     private void jButtonDeleteConsultationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteConsultationActionPerformed
-        DeleteConsultationJDialog deleteConsultationJDialog = new DeleteConsultationJDialog(this,true);
-        deleteConsultationJDialog.setVisible(true);
+//        DeleteConsultationJDialog deleteConsultationJDialog = new DeleteConsultationJDialog(this,true);
+//        deleteConsultationJDialog.setVisible(true);
+        try {
+            ControllerConsultation.showDeleteConsultationJDialogFromJTableSelection(this);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this,ex);
+        }
 //        (new DeleteConsultationJDialog(this,true,(Consultation) Controller.getSelectedObjectFromJTable(jTableConsultations))).setVisible(true);
     }//GEN-LAST:event_jButtonDeleteConsultationActionPerformed
 
     private void jButtonSeeConsultationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeConsultationActionPerformed
-        SeeConsultationJDialog seeConsultationJDialog = new SeeConsultationJDialog(this,true);
-        seeConsultationJDialog.setVisible(true);
+//        SeeConsultationJDialog seeConsultationJDialog = new SeeConsultationJDialog(this,true);
+//        seeConsultationJDialog.setVisible(true);
+        try {
+            ControllerConsultation.showSeeConsultationJDialogFromJTableSelection(this);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this,ex);
+        }
 //        (new SeeConsultationJDialog(this,true,(Consultation) Controller.getSelectedObjectFromJTable(jTableConsultations))).setVisible(true);
     }//GEN-LAST:event_jButtonSeeConsultationActionPerformed
 
     private void jButtonNewConsultationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewConsultationActionPerformed
-        NewConsultationJDialog newConsultationJDialog = new NewConsultationJDialog(this,true);
-        newConsultationJDialog.setVisible(true);
+//        NewConsultationJDialog newConsultationJDialog = new NewConsultationJDialog(this,true);
+//        newConsultationJDialog.setVisible(true);
+        try {
+//            ControllerConsultation.showNewConsultationJDialog(this);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this,ex);
+        }
     }//GEN-LAST:event_jButtonNewConsultationActionPerformed
 
     private void jButtonSeeExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeExamActionPerformed
-        SeeExamJDialog seeExamJDialog = new SeeExamJDialog(this,true);
-        seeExamJDialog.setVisible(true);
+//        SeeExamJDialog seeExamJDialog = new SeeExamJDialog(this,true);
+//        seeExamJDialog.setVisible(true);
+        try {
+            ControllerExam.showSeeExamJDialogFromJTableSelection(this);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this,ex);
+        }
 //        (new SeeExamJDialog(this,true,(Exam) Controller.getSelectedObjectFromJTable(jTableExams))).setVisible(true);
     }//GEN-LAST:event_jButtonSeeExamActionPerformed
 
     private void jButtonDeleteExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteExamActionPerformed
-        DeleteExamJDialog deleteExamJDialog = new DeleteExamJDialog(this,true);
-        deleteExamJDialog.setVisible(true);
+//        DeleteExamJDialog deleteExamJDialog = new DeleteExamJDialog(this,true);
+//        deleteExamJDialog.setVisible(true);
+        try {
+            ControllerExam.showDeleteExamJDialogFromJTableSelection(this);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this,ex);
+        }
 //        (new DeleteExamJDialog(this,true,(Exam) Controller.getSelectedObjectFromJTable(jTableExams))).setVisible(true);
     }//GEN-LAST:event_jButtonDeleteExamActionPerformed
 
     private void jButtonNewExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewExamActionPerformed
-        NewExamJDialog newExamJDialog = new NewExamJDialog(this,true);
-        newExamJDialog.setVisible(true);
+//        NewExamJDialog newExamJDialog = new NewExamJDialog(this,true);
+//        newExamJDialog.setVisible(true);
+        try {
+//            ControllerExam.showNewExamJDialog(this);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this,ex);
+        }
     }//GEN-LAST:event_jButtonNewExamActionPerformed
 
     private void jButtonSeeAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeAnimalActionPerformed

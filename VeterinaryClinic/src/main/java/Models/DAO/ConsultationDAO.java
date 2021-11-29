@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,7 +28,7 @@ public class ConsultationDAO extends DAO {
     private Consultation buildObject(ResultSet rs) throws SQLException, Exception {
         Vet vet = VetDAO.getInstance().retrieveById(rs.getInt("id_vet"));
         Treatment treatment = TreatmentDAO.getInstance().retrieveById(rs.getInt("id_treatment"));
-        return new Consultation(rs.getInt("id"), LocalDateTime.parse(rs.getString("date")+"T"+rs.getString("time")), rs.getString("comment"), (rs.getInt("finished")==1), treatment, vet);
+        return new Consultation(rs.getInt("id"), LocalDateTime.parse(rs.getString("date")+"T"+rs.getString("time")), rs.getString("comment"), treatment, vet);
     }
     
     public Consultation create(Consultation consultation) throws SQLException, Exception {
@@ -49,9 +50,17 @@ public class ConsultationDAO extends DAO {
     }
     
     public void delete(Consultation consultation) throws SQLException {
+//        PreparedStatement stmt;
+//        stmt = (DAO.getConnection()).prepareStatement("DELETE FROM consultation WHERE id = ?");
+//        stmt.setInt(1, consultation.getId());
+//        executeUpdate(stmt);
+        this.deleteById(consultation.getId());
+    }
+    
+    public void deleteById(int consultationId) throws SQLException {
         PreparedStatement stmt;
         stmt = (DAO.getConnection()).prepareStatement("DELETE FROM consultation WHERE id = ?");
-        stmt.setInt(1, consultation.getId());
+        stmt.setInt(1, consultationId);
         executeUpdate(stmt);
     }
     

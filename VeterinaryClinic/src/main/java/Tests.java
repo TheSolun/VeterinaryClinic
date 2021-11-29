@@ -124,9 +124,9 @@ public class Tests {
         Treatment treatment2DB = treatmentsDB.get(1);
         Vet vet1DB = vetsDB.get(0);
         Vet vet2DB = vetsDB.get(1);
-        Consultation consultation1treatment1DBVet1DB = new Consultation(LocalDateTime.parse("2021-09-04T09:00"), "Consultation 1 - Treatment 1 - Vet 1", false, treatment1DB, vet1DB);
-        Consultation consultation2treatment1DBVet2DB = new Consultation(LocalDateTime.parse("2021-09-05T19:30"), "Consultation 2 - Treatment 1 - Vet 2", false, treatment1DB, vet2DB);
-        Consultation consultation1treatment2DBVet1DB = new Consultation(LocalDateTime.parse("2021-09-02T18:15"), "Consultation 1 - Treatment 2 - Vet 1", true, treatment2DB, vet1DB);
+        Consultation consultation1treatment1DBVet1DB = new Consultation(LocalDateTime.parse("2021-09-04T09:00"), "Consultation 1 - Treatment 1 - Vet 1", treatment1DB, vet1DB);
+        Consultation consultation2treatment1DBVet2DB = new Consultation(LocalDateTime.parse("2021-09-05T19:30"), "Consultation 2 - Treatment 1 - Vet 2", treatment1DB, vet2DB);
+        Consultation consultation1treatment2DBVet1DB = new Consultation(LocalDateTime.parse("2021-09-02T18:15"), "Consultation 1 - Treatment 2 - Vet 1", treatment2DB, vet1DB);
 
         // Inserindo objetos das consultas
         ConsultationDAO.getInstance().create(consultation1treatment1DBVet1DB);
