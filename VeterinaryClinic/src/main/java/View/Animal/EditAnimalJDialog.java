@@ -31,6 +31,7 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
     private String speciesName;
     private ComboBoxModel genderComboModel;
     private ComboBoxModel speciesComboModel;
+    private boolean showSeeAnimalOnDispose = true;
     
     /** Creates new form EditAnimalJDialog */
     public EditAnimalJDialog(View.MainJFrame frame, boolean modal, int animalId, String animalName, String animalBirthYear, String animalGender, int clientId, String clientName, int speciesId, String speciesName) throws SQLException, Exception {
@@ -93,7 +94,7 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
         jLabelEditAnimalClient = new javax.swing.JLabel();
         jTextFieldEditAnimalClientName = new javax.swing.JTextField();
         jButtonEditAnimalConfirm = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButtonEditAnimalNewTreatment = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edit Animal");
@@ -183,11 +184,11 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
             }
         });
 
-        jButton1.setText("New Treatment");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEditAnimalNewTreatment.setText("New Treatment");
+        jButtonEditAnimalNewTreatment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditAnimalNewTreatment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonEditAnimalNewTreatmentActionPerformed(evt);
             }
         });
 
@@ -217,7 +218,7 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
                 .add(jTextFieldEditAnimalClientName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(jPanelEditAnimalFormLayout.createSequentialGroup()
                 .add(137, 137, 137)
-                .add(jButton1)
+                .add(jButtonEditAnimalNewTreatment)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelEditAnimalFormLayout.createSequentialGroup()
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -249,7 +250,7 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
                     .add(jLabelEditAnimalClient, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(jTextFieldEditAnimalClientName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton1)
+                .add(jButtonEditAnimalNewTreatment)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jButtonEditAnimalConfirm))
         );
@@ -292,19 +293,22 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
         this.jPanelEditAnimalNewSpecies.setVisible(this.jComboBoxEditAnimalSpecies.getSelectedItem().toString() == "Other");
     }//GEN-LAST:event_jComboBoxEditAnimalSpeciesActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonEditAnimalNewTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditAnimalNewTreatmentActionPerformed
         try {
+            this.showSeeAnimalOnDispose = false;
+            this.dispose();
             ControllerTreatment.showNewTreatmentJDialogByAnimalId(this.frame,this.animalId);
         } catch (Exception ex) {
             System.out.println(ex);
             javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonEditAnimalNewTreatmentActionPerformed
 
     private void jButtonEditAnimalConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditAnimalConfirmActionPerformed
         try {
             ControllerAnimal.editAnimal(this.animalId,this.getCurrentAnimalName(),this.getCurrentAnimalBirthYear(),this.getCurrentAnimalGender(),this.getCurrentSpeciesName(),this.clientId);
             ControllerAnimal.showDataTableAll(this.frame.getTableComponentsCollection(),this.frame.getTableComponentsAnimals());
+            this.showSeeAnimalOnDispose = true;
             this.dispose();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -315,7 +319,9 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         try {
-            ControllerAnimal.showSeeAnimalJDialogFromAnimalId(this.frame, this.animalId);
+            if(showSeeAnimalOnDispose) {
+                ControllerAnimal.showSeeAnimalJDialogFromAnimalId(this.frame, this.animalId);
+            }
         } catch (Exception ex) {
             System.out.println(ex);
             javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
@@ -324,8 +330,8 @@ public class EditAnimalJDialog extends javax.swing.JDialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonEditAnimalConfirm;
+    private javax.swing.JButton jButtonEditAnimalNewTreatment;
     private javax.swing.JComboBox<String> jComboBoxEditAnimalGender;
     private javax.swing.JComboBox<String> jComboBoxEditAnimalSpecies;
     private javax.swing.JFormattedTextField jFormattedTextFieldEditAnimalBirthYear;

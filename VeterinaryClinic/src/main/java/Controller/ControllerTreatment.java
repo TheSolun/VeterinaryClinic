@@ -72,11 +72,12 @@ public class ControllerTreatment extends Controller {
     
     public static void showNewTreatmentJDialogByAnimalId(MainJFrame frame, int animalId) throws SQLException, Exception {
         Animal animal = AnimalDAO.getInstance().retrieveById(animalId);
-        (new NewTreatmentJDialog(frame,true,animal.getName(),animal.getOwner().getName())).setVisible(true);
+        Client client = animal.getOwner();
+        (new NewTreatmentJDialog(frame,true,animal.getId(),animal.getName(),client.getId(),client.getName())).setVisible(true);
     }
     
-    public static void newTreatment(String treatmentName, String treatmentStartDay, String treatmentEndDay, int animalId) throws SQLException, Exception {
-        TreatmentDAO.getInstance().create(new Treatment(treatmentName, LocalDate.parse(treatmentStartDay), LocalDate.parse(treatmentEndDay), AnimalDAO.getInstance().retrieveById(animalId)));
+    public static void newTreatment(String treatmentName, LocalDate treatmentStartDay, LocalDate treatmentEndDay, int animalId) throws SQLException, Exception {
+        TreatmentDAO.getInstance().create(new Treatment(treatmentName, treatmentStartDay, treatmentEndDay, AnimalDAO.getInstance().retrieveById(animalId)));
     }
     
     public static void editTreatment(int treatmentId, String treatmentName, String treatmentStartDay, String treatmentEndDay, int animalId) throws SQLException, Exception {

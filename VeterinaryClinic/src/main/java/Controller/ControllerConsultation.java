@@ -36,6 +36,10 @@ public class ControllerConsultation extends Controller {
         showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(ConsultationDAO.getInstance().retrieveAll()));
     }
     
+    public static void showDataTableByTreatmentId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int treatmentId) throws SQLException, Exception {
+        showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(ConsultationDAO.getInstance().retrieveByTreatmentId(treatmentId)));
+    }
+    
     private static Consultation getSelectedConsultationFromJTable(MainJFrame frame) {
         return (Consultation) getSelectedObjectFromJTable(frame.getTableComponentsConsultations().getTable());
     }

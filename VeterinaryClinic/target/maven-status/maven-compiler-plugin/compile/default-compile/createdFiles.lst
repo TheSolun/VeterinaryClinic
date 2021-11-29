@@ -50,6 +50,7 @@ View\MainJFrame$33.class
 Exceptions\StartAndEndDatesNotInChronologicalOrderException.class
 Main.class
 View\Client\ClientTableModel.class
+View\Treatment\SeeTreatmentJDialog$6.class
 Controller\ControllerTreatment.class
 View\MainJFrame$4.class
 View\Exam\SeeExamJDialog.class

@@ -3,6 +3,7 @@ package View.Treatment;
 import Controller.ControllerAnimal;
 import Controller.ControllerClient;
 import Controller.ControllerTreatment;
+import Controller.ControllerConsultation;
 
 
 /**
@@ -172,6 +173,11 @@ public class SeeTreatmentJDialog extends javax.swing.JDialog {
 
         jButtonSeeTreatmentSeeConsultations.setText("See Consultations");
         jButtonSeeTreatmentSeeConsultations.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeTreatmentSeeConsultations.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeTreatmentSeeConsultationsActionPerformed(evt);
+            }
+        });
 
         jButtonSeeTreatmentSeeExams.setText("See Exams");
         jButtonSeeTreatmentSeeExams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -328,6 +334,15 @@ public class SeeTreatmentJDialog extends javax.swing.JDialog {
             javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
         }
     }//GEN-LAST:event_jButtonSeeTreatmentDeleteTreatmentActionPerformed
+
+    private void jButtonSeeTreatmentSeeConsultationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeTreatmentSeeConsultationsActionPerformed
+        try {
+            ControllerConsultation.showDataTableByTreatmentId(this.frame.getTableComponentsCollection(), this.frame.getTableComponentsTreatments(), this.treatmentId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_jButtonSeeTreatmentSeeConsultationsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonSeeTreatmentDeleteTreatment;

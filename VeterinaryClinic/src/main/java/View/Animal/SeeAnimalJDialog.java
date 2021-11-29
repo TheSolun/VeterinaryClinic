@@ -75,10 +75,10 @@ public class SeeAnimalJDialog extends javax.swing.JDialog {
         jComboBoxSeeAnimalSpecies = new javax.swing.JComboBox<>();
         jLabelSeeAnimalClient = new javax.swing.JLabel();
         jTextFieldSeeAnimalClientName = new javax.swing.JTextField();
-        jButtonSeeAnimalSelectClient = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButtonSeeAnimalSeeClient = new javax.swing.JButton();
+        jButtonSeeAnimalSeeTreatments = new javax.swing.JButton();
+        jButtonSeeAnimalSeeConsultations = new javax.swing.JButton();
+        jButtonSeeAnimalSeeExams = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("See Animal");
@@ -188,30 +188,30 @@ public class SeeAnimalJDialog extends javax.swing.JDialog {
             }
         });
 
-        jButtonSeeAnimalSelectClient.setText("See Client");
-        jButtonSeeAnimalSelectClient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonSeeAnimalSelectClient.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSeeAnimalSeeClient.setText("See Client");
+        jButtonSeeAnimalSeeClient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeAnimalSeeClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSeeAnimalSelectClientActionPerformed(evt);
+                jButtonSeeAnimalSeeClientActionPerformed(evt);
             }
         });
 
-        jButton1.setText("See Treatments");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setMaximumSize(new java.awt.Dimension(122, 23));
-        jButton1.setMinimumSize(new java.awt.Dimension(122, 23));
-        jButton1.setPreferredSize(new java.awt.Dimension(122, 23));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSeeAnimalSeeTreatments.setText("See Treatments");
+        jButtonSeeAnimalSeeTreatments.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeAnimalSeeTreatments.setMaximumSize(new java.awt.Dimension(122, 23));
+        jButtonSeeAnimalSeeTreatments.setMinimumSize(new java.awt.Dimension(122, 23));
+        jButtonSeeAnimalSeeTreatments.setPreferredSize(new java.awt.Dimension(122, 23));
+        jButtonSeeAnimalSeeTreatments.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonSeeAnimalSeeTreatmentsActionPerformed(evt);
             }
         });
 
-        jButton2.setText("See Consultations");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeAnimalSeeConsultations.setText("See Consultations");
+        jButtonSeeAnimalSeeConsultations.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton3.setText("See Exams");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeAnimalSeeExams.setText("See Exams");
+        jButtonSeeAnimalSeeExams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         org.jdesktop.layout.GroupLayout jPanelEditAnimalFormLayout = new org.jdesktop.layout.GroupLayout(jPanelEditAnimalForm);
         jPanelEditAnimalForm.setLayout(jPanelEditAnimalFormLayout);
@@ -231,16 +231,16 @@ public class SeeAnimalJDialog extends javax.swing.JDialog {
                     .add(jPanelEditAnimalFormLayout.createSequentialGroup()
                         .add(jTextFieldSeeAnimalClientName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jButtonSeeAnimalSelectClient))
+                        .add(jButtonSeeAnimalSeeClient))
                     .add(jComboBoxSeeAnimalGender, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(jComboBoxSeeAnimalSpecies, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(jFormattedTextFieldSeeAnimalBirthYear)))
             .add(jPanelEditAnimalFormLayout.createSequentialGroup()
-                .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                .add(jButtonSeeAnimalSeeTreatments, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 135, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jButtonSeeAnimalSeeConsultations, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 135, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 118, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jButtonSeeAnimalSeeExams, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 118, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         jPanelEditAnimalFormLayout.setVerticalGroup(
             jPanelEditAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -266,13 +266,13 @@ public class SeeAnimalJDialog extends javax.swing.JDialog {
                 .add(jPanelEditAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(jPanelEditAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                         .add(jLabelSeeAnimalClient, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(jButtonSeeAnimalSelectClient))
+                        .add(jButtonSeeAnimalSeeClient))
                     .add(jTextFieldSeeAnimalClientName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelEditAnimalFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jButton2)
-                    .add(jButton3)))
+                    .add(jButtonSeeAnimalSeeTreatments, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jButtonSeeAnimalSeeConsultations)
+                    .add(jButtonSeeAnimalSeeExams)))
         );
 
         org.jdesktop.layout.GroupLayout jPanelFrameLayout = new org.jdesktop.layout.GroupLayout(jPanelFrame);
@@ -315,14 +315,14 @@ public class SeeAnimalJDialog extends javax.swing.JDialog {
 
     }//GEN-LAST:event_jComboBoxSeeAnimalSpeciesActionPerformed
 
-    private void jButtonSeeAnimalSelectClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeAnimalSelectClientActionPerformed
+    private void jButtonSeeAnimalSeeClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeAnimalSeeClientActionPerformed
         try {
             ControllerClient.showSeeClientJDialogFromClientId(this.frame,this.clientId);
         } catch (Exception ex) {
             System.out.println(ex);
             javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
         }
-    }//GEN-LAST:event_jButtonSeeAnimalSelectClientActionPerformed
+    }//GEN-LAST:event_jButtonSeeAnimalSeeClientActionPerformed
 
     private void jTextFieldSeeAnimalClientNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSeeAnimalClientNameActionPerformed
         // TODO add your handling code here:
@@ -332,14 +332,14 @@ public class SeeAnimalJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldSeeAnimalNameActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonSeeAnimalSeeTreatmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeAnimalSeeTreatmentsActionPerformed
         try {
             ControllerTreatment.showDataTableByAnimalId(this.frame.getTableComponentsCollection(), this.frame.getTableComponentsTreatments(), this.animalId);
         } catch (Exception ex) {
             System.out.println(ex);
             javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonSeeAnimalSeeTreatmentsActionPerformed
 
     private void jButtonSeeAnimalEditAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeAnimalEditAnimalActionPerformed
         try {
@@ -363,12 +363,12 @@ public class SeeAnimalJDialog extends javax.swing.JDialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonSeeAnimalDeleteAnimal;
     private javax.swing.JButton jButtonSeeAnimalEditAnimal;
-    private javax.swing.JButton jButtonSeeAnimalSelectClient;
+    private javax.swing.JButton jButtonSeeAnimalSeeClient;
+    private javax.swing.JButton jButtonSeeAnimalSeeConsultations;
+    private javax.swing.JButton jButtonSeeAnimalSeeExams;
+    private javax.swing.JButton jButtonSeeAnimalSeeTreatments;
     private javax.swing.JComboBox<String> jComboBoxSeeAnimalGender;
     private javax.swing.JComboBox<String> jComboBoxSeeAnimalSpecies;
     private javax.swing.JFormattedTextField jFormattedTextFieldSeeAnimalBirthYear;

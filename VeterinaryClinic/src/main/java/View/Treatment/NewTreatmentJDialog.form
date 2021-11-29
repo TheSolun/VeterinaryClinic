@@ -10,6 +10,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowClosed" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosed"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -30,7 +33,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanelFrame" pref="289" max="32767" attributes="0"/>
+          <Component id="jPanelFrame" pref="276" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -57,7 +60,7 @@
                   <Component id="jPanelNewTreatmentTittle" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jPanelNewTreatmentForm" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -99,16 +102,16 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jTextFieldNewTreatmentName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldNewTreatmentStartDay" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldNewTreatmentEndDay" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldNewTreatmentAnimalName" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jFormattedFieldNewTreatmentStartDay" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jFormattedFieldNewTreatmentEndDay" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldNewTreatmentAnimalName" alignment="0" pref="330" max="32767" attributes="0"/>
                           <Component id="jTextFieldNewTreatmentClientName" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="156" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
                       <Component id="jButtonNewTreatmentRegister" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -121,13 +124,13 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextFieldNewTreatmentStartDay" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jFormattedFieldNewTreatmentStartDay" alignment="0" max="32767" attributes="0"/>
                           <Component id="jLabelNewTreatmentStartDay" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextFieldNewTreatmentEndDay" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabelNewTreatmentEndDay" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jFormattedFieldNewTreatmentEndDay" max="32767" attributes="0"/>
+                          <Component id="jLabelNewTreatmentEndDay" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -139,8 +142,9 @@
                           <Component id="jLabelNewTreatmentClientName" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
                           <Component id="jTextFieldNewTreatmentClientName" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButtonNewTreatmentRegister" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="48" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -152,16 +156,13 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldNewTreatmentName">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldNewTreatmentNameActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelNewTreatmentStartDay">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Start Day"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jTextFieldNewTreatmentStartDay">
+            <Component class="javax.swing.JFormattedTextField" name="jFormattedFieldNewTreatmentStartDay">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                   <Format format="####-##-##" subtype="-1" type="5"/>
@@ -174,7 +175,7 @@
                 <Property name="text" type="java.lang.String" value="End Day"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jTextFieldNewTreatmentEndDay">
+            <Component class="javax.swing.JFormattedTextField" name="jFormattedFieldNewTreatmentEndDay">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                   <Format format="####-##-##" subtype="-1" type="5"/>
