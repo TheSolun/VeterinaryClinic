@@ -6,9 +6,15 @@
 
 package View.Consultation;
 
+import javax.swing.JOptionPane;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import View.MainJFrame;
+
+import Controller.ControllerConsultation;
 
 /**
  *
@@ -18,7 +24,7 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
 
     private final MainJFrame frame;
     private final int consultationId;
-    private final LocalDateTime consultationDateTime;
+    private final LocalDateTime consultationLocalDateTime;
     private final String consultationComment;
     private final int treatmentId;
     private final String treatmentName;
@@ -28,13 +34,15 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
     private final String clientName;
     private final int vetId;
     private final String vetName;
+    private boolean showSeeConsultationOnDispose = true;
+    private int currentVetId;
     
     /** Creates new form EditConsultationJDialog */
-    public EditConsultationJDialog(MainJFrame frame, boolean modal, int consultationId, LocalDateTime consultationDateTime, String consultationComment, int treatmentId, String treatmentName, int animalId, String animalName, int clientId, String clientName, int vetId, String vetName) {
+    public EditConsultationJDialog(MainJFrame frame, boolean modal, int consultationId, LocalDateTime consultationLocalDateTime, String consultationComment, int treatmentId, String treatmentName, int animalId, String animalName, int clientId, String clientName, int vetId, String vetName) {
         super(frame, modal);
         this.frame = frame;
         this.consultationId = consultationId;
-        this.consultationDateTime = consultationDateTime;
+        this.consultationLocalDateTime = consultationLocalDateTime;
         this.consultationComment = consultationComment;
         this.treatmentId = treatmentId;
         this.treatmentName = treatmentName;
@@ -43,10 +51,36 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
         this.clientId = clientId;
         this.clientName = clientName;
         this.vetId = vetId;
+        this.currentVetId = vetId;
         this.vetName = vetName;
         initComponents();
+//        JOptionPane.showMessageDialog(null,"CONSULTATION ID: " + this.consultationId + "TREATMENT ID: " + this.treatmentId);
     }
 
+    private LocalDate getConsultationDate() {
+        return LocalDate.of(this.consultationLocalDateTime.getYear(), this.consultationLocalDateTime.getMonth(), this.consultationLocalDateTime.getDayOfMonth());
+    }
+    
+    private LocalTime getConsultationTime() {
+        return LocalTime.of(this.consultationLocalDateTime.getHour(), this.consultationLocalDateTime.getMinute());
+    }
+    
+    private LocalDate getCurrentConsultationDate() {
+        return LocalDate.parse(jFormattedTextFieldEditConsultationDate.getText());
+    }
+    
+    private LocalTime getCurrentConsultationTime() {
+        return LocalTime.parse(jFormattedTextFieldEditConsultationTime.getText());
+    }
+    
+    private LocalDateTime getCurrentConsultationDateTime() {
+        return LocalDateTime.of(getCurrentConsultationDate(),getCurrentConsultationTime());
+    }
+    
+    private String getCurrentConsultationComment() {
+        return jTextAreaEditConsultationComment.getText();
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -60,25 +94,24 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
         jPanelEditConsultationTittle = new javax.swing.JPanel();
         jLabelNewTreatmentTittle = new javax.swing.JLabel();
         jPanelEditConsultationForm = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextFieldEditConsultationDate = new javax.swing.JFormattedTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextFieldEditConsultationHour = new javax.swing.JFormattedTextField();
-        jButtonEditConsultationSelectTreatment = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jLabelEditConsultationDate = new javax.swing.JLabel();
+        jFormattedTextFieldEditConsultationDate = new javax.swing.JFormattedTextField();
+        jLabelEditConsultationTime = new javax.swing.JLabel();
+        jFormattedTextFieldEditConsultationTime = new javax.swing.JFormattedTextField();
+        jLabelEditConsultationTreatmentName = new javax.swing.JLabel();
+        jTextFieldEditConsultationTreatmentName = new javax.swing.JTextField();
+        jLabelEditConsultationAnimalName = new javax.swing.JLabel();
+        jTextFieldEditConsultationAnimalName = new javax.swing.JTextField();
+        jLabelEditConsultationClientName = new javax.swing.JLabel();
+        jTextFieldEditConsultationClientName = new javax.swing.JTextField();
+        jLabelEditConsultationVetName = new javax.swing.JLabel();
+        jTextFieldEditConsultationVetName = new javax.swing.JTextField();
         jButtonEditConsultationSelectVet = new javax.swing.JButton();
-        jButtonEditConsultationUpdate = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelEditConsultationComment = new javax.swing.JLabel();
         jScrollPaneEditConsultationComment = new javax.swing.JScrollPane();
         jTextAreaEditConsultationComment = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jButtonEditConsultationNewExam = new javax.swing.JButton();
+        jButtonEditConsultationUpdate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edit Consultation");
@@ -91,43 +124,64 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
         jLabelNewTreatmentTittle.setText("Edit Consultation");
         jPanelEditConsultationTittle.add(jLabelNewTreatmentTittle, java.awt.BorderLayout.CENTER);
 
-        jLabel2.setText("Date");
+        jLabelEditConsultationDate.setText("Date");
 
         try {
-            jTextFieldEditConsultationDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
+            jFormattedTextFieldEditConsultationDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jTextFieldEditConsultationDate.setText("2019-09-04");
+        jFormattedTextFieldEditConsultationDate.setText(this.getConsultationDate().toString());
 
-        jLabel3.setText("Hour");
+        jLabelEditConsultationTime.setText("Hour");
 
         try {
-            jTextFieldEditConsultationHour.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+            jFormattedTextFieldEditConsultationTime.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jTextFieldEditConsultationHour.setText("09:00");
+        jFormattedTextFieldEditConsultationTime.setText(this.getConsultationTime().toString());
 
-        jButtonEditConsultationSelectTreatment.setText("Select Treatment");
-        jButtonEditConsultationSelectTreatment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelEditConsultationTreatmentName.setText("Treatment");
 
-        jLabel4.setText("Treatment");
+        jTextFieldEditConsultationTreatmentName.setEditable(false);
+        jTextFieldEditConsultationTreatmentName.setText(this.treatmentName);
+        jTextFieldEditConsultationTreatmentName.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldEditConsultationTreatmentName.setEnabled(false);
 
-        jTextField2.setEditable(false);
-        jTextField2.setText("Treatment1");
-        jTextField2.setDisabledTextColor(java.awt.Color.black);
-        jTextField2.setEnabled(false);
+        jLabelEditConsultationAnimalName.setText("Animal");
 
-        jLabel5.setText("Vet");
+        jTextFieldEditConsultationAnimalName.setEditable(false);
+        jTextFieldEditConsultationAnimalName.setText(this.animalName);
+        jTextFieldEditConsultationAnimalName.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldEditConsultationAnimalName.setEnabled(false);
 
-        jTextField3.setEditable(false);
-        jTextField3.setText("Vet1");
-        jTextField3.setDisabledTextColor(java.awt.Color.black);
-        jTextField3.setEnabled(false);
+        jLabelEditConsultationClientName.setText("Client");
+
+        jTextFieldEditConsultationClientName.setEditable(false);
+        jTextFieldEditConsultationClientName.setText(this.clientName);
+        jTextFieldEditConsultationClientName.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldEditConsultationClientName.setEnabled(false);
+
+        jLabelEditConsultationVetName.setText("Vet");
+
+        jTextFieldEditConsultationVetName.setEditable(false);
+        jTextFieldEditConsultationVetName.setText(this.vetName);
+        jTextFieldEditConsultationVetName.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldEditConsultationVetName.setEnabled(false);
 
         jButtonEditConsultationSelectVet.setText("Select Vet");
         jButtonEditConsultationSelectVet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jLabelEditConsultationComment.setText("Comment");
+
+        jTextAreaEditConsultationComment.setColumns(20);
+        jTextAreaEditConsultationComment.setRows(5);
+        jTextAreaEditConsultationComment.setText(this.consultationComment);
+        jScrollPaneEditConsultationComment.setViewportView(jTextAreaEditConsultationComment);
+
+        jButtonEditConsultationNewExam.setText("New Exam");
+        jButtonEditConsultationNewExam.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jButtonEditConsultationUpdate.setText("Update");
         jButtonEditConsultationUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -137,64 +191,38 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setText("Comment");
-
-        jTextAreaEditConsultationComment.setColumns(20);
-        jTextAreaEditConsultationComment.setRows(5);
-        jTextAreaEditConsultationComment.setText("Consultation 1 - Treatment 1 - Vet 1");
-        jScrollPaneEditConsultationComment.setViewportView(jTextAreaEditConsultationComment);
-
-        jButton1.setText("New Exam");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jTextField1.setEditable(false);
-        jTextField1.setText("Foguinho");
-        jTextField1.setDisabledTextColor(java.awt.Color.black);
-        jTextField1.setEnabled(false);
-
-        jLabel6.setText("Animal");
-
-        jLabel7.setText("Client");
-
-        jTextField4.setEditable(false);
-        jTextField4.setText("Jenisvaldo");
-        jTextField4.setDisabledTextColor(java.awt.Color.black);
-        jTextField4.setEnabled(false);
-
         org.jdesktop.layout.GroupLayout jPanelEditConsultationFormLayout = new org.jdesktop.layout.GroupLayout(jPanelEditConsultationForm);
         jPanelEditConsultationForm.setLayout(jPanelEditConsultationFormLayout);
         jPanelEditConsultationFormLayout.setHorizontalGroup(
             jPanelEditConsultationFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelEditConsultationFormLayout.createSequentialGroup()
                 .add(jPanelEditConsultationFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jLabel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jLabel7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabelEditConsultationTime, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabelEditConsultationDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jLabelEditConsultationTreatmentName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jLabelEditConsultationAnimalName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jLabelEditConsultationClientName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jLabelEditConsultationComment, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelEditConsultationFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jTextFieldEditConsultationDate)
-                    .add(jTextFieldEditConsultationHour)
+                    .add(jFormattedTextFieldEditConsultationDate)
+                    .add(jFormattedTextFieldEditConsultationTime)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelEditConsultationFormLayout.createSequentialGroup()
                         .add(jPanelEditConsultationFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField4)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField1)
-                            .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField3))
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, jTextFieldEditConsultationClientName)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, jTextFieldEditConsultationAnimalName)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, jTextFieldEditConsultationVetName))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jPanelEditConsultationFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(jButtonEditConsultationSelectTreatment, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(jButtonEditConsultationSelectVet, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .add(jScrollPaneEditConsultationComment)))
+                        .add(jButtonEditConsultationSelectVet, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 115, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jScrollPaneEditConsultationComment)
+                    .add(jTextFieldEditConsultationTreatmentName)))
             .add(jPanelEditConsultationFormLayout.createSequentialGroup()
-                .add(jLabel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 45, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jLabelEditConsultationVetName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 45, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(0, 0, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelEditConsultationFormLayout.createSequentialGroup()
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(152, Short.MAX_VALUE)
                 .add(jPanelEditConsultationFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                    .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jButtonEditConsultationNewExam, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(jButtonEditConsultationUpdate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .add(145, 145, 145))
         );
@@ -202,36 +230,35 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
             jPanelEditConsultationFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelEditConsultationFormLayout.createSequentialGroup()
                 .add(jPanelEditConsultationFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jTextFieldEditConsultationDate)
-                    .add(jLabel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jFormattedTextFieldEditConsultationDate)
+                    .add(jLabelEditConsultationDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelEditConsultationFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jTextFieldEditConsultationHour)
-                    .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(jFormattedTextFieldEditConsultationTime)
+                    .add(jLabelEditConsultationTime, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelEditConsultationFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jButtonEditConsultationSelectTreatment, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(jLabelEditConsultationTreatmentName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jTextFieldEditConsultationTreatmentName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelEditConsultationFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jTextField1)
-                    .add(jLabel6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jTextFieldEditConsultationAnimalName)
+                    .add(jLabelEditConsultationAnimalName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelEditConsultationFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jTextField4)
-                    .add(jLabel7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jTextFieldEditConsultationClientName)
+                    .add(jLabelEditConsultationClientName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelEditConsultationFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabelEditConsultationVetName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jTextFieldEditConsultationVetName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jButtonEditConsultationSelectVet))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelEditConsultationFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jScrollPaneEditConsultationComment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 100, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel1))
+                    .add(jLabelEditConsultationComment))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton1)
+                .add(jButtonEditConsultationNewExam)
                 .add(30, 30, 30)
                 .add(jButtonEditConsultationUpdate))
         );
@@ -271,34 +298,42 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEditConsultationUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditConsultationUpdateActionPerformed
-        // TODO add your handling code here:
+        try {
+            ControllerConsultation.editConsultation(this.consultationId,this.getCurrentConsultationDateTime(),this.getCurrentConsultationComment(),this.treatmentId,this.currentVetId);
+            ControllerConsultation.showDataTableAll(this.frame.getTableComponentsCollection(),this.frame.getTableComponentsConsultations());
+            this.showSeeConsultationOnDispose = true;
+            this.dispose();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
     }//GEN-LAST:event_jButtonEditConsultationUpdateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButtonEditConsultationSelectTreatment;
+    private javax.swing.JButton jButtonEditConsultationNewExam;
     private javax.swing.JButton jButtonEditConsultationSelectVet;
     private javax.swing.JButton jButtonEditConsultationUpdate;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JFormattedTextField jFormattedTextFieldEditConsultationDate;
+    private javax.swing.JFormattedTextField jFormattedTextFieldEditConsultationTime;
+    private javax.swing.JLabel jLabelEditConsultationAnimalName;
+    private javax.swing.JLabel jLabelEditConsultationClientName;
+    private javax.swing.JLabel jLabelEditConsultationComment;
+    private javax.swing.JLabel jLabelEditConsultationDate;
+    private javax.swing.JLabel jLabelEditConsultationTime;
+    private javax.swing.JLabel jLabelEditConsultationTreatmentName;
+    private javax.swing.JLabel jLabelEditConsultationVetName;
     private javax.swing.JLabel jLabelNewTreatmentTittle;
     private javax.swing.JPanel jPanelEditConsultationForm;
     private javax.swing.JPanel jPanelEditConsultationTittle;
     private javax.swing.JPanel jPanelFrame;
     private javax.swing.JScrollPane jScrollPaneEditConsultationComment;
     private javax.swing.JTextArea jTextAreaEditConsultationComment;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JFormattedTextField jTextFieldEditConsultationDate;
-    private javax.swing.JFormattedTextField jTextFieldEditConsultationHour;
+    private javax.swing.JTextField jTextFieldEditConsultationAnimalName;
+    private javax.swing.JTextField jTextFieldEditConsultationClientName;
+    private javax.swing.JTextField jTextFieldEditConsultationTreatmentName;
+    private javax.swing.JTextField jTextFieldEditConsultationVetName;
     // End of variables declaration//GEN-END:variables
 
 }

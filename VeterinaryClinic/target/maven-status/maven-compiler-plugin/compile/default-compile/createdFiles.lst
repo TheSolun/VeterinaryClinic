@@ -16,6 +16,7 @@ View\MainJFrame$19.class
 View\MainJFrame$29.class
 View\MainJFrame$11.class
 View\MainJFrame$21.class
+View\Vet\VetsComboModel.class
 View\Vet\SeeVetJDialog$2.class
 Exceptions\BlankDescriptionException.class
 View\Vet\DeleteVetJDialog.class
@@ -92,7 +93,6 @@ Models\DAO\ExamDAO.class
 Controller\ControllerExam.class
 View\Animal\AnimalTableModel.class
 View\Treatment\DeleteTreatmentJDialog$2.class
-View\Treatment\SeeTreatmentJDialog$7.class
 Exceptions\InvalidBirthYearException.class
 Exceptions\InvalidPhoneLengthException.class
 View\Consultation\NewConsultationJDialog$1.class
@@ -108,6 +108,7 @@ View\TableComponents.class
 View\Treatment\SeeTreatmentJDialog.class
 View\MainJFrame$12.class
 View\MainJFrame$18.class
+View\Treatment\EditTreatmentJDialog$3.class
 View\MainJFrame$5.class
 View\MainJFrame$32.class
 View\Vet\DeleteVetJDialog$1.class

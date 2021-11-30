@@ -6,7 +6,9 @@
 
 package View.Consultation;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import View.MainJFrame;
 
@@ -18,7 +20,7 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
 
     private final MainJFrame frame;
     private final int consultationId;
-    private final LocalDateTime consultationDateTime;
+    private final LocalDateTime consultationLocalDateTime;
     private final String consultationComment;
     private final int treatmentId;
     private final String treatmentName;
@@ -30,11 +32,11 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
     private final String vetName;
     
     /** Creates new form SeeConsultationJDialog */
-    public SeeConsultationJDialog(MainJFrame frame, boolean modal, int consultationId, LocalDateTime consultationDateTime, String consultationComment, int treatmentId, String treatmentName, int animalId, String animalName, int clientId, String clientName, int vetId, String vetName) {
+    public SeeConsultationJDialog(MainJFrame frame, boolean modal, int consultationId, LocalDateTime consultationLocalDateTime, String consultationComment, int treatmentId, String treatmentName, int animalId, String animalName, int clientId, String clientName, int vetId, String vetName) {
         super(frame, modal);
         this.frame = frame;
         this.consultationId = consultationId;
-        this.consultationDateTime = consultationDateTime;
+        this.consultationLocalDateTime = consultationLocalDateTime;
         this.consultationComment = consultationComment;
         this.treatmentId = treatmentId;
         this.treatmentName = treatmentName;
@@ -45,6 +47,14 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
         this.vetId = vetId;
         this.vetName = vetName;
         initComponents();
+    }
+    
+    public LocalDate getConsultationDate() {
+        return LocalDate.of(this.consultationLocalDateTime.getYear(), this.consultationLocalDateTime.getMonth(), this.consultationLocalDateTime.getDayOfMonth());
+    }
+    
+    public LocalTime getConsultationTime() {
+        return LocalTime.of(this.consultationLocalDateTime.getHour(), this.consultationLocalDateTime.getMinute());
     }
 
     /** This method is called from within the constructor to
@@ -100,7 +110,7 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jTextFieldEditConsultationDate.setText("2019-09-01");
+        jTextFieldEditConsultationDate.setText(this.getConsultationDate().toString());
         jTextFieldEditConsultationDate.setDisabledTextColor(java.awt.Color.black);
         jTextFieldEditConsultationDate.setEnabled(false);
 
@@ -112,7 +122,7 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jTextFieldEditConsultationHour.setText("09:00");
+        jTextFieldEditConsultationHour.setText(this.getConsultationTime().toString());
         jTextFieldEditConsultationHour.setDisabledTextColor(java.awt.Color.black);
         jTextFieldEditConsultationHour.setEnabled(false);
 
@@ -122,14 +132,14 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
         jLabel4.setText("Treatment");
 
         jTextField2.setEditable(false);
-        jTextField2.setText("Treatment1");
+        jTextField2.setText(this.treatmentName);
         jTextField2.setDisabledTextColor(java.awt.Color.black);
         jTextField2.setEnabled(false);
 
         jLabel5.setText("Vet");
 
         jTextField3.setEditable(false);
-        jTextField3.setText("Vet1");
+        jTextField3.setText(this.vetName);
         jTextField3.setDisabledTextColor(java.awt.Color.black);
         jTextField3.setEnabled(false);
 
@@ -141,7 +151,7 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
         jTextAreaEditConsultationComment.setEditable(false);
         jTextAreaEditConsultationComment.setColumns(20);
         jTextAreaEditConsultationComment.setRows(5);
-        jTextAreaEditConsultationComment.setText("Consultation 1 - Treatment 1 - Vet 1");
+        jTextAreaEditConsultationComment.setText(this.consultationComment);
         jTextAreaEditConsultationComment.setDisabledTextColor(java.awt.Color.black);
         jTextAreaEditConsultationComment.setEnabled(false);
         jScrollPaneEditConsultationComment.setViewportView(jTextAreaEditConsultationComment);
@@ -152,14 +162,14 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
         jLabel6.setText("Animal");
 
         jTextField1.setEditable(false);
-        jTextField1.setText("Foguinho");
+        jTextField1.setText(this.animalName);
         jTextField1.setDisabledTextColor(java.awt.Color.black);
         jTextField1.setEnabled(false);
 
         jLabel7.setText("Client");
 
         jTextField4.setEditable(false);
-        jTextField4.setText("Jenisvaldo");
+        jTextField4.setText(this.clientName);
         jTextField4.setDisabledTextColor(java.awt.Color.black);
         jTextField4.setEnabled(false);
 

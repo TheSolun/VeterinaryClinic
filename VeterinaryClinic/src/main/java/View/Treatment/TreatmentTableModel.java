@@ -34,7 +34,7 @@ public class TreatmentTableModel extends GenericTableModel {
             case 4:
                 return String.class;
             case 5:
-                return boolean.class;
+                return Boolean.class;
             default:
                 throw new IndexOutOfBoundsException("column index out of bounds");
         }

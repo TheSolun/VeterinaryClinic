@@ -1,5 +1,6 @@
 package View.Treatment;
 
+import Controller.ControllerConsultation;
 import Controller.ControllerTreatment;
 
 /**
@@ -17,6 +18,7 @@ public class EditTreatmentJDialog extends javax.swing.JDialog {
     private String animalName;
     private int clientId;
     private String clientName;
+    private boolean showSeeTreatmentOnDispose = true;
     
     /** Creates new form EditTreatmentJDialog */
     public EditTreatmentJDialog(View.MainJFrame frame, boolean modal, int treatmentId, String treatmentName, String treatmentStartDay, String treatmentEndDay, int animalId, String animalName, int clientId, String clientName) {
@@ -127,6 +129,11 @@ public class EditTreatmentJDialog extends javax.swing.JDialog {
 
         jButtonEditTreatmentNewConsultation.setText("New Consultation");
         jButtonEditTreatmentNewConsultation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditTreatmentNewConsultation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditTreatmentNewConsultationActionPerformed(evt);
+            }
+        });
 
         jButtonEditTreatmentConfirm.setText("Update");
         jButtonEditTreatmentConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -243,12 +250,24 @@ public class EditTreatmentJDialog extends javax.swing.JDialog {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         try {
-            ControllerTreatment.showSeeTreatmentJDialogFromTreatmentId(this.frame, this.treatmentId);
+            if(showSeeTreatmentOnDispose)
+                ControllerTreatment.showSeeTreatmentJDialogFromTreatmentId(this.frame, this.treatmentId);
         } catch (Exception ex) {
             System.out.println(ex);
             javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
         }
     }//GEN-LAST:event_formWindowClosed
+
+    private void jButtonEditTreatmentNewConsultationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditTreatmentNewConsultationActionPerformed
+        try {
+            this.showSeeTreatmentOnDispose = false;
+            this.dispose();
+            ControllerConsultation.showNewConsultationJDialogByTreatmentId(this.frame,this.treatmentId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
+    }//GEN-LAST:event_jButtonEditTreatmentNewConsultationActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEditTreatmentConfirm;

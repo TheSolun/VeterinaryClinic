@@ -38,7 +38,7 @@ public class ConsultationTableModel extends GenericTableModel {
             case 6:
                 return String.class;
             case 7:
-                return boolean.class;
+                return Boolean.class;
             default:
                 throw new IndexOutOfBoundsException("column index out of bounds");
         }

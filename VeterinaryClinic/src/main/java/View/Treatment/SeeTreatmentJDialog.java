@@ -128,11 +128,6 @@ public class SeeTreatmentJDialog extends javax.swing.JDialog {
         jTextFieldSeeTreatmentName.setText(this.treatmentName);
         jTextFieldSeeTreatmentName.setDisabledTextColor(java.awt.Color.black);
         jTextFieldSeeTreatmentName.setEnabled(false);
-        jTextFieldSeeTreatmentName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldSeeTreatmentNameActionPerformed(evt);
-            }
-        });
 
         jLabelSeeTreatmentStartDay.setText("Start Day");
 
@@ -299,10 +294,6 @@ public class SeeTreatmentJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldSeeTreatmentNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSeeTreatmentNameActionPerformed
-
-    }//GEN-LAST:event_jTextFieldSeeTreatmentNameActionPerformed
-
     private void jButtonSeeTreatmentSeeAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeTreatmentSeeAnimalActionPerformed
         try {
             ControllerAnimal.showSeeAnimalJDialogFromAnimalId(this.frame, this.animalId);
@@ -343,7 +334,7 @@ public class SeeTreatmentJDialog extends javax.swing.JDialog {
 
     private void jButtonSeeTreatmentSeeConsultationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeTreatmentSeeConsultationsActionPerformed
         try {
-            ControllerConsultation.showDataTableByTreatmentId(this.frame.getTableComponentsCollection(), this.frame.getTableComponentsTreatments(), this.treatmentId);
+            ControllerConsultation.showDataTableByTreatmentId(this.frame.getTableComponentsCollection(), this.frame.getTableComponentsConsultations(), this.treatmentId);
         } catch (Exception ex) {
             System.out.println(ex);
             javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
@@ -352,7 +343,7 @@ public class SeeTreatmentJDialog extends javax.swing.JDialog {
 
     private void jButtonSeeTreatmentSeeExamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeTreatmentSeeExamsActionPerformed
         try {
-            ControllerExam.showDataTableByTreatmentId(this.frame.getTableComponentsCollection(), this.frame.getTableComponentsTreatments(), this.treatmentId);
+            ControllerExam.showDataTableByTreatmentId(this.frame.getTableComponentsCollection(), this.frame.getTableComponentsExams(), this.treatmentId);
         } catch (Exception ex) {
             System.out.println(ex);
             javax.swing.JOptionPane.showMessageDialog(this.frame, ex);

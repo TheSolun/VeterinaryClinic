@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -107,8 +108,11 @@ public class ConsultationDAO extends DAO {
         stmt.setString(3, consultation.getComment());
         stmt.setInt(4, consultation.getVet().getId());
         stmt.setInt(5, consultation.getTreatment().getId());
-        stmt.setInt(5, (consultation.isFinished())? 1 : 0);
+        stmt.setInt(6, (consultation.isFinished())? 1 : 0);
         stmt.setInt(7, consultation.getId());
+//        JOptionPane.showMessageDialog(null,consultation);
+//        JOptionPane.showMessageDialog(null,consultation.getTreatment().getId());
+//        JOptionPane.showMessageDialog(null,stmt);
         executeUpdate(stmt);
     }
     

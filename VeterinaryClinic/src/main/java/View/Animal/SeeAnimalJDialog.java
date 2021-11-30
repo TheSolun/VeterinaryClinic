@@ -357,7 +357,7 @@ public class SeeAnimalJDialog extends javax.swing.JDialog {
 
     private void jButtonSeeAnimalSeeExamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeAnimalSeeExamsActionPerformed
         try {
-            ControllerExam.showDataTableByAnimalId(this.frame.getTableComponentsCollection(), this.frame.getTableComponentsConsultations(), this.animalId);
+            ControllerExam.showDataTableByAnimalId(this.frame.getTableComponentsCollection(), this.frame.getTableComponentsExams(), this.animalId);
         } catch (Exception ex) {
             System.out.println(ex);
             javax.swing.JOptionPane.showMessageDialog(this.frame, ex);

@@ -14,10 +14,6 @@ import javax.swing.DefaultComboBoxModel;
 
 import Controller.ControllerAnimal;
 
-import Models.Gender;
-import Models.Species;
-import Models.Client;
-import Models.DAO.SpeciesDAO;
 import View.Gender.GenderComboModel;
 import View.Species.SpeciesComboModel;
 /**
