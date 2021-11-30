@@ -10,6 +10,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+import Controller.ControllerConsultation;
+
 import View.MainJFrame;
 
 /**
@@ -69,6 +71,9 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
         jPanelFrame = new javax.swing.JPanel();
         jPanelEditConsultationTittle = new javax.swing.JPanel();
         jLabelNewTreatmentTittle = new javax.swing.JLabel();
+        jPanelSeeConsultationActionButtons = new javax.swing.JPanel();
+        jButtonSeeConsultationEdit = new javax.swing.JButton();
+        jButtonSeeConsultationDelete = new javax.swing.JButton();
         jPanelEditConsultationForm = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTextFieldEditConsultationDate = new javax.swing.JFormattedTextField();
@@ -101,6 +106,46 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
         jLabelNewTreatmentTittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelNewTreatmentTittle.setText("See Consultation");
         jPanelEditConsultationTittle.add(jLabelNewTreatmentTittle, java.awt.BorderLayout.CENTER);
+
+        jPanelSeeConsultationActionButtons.setPreferredSize(new java.awt.Dimension(120, 50));
+
+        jButtonSeeConsultationEdit.setText("Edit");
+        jButtonSeeConsultationEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeConsultationEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeConsultationEditActionPerformed(evt);
+            }
+        });
+
+        jButtonSeeConsultationDelete.setText("Delete");
+        jButtonSeeConsultationDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeConsultationDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeConsultationDeleteActionPerformed(evt);
+            }
+        });
+
+        org.jdesktop.layout.GroupLayout jPanelSeeConsultationActionButtonsLayout = new org.jdesktop.layout.GroupLayout(jPanelSeeConsultationActionButtons);
+        jPanelSeeConsultationActionButtons.setLayout(jPanelSeeConsultationActionButtonsLayout);
+        jPanelSeeConsultationActionButtonsLayout.setHorizontalGroup(
+            jPanelSeeConsultationActionButtonsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelSeeConsultationActionButtonsLayout.createSequentialGroup()
+                .add(jButtonSeeConsultationEdit)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButtonSeeConsultationDelete)
+                .add(0, 0, Short.MAX_VALUE))
+        );
+        jPanelSeeConsultationActionButtonsLayout.setVerticalGroup(
+            jPanelSeeConsultationActionButtonsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelSeeConsultationActionButtonsLayout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .add(jPanelSeeConsultationActionButtonsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButtonSeeConsultationEdit)
+                    .add(jButtonSeeConsultationDelete))
+                .addContainerGap())
+        );
+
+        jPanelEditConsultationTittle.add(jPanelSeeConsultationActionButtons, java.awt.BorderLayout.LINE_END);
 
         jLabel2.setText("Date");
 
@@ -263,11 +308,13 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
         jPanelFrame.setLayout(jPanelFrameLayout);
         jPanelFrameLayout.setHorizontalGroup(
             jPanelFrameLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelEditConsultationTittle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelFrameLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanelEditConsultationForm, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelFrameLayout.createSequentialGroup()
+                .add(0, 0, Short.MAX_VALUE)
+                .add(jPanelEditConsultationTittle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 345, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         jPanelFrameLayout.setVerticalGroup(
             jPanelFrameLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -293,6 +340,26 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonSeeConsultationEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeConsultationEditActionPerformed
+        try {
+            this.dispose();
+            ControllerConsultation.showEditConsultationJDialogFromConsultationId(this.frame, this.consultationId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_jButtonSeeConsultationEditActionPerformed
+
+    private void jButtonSeeConsultationDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeConsultationDeleteActionPerformed
+        try {
+            this.dispose();
+            ControllerConsultation.showDeleteConsultationJDialogFromConsultationId(this.frame, this.consultationId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_jButtonSeeConsultationDeleteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -300,6 +367,8 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonEditConsultationSelectTreatment;
     private javax.swing.JButton jButtonEditConsultationSelectVet;
+    private javax.swing.JButton jButtonSeeConsultationDelete;
+    private javax.swing.JButton jButtonSeeConsultationEdit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -311,6 +380,7 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanelEditConsultationForm;
     private javax.swing.JPanel jPanelEditConsultationTittle;
     private javax.swing.JPanel jPanelFrame;
+    private javax.swing.JPanel jPanelSeeConsultationActionButtons;
     private javax.swing.JScrollPane jScrollPaneEditConsultationComment;
     private javax.swing.JTextArea jTextAreaEditConsultationComment;
     private javax.swing.JTextField jTextField1;

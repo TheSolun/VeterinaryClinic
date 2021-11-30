@@ -109,7 +109,7 @@ public class ControllerConsultation extends Controller {
         showEditConsultationJDialogFromConsultation(frame,getSelectedConsultationFromJTable(frame));
     }
     
-    public static void showEditConsultationsJDialogFromConsultationId(MainJFrame frame, int consultationId) throws SQLException, Exception {
+    public static void showEditConsultationJDialogFromConsultationId(MainJFrame frame, int consultationId) throws SQLException, Exception {
         showEditConsultationJDialogFromConsultation(frame,ConsultationDAO.getInstance().retrieveById(consultationId));
     }
     

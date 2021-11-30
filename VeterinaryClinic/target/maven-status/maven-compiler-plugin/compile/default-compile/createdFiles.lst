@@ -105,6 +105,7 @@ View\Client\SeeClientJDialog.class
 View\Vet\SeeVetJDialog$1.class
 View\TableComponents.class
 View\Treatment\SeeTreatmentJDialog.class
+View\Consultation\SeeConsultationJDialog$2.class
 View\MainJFrame$12.class
 View\MainJFrame$18.class
 View\Treatment\EditTreatmentJDialog$3.class
@@ -154,6 +155,7 @@ View\Animal\DeleteAnimalJDialog$3.class
 View\Vet\DeleteVetJDialog$3.class
 View\MainJFrame$6.class
 View\GenericTableModel.class
+View\Consultation\SeeConsultationJDialog$1.class
 View\Consultation\NewConsultationJDialog.class
 View\Consultation\DeleteConsultationJDialog.class
 View\MainJFrame$30.class
