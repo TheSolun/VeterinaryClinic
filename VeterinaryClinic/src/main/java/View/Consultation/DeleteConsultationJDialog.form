@@ -10,6 +10,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowClosed" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosed"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -40,10 +43,10 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jPanelEditTreatmentTittle" alignment="0" max="32767" attributes="0"/>
+              <Component id="jPanelDeleteConsultationTittle" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanelEditTreatmentForm" max="32767" attributes="0"/>
+                  <Component id="jPanelDeleteConsultationForm" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -51,20 +54,20 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="jPanelEditTreatmentTittle" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="jPanelDeleteConsultationTittle" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                  <Component id="jPanelEditTreatmentForm" max="32767" attributes="0"/>
+                  <Component id="jPanelDeleteConsultationForm" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanelEditTreatmentTittle">
+        <Container class="javax.swing.JPanel" name="jPanelDeleteConsultationTittle">
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabelNewTreatmentTittle">
+            <Component class="javax.swing.JLabel" name="jLabelDeleteConsultationTittle">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="24" style="0"/>
@@ -80,7 +83,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanelEditTreatmentForm">
+        <Container class="javax.swing.JPanel" name="jPanelDeleteConsultationForm">
 
           <Layout>
             <DimensionLayout dim="0">
@@ -88,9 +91,9 @@
                   <Component id="jLabel1" alignment="0" pref="322" max="32767" attributes="0"/>
                   <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jButtonDeleteTreatment" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonDeleteConsultationConfirm" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButtonCancelTreatment" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonDeleteConsultationCancel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -102,8 +105,8 @@
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="46" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButtonDeleteTreatment" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonCancelTreatment" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonDeleteConsultationConfirm" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonDeleteConsultationCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -125,15 +128,18 @@
                 <Property name="text" type="java.lang.String" value="If you do, all its info will be deleted with it."/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonDeleteTreatment">
+            <Component class="javax.swing.JButton" name="jButtonDeleteConsultationConfirm">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Delete"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDeleteConsultationConfirmActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonCancelTreatment">
+            <Component class="javax.swing.JButton" name="jButtonDeleteConsultationCancel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cancel"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -141,7 +147,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCancelTreatmentActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDeleteConsultationCancelActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

@@ -33,7 +33,7 @@ public class ControllerExam extends Controller {
         showDataTable(tableComponentsCollection,tableComponents, new ExamTableModel(ExamDAO.getInstance().retrieveAll()));
     }
     
-    private static List<Exam> getExamsByConsultationId(int consultationId) throws SQLException, Exception {
+    protected static List<Exam> getExamsByConsultationId(int consultationId) throws SQLException, Exception {
         return ExamDAO.getInstance().retrieveByConsultationId(consultationId);
     }
     
@@ -147,7 +147,7 @@ public class ControllerExam extends Controller {
         ExamDAO.getInstance().update(new Exam(examId, examName, ConsultationDAO.getInstance().retrieveById(consultationId)));
     }
     
-    public static void deleteTreatment(int examId) throws SQLException, Exception {
+    public static void deleteExam(int examId) throws SQLException, Exception {
         ExamDAO.getInstance().deleteById(examId);
     }
     

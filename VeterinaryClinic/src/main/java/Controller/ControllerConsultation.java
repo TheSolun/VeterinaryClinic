@@ -10,7 +10,16 @@ import java.util.List;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import javax.swing.ComboBoxModel;
-import javax.swing.JOptionPane;
+
+import Models.Animal;
+import Models.Client;
+import Models.Consultation;
+import Models.DAO.ConsultationDAO;
+import Models.DAO.TreatmentDAO;
+import Models.DAO.VetDAO;
+import Models.Exam;
+import Models.Treatment;
+import Models.Vet;
 
 import View.Consultation.ConsultationTableModel;
 import View.Consultation.DeleteConsultationJDialog;
@@ -22,14 +31,6 @@ import View.TableComponents;
 import View.TableComponentsCollection;
 import View.Vet.VetsComboModel;
 
-import Models.Consultation;
-import Models.Treatment;
-import Models.Animal;
-import Models.Client;
-import Models.DAO.ConsultationDAO;
-import Models.DAO.TreatmentDAO;
-import Models.DAO.VetDAO;
-import Models.Vet;
 /**
  *
  * @author mateu
@@ -130,7 +131,7 @@ public class ControllerConsultation extends Controller {
     }
     
     private static void showDeleteConsultationJDialogFromConsultation(MainJFrame frame, Consultation consultation) {
-        (new DeleteConsultationJDialog(frame,true,consultation.getId(),consultation.getComment())).setVisible(true);
+        (new DeleteConsultationJDialog(frame,true,consultation.getId())).setVisible(true);
     }
     
     public static void showNewConsultationJDialogByTreatmentId(MainJFrame frame, int treatmentId) throws SQLException, Exception {
@@ -145,11 +146,13 @@ public class ControllerConsultation extends Controller {
     }
     
     public static void editConsultation(int consultationId, LocalDateTime dateTime, String comment, int treatmentId, int vetId) throws SQLException, Exception {
-//        JOptionPane.showMessageDialog(null,new Consultation(consultationId, dateTime, comment, TreatmentDAO.getInstance().retrieveById(treatmentId), VetDAO.getInstance().retrieveById(vetId)));
         ConsultationDAO.getInstance().update(new Consultation(consultationId, dateTime, comment, TreatmentDAO.getInstance().retrieveById(treatmentId), VetDAO.getInstance().retrieveById(vetId)));
     }
     
     public static void deleteConsultation(int consultationId) throws SQLException, Exception {
+        List<Exam> exams = ControllerExam.getExamsByConsultationId(consultationId);
+        for(Exam exam : exams)
+            ControllerExam.deleteExam(exam.getId());
         ConsultationDAO.getInstance().deleteById(consultationId);
     }
     

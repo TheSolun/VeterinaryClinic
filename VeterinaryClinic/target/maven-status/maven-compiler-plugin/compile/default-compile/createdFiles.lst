@@ -53,6 +53,7 @@ Main.class
 View\Client\ClientTableModel.class
 View\Treatment\SeeTreatmentJDialog$6.class
 Controller\ControllerTreatment.class
+View\Consultation\DeleteConsultationJDialog$2.class
 View\MainJFrame$4.class
 View\Exam\SeeExamJDialog.class
 View\Animal\NewAnimalJDialog.class
@@ -76,6 +77,7 @@ View\Client\DeleteClientJDialog$1.class
 View\Exam\EditExamJDialog.class
 View\Treatment\EditTreatmentJDialog.class
 View\MainJFrame$10.class
+View\Consultation\DeleteConsultationJDialog$3.class
 View\MainJFrame$3.class
 View\Vet\NewVetJDialog.class
 View\Animal\DeleteAnimalJDialog.class
