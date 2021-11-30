@@ -1,5 +1,6 @@
 Exceptions\InvalidZipCodeLengthException.class
 View\Consultation\DeleteConsultationJDialog$1.class
+View\Consultation\SeeConsultationJDialog$3.class
 View\Exam\ExamTableModel.class
 View\Exam\NewExamJDialog.class
 View\MainJFrame$9.class
@@ -35,6 +36,7 @@ View\Vet\EditVetJDialog$1.class
 View\Vet\EditVetJDialog.class
 Models\Treatment.class
 View\Animal\SeeAnimalJDialog$5.class
+View\Consultation\SeeConsultationJDialog$6.class
 View\Client\DeleteClientJDialog$3.class
 View\Treatment\DeleteTreatmentJDialog$1.class
 View\Treatment\SeeTreatmentJDialog$5.class
@@ -52,6 +54,7 @@ Exceptions\StartAndEndDatesNotInChronologicalOrderException.class
 Main.class
 View\Client\ClientTableModel.class
 View\Treatment\SeeTreatmentJDialog$6.class
+View\Consultation\SeeConsultationJDialog$5.class
 Controller\ControllerTreatment.class
 View\Consultation\DeleteConsultationJDialog$2.class
 View\MainJFrame$4.class
@@ -60,6 +63,7 @@ View\Animal\NewAnimalJDialog.class
 View\Consultation\ConsultationTableModel.class
 View\TableComponentsCollection.class
 View\Animal\SeeAnimalJDialog$3.class
+View\Consultation\SeeConsultationJDialog$4.class
 View\Treatment\DeleteTreatmentJDialog$3.class
 Exceptions\InvalidFinishedIntValueException.class
 View\MainJFrame$16.class
