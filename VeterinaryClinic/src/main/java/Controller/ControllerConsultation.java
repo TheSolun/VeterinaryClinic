@@ -89,8 +89,8 @@ public class ControllerConsultation extends Controller {
         return VetDAO.getInstance().retrieveAll();
     }
     
-    public static VetsComboModel getVetsComboModel(Vet selectedVet) throws SQLException, Exception {
-        return new VetsComboModel(ControllerConsultation.getVets(),selectedVet);
+    public static VetsComboModel getVetsComboModel(int selectedVetId) throws SQLException, Exception {
+        return new VetsComboModel(ControllerConsultation.getVets(),VetDAO.getInstance().retrieveById(selectedVetId));
     }
     
     public static VetsComboModel getVetsComboModel() throws SQLException, Exception {
@@ -105,7 +105,7 @@ public class ControllerConsultation extends Controller {
         return ((VetsComboModel) vetsComboModel).isEmpty();
     }
     
-    public static void showEditConsultationJDialogFromJTableSelection(MainJFrame frame) {
+    public static void showEditConsultationJDialogFromJTableSelection(MainJFrame frame) throws SQLException, Exception {
         showEditConsultationJDialogFromConsultation(frame,getSelectedConsultationFromJTable(frame));
     }
     
@@ -113,12 +113,12 @@ public class ControllerConsultation extends Controller {
         showEditConsultationJDialogFromConsultation(frame,ConsultationDAO.getInstance().retrieveById(consultationId));
     }
     
-    private static void showEditConsultationJDialogFromConsultation(MainJFrame frame, Consultation consultation) {
+    private static void showEditConsultationJDialogFromConsultation(MainJFrame frame, Consultation consultation) throws SQLException, Exception {
         Treatment treatment = consultation.getTreatment();
         Animal animal = treatment.getAnimal();
         Client client = animal.getOwner();
         Vet vet = consultation.getVet();
-        (new EditConsultationJDialog(frame,true,consultation.getId(),consultation.getDateTime(),consultation.getComment(),treatment.getId(),treatment.getName(),animal.getId(),animal.getName(),client.getId(),client.getName(),vet.getId(),vet.getName())).setVisible(true);
+        (new EditConsultationJDialog(frame,true,consultation.getId(),consultation.getDateTime(),consultation.getComment(),treatment.getId(),treatment.getName(),animal.getId(),animal.getName(),client.getId(),client.getName(),vet.getId())).setVisible(true);
     }
     
     public static void showDeleteConsultationJDialogFromJTableSelection(MainJFrame frame) {

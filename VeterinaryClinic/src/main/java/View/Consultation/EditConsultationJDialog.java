@@ -6,7 +6,8 @@
 
 package View.Consultation;
 
-import javax.swing.JOptionPane;
+import java.sql.SQLException;
+import javax.swing.ComboBoxModel;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -33,12 +34,11 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
     private final int clientId;
     private final String clientName;
     private final int vetId;
-    private final String vetName;
+    private ComboBoxModel vetsComboModel;
     private boolean showSeeConsultationOnDispose = true;
-    private int currentVetId;
     
     /** Creates new form EditConsultationJDialog */
-    public EditConsultationJDialog(MainJFrame frame, boolean modal, int consultationId, LocalDateTime consultationLocalDateTime, String consultationComment, int treatmentId, String treatmentName, int animalId, String animalName, int clientId, String clientName, int vetId, String vetName) {
+    public EditConsultationJDialog(MainJFrame frame, boolean modal, int consultationId, LocalDateTime consultationLocalDateTime, String consultationComment, int treatmentId, String treatmentName, int animalId, String animalName, int clientId, String clientName, int vetId) throws SQLException, Exception {
         super(frame, modal);
         this.frame = frame;
         this.consultationId = consultationId;
@@ -51,10 +51,8 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
         this.clientId = clientId;
         this.clientName = clientName;
         this.vetId = vetId;
-        this.currentVetId = vetId;
-        this.vetName = vetName;
+        this.vetsComboModel = ControllerConsultation.getVetsComboModel(this.vetId);
         initComponents();
-//        JOptionPane.showMessageDialog(null,"CONSULTATION ID: " + this.consultationId + "TREATMENT ID: " + this.treatmentId);
     }
 
     private LocalDate getConsultationDate() {
@@ -81,6 +79,14 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
         return jTextAreaEditConsultationComment.getText();
     }
     
+    private String getCurrentSelectedVet() {
+        return (String) this.vetsComboModel.getSelectedItem();
+    }
+    
+    private int getCurrentSelectedVetId() {
+        return ControllerConsultation.getComboModelSelectedVetId(this.vetsComboModel,this.getCurrentSelectedVet());
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -105,17 +111,21 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
         jLabelEditConsultationClientName = new javax.swing.JLabel();
         jTextFieldEditConsultationClientName = new javax.swing.JTextField();
         jLabelEditConsultationVetName = new javax.swing.JLabel();
-        jTextFieldEditConsultationVetName = new javax.swing.JTextField();
-        jButtonEditConsultationSelectVet = new javax.swing.JButton();
         jLabelEditConsultationComment = new javax.swing.JLabel();
         jScrollPaneEditConsultationComment = new javax.swing.JScrollPane();
         jTextAreaEditConsultationComment = new javax.swing.JTextArea();
         jButtonEditConsultationNewExam = new javax.swing.JButton();
         jButtonEditConsultationUpdate = new javax.swing.JButton();
+        jComboBoxNewConsultationVet = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edit Consultation");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanelEditConsultationTittle.setLayout(new java.awt.BorderLayout());
 
@@ -165,14 +175,6 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
 
         jLabelEditConsultationVetName.setText("Vet");
 
-        jTextFieldEditConsultationVetName.setEditable(false);
-        jTextFieldEditConsultationVetName.setText(this.vetName);
-        jTextFieldEditConsultationVetName.setDisabledTextColor(java.awt.Color.black);
-        jTextFieldEditConsultationVetName.setEnabled(false);
-
-        jButtonEditConsultationSelectVet.setText("Select Vet");
-        jButtonEditConsultationSelectVet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         jLabelEditConsultationComment.setText("Comment");
 
         jTextAreaEditConsultationComment.setColumns(20);
@@ -191,6 +193,11 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
             }
         });
 
+        jComboBoxNewConsultationVet.setModel(this.vetsComboModel);
+        jComboBoxNewConsultationVet.setToolTipText("");
+        jComboBoxNewConsultationVet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jComboBoxNewConsultationVet.setEnabled(!ControllerConsultation.isVetsComboModelEmpty(this.vetsComboModel));
+
         org.jdesktop.layout.GroupLayout jPanelEditConsultationFormLayout = new org.jdesktop.layout.GroupLayout(jPanelEditConsultationForm);
         jPanelEditConsultationForm.setLayout(jPanelEditConsultationFormLayout);
         jPanelEditConsultationFormLayout.setHorizontalGroup(
@@ -207,18 +214,14 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
                 .add(jPanelEditConsultationFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jFormattedTextFieldEditConsultationDate)
                     .add(jFormattedTextFieldEditConsultationTime)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelEditConsultationFormLayout.createSequentialGroup()
-                        .add(jPanelEditConsultationFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jTextFieldEditConsultationClientName)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jTextFieldEditConsultationAnimalName)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jTextFieldEditConsultationVetName))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jButtonEditConsultationSelectVet, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 115, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jScrollPaneEditConsultationComment)
-                    .add(jTextFieldEditConsultationTreatmentName)))
+                    .add(jTextFieldEditConsultationTreatmentName)
+                    .add(jTextFieldEditConsultationClientName)
+                    .add(jTextFieldEditConsultationAnimalName)))
             .add(jPanelEditConsultationFormLayout.createSequentialGroup()
                 .add(jLabelEditConsultationVetName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 45, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jComboBoxNewConsultationVet, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelEditConsultationFormLayout.createSequentialGroup()
                 .addContainerGap(152, Short.MAX_VALUE)
                 .add(jPanelEditConsultationFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
@@ -251,8 +254,7 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelEditConsultationFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabelEditConsultationVetName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jTextFieldEditConsultationVetName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jButtonEditConsultationSelectVet))
+                    .add(jComboBoxNewConsultationVet, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelEditConsultationFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jScrollPaneEditConsultationComment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 100, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -299,7 +301,7 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
 
     private void jButtonEditConsultationUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditConsultationUpdateActionPerformed
         try {
-            ControllerConsultation.editConsultation(this.consultationId,this.getCurrentConsultationDateTime(),this.getCurrentConsultationComment(),this.treatmentId,this.currentVetId);
+            ControllerConsultation.editConsultation(this.consultationId,this.getCurrentConsultationDateTime(),this.getCurrentConsultationComment(),this.treatmentId,this.getCurrentSelectedVetId());
             ControllerConsultation.showDataTableAll(this.frame.getTableComponentsCollection(),this.frame.getTableComponentsConsultations());
             this.showSeeConsultationOnDispose = true;
             this.dispose();
@@ -310,11 +312,22 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jButtonEditConsultationUpdateActionPerformed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        try {
+            if(showSeeConsultationOnDispose) {
+                ControllerConsultation.showSeeConsultationJDialogFromConsultationId(this.frame, this.consultationId);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_formWindowClosed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEditConsultationNewExam;
-    private javax.swing.JButton jButtonEditConsultationSelectVet;
     private javax.swing.JButton jButtonEditConsultationUpdate;
+    private javax.swing.JComboBox<String> jComboBoxNewConsultationVet;
     private javax.swing.JFormattedTextField jFormattedTextFieldEditConsultationDate;
     private javax.swing.JFormattedTextField jFormattedTextFieldEditConsultationTime;
     private javax.swing.JLabel jLabelEditConsultationAnimalName;
@@ -333,7 +346,6 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldEditConsultationAnimalName;
     private javax.swing.JTextField jTextFieldEditConsultationClientName;
     private javax.swing.JTextField jTextFieldEditConsultationTreatmentName;
-    private javax.swing.JTextField jTextFieldEditConsultationVetName;
     // End of variables declaration//GEN-END:variables
 
 }

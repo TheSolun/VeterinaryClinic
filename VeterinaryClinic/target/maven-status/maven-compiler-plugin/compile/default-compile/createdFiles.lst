@@ -17,6 +17,7 @@ View\MainJFrame$11.class
 View\MainJFrame$21.class
 View\Vet\VetsComboModel.class
 View\Vet\SeeVetJDialog$2.class
+View\Consultation\EditConsultationJDialog$2.class
 Exceptions\BlankDescriptionException.class
 View\Vet\DeleteVetJDialog.class
 View\Exam\DeleteExamJDialog.class

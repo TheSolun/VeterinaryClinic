@@ -6,13 +6,11 @@
 
 package View.Consultation;
 
-import java.awt.Color;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import javax.swing.ComboBoxModel;
-import javax.swing.JTextField;
 
 import Controller.ControllerConsultation;
 import Controller.ControllerTreatment;
