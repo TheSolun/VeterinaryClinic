@@ -6,13 +6,16 @@
 
 package View.Consultation;
 
+import java.awt.Color;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import javax.swing.ComboBoxModel;
+import javax.swing.JTextField;
 
 import Controller.ControllerConsultation;
+import Controller.ControllerTreatment;
 
 import View.MainJFrame;
 import View.Vet.VetsComboModel;
@@ -31,6 +34,7 @@ public class NewConsultationJDialog extends javax.swing.JDialog {
     private final int clientId;
     private final String clientName;
     private ComboBoxModel vetsComboModel;
+    private boolean showSeeTreatment = true;
     
     /** Creates new form NewConsultationJDialog */
     public NewConsultationJDialog(MainJFrame frame, boolean modal, int treatmentId, String treatmentName, int animalId, String animalName, int clientId, String clientName) throws SQLException, Exception {
@@ -69,7 +73,7 @@ public class NewConsultationJDialog extends javax.swing.JDialog {
     private int getCurrentSelectedVetId() {
         return ControllerConsultation.getComboModelSelectedVetId(this.vetsComboModel,this.getCurrentSelectedVet());
     }
-
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -103,6 +107,11 @@ public class NewConsultationJDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("New Consultation");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanelNewConsultationTittle.setLayout(new java.awt.BorderLayout());
 
@@ -152,6 +161,9 @@ public class NewConsultationJDialog extends javax.swing.JDialog {
         jTextFieldNewConsultationClientName.setEnabled(false);
 
         jComboBoxNewConsultationVet.setModel(this.vetsComboModel);
+        jComboBoxNewConsultationVet.setToolTipText("");
+        jComboBoxNewConsultationVet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jComboBoxNewConsultationVet.setEnabled(!ControllerConsultation.isVetsComboModelEmpty(this.vetsComboModel));
 
         jLabelNewConsultationComment.setText("Comment");
 
@@ -161,6 +173,7 @@ public class NewConsultationJDialog extends javax.swing.JDialog {
 
         jButtonNewConsultationConfirm.setText("Register");
         jButtonNewConsultationConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonNewConsultationConfirm.setEnabled(!ControllerConsultation.isVetsComboModelEmpty(this.vetsComboModel));
         jButtonNewConsultationConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonNewConsultationConfirmActionPerformed(evt);
@@ -268,6 +281,7 @@ public class NewConsultationJDialog extends javax.swing.JDialog {
         try {
             ControllerConsultation.newConsultation(this.getCurrentConsultationDateTime(),this.getCurrentConsultationComment(),this.treatmentId,this.getCurrentSelectedVetId());
             ControllerConsultation.showDataTableAll(this.frame.getTableComponentsCollection(),this.frame.getTableComponentsConsultations());
+            this.showSeeTreatment = false;
             this.dispose();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -275,6 +289,17 @@ public class NewConsultationJDialog extends javax.swing.JDialog {
             javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
         }
     }//GEN-LAST:event_jButtonNewConsultationConfirmActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        try {
+            if(showSeeTreatment)
+                ControllerTreatment.showSeeTreatmentJDialogFromTreatmentId(this.frame, this.treatmentId);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_formWindowClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

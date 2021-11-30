@@ -101,6 +101,10 @@ public class ControllerConsultation extends Controller {
         return ((VetsComboModel) vetsComboModel).getVetId(((VetsComboModel) vetsComboModel).getItemIndex(selectedVetString));
     }
     
+    public static boolean isVetsComboModelEmpty(ComboBoxModel vetsComboModel) {
+        return ((VetsComboModel) vetsComboModel).isEmpty();
+    }
+    
     public static void showEditConsultationJDialogFromJTableSelection(MainJFrame frame) {
         showEditConsultationJDialogFromConsultation(frame,getSelectedConsultationFromJTable(frame));
     }

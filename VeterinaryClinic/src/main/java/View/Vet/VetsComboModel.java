@@ -20,8 +20,7 @@ public class VetsComboModel extends AbstractListModel<Object> implements ComboBo
     
     public VetsComboModel(List<Vet> vetsList) {
         setElements(vetsList);
-        if (!vetsList.isEmpty())
-            setSelectedItem(this.vetsStringsList.get(FIRSTINDEX));
+        setSelectedItem(this.vetsStringsList.get(FIRSTINDEX));
     }
     
     public VetsComboModel(List<Vet> vetsList, Vet selectedVet) {

@@ -147,6 +147,7 @@ View\Client\SeeClientJDialog$1.class
 View\Animal\SeeAnimalJDialog.class
 View\MainJFrame$14.class
 Exceptions\NotPositiveIdException.class
+View\Consultation\NewConsultationJDialog$2.class
 View\Treatment\NewTreatmentJDialog.class
 Models\DAO\SpeciesDAO.class
 View\Animal\DeleteAnimalJDialog$3.class
