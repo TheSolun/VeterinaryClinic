@@ -1,6 +1,13 @@
 package Controller;
 
+import java.util.List;
 import java.sql.SQLException;
+
+import Controller.ControllerConsultation;
+
+import Models.DAO.VetDAO;
+import Models.Consultation;
+import Models.Vet;
 
 import View.MainJFrame;
 import View.TableComponents;
@@ -10,9 +17,6 @@ import View.Vet.EditVetJDialog;
 import View.Vet.NewVetJDialog;
 import View.Vet.SeeVetJDialog;
 import View.Vet.VetTableModel;
-
-import Models.Vet;
-import Models.DAO.VetDAO;
 
 /**
  *
@@ -67,6 +71,10 @@ public class ControllerVet extends Controller {
     }
     
     public static void deleteVet(int vetId) throws SQLException, Exception {
+        List<Consultation> consultations = ControllerConsultation.getConsultationsByVetId(vetId);
+        for(Consultation consultation : consultations) {
+            ControllerConsultation.deleteConsultation(consultation.getId());
+        }
         VetDAO.getInstance().deleteById(vetId);
     }
     

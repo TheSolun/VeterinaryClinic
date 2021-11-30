@@ -1,6 +1,6 @@
 
 import View.MainJFrame;
-//import Models.DAO.ConsultationDAO;
+import Models.DAO.ConsultationDAO;
 /**
  *
  * @author mateu
@@ -12,7 +12,7 @@ public class Main {
      */
     public static void main(String[] args) {
         try {
-//            ConsultationDAO.getInstance().deleteById(1);
+            ConsultationDAO.getInstance().deleteById(1);
             MainJFrame.main(new String[0]);
             
         } catch (Exception ex) {

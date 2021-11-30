@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -50,10 +49,6 @@ public class ConsultationDAO extends DAO {
     }
     
     public void delete(Consultation consultation) throws SQLException {
-//        PreparedStatement stmt;
-//        stmt = (DAO.getConnection()).prepareStatement("DELETE FROM consultation WHERE id = ?");
-//        stmt.setInt(1, consultation.getId());
-//        executeUpdate(stmt);
         this.deleteById(consultation.getId());
     }
     
@@ -110,9 +105,6 @@ public class ConsultationDAO extends DAO {
         stmt.setInt(5, consultation.getTreatment().getId());
         stmt.setInt(6, (consultation.isFinished())? 1 : 0);
         stmt.setInt(7, consultation.getId());
-//        JOptionPane.showMessageDialog(null,consultation);
-//        JOptionPane.showMessageDialog(null,consultation.getTreatment().getId());
-//        JOptionPane.showMessageDialog(null,stmt);
         executeUpdate(stmt);
     }
     

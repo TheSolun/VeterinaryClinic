@@ -44,6 +44,10 @@ public class ControllerConsultation extends Controller {
         return ConsultationDAO.getInstance().retrieveByTreatmentId(treatmentId);
     }
     
+    protected static List<Consultation> getConsultationsByVetId(int vetId)throws SQLException, Exception {
+        return ConsultationDAO.getInstance().retrieveByVetId(vetId);
+    }
+    
     public static void showDataTableByTreatmentId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int treatmentId) throws SQLException, Exception {
         showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(getConsultationsByTreatmentId(treatmentId)));
     }
@@ -81,16 +85,16 @@ public class ControllerConsultation extends Controller {
         (new SeeConsultationJDialog(frame,true,consultation.getId(),consultation.getDateTime(),consultation.getComment(),treatment.getId(),treatment.getName(),animal.getId(),animal.getName(),client.getId(),client.getName(),vet.getId(),vet.getName())).setVisible(true);
     }
     
-    private static List<Vet> getVetsList() throws SQLException, Exception {
+    private static List<Vet> getVets() throws SQLException, Exception {
         return VetDAO.getInstance().retrieveAll();
     }
     
     public static VetsComboModel getVetsComboModel(Vet selectedVet) throws SQLException, Exception {
-        return new VetsComboModel(ControllerConsultation.getVetsList(),selectedVet);
+        return new VetsComboModel(ControllerConsultation.getVets(),selectedVet);
     }
     
     public static VetsComboModel getVetsComboModel() throws SQLException, Exception {
-        return new VetsComboModel(ControllerConsultation.getVetsList());
+        return new VetsComboModel(ControllerConsultation.getVets());
     }
     
     public static int getComboModelSelectedVetId(ComboBoxModel vetsComboModel, String selectedVetString) {
