@@ -1,7 +1,6 @@
 Exceptions\InvalidZipCodeLengthException.class
 View\Consultation\DeleteConsultationJDialog$1.class
 View\Exam\ExamTableModel.class
-View\Vet\NewVetJDialog$2.class
 View\Exam\NewExamJDialog.class
 View\MainJFrame$9.class
 View\Gender\GenderComboModel.class
