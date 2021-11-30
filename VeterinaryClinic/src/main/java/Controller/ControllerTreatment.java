@@ -1,7 +1,17 @@
 package Controller;
 
+import java.util.List;
 import java.sql.SQLException;
 import java.time.LocalDate;
+
+import Controller.ControllerConsultation;
+
+import Models.Animal;
+import Models.Client;
+import Models.Consultation;
+import Models.Treatment;
+import Models.DAO.AnimalDAO;
+import Models.DAO.TreatmentDAO;
 
 import View.MainJFrame;
 import View.TableComponents;
@@ -11,12 +21,6 @@ import View.Treatment.EditTreatmentJDialog;
 import View.Treatment.NewTreatmentJDialog;
 import View.Treatment.SeeTreatmentJDialog;
 import View.Treatment.TreatmentTableModel;
-
-import Models.Animal;
-import Models.Client;
-import Models.Treatment;
-import Models.DAO.AnimalDAO;
-import Models.DAO.TreatmentDAO;
 
 /**
  *
@@ -85,6 +89,9 @@ public class ControllerTreatment extends Controller {
     }
     
     public static void deleteTreatment(int treatmentId) throws SQLException, Exception {
+        List<Consultation> consultations = ControllerConsultation.getConsultationsByTreatmentId(treatmentId);
+        for(Consultation consultation : consultations)
+            ControllerConsultation.deleteConsultation(consultation.getId());
         TreatmentDAO.getInstance().deleteById(treatmentId);
     }
     

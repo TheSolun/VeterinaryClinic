@@ -47,7 +47,6 @@ public class Consultation {
     
     public void setDateTime(LocalDateTime dateTime){
         this.dateTime = dateTime;
-        this.setFinished();
     }
     
     public String getComment() {
@@ -75,11 +74,7 @@ public class Consultation {
     }
     
     public boolean isFinished(){
-        return finished;
-    }
-    
-    private void setFinished() {
-        this.finished = LocalDateTime.now().compareTo(this.dateTime) > 0;
+        return LocalDateTime.now().isAfter(this.dateTime);
     }
 
     @Override

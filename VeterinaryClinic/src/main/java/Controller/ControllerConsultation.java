@@ -40,7 +40,7 @@ public class ControllerConsultation extends Controller {
         showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(ConsultationDAO.getInstance().retrieveAll()));
     }
     
-    private static List<Consultation> getConsultationsByTreatmentId(int treatmentId)throws SQLException, Exception {
+    protected static List<Consultation> getConsultationsByTreatmentId(int treatmentId)throws SQLException, Exception {
         return ConsultationDAO.getInstance().retrieveByTreatmentId(treatmentId);
     }
     
