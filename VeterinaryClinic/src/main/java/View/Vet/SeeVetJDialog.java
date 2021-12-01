@@ -7,6 +7,7 @@
 package View.Vet;
 
 import Controller.ControllerConsultation;
+import Controller.ControllerExam;
 import Controller.ControllerVet;
 
 /**
@@ -55,7 +56,7 @@ public class SeeVetJDialog extends javax.swing.JDialog {
         jLabelSeeVetAddress = new javax.swing.JLabel();
         jTextFieldSeeVetAddress = new javax.swing.JTextField();
         jButtonSeeVetSeeConsultations = new javax.swing.JButton();
-        jButtonSeeVetSeeTreatments = new javax.swing.JButton();
+        jButtonSeeVetSeeExams = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("See Vet");
@@ -139,8 +140,13 @@ public class SeeVetJDialog extends javax.swing.JDialog {
             }
         });
 
-        jButtonSeeVetSeeTreatments.setText("See Treatments");
-        jButtonSeeVetSeeTreatments.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeVetSeeExams.setText("See Exams");
+        jButtonSeeVetSeeExams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeVetSeeExams.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeVetSeeExamsActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanelSeeVetFormLayout = new org.jdesktop.layout.GroupLayout(jPanelSeeVetForm);
         jPanelSeeVetForm.setLayout(jPanelSeeVetFormLayout);
@@ -160,7 +166,7 @@ public class SeeVetJDialog extends javax.swing.JDialog {
             .add(jPanelSeeVetFormLayout.createSequentialGroup()
                 .add(jButtonSeeVetSeeConsultations, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 187, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButtonSeeVetSeeTreatments, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(jButtonSeeVetSeeExams, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelSeeVetFormLayout.setVerticalGroup(
             jPanelSeeVetFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -179,7 +185,7 @@ public class SeeVetJDialog extends javax.swing.JDialog {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelSeeVetFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jButtonSeeVetSeeConsultations)
-                    .add(jButtonSeeVetSeeTreatments)))
+                    .add(jButtonSeeVetSeeExams)))
         );
 
         org.jdesktop.layout.GroupLayout jPanelFrameLayout = new org.jdesktop.layout.GroupLayout(jPanelFrame);
@@ -247,11 +253,20 @@ public class SeeVetJDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jButtonSeeVetSeeConsultationsActionPerformed
 
+    private void jButtonSeeVetSeeExamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeVetSeeExamsActionPerformed
+        try {
+            ControllerExam.showDataTableByVetId(this.frame.getTableComponentsCollection(), this.frame.getTableComponentsExams(), this.vetId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_jButtonSeeVetSeeExamsActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonSeeVetDeleteVet;
     private javax.swing.JButton jButtonSeeVetEditVet;
     private javax.swing.JButton jButtonSeeVetSeeConsultations;
-    private javax.swing.JButton jButtonSeeVetSeeTreatments;
+    private javax.swing.JButton jButtonSeeVetSeeExams;
     private javax.swing.JFormattedTextField jFormattedTextFieldSeeVetPhone;
     private javax.swing.JLabel jLabelSeeVetAddress;
     private javax.swing.JLabel jLabelSeeVetName;
