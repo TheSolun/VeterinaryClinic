@@ -98,14 +98,14 @@ public class SeeExamJDialog extends javax.swing.JDialog {
         jLabelSeeExamName.setText("Name");
 
         jTextFieldSeeExamName.setEditable(false);
-        jTextFieldSeeExamName.setText("Exam1");
+        jTextFieldSeeExamName.setText(this.examName);
         jTextFieldSeeExamName.setDisabledTextColor(java.awt.Color.black);
         jTextFieldSeeExamName.setEnabled(false);
 
         jLabel4.setText("Treatment");
 
         jTextField2.setEditable(false);
-        jTextField2.setText("Treatment1");
+        jTextField2.setText(this.treatmentName);
         jTextField2.setDisabledTextColor(java.awt.Color.black);
         jTextField2.setEnabled(false);
 
@@ -120,7 +120,7 @@ public class SeeExamJDialog extends javax.swing.JDialog {
         jLabel5.setText("Vet");
 
         jTextField3.setEditable(false);
-        jTextField3.setText("Vet1");
+        jTextField3.setText(this.vetName);
         jTextField3.setDisabledTextColor(java.awt.Color.black);
         jTextField3.setEnabled(false);
 
@@ -135,7 +135,7 @@ public class SeeExamJDialog extends javax.swing.JDialog {
         jLabel6.setText("Animal");
 
         jTextField4.setEditable(false);
-        jTextField4.setText("Foguinho");
+        jTextField4.setText(this.animalName);
         jTextField4.setDisabledTextColor(java.awt.Color.black);
         jTextField4.setEnabled(false);
 
@@ -150,7 +150,7 @@ public class SeeExamJDialog extends javax.swing.JDialog {
         jLabel7.setText("Client");
 
         jTextField5.setEditable(false);
-        jTextField5.setText("Jenisvaldo");
+        jTextField5.setText(this.clientName);
         jTextField5.setDisabledTextColor(java.awt.Color.black);
         jTextField5.setEnabled(false);
 
@@ -175,7 +175,7 @@ public class SeeExamJDialog extends javax.swing.JDialog {
         jTextAreaSeeExamConsultationComment.setEditable(false);
         jTextAreaSeeExamConsultationComment.setColumns(20);
         jTextAreaSeeExamConsultationComment.setRows(5);
-        jTextAreaSeeExamConsultationComment.setText("Consultation 1 - Treatment 1 - Vet 1");
+        jTextAreaSeeExamConsultationComment.setText(this.consultationComment);
         jTextAreaSeeExamConsultationComment.setDisabledTextColor(java.awt.Color.black);
         jTextAreaSeeExamConsultationComment.setEnabled(false);
         jScrollPaneSeeExamConsultationComment.setViewportView(jTextAreaSeeExamConsultationComment);

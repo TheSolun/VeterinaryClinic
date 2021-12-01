@@ -1424,14 +1424,8 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDeleteExamActionPerformed
 
     private void jButtonNewExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewExamActionPerformed
-//        NewExamJDialog newExamJDialog = new NewExamJDialog(this,true);
-//        newExamJDialog.setVisible(true);
-        try {
-//            ControllerExam.showNewExamJDialog(this);
-        } catch (Exception ex) {
-            System.out.println(ex);
-            javax.swing.JOptionPane.showMessageDialog(this,ex);
-        }
+        this.jButtonMenuBarConsultations.doClick();
+        javax.swing.JOptionPane.showMessageDialog(this,"Select a consultation, click 'Edit' and then click 'New Exam'.");
     }//GEN-LAST:event_jButtonNewExamActionPerformed
 
     private void jButtonSeeAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeAnimalActionPerformed
