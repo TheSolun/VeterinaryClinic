@@ -42,6 +42,7 @@ View\Treatment\DeleteTreatmentJDialog$1.class
 View\Treatment\SeeTreatmentJDialog$5.class
 View\Treatment\NewTreatmentJDialog$1.class
 View\Animal\EditAnimalJDialog.class
+View\Consultation\EditConsultationJDialog$3.class
 View\Animal\SeeAnimalJDialog$2.class
 Controller\Controller.class
 Models\Vet.class
@@ -147,6 +148,8 @@ View\MainJFrame$26.class
 View\MainJFrame$7.class
 View\Animal\EditAnimalJDialog$4.class
 View\Client\DeleteClientJDialog.class
+View\Exam\NewExamJDialog$1.class
+View\Exam\NewExamJDialog$2.class
 Controller\Controller$SetAllButtonsAsDisabled.class
 View\MainJFrame.class
 View\Treatment\SeeTreatmentJDialog$3.class

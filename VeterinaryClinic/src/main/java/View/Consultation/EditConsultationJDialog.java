@@ -16,6 +16,7 @@ import java.time.LocalTime;
 import View.MainJFrame;
 
 import Controller.ControllerConsultation;
+import Controller.ControllerExam;
 
 /**
  *
@@ -184,6 +185,11 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
 
         jButtonEditConsultationNewExam.setText("New Exam");
         jButtonEditConsultationNewExam.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditConsultationNewExam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditConsultationNewExamActionPerformed(evt);
+            }
+        });
 
         jButtonEditConsultationUpdate.setText("Update");
         jButtonEditConsultationUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -322,6 +328,17 @@ public class EditConsultationJDialog extends javax.swing.JDialog {
             javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
         }
     }//GEN-LAST:event_formWindowClosed
+
+    private void jButtonEditConsultationNewExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditConsultationNewExamActionPerformed
+        try {
+            this.showSeeConsultationOnDispose = false;
+            this.dispose();
+            ControllerExam.showNewExamJDialogByConsultationId(this.frame,this.consultationId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
+    }//GEN-LAST:event_jButtonEditConsultationNewExamActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

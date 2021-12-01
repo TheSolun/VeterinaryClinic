@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -65,7 +64,6 @@ public class ExamDAO extends DAO {
         List<Exam> exams = new ArrayList<Exam>();
         ResultSet rs = getResultSet(query);
         while (rs.next()) {
-            JOptionPane.showMessageDialog(null, buildObject(rs));
             exams.add(buildObject(rs));
         }
         return exams;
