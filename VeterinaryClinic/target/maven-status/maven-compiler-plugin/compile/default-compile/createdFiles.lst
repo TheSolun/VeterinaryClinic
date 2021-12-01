@@ -18,6 +18,7 @@ View\MainJFrame$11.class
 View\MainJFrame$21.class
 View\Vet\VetsComboModel.class
 View\Vet\SeeVetJDialog$2.class
+View\Exam\SeeExamJDialog$5.class
 View\Consultation\EditConsultationJDialog$2.class
 Exceptions\BlankDescriptionException.class
 View\Vet\DeleteVetJDialog.class
@@ -25,6 +26,7 @@ View\Exam\DeleteExamJDialog.class
 View\MainJFrame$24.class
 Exceptions\ZipCodeNotOnlyWithNumbersException.class
 View\Client\SeeClientJDialog$3.class
+View\Exam\SeeExamJDialog$3.class
 View\Client\NewClientJDialog.class
 View\Animal\NewAnimalJDialog$1.class
 View\Client\EditClientJDialog$1.class
@@ -51,6 +53,7 @@ View\Animal\EditAnimalJDialog$1.class
 View\MainJFrame$17.class
 View\MainJFrame$27.class
 View\MainJFrame$33.class
+View\Exam\SeeExamJDialog$2.class
 Exceptions\StartAndEndDatesNotInChronologicalOrderException.class
 Main.class
 View\Client\ClientTableModel.class
@@ -171,6 +174,7 @@ View\Consultation\NewConsultationJDialog.class
 View\Consultation\DeleteConsultationJDialog.class
 View\MainJFrame$30.class
 Controller\Controller$1.class
+View\Exam\SeeExamJDialog$4.class
 View\Animal\EditAnimalJDialog$3.class
 View\MainJFrame$25.class
 Models\DAO\VetDAO.class

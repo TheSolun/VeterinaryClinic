@@ -6,6 +6,12 @@
 
 package View.Exam;
 
+import Controller.ControllerAnimal;
+import Controller.ControllerClient;
+import Controller.ControllerConsultation;
+import Controller.ControllerTreatment;
+import Controller.ControllerVet;
+
 import View.MainJFrame;
 /**
  *
@@ -105,6 +111,11 @@ public class SeeExamJDialog extends javax.swing.JDialog {
 
         jButtonSeeExamSeeTreatment.setText("See Treatment");
         jButtonSeeExamSeeTreatment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeExamSeeTreatment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeExamSeeTreatmentActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Vet");
 
@@ -115,6 +126,11 @@ public class SeeExamJDialog extends javax.swing.JDialog {
 
         jButtonSeeExamSeeVet.setText("See Vet");
         jButtonSeeExamSeeVet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeExamSeeVet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeExamSeeVetActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Animal");
 
@@ -125,6 +141,11 @@ public class SeeExamJDialog extends javax.swing.JDialog {
 
         jButtonSeeExamSeeAnimal.setText("See Animal");
         jButtonSeeExamSeeAnimal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeExamSeeAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeExamSeeAnimalActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Client");
 
@@ -135,6 +156,11 @@ public class SeeExamJDialog extends javax.swing.JDialog {
 
         jButtonSeeExamSeeClient.setText("See Client");
         jButtonSeeExamSeeClient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeExamSeeClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeExamSeeClientActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Consultation Comments");
 
@@ -272,8 +298,49 @@ public class SeeExamJDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSeeExamSeeConsultationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeExamSeeConsultationActionPerformed
-        // TODO add your handling code here:
+        try {
+            ControllerConsultation.showSeeConsultationJDialogFromConsultationId(this.frame,this.consultationId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
     }//GEN-LAST:event_jButtonSeeExamSeeConsultationActionPerformed
+
+    private void jButtonSeeExamSeeTreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeExamSeeTreatmentActionPerformed
+        try {
+            ControllerTreatment.showSeeTreatmentJDialogFromTreatmentId(this.frame,this.treatmentId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
+    }//GEN-LAST:event_jButtonSeeExamSeeTreatmentActionPerformed
+
+    private void jButtonSeeExamSeeVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeExamSeeVetActionPerformed
+        try {
+            ControllerVet.showSeeVetJDialogFromVetId(this.frame,this.vetId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
+    }//GEN-LAST:event_jButtonSeeExamSeeVetActionPerformed
+
+    private void jButtonSeeExamSeeAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeExamSeeAnimalActionPerformed
+        try {
+            ControllerAnimal.showSeeAnimalJDialogFromAnimalId(this.frame,this.animalId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
+    }//GEN-LAST:event_jButtonSeeExamSeeAnimalActionPerformed
+
+    private void jButtonSeeExamSeeClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeExamSeeClientActionPerformed
+        try {
+            ControllerClient.showSeeClientJDialogFromClientId(this.frame,this.clientId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
+    }//GEN-LAST:event_jButtonSeeExamSeeClientActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
