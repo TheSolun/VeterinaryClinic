@@ -248,6 +248,11 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
 
         jButtonSeeConsultationSeeExams.setText("See Exams");
         jButtonSeeConsultationSeeExams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeConsultationSeeExams.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeConsultationSeeExamsActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanelSeeConsultationFormLayout = new org.jdesktop.layout.GroupLayout(jPanelSeeConsultationForm);
         jPanelSeeConsultationForm.setLayout(jPanelSeeConsultationFormLayout);
@@ -420,6 +425,15 @@ public class SeeConsultationJDialog extends javax.swing.JDialog {
             javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
         }
     }//GEN-LAST:event_jButtonSeeConsultationSeeVetActionPerformed
+
+    private void jButtonSeeConsultationSeeExamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeConsultationSeeExamsActionPerformed
+        try {
+            ControllerExam.showDataTableByConsultationId(this.frame.getTableComponentsCollection(), this.frame.getTableComponentsExams(), this.consultationId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_jButtonSeeConsultationSeeExamsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

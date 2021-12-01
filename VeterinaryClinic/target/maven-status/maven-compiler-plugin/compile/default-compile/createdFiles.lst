@@ -164,6 +164,7 @@ Models\DAO\SpeciesDAO.class
 View\Animal\DeleteAnimalJDialog$3.class
 View\Vet\DeleteVetJDialog$3.class
 View\MainJFrame$6.class
+View\Consultation\SeeConsultationJDialog$7.class
 View\GenericTableModel.class
 View\Consultation\SeeConsultationJDialog$1.class
 View\Consultation\NewConsultationJDialog.class
