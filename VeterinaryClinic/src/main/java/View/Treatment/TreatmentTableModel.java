@@ -13,11 +13,11 @@ import java.util.List;
 public class TreatmentTableModel extends GenericTableModel {
     
     public TreatmentTableModel() {
-        super(new ArrayList<Object>(), new String[]{idColumnName,"Name","Start Day","End Day","Animal","Finished"});
+        super(new ArrayList<Object>(), new String[]{idColumnName,"Name","Start Day","End Day","Animal","Client","Finished"});
     }
     
     public TreatmentTableModel(List vData) {
-        super(vData, new String[]{"Name","Start Day","End Day","Animal","Finished"});
+        super(vData, new String[]{"Name","Start Day","End Day","Animal","Client","Finished"});
     }
     
     @Override
@@ -34,6 +34,8 @@ public class TreatmentTableModel extends GenericTableModel {
             case 4:
                 return String.class;
             case 5:
+                return String.class;
+            case 6:
                 return Boolean.class;
             default:
                 throw new IndexOutOfBoundsException("column index out of bounds");
@@ -56,6 +58,8 @@ public class TreatmentTableModel extends GenericTableModel {
             case 4:
                 return treatment.getAnimal().getName();
             case 5:
+                return treatment.getAnimal().getOwner().getName();
+            case 6:
                 return treatment.isFinished();
             default:
                 throw new IndexOutOfBoundsException("column index out of bounds");
