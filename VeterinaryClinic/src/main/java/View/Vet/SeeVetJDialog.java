@@ -114,6 +114,7 @@ public class SeeVetJDialog extends javax.swing.JDialog {
         jTextFieldSeeVetName.setEditable(false);
         jTextFieldSeeVetName.setText(this.vetName);
         jTextFieldSeeVetName.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldSeeVetName.setEnabled(false);
 
         jLabelSeeVetPhone.setText("Phone");
 
@@ -125,12 +126,14 @@ public class SeeVetJDialog extends javax.swing.JDialog {
         }
         jFormattedTextFieldSeeVetPhone.setText(this.vetPhone);
         jFormattedTextFieldSeeVetPhone.setDisabledTextColor(java.awt.Color.black);
+        jFormattedTextFieldSeeVetPhone.setEnabled(false);
 
         jLabelSeeVetAddress.setText("Address");
 
         jTextFieldSeeVetAddress.setEditable(false);
         jTextFieldSeeVetAddress.setText(this.vetAddress);
         jTextFieldSeeVetAddress.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldSeeVetAddress.setEnabled(false);
 
         jButtonSeeVetSeeConsultations.setText("See Consultations");
         jButtonSeeVetSeeConsultations.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -153,20 +156,19 @@ public class SeeVetJDialog extends javax.swing.JDialog {
         jPanelSeeVetFormLayout.setHorizontalGroup(
             jPanelSeeVetFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelSeeVetFormLayout.createSequentialGroup()
-                .add(jPanelSeeVetFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanelSeeVetFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                        .add(jLabelSeeVetName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(jLabelSeeVetPhone, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
-                    .add(jLabelSeeVetAddress, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 42, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jPanelSeeVetFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jLabelSeeVetAddress, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                    .add(jLabelSeeVetPhone, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jLabelSeeVetName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelSeeVetFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jTextFieldSeeVetName)
-                    .add(jFormattedTextFieldSeeVetPhone, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
-                    .add(jTextFieldSeeVetAddress)))
+                    .add(jTextFieldSeeVetAddress)
+                    .add(jFormattedTextFieldSeeVetPhone)
+                    .add(jTextFieldSeeVetName)))
             .add(jPanelSeeVetFormLayout.createSequentialGroup()
                 .add(jButtonSeeVetSeeConsultations, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 187, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButtonSeeVetSeeExams, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(jButtonSeeVetSeeExams, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
         );
         jPanelSeeVetFormLayout.setVerticalGroup(
             jPanelSeeVetFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)

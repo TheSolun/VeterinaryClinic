@@ -150,24 +150,22 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jLabelSeeVetName" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jLabelSeeVetPhone" alignment="1" pref="42" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="jLabelSeeVetAddress" alignment="0" min="-2" pref="42" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabelSeeVetAddress" pref="52" max="32767" attributes="0"/>
+                          <Component id="jLabelSeeVetPhone" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabelSeeVetName" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextFieldSeeVetName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jFormattedTextFieldSeeVetPhone" alignment="0" pref="334" max="32767" attributes="0"/>
-                          <Component id="jTextFieldSeeVetAddress" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldSeeVetAddress" max="32767" attributes="0"/>
+                          <Component id="jFormattedTextFieldSeeVetPhone" max="32767" attributes="0"/>
+                          <Component id="jTextFieldSeeVetName" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jButtonSeeVetSeeConsultations" min="-2" pref="187" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonSeeVetSeeExams" max="32767" attributes="0"/>
+                      <Component id="jButtonSeeVetSeeExams" pref="187" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -212,6 +210,7 @@
                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelSeeVetPhone">
@@ -231,6 +230,7 @@
                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelSeeVetAddress">
@@ -247,6 +247,7 @@
                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonSeeVetSeeConsultations">
