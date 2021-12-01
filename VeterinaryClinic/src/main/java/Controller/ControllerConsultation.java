@@ -53,26 +53,26 @@ public class ControllerConsultation extends Controller {
         showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(getConsultationsByTreatmentId(treatmentId)));
     }
     
-    private static List<Consultation> getConsultationsByAnimalId(int animalId) throws SQLException, Exception {
+    private static List<Consultation> getConsultationsByTreatmentsList(List<Treatment> treatments) throws SQLException, Exception {
         List<Consultation> consultations = new ArrayList<Consultation>();
-        List<Treatment> treatments = ControllerTreatment.getTreatmentsByAnimalId(animalId);;
         for(Treatment treatment : treatments) {
             consultations.addAll(getConsultationsByTreatmentId(treatment.getId()));
         }
         return consultations;
+    }
+    
+    protected static List<Consultation> getConsultationsByAnimalId(int animalId) throws SQLException, Exception {
+        List<Treatment> treatments = ControllerTreatment.getTreatmentsByAnimalId(animalId);;
+        return getConsultationsByTreatmentsList(treatments);
     }
     
     public static void showDataTableByAnimalId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int animalId) throws SQLException, Exception {
         showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(getConsultationsByAnimalId(animalId)));
     }
     
-    private static List<Consultation> getConsultationsByClientId(int clientId) throws SQLException, Exception {
-        List<Consultation> consultations = new ArrayList<Consultation>();
+    protected static List<Consultation> getConsultationsByClientId(int clientId) throws SQLException, Exception {
         List<Treatment> treatments = ControllerTreatment.getTreatmentsByClientId(clientId);
-        for(Treatment treatment : treatments) {
-            consultations.addAll(getConsultationsByTreatmentId(treatment.getId()));
-        }
-        return consultations;
+        return getConsultationsByTreatmentsList(treatments);
     }
     
     public static void showDataTableByClientId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int clientId) throws SQLException, Exception {

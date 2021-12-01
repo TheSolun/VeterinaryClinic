@@ -41,8 +41,7 @@ public class ControllerExam extends Controller {
         showDataTable(tableComponentsCollection,tableComponents, new ExamTableModel(getExamsByConsultationId(consultationId)));
     }
     
-    private static List<Exam> getExamsByTreatmentId(int treatmentId) throws SQLException, Exception {
-        List<Consultation> consultations = ConsultationDAO.getInstance().retrieveByTreatmentId(treatmentId);
+    private static List<Exam> getExamsByConsultationsList(List<Consultation> consultations) throws SQLException, Exception {
         List<Exam> exams = new ArrayList<Exam>();
         for(Consultation consultation : consultations) {
             exams.addAll(getExamsByConsultationId(consultation.getId()));
@@ -50,17 +49,18 @@ public class ControllerExam extends Controller {
         return exams;
     }
     
+    private static List<Exam> getExamsByTreatmentId(int treatmentId) throws SQLException, Exception {
+        List<Consultation> consultations = ControllerConsultation.getConsultationsByTreatmentId(treatmentId);
+        return getExamsByConsultationsList(consultations);
+    }
+    
     public static void showDataTableByTreatmentId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int treatmentId) throws SQLException, Exception {
         showDataTable(tableComponentsCollection,tableComponents, new ExamTableModel(getExamsByTreatmentId(treatmentId)));
     }
     
     private static List<Exam> getExamsByAnimalId(int animalId) throws SQLException, Exception {
-        List<Treatment> treatments = TreatmentDAO.getInstance().retrieveByAnimalId(animalId);
-        List<Exam> exams = new ArrayList<Exam>();
-        for(Treatment treatment : treatments) {
-            exams.addAll(getExamsByTreatmentId(treatment.getId()));
-        }
-        return exams;
+        List<Consultation> consultations = ControllerConsultation.getConsultationsByAnimalId(animalId);
+        return getExamsByConsultationsList(consultations);
     }
     
     public static void showDataTableByAnimalId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int animalId) throws SQLException, Exception {
@@ -68,16 +68,21 @@ public class ControllerExam extends Controller {
     }
     
     private static List<Exam> getExamsByVetId(int vetId) throws SQLException, Exception {
-        List<Exam> exams = new ArrayList<Exam>();
-        List<Consultation> consultations = ConsultationDAO.getInstance().retrieveByVetId(vetId);
-        for(Consultation consultation : consultations) {
-            exams.addAll(ExamDAO.getInstance().retrieveByConsultationId(consultation.getId()));
-        }
-        return exams;
+        List<Consultation> consultations = ControllerConsultation.getConsultationsByVetId(vetId);
+        return getExamsByConsultationsList(consultations);
     }
     
     public static void showDataTableByVetId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int vetId) throws SQLException, Exception {
         showDataTable(tableComponentsCollection,tableComponents, new ExamTableModel(getExamsByVetId(vetId)));
+    }
+    
+    private static List<Exam> getExamsByClientId(int clientId) throws SQLException, Exception {
+        List<Consultation> consultations = ControllerConsultation.getConsultationsByClientId(clientId);
+        return getExamsByConsultationsList(consultations);
+    }
+    
+    public static void showDataTableByClientId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int clientId) throws SQLException, Exception {
+        showDataTable(tableComponentsCollection,tableComponents, new ExamTableModel(getExamsByClientId(clientId)));
     }
     
     private static Exam getSelectedExamFromJTable(MainJFrame frame) {

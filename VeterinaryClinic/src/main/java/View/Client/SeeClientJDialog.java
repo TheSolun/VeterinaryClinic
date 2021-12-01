@@ -9,6 +9,7 @@ package View.Client;
 import Controller.ControllerAnimal;
 import Controller.ControllerClient;
 import Controller.ControllerConsultation;
+import Controller.ControllerExam;
 import Controller.ControllerTreatment;
 
 
@@ -191,6 +192,11 @@ public class SeeClientJDialog extends javax.swing.JDialog {
 
         jButtonSeeClientSeeExams.setText("See Exams");
         jButtonSeeClientSeeExams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeClientSeeExams.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeClientSeeExamsActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanelSeeClientFormLayout = new org.jdesktop.layout.GroupLayout(jPanelSeeClientForm);
         jPanelSeeClientForm.setLayout(jPanelSeeClientFormLayout);
@@ -337,6 +343,15 @@ public class SeeClientJDialog extends javax.swing.JDialog {
             javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
         }
     }//GEN-LAST:event_jButtonSeeClientSeeConsultationsActionPerformed
+
+    private void jButtonSeeClientSeeExamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeClientSeeExamsActionPerformed
+        try {
+            ControllerExam.showDataTableByClientId(this.frame.getTableComponentsCollection(), this.frame.getTableComponentsExams(), this.clientId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_jButtonSeeClientSeeExamsActionPerformed
 
     /**
      * @param args the command line arguments

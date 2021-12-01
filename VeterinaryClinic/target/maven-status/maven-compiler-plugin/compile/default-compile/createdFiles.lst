@@ -26,6 +26,7 @@ View\Exam\DeleteExamJDialog.class
 View\MainJFrame$24.class
 Exceptions\ZipCodeNotOnlyWithNumbersException.class
 View\Client\SeeClientJDialog$3.class
+View\Client\SeeClientJDialog$6.class
 View\Exam\SeeExamJDialog$3.class
 View\Client\NewClientJDialog.class
 View\Animal\NewAnimalJDialog$1.class
