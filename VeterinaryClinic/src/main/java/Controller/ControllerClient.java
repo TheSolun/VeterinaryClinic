@@ -7,6 +7,9 @@ package Controller;
 
 import java.sql.SQLException;
 
+import Controller.ControllerAnimal;
+
+import Models.Animal;
 import Models.Client;
 import Models.DAO.ClientDAO;
 
@@ -73,6 +76,8 @@ public class ControllerClient extends Controller {
     }
     
     public static void deleteClient(int clientId) throws SQLException, Exception {
+        for(Animal animal : ControllerAnimal.getAnimalsByClientId(clientId))
+            ControllerAnimal.deleteAnimal(animal.getId());
         ClientDAO.getInstance().deleteById(clientId);
     }
     
