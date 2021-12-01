@@ -79,6 +79,7 @@ Exceptions\NotPositiveAgeException.class
 View\Vet\SeeVetJDialog.class
 View\Exam\SeeExamJDialog$7.class
 Models\DAO\ConsultationDAO.class
+View\Vet\SeeVetJDialog$3.class
 View\MainJFrame$28.class
 View\Client\SeeClientJDialog$5.class
 View\Consultation\SeeConsultationJDialog.class

@@ -6,6 +6,7 @@
 
 package View.Vet;
 
+import Controller.ControllerConsultation;
 import Controller.ControllerVet;
 
 /**
@@ -132,6 +133,11 @@ public class SeeVetJDialog extends javax.swing.JDialog {
 
         jButtonSeeVetSeeConsultations.setText("See Consultations");
         jButtonSeeVetSeeConsultations.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeVetSeeConsultations.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeVetSeeConsultationsActionPerformed(evt);
+            }
+        });
 
         jButtonSeeVetSeeTreatments.setText("See Treatments");
         jButtonSeeVetSeeTreatments.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -231,6 +237,15 @@ public class SeeVetJDialog extends javax.swing.JDialog {
             javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
         }
     }//GEN-LAST:event_jButtonSeeVetDeleteVetActionPerformed
+
+    private void jButtonSeeVetSeeConsultationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeVetSeeConsultationsActionPerformed
+        try {
+            ControllerConsultation.showDataTableByVetId(this.frame.getTableComponentsCollection(), this.frame.getTableComponentsConsultations(), this.vetId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_jButtonSeeVetSeeConsultationsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonSeeVetDeleteVet;

@@ -45,10 +45,6 @@ public class ControllerConsultation extends Controller {
         return ConsultationDAO.getInstance().retrieveByTreatmentId(treatmentId);
     }
     
-    protected static List<Consultation> getConsultationsByVetId(int vetId)throws SQLException, Exception {
-        return ConsultationDAO.getInstance().retrieveByVetId(vetId);
-    }
-    
     public static void showDataTableByTreatmentId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int treatmentId) throws SQLException, Exception {
         showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(getConsultationsByTreatmentId(treatmentId)));
     }
@@ -77,6 +73,14 @@ public class ControllerConsultation extends Controller {
     
     public static void showDataTableByClientId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int clientId) throws SQLException, Exception {
         showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(getConsultationsByClientId(clientId)));
+    }
+    
+    protected static List<Consultation> getConsultationsByVetId(int vetId) throws SQLException, Exception {
+        return ConsultationDAO.getInstance().retrieveByVetId(vetId);
+    }
+    
+    public static void showDataTableByVetId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int vetId) throws SQLException, Exception {
+        showDataTable(tableComponentsCollection,tableComponents, new ConsultationTableModel(getConsultationsByVetId(vetId)));
     }
     
     private static Consultation getSelectedConsultationFromJTable(MainJFrame frame) {
