@@ -46,6 +46,7 @@ View\Treatment\NewTreatmentJDialog$1.class
 View\Animal\EditAnimalJDialog.class
 View\Consultation\EditConsultationJDialog$3.class
 View\Animal\SeeAnimalJDialog$2.class
+View\Exam\SeeExamJDialog$6.class
 Controller\Controller.class
 Models\Vet.class
 View\MainJFrame$23.class
@@ -75,6 +76,7 @@ Models\DAO\ClientDAO.class
 View\MainJFrame$34.class
 Exceptions\NotPositiveAgeException.class
 View\Vet\SeeVetJDialog.class
+View\Exam\SeeExamJDialog$7.class
 Models\DAO\ConsultationDAO.class
 View\MainJFrame$28.class
 View\Consultation\SeeConsultationJDialog.class
@@ -93,6 +95,7 @@ View\MainJFrame$15.class
 View\MainJFrame$2.class
 Exceptions\EmailWithInvalidCharInItsLocalPartException.class
 View\Treatment\SeeTreatmentJDialog$4.class
+View\Exam\EditExamJDialog$2.class
 Models\DAO\DAO.class
 View\Vet\EditVetJDialog$2.class
 Controller\ControllerVet.class
@@ -167,6 +170,7 @@ Models\DAO\SpeciesDAO.class
 View\Animal\DeleteAnimalJDialog$3.class
 View\Vet\DeleteVetJDialog$3.class
 View\MainJFrame$6.class
+View\Exam\EditExamJDialog$1.class
 View\Consultation\SeeConsultationJDialog$7.class
 View\GenericTableModel.class
 View\Consultation\SeeConsultationJDialog$1.class

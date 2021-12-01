@@ -143,6 +143,8 @@ public class MainJFrame extends javax.swing.JFrame {
         this.jPanelActionsVets.remove(this.jButtonDeleteVet);
         this.jPanelActionsConsultations.remove(this.jButtonEditConsultation);
         this.jPanelActionsConsultations.remove(this.jButtonDeleteConsultation);
+        this.jPanelActionsExams.remove(this.jButtonEditExam);
+        this.jPanelActionsExams.remove(this.jButtonDeleteExam);
     }
     
     /** This method is called from within the constructor to

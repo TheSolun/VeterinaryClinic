@@ -6,6 +6,8 @@
 
 package View.Exam;
 
+import Controller.ControllerExam;
+
 import View.MainJFrame;
 
 /**
@@ -47,6 +49,10 @@ public class EditExamJDialog extends javax.swing.JDialog {
         initComponents();
     }
 
+    private String getCurrentExamName() {
+        return this.jTextFieldEditExamName.getText();
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -62,16 +68,15 @@ public class EditExamJDialog extends javax.swing.JDialog {
         jPanelEditExamForm = new javax.swing.JPanel();
         jLabelEditExamName = new javax.swing.JLabel();
         jTextFieldEditExamName = new javax.swing.JTextField();
-        jButtonEditExamSelectConsultation = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelEditExamTreatmentName = new javax.swing.JLabel();
+        jTextFieldEditExamTreatmentName = new javax.swing.JTextField();
+        jLabelEditExamVetName = new javax.swing.JLabel();
+        jTextFieldEditExamVetName = new javax.swing.JTextField();
+        jLabelEditExamAnimalName = new javax.swing.JLabel();
+        jTextFieldEditExamAnimalName = new javax.swing.JTextField();
+        jLabelEditExamClientName = new javax.swing.JLabel();
+        jTextFieldEditExamClientName = new javax.swing.JTextField();
+        jLabelEditExamConsultationComment = new javax.swing.JLabel();
         jScrollPaneEditExamConsultationComment = new javax.swing.JScrollPane();
         jTextAreaEditExamConsultationComment = new javax.swing.JTextArea();
         jButtonEditExamConfirm = new javax.swing.JButton();
@@ -79,6 +84,11 @@ public class EditExamJDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edit Exam");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanelEditExamTittle.setLayout(new java.awt.BorderLayout());
 
@@ -89,51 +99,53 @@ public class EditExamJDialog extends javax.swing.JDialog {
 
         jLabelEditExamName.setText("Name");
 
-        jTextFieldEditExamName.setText("Exam1");
+        jTextFieldEditExamName.setText(this.examName);
 
-        jButtonEditExamSelectConsultation.setText("Select Consultation");
-        jButtonEditExamSelectConsultation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelEditExamTreatmentName.setText("Treatment");
 
-        jLabel4.setText("Treatment");
+        jTextFieldEditExamTreatmentName.setEditable(false);
+        jTextFieldEditExamTreatmentName.setText(this.treatmentName);
+        jTextFieldEditExamTreatmentName.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldEditExamTreatmentName.setEnabled(false);
 
-        jTextField2.setEditable(false);
-        jTextField2.setText("Treatment1");
-        jTextField2.setDisabledTextColor(java.awt.Color.black);
-        jTextField2.setEnabled(false);
+        jLabelEditExamVetName.setText("Vet");
 
-        jLabel5.setText("Vet");
+        jTextFieldEditExamVetName.setEditable(false);
+        jTextFieldEditExamVetName.setText(this.vetName);
+        jTextFieldEditExamVetName.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldEditExamVetName.setEnabled(false);
 
-        jTextField3.setEditable(false);
-        jTextField3.setText("Vet1");
-        jTextField3.setDisabledTextColor(java.awt.Color.black);
-        jTextField3.setEnabled(false);
+        jLabelEditExamAnimalName.setText("Animal");
 
-        jLabel6.setText("Animal");
+        jTextFieldEditExamAnimalName.setEditable(false);
+        jTextFieldEditExamAnimalName.setText(this.animalName);
+        jTextFieldEditExamAnimalName.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldEditExamAnimalName.setEnabled(false);
 
-        jTextField4.setEditable(false);
-        jTextField4.setText("Foguinho");
-        jTextField4.setDisabledTextColor(java.awt.Color.black);
-        jTextField4.setEnabled(false);
+        jLabelEditExamClientName.setText("Client");
 
-        jLabel7.setText("Client");
+        jTextFieldEditExamClientName.setEditable(false);
+        jTextFieldEditExamClientName.setText(this.clientName);
+        jTextFieldEditExamClientName.setDisabledTextColor(java.awt.Color.black);
+        jTextFieldEditExamClientName.setEnabled(false);
 
-        jTextField5.setEditable(false);
-        jTextField5.setText("Jenisvaldo");
-        jTextField5.setDisabledTextColor(java.awt.Color.black);
-        jTextField5.setEnabled(false);
-
-        jLabel1.setText("Consultation Comments");
+        jLabelEditExamConsultationComment.setText("Consultation Comment");
 
         jTextAreaEditExamConsultationComment.setEditable(false);
         jTextAreaEditExamConsultationComment.setColumns(20);
         jTextAreaEditExamConsultationComment.setRows(5);
-        jTextAreaEditExamConsultationComment.setText("Consultation 1 - Treatment 1 - Vet 1");
+        jTextAreaEditExamConsultationComment.setText(this.consultationComment);
         jTextAreaEditExamConsultationComment.setDisabledTextColor(java.awt.Color.black);
         jTextAreaEditExamConsultationComment.setEnabled(false);
         jScrollPaneEditExamConsultationComment.setViewportView(jTextAreaEditExamConsultationComment);
 
         jButtonEditExamConfirm.setText("Update");
         jButtonEditExamConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEditExamConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditExamConfirmActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanelEditExamFormLayout = new org.jdesktop.layout.GroupLayout(jPanelEditExamForm);
         jPanelEditExamForm.setLayout(jPanelEditExamFormLayout);
@@ -147,36 +159,31 @@ public class EditExamJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .add(jScrollPaneEditExamConsultationComment, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelEditExamFormLayout.createSequentialGroup()
-                .add(jLabel1)
+                .add(jLabelEditExamConsultationComment)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(jPanelEditExamFormLayout.createSequentialGroup()
                 .add(jPanelEditExamFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabelEditExamVetName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabelEditExamTreatmentName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabelEditExamAnimalName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabelEditExamClientName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .add(jPanelEditExamFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanelEditExamFormLayout.createSequentialGroup()
                         .add(4, 4, 4)
-                        .add(jTextField3))
+                        .add(jTextFieldEditExamVetName))
                     .add(jPanelEditExamFormLayout.createSequentialGroup()
                         .add(4, 4, 4)
-                        .add(jTextField4))
+                        .add(jTextFieldEditExamAnimalName))
                     .add(jPanelEditExamFormLayout.createSequentialGroup()
                         .add(4, 4, 4)
-                        .add(jTextField5))
+                        .add(jTextFieldEditExamClientName))
                     .add(jPanelEditExamFormLayout.createSequentialGroup()
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jTextField2))))
+                        .add(jTextFieldEditExamTreatmentName))))
             .add(jPanelEditExamFormLayout.createSequentialGroup()
-                .add(jPanelEditExamFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanelEditExamFormLayout.createSequentialGroup()
-                        .add(127, 127, 127)
-                        .add(jButtonEditExamSelectConsultation))
-                    .add(jPanelEditExamFormLayout.createSequentialGroup()
-                        .add(154, 154, 154)
-                        .add(jButtonEditExamConfirm)))
-                .add(0, 0, Short.MAX_VALUE))
+                .add(154, 154, 154)
+                .add(jButtonEditExamConfirm)
+                .add(0, 159, Short.MAX_VALUE))
         );
         jPanelEditExamFormLayout.setVerticalGroup(
             jPanelEditExamFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -185,28 +192,26 @@ public class EditExamJDialog extends javax.swing.JDialog {
                     .add(jLabelEditExamName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jTextFieldEditExamName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButtonEditExamSelectConsultation)
+                .add(jPanelEditExamFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabelEditExamTreatmentName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jTextFieldEditExamTreatmentName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelEditExamFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelEditExamFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel5)
-                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jLabelEditExamVetName)
+                    .add(jTextFieldEditExamVetName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(9, 9, 9)
                 .add(jPanelEditExamFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jTextFieldEditExamAnimalName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabelEditExamAnimalName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelEditExamFormLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jTextField5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jTextFieldEditExamClientName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabelEditExamClientName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jLabelEditExamConsultationComment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jScrollPaneEditExamConsultationComment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 100, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 35, Short.MAX_VALUE)
                 .add(jButtonEditExamConfirm))
         );
 
@@ -244,27 +249,48 @@ public class EditExamJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonEditExamConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditExamConfirmActionPerformed
+        try {
+            ControllerExam.editExam(this.examId,this.getCurrentExamName(),this.consultationId);
+            ControllerExam.showDataTableAll(this.frame.getTableComponentsCollection(),this.frame.getTableComponentsExams());
+            this.dispose();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
+    }//GEN-LAST:event_jButtonEditExamConfirmActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        try {
+            ControllerExam.showSeeExamJDialogFromExamId(this.frame, this.examId);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_formWindowClosed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEditExamConfirm;
-    private javax.swing.JButton jButtonEditExamSelectConsultation;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabelEditExamAnimalName;
+    private javax.swing.JLabel jLabelEditExamClientName;
+    private javax.swing.JLabel jLabelEditExamConsultationComment;
     private javax.swing.JLabel jLabelEditExamName;
     private javax.swing.JLabel jLabelEditExamTittle;
+    private javax.swing.JLabel jLabelEditExamTreatmentName;
+    private javax.swing.JLabel jLabelEditExamVetName;
     private javax.swing.JPanel jPanelEditExamForm;
     private javax.swing.JPanel jPanelEditExamTittle;
     private javax.swing.JPanel jPanelFrame;
     private javax.swing.JScrollPane jScrollPaneEditExamConsultationComment;
     private javax.swing.JTextArea jTextAreaEditExamConsultationComment;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextFieldEditExamAnimalName;
+    private javax.swing.JTextField jTextFieldEditExamClientName;
     private javax.swing.JTextField jTextFieldEditExamName;
+    private javax.swing.JTextField jTextFieldEditExamTreatmentName;
+    private javax.swing.JTextField jTextFieldEditExamVetName;
     // End of variables declaration//GEN-END:variables
 
 }
