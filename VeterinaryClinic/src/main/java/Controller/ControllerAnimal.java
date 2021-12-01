@@ -10,10 +10,13 @@ import java.util.List;
 import java.sql.SQLException;
 import javax.swing.ComboBoxModel;
 
+import Controller.ControllerTreatment;
+
 import Models.Animal;
 import Models.Client;
 import Models.Gender;
 import Models.Species;
+import Models.Treatment;
 import Models.DAO.AnimalDAO;
 import Models.DAO.ClientDAO;
 import Models.DAO.SpeciesDAO;
@@ -116,6 +119,9 @@ public class ControllerAnimal extends Controller {
     }
     
     public static void deleteAnimal(int animalId) throws SQLException, Exception {
+        List<Treatment> treatments = ControllerTreatment.getTreatmentsByAnimalId(animalId);
+        for(Treatment treatment : treatments)
+            ControllerTreatment.deleteTreatment(treatment.getId());
         AnimalDAO.getInstance().deleteById(animalId);
     }
     

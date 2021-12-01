@@ -32,8 +32,12 @@ public class ControllerTreatment extends Controller {
         showDataTable(tableComponentsCollection,tableComponents, new TreatmentTableModel(TreatmentDAO.getInstance().retrieveAll()));
     }
     
+    protected static List<Treatment> getTreatmentsByAnimalId(int animalId) throws SQLException, Exception {
+        return TreatmentDAO.getInstance().retrieveByAnimalId(animalId);
+    }
+    
     public static void showDataTableByAnimalId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int animalId) throws SQLException, Exception {
-        showDataTable(tableComponentsCollection,tableComponents, new TreatmentTableModel(TreatmentDAO.getInstance().retrieveByAnimalId(animalId)));
+        showDataTable(tableComponentsCollection,tableComponents, new TreatmentTableModel(getTreatmentsByAnimalId(animalId)));
     }
     
     public static void showSeeTreatmentJDialogFromJTableSelection(MainJFrame frame) {
