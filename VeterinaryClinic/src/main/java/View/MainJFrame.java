@@ -421,8 +421,8 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         jTableTreatments.setIntercellSpacing(new java.awt.Dimension(2, 4));
         jTableTreatments.setSelectionBackground(java.awt.Color.lightGray);
-        jTableTreatments.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        jTableTreatments.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jTableTreatments.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTableTreatments.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTableTreatments.setShowGrid(true);
         jTableTreatments.getTableHeader().setResizingAllowed(false);
         jTableTreatments.getTableHeader().setReorderingAllowed(false);
@@ -593,8 +593,8 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         jTableConsultations.setIntercellSpacing(new java.awt.Dimension(2, 4));
         jTableConsultations.setSelectionBackground(java.awt.Color.lightGray);
-        jTableConsultations.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        jTableConsultations.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jTableConsultations.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTableConsultations.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTableConsultations.setShowGrid(true);
         jTableConsultations.getTableHeader().setResizingAllowed(false);
         jTableConsultations.getTableHeader().setReorderingAllowed(false);
@@ -767,8 +767,8 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         jTableExams.setIntercellSpacing(new java.awt.Dimension(4, 2));
         jTableExams.setSelectionBackground(java.awt.Color.lightGray);
-        jTableExams.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        jTableExams.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jTableExams.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTableExams.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTableExams.setShowGrid(true);
         jTableExams.getTableHeader().setResizingAllowed(false);
         jTableExams.getTableHeader().setReorderingAllowed(false);
@@ -869,8 +869,8 @@ public class MainJFrame extends javax.swing.JFrame {
         jTableAnimals.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTableAnimals.setIntercellSpacing(new java.awt.Dimension(4, 2));
         jTableAnimals.setSelectionBackground(java.awt.Color.lightGray);
-        jTableAnimals.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        jTableAnimals.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jTableAnimals.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTableAnimals.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTableAnimals.setShowGrid(true);
         jTableAnimals.getTableHeader().setResizingAllowed(false);
         jTableAnimals.getTableHeader().setReorderingAllowed(false);
@@ -971,8 +971,8 @@ public class MainJFrame extends javax.swing.JFrame {
         jTableClients.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTableClients.setIntercellSpacing(new java.awt.Dimension(4, 2));
         jTableClients.setSelectionBackground(java.awt.Color.lightGray);
-        jTableClients.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        jTableClients.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jTableClients.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTableClients.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTableClients.setShowGrid(true);
         jTableClients.getTableHeader().setResizingAllowed(false);
         jTableClients.getTableHeader().setReorderingAllowed(false);
@@ -1145,8 +1145,8 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         jTableVets.setIntercellSpacing(new java.awt.Dimension(4, 2));
         jTableVets.setSelectionBackground(java.awt.Color.lightGray);
-        jTableVets.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        jTableVets.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jTableVets.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTableVets.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTableVets.setShowGrid(true);
         jTableVets.getTableHeader().setResizingAllowed(false);
         jTableVets.getTableHeader().setReorderingAllowed(false);
