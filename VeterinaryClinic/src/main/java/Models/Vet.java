@@ -63,6 +63,10 @@ public class Vet {
     public String getPhone() {
         return phone;
     }
+    
+    public String getFormattedPhone() {
+        return "(" + phone.substring(0, 2) + ")" + phone.substring(2,7) + "-" + phone.substring(7);
+    }
 
     public void setPhone(String phone) throws InvalidPhoneLengthException, PhoneNotOnlyWithNumbersException {
         int expectedLength = 11;

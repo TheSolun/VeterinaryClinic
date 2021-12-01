@@ -30,7 +30,7 @@ public class VetsComboModel extends AbstractListModel<Object> implements ComboBo
     }
     
     private String getVetString(Vet vet) {
-        return  "Name: " + vet.getName() + " | Phone: " + vet.getPhone();
+        return  "Name: " + vet.getName() + " | Phone: " + vet.getFormattedPhone();
     }
     
     public int getVetId(int index) {
