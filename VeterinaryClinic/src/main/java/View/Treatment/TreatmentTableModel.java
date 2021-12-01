@@ -1,10 +1,13 @@
 package View.Treatment;
 
-import Models.Treatment;
-import View.GenericTableModel;
-import static View.GenericTableModel.idColumnName;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
+
+import Models.Treatment;
+
+import View.GenericTableModel;
+import static View.GenericTableModel.idColumnName;
 
 /**
  *
@@ -28,9 +31,9 @@ public class TreatmentTableModel extends GenericTableModel {
             case 1:
                 return String.class;
             case 2:
-                return String.class;
+                return LocalDate.class;
             case 3:
-                return String.class;
+                return LocalDate.class;
             case 4:
                 return String.class;
             case 5:
@@ -38,7 +41,7 @@ public class TreatmentTableModel extends GenericTableModel {
             case 6:
                 return Boolean.class;
             default:
-                throw new IndexOutOfBoundsException("column index out of bounds");
+                throw new IndexOutOfBoundsException("column '" + columnIndex + "' index out of bounds");
         }
     }
     
@@ -62,7 +65,7 @@ public class TreatmentTableModel extends GenericTableModel {
             case 6:
                 return treatment.isFinished();
             default:
-                throw new IndexOutOfBoundsException("column index out of bounds");
+                throw new IndexOutOfBoundsException("column '" + columnIndex + "' index out of bounds");
         }
     }
     

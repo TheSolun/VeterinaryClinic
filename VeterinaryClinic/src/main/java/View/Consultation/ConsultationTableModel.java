@@ -3,6 +3,7 @@ package View.Consultation;
 import Models.Consultation;
 import View.GenericTableModel;
 import static View.GenericTableModel.idColumnName;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class ConsultationTableModel extends GenericTableModel {
             case 0:
                 return int.class;
             case 1:
-                return String.class;
+                return LocalDateTime.class;
             case 2:
                 return String.class;
             case 3:

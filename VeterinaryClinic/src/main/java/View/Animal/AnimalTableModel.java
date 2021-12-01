@@ -5,10 +5,13 @@
  */
 package View.Animal;
 
-import Models.Animal;
-import View.GenericTableModel;
 import java.util.ArrayList;
 import java.util.List;
+
+import Models.Animal;
+import Models.Gender;
+
+import View.GenericTableModel;
 
 /**
  *
@@ -24,15 +27,15 @@ public class AnimalTableModel extends GenericTableModel {
         super(vData, new String[]{"Name","Birth Year","Gender","Species","Client"});
     }
     
-    public Object[][] getDataAsObjectMatrix() {
-        Object[][] dataAsObjMatrix  = new Object[getRowCount()][getColumnCount()];
-        for(int rowIdx = 0; rowIdx < getRowCount(); rowIdx++) {
-            for(int columnIdx = 0; columnIdx < getColumnCount(); columnIdx++) {
-                dataAsObjMatrix[rowIdx][columnIdx] = getValueAt(rowIdx,columnIdx);
-            }
-        }
-        return dataAsObjMatrix;
-    }
+//    public Object[][] getDataAsObjectMatrix() {
+//        Object[][] dataAsObjMatrix  = new Object[getRowCount()][getColumnCount()];
+//        for(int rowIdx = 0; rowIdx < getRowCount(); rowIdx++) {
+//            for(int columnIdx = 0; columnIdx < getColumnCount(); columnIdx++) {
+//                dataAsObjMatrix[rowIdx][columnIdx] = getValueAt(rowIdx,columnIdx);
+//            }
+//        }
+//        return dataAsObjMatrix;
+//    }
     
     @Override
     public Class<?> getColumnClass(int columnIndex) {
@@ -44,13 +47,13 @@ public class AnimalTableModel extends GenericTableModel {
             case 2:
                 return String.class;
             case 3:
-                return String.class;
+                return Gender.class;
             case 4:
                 return String.class;
             case 5:
                 return String.class;
             default:
-                throw new IndexOutOfBoundsException("column index out of bounds");
+                throw new IndexOutOfBoundsException("column index '" + columnIndex + "' out of bounds");
         }
     }
     
@@ -72,7 +75,7 @@ public class AnimalTableModel extends GenericTableModel {
             case 5:
                 return animal.getOwner().getName();
             default:
-                throw new IndexOutOfBoundsException("column index out of bounds");
+                throw new IndexOutOfBoundsException("column index '" + columnIndex + "' out of bounds");
         }
     }
  

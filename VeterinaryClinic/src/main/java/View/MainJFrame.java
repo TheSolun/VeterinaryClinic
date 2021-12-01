@@ -1265,6 +1265,7 @@ public class MainJFrame extends javax.swing.JFrame {
             ControllerTreatment.showDataTableAll(this.tableComponentsCollection,this.getTableComponentsTreatments());
         } catch (Exception ex) {
             System.out.println(ex);
+            ex.printStackTrace();
             javax.swing.JOptionPane.showMessageDialog(this,ex);
         }
     }//GEN-LAST:event_jButtonMenuBarTreatmentsActionPerformed

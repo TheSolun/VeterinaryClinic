@@ -138,12 +138,24 @@ public class Controller {
         }
     }
     
+    private static void setNoRowSorterAllJTables(TableComponentsCollection tableComponentsCollection) {
+        for(TableComponents tableComponents : tableComponentsCollection.getAll()) {
+            tableComponents.getTable().setAutoCreateRowSorter(false);
+        }
+    }
+    
+    private static void setJTableOrder(JTable table) {
+        table.setAutoCreateRowSorter(true);
+    }
+    
     protected static void showDataTable(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, GenericTableModel tableModel) {
         Controller.setNotVisibleAllCardLayoutJPanels(tableComponentsCollection);
+        Controller.setNoRowSorterAllJTables(tableComponentsCollection);
         Controller.setJTablesActionButtonsAsDisabled(tableComponentsCollection.getAllActionButtons());
         Controller.setEmptyAllJTables(tableComponentsCollection);
         Controller.setTableModel(tableComponents.getTable(), tableModel);
         Controller.removeIdColumnFromJTable(tableComponents.getTable());
+        Controller.setJTableOrder(tableComponents.getTable());
         tableComponents.getPanel().setVisible(true);
     }
     
