@@ -103,6 +103,7 @@ Exceptions\BlankNameException.class
 View\Animal\SeeAnimalJDialog$4.class
 View\Consultation\EditConsultationJDialog$1.class
 Models\DAO\ExamDAO.class
+View\Exam\DeleteExamJDialog$3.class
 Controller\ControllerExam.class
 View\Animal\AnimalTableModel.class
 View\Treatment\DeleteTreatmentJDialog$2.class
@@ -168,6 +169,7 @@ View\Consultation\NewConsultationJDialog$2.class
 View\Treatment\NewTreatmentJDialog.class
 Models\DAO\SpeciesDAO.class
 View\Animal\DeleteAnimalJDialog$3.class
+View\Exam\DeleteExamJDialog$2.class
 View\Vet\DeleteVetJDialog$3.class
 View\MainJFrame$6.class
 View\Exam\EditExamJDialog$1.class

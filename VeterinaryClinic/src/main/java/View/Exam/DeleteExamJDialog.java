@@ -6,6 +6,8 @@
 
 package View.Exam;
 
+import Controller.ControllerExam;
+
 import View.MainJFrame;
 
 /**
@@ -14,9 +16,11 @@ import View.MainJFrame;
  */
 public class DeleteExamJDialog extends javax.swing.JDialog {
 
-    final MainJFrame frame;
-    final int examId;
-    final String examName;
+    final private MainJFrame frame;
+    final private int examId;
+    final private String examName;
+    private boolean deleted = false;
+    
     
     /** Creates new form DeleteExamJDialog */
     public DeleteExamJDialog(MainJFrame frame, boolean modal, int examId, String examName) {
@@ -48,6 +52,11 @@ public class DeleteExamJDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Delete Exam");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanelDeleteExamTittle.setLayout(new java.awt.BorderLayout());
 
@@ -58,13 +67,18 @@ public class DeleteExamJDialog extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Are you sure that you want to delete the exam 'Exam1'?");
+        jLabel1.setText("Are you sure that you want to delete the exam '"+this.examName+"'?");
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("If you do, all its info will be deleted with it.");
 
         jButtonDeleteExamConfirm.setText("Delete");
         jButtonDeleteExamConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonDeleteExamConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteExamConfirmActionPerformed(evt);
+            }
+        });
 
         jButtonDeleteExamCancel.setText("Cancel");
         jButtonDeleteExamCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -134,6 +148,29 @@ public class DeleteExamJDialog extends javax.swing.JDialog {
     private void jButtonDeleteExamCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteExamCancelActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonDeleteExamCancelActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        try {
+            if(!this.deleted)
+                ControllerExam.showSeeExamJDialogFromExamId(this.frame, this.examId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_formWindowClosed
+
+    private void jButtonDeleteExamConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteExamConfirmActionPerformed
+        try {
+            ControllerExam.deleteExam(this.examId);
+            this.deleted = true;
+            ControllerExam.showDataTableAll(this.frame.getTableComponentsCollection(),this.frame.getTableComponentsExams());
+            this.dispose();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame,ex);
+        }
+    }//GEN-LAST:event_jButtonDeleteExamConfirmActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
