@@ -42,7 +42,7 @@ public class ControllerTreatment extends Controller {
         showDataTable(tableComponentsCollection,tableComponents, new TreatmentTableModel(getTreatmentsByAnimalId(animalId)));
     }
     
-    private static List<Treatment> getTreatmentsByClientId(int clientId) throws SQLException, Exception {
+    protected static List<Treatment> getTreatmentsByClientId(int clientId) throws SQLException, Exception {
         List<Treatment> treatments = new ArrayList<Treatment>();
         for(Animal animal : ControllerAnimal.getAnimalsByClientId(clientId))
             treatments.addAll(getTreatmentsByAnimalId(animal.getId()));

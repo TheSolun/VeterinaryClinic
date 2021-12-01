@@ -8,6 +8,7 @@ package View.Client;
 
 import Controller.ControllerAnimal;
 import Controller.ControllerClient;
+import Controller.ControllerConsultation;
 import Controller.ControllerTreatment;
 
 
@@ -182,6 +183,11 @@ public class SeeClientJDialog extends javax.swing.JDialog {
 
         jButtonSeeClientSeeConsultations.setText("See Consultations");
         jButtonSeeClientSeeConsultations.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSeeClientSeeConsultations.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeeClientSeeConsultationsActionPerformed(evt);
+            }
+        });
 
         jButtonSeeClientSeeExams.setText("See Exams");
         jButtonSeeClientSeeExams.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -322,6 +328,15 @@ public class SeeClientJDialog extends javax.swing.JDialog {
             javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
         }
     }//GEN-LAST:event_jButtonSeeClientSeeTreatmentsActionPerformed
+
+    private void jButtonSeeClientSeeConsultationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeClientSeeConsultationsActionPerformed
+        try {
+            ControllerConsultation.showDataTableByClientId(this.frame.getTableComponentsCollection(), this.frame.getTableComponentsConsultations(), this.clientId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            javax.swing.JOptionPane.showMessageDialog(this.frame, ex);
+        }
+    }//GEN-LAST:event_jButtonSeeClientSeeConsultationsActionPerformed
 
     /**
      * @param args the command line arguments

@@ -79,6 +79,7 @@ View\Vet\SeeVetJDialog.class
 View\Exam\SeeExamJDialog$7.class
 Models\DAO\ConsultationDAO.class
 View\MainJFrame$28.class
+View\Client\SeeClientJDialog$5.class
 View\Consultation\SeeConsultationJDialog.class
 View\Exam\SeeExamJDialog$1.class
 View\MainJFrame$22.class
