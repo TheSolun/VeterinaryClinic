@@ -42,8 +42,12 @@ public class ControllerAnimal extends Controller {
         showDataTable(tableComponentsCollection,tableComponents, new AnimalTableModel(AnimalDAO.getInstance().retrieveAll()));
     }
     
+    protected static List<Animal> getAnimalsByClientId(int clientId) throws SQLException, Exception {
+        return AnimalDAO.getInstance().retrieveByClientId(clientId);
+    }
+    
     public static void showDataTableByClientId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int clientId) throws SQLException, Exception {
-        showDataTable(tableComponentsCollection,tableComponents, new AnimalTableModel(AnimalDAO.getInstance().retrieveByClientId(clientId)));
+        showDataTable(tableComponentsCollection,tableComponents, new AnimalTableModel(getAnimalsByClientId(clientId)));
     }
     
     public static void showSeeAnimalJDialogFromJTableSelection(MainJFrame frame) throws SQLException, Exception {

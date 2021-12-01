@@ -1,9 +1,11 @@
 package Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+import Controller.ControllerAnimal;
 import Controller.ControllerConsultation;
 
 import Models.Animal;
@@ -38,6 +40,17 @@ public class ControllerTreatment extends Controller {
     
     public static void showDataTableByAnimalId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int animalId) throws SQLException, Exception {
         showDataTable(tableComponentsCollection,tableComponents, new TreatmentTableModel(getTreatmentsByAnimalId(animalId)));
+    }
+    
+    private static List<Treatment> getTreatmentsByClientId(int clientId) throws SQLException, Exception {
+        List<Treatment> treatments = new ArrayList<Treatment>();
+        for(Animal animal : ControllerAnimal.getAnimalsByClientId(clientId))
+            treatments.addAll(getTreatmentsByAnimalId(animal.getId()));
+        return treatments;
+    }
+    
+    public static void showDataTableByClientId(TableComponentsCollection tableComponentsCollection, TableComponents tableComponents, int clientId) throws SQLException, Exception {
+        showDataTable(tableComponentsCollection,tableComponents, new TreatmentTableModel(getTreatmentsByClientId(clientId)));
     }
     
     public static void showSeeTreatmentJDialogFromJTableSelection(MainJFrame frame) {

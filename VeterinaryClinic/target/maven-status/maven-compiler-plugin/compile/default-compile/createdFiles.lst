@@ -114,6 +114,7 @@ View\Treatment\SeeTreatmentJDialog$1.class
 View\Client\EditClientJDialog$3.class
 View\Animal\SeeAnimalJDialog$1.class
 View\Consultation\EditConsultationJDialog.class
+View\Client\SeeClientJDialog$4.class
 View\Client\DeleteClientJDialog$2.class
 View\Animal\EditAnimalJDialog$2.class
 View\Client\SeeClientJDialog.class
